@@ -1,0 +1,162 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+  Table of contents
+  #
+
+{: .no_toc .text-delta }
+
+TOC
+{:toc}
+
+
+
+  Overview
+  #
+
+For this lab, we will be installing and configuring a Minecraft server. All of
+this configuration can be successfully done without a Minecraft client or knowledge
+on how to play the game itself.
+If you want to actually be able to connect to the server: If you&rsquo;re not using the provided VM make sure your Linux VM has enough RAM to host the server (2-4Gb)."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/labs/10/"><meta property="og:site_name" content="Sysadmin DeCal"><meta property="og:title" content="Lab 10 - Puppet"><meta property="og:description" content="Table of contents # {: .no_toc .text-delta }
+TOC {:toc} Overview # For this lab, we will be installing and configuring a Minecraft server. All of this configuration can be successfully done without a Minecraft client or knowledge on how to play the game itself.
+If you want to actually be able to connect to the server: If you’re not using the provided VM make sure your Linux VM has enough RAM to host the server (2-4Gb)."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="labs"><title>Lab 10 - Puppet | Sysadmin DeCal</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/labs/10/><link rel=stylesheet href=/book.min.a66993900f9437bc8b9f3d67f5fea86cd8f2c5ca3eaecc1e818bb26d7ac89625.css integrity="sha256-pmmTkA+UN7yLnz1n9f6obNjyxco+rswegYuybXrIliU=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.28d1e126de307ffcd3a8254d9f1c14303f0918b2dfde22cc673bdc49855798da.js integrity="sha256-KNHhJt4wf/zTqCVNnxwUMD8JGLLf3iLMZzvcSYVXmNo=" crossorigin=anonymous></script><script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Sysadmin DeCal</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><a href=/about/>About</a></li><li><input type=checkbox id=section-638171d5990482642c69d9e2d942b1e4 class=toggle>
+<label for=section-638171d5990482642c69d9e2d942b1e4 class=flex><a role=button class=flex-auto>Announcements</a></label><ul><li><a href=/announcements/week-0/>Week 0</a></li><li><a href=/announcements/week-1/>Week 1</a></li><li><a href=/announcements/week-2/>Week 2</a></li><li><a href=/announcements/week-3/>Week 3</a></li><li><a href=/announcements/week-4/>Week 4</a></li><li><a href=/announcements/week-5/>Week 5</a></li><li><a href=/announcements/week-6/>Week 6</a></li><li><a href=/announcements/week-7/>Week 7</a></li><li><a href=/announcements/week-8/>Week 8</a></li><li><a href=/announcements/week-9/>Week 9</a></li></ul></li><li><input type=checkbox id=section-70822959fae8f27c0f79dc3a8400cebe class=toggle checked>
+<label for=section-70822959fae8f27c0f79dc3a8400cebe class=flex><a role=button class=flex-auto>Labs</a></label><ul><li><a href=/labs/1/>Lab 1 - Unix, the Shell, OSS</a></li><li><a href=/labs/2/>Lab 2 - Core Shell & Shell Scripting</a></li><li><a href=/labs/3/>Lab 3 - Packages and Packaging</a></li><li><a href=/labs/4/>Lab 4 - Processes and Services</a></li><li><a href=/labs/5/>Lab 5 - Introduction to Networking</a></li><li><a href=/labs/6/>Lab 6 - Web Servers</a></li><li><a href=/labs/7/>Lab 7 - Security Fundamentals</a></li><li><a href=/labs/8/>Lab 8 - Version Control and Backups</a></li><li><a href=/labs/9/>Lab 9 - Containers (Docker)</a></li><li><a href=/labs/10/ class=active>Lab 10 - Puppet</a></li><li><a href=/labs/11/>Lab 11 - Kubernetes</a></li><li><a href=/labs/12/>Lab 12 - CUDA</a></li></ul></li><li><a href=/resources/>Resources</a></li></ul><ul><li><a href=https://github.com/alex-shpak/hugo-book target=_blank rel=noopener>Ed</a></li><li><a href=https://themes.gohugo.io/themes/hugo-book/ target=_blank rel=noopener>OCF</a></li><li><a href=https://themes.gohugo.io/themes/hugo-book/ target=_blank rel=noopener>Github</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>Lab 10 - Puppet</h3><label for=toc-control></label></div></header><article class="markdown book-article"><h2 id=table-of-contents>Table of contents
+<a class=anchor href=#table-of-contents>#</a></h2><p>{: .no_toc .text-delta }</p><ol><li>TOC
+{:toc}</li></ol><hr><h1 id=overview>Overview
+<a class=anchor href=#overview>#</a></h1><p>For this lab, we will be installing and configuring a Minecraft server. All of
+this configuration can be successfully done without a Minecraft client or knowledge
+on how to play the game itself.</p><p><strong>If you want to actually be able to connect to the server:</strong> If you&rsquo;re not using the provided VM make sure your Linux VM has enough RAM to host the server (2-4Gb).</p><h2 id=getting-help>Getting help
+<a class=anchor href=#getting-help>#</a></h2><p>If you want any help with any part of this lab, join the OCF
+Discord (
+<a href=https://ocf.io/discord>https://ocf.io/discord</a>) and ask in the #decal-general channel!</p><p>The original creator of this lab is Frank Dai (fydai), and there was originally
+a message here telling you to ping him if you needed any help. You are still
+welcome to try (or, you can also ping current decal facilitators as well) :)</p><h2 id=the-most-important-trick-with-puppet>The most important trick with puppet
+<a class=anchor href=#the-most-important-trick-with-puppet>#</a></h2><p>If you mess anything up, delete everything (in particular <code>/home/minecraft</code>),
+and just run puppet again! Puppet ensures that even starting from nothing, you
+can reconstruct your entire previous state. If you do this and get issues with
+Puppet executing things out of order than you would like them, add in a
+<code>require</code> parameter to the resource that should be defined later. For instance,
+if you want to create something after the <code>/home/minecraft</code> directory, throw in
+an <code>require => File['/home/minecraft']</code> option. In general, capitalize the name
+of the resource, and put the string before the colon between the square braces.</p><h1 id=part-1-installing-puppet>Part 1: Installing Puppet
+<a class=anchor href=#part-1-installing-puppet>#</a></h1><p>First, we’re going to install Puppet.</p><pre tabindex=0><code>sudo apt install puppet
+ 
+</code></pre><p>If you installed puppet with an earlier version of the lab and it isn&rsquo;t working, please use the command below and then install puppet with apt.</p><pre tabindex=0><code>sudo dpkg -i --force-overwrite /var/cache/apt/archives/puppet_5.5.22-4ubuntu0.2_all.deb
+</code></pre><h1 id=part-2-using-puppet>Part 2: Using Puppet
+<a class=anchor href=#part-2-using-puppet>#</a></h1><p>Make a <code>minecraft.pp</code> file anywhere, which through the course of this lab, will
+eventually configure and run a Minecraft Server. To run your puppet code, use
+sudo <code>puppet apply minecraft.pp</code>. Puppet, being declarative, will do nothing if
+the system is already configured properly, so <strong>run puppet early and often</strong> to
+detect bugs as soon as possible.</p><p>Useful references are this section are the
+<a href=https://puppet.com/docs/puppet/7/puppet_index.html>Puppet documentation</a>
+and there is a lot of sample code avaliable in the
+<a href=https://github.com/ocf/puppet>OCF Puppet configuration</a>. When you are stuck,
+looking at existing code and see how they did things will generally be helpful.
+Also remember that there are code examples on the
+<a href="https://docs.google.com/presentation/d/1cKYJh0hAFjGkcFURlHS8U8xoyakSI-LBrq6-WnyrgZI/edit?usp=sharing">slides</a>!</p><h2 id=part-a-making-a-home-directory-and-a-user>Part a: Making a Home Directory and a User
+<a class=anchor href=#part-a-making-a-home-directory-and-a-user>#</a></h2><p>Put the following code into <code>minecraft.pp</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-puppet data-lang=puppet><span style=display:flex><span><span style=color:#66d9ef>file</span> { <span style=color:#e6db74>&#39;/home/minecraft&#39;</span>:<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span>  <span style=color:#a6e22e>ensure</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;directory&#39;</span>,<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span>}<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><p>Run <code>sudo puppet apply minecraft.pp</code> to apply it, and ensure that the
+<code>/home/minecraft</code> directory was created.</p><p>Inside <code>minecraft.pp</code>, write some Puppet code to create a user named
+<code>minecraft</code>, that the Minecraft server will run under. The <code>minecraft</code> user
+should have home directory <code>/home/minecraft</code>. Now modify the code creating
+<code>/home/minecraft</code> to set owner the owner to <code>minecraft</code> user you just made.
+Check the example code on the
+<a href="https://docs.google.com/presentation/d/1cKYJh0hAFjGkcFURlHS8U8xoyakSI-LBrq6-WnyrgZI/edit?usp=sharing">slides</a> if you are unsure about how to do this.</p><h3 id=checking-part-a>Checking Part a
+<a class=anchor href=#checking-part-a>#</a></h3><p>Run <code>sudo puppet apply minecraft.pp</code>.</p><p>Now run <code>ls -l /home</code> and verify that <code>/home/minecraft</code> is owned by the
+minecraft user.</p><h2 id=part-b-install-java>Part b: Install java
+<a class=anchor href=#part-b-install-java>#</a></h2><p>Add a few lines to <code>minecraft.pp</code> to install the <code>default-jre</code> package.</p><h3 id=checking-part-2b>Checking Part 2b
+<a class=anchor href=#checking-part-2b>#</a></h3><p>Run <code>java</code> and verify that the binary exists.</p><h2 id=part-c-installing-the-minecraft-server-configuration>Part c: Installing the Minecraft Server configuration
+<a class=anchor href=#part-c-installing-the-minecraft-server-configuration>#</a></h2><p>Copy paste the contents of
+<a href=https://raw.githubusercontent.com/0xcf/decal-labs/master/a10/server.properties>https://raw.githubusercontent.com/0xcf/decal-labs/master/a10/server.properties</a>
+locally into a file named <code>server.properties</code></p><p>Ensure that <code>/home/minecraft/server.properties</code> contains the contents of the
+<code>server.properties</code> you just saved.</p><p>Hint: Use the <code>file</code> function! Also note that in this lab, you should be using
+<strong>absolute</strong> file paths.</p><p>Read and agree to the
+<a href=https://account.mojang.com/documents/minecraft_eula>Minecraft EULA</a>, and
+ensure that <code>/home/minecraft/eula.txt</code> contains the text <code>eula=true</code> by
+hardcoding the string <code>eula=true</code> into your <code>minecraft.pp</code>.</p><p>Make sure that all of the above files are owned by the <code>minecraft</code> user.</p><h3 id=checking-part-c>Checking Part c
+<a class=anchor href=#checking-part-c>#</a></h3><p>Run <code>ls -l /home/minecraft</code> and ensure that the above files exist, contain what
+they&rsquo;re supposed to, and they are all owned by the <code>minecraft</code> user, not yours.</p><h2 id=part-d-installing-the-minecraft-server>Part d: Installing the Minecraft Server
+<a class=anchor href=#part-d-installing-the-minecraft-server>#</a></h2><p>Ensure that /home/minecraft/server.jar contains the Minecraft Server, available
+at
+<a href=https://piston-data.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar>https://piston-data.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar</a>. This server jar is for Minecraft 1.16.5, if you&rsquo;d like to run a different version you can download the jar from within the Minecraft launcher or from the Minecraft wiki.</p><p>Note that the <code>source</code> parameter of the <code>file</code> resource accepts a URL as its
+argument. Also make it owned by the <code>minecraft</code> user.</p><h3 id=checking-part-d>Checking Part d
+<a class=anchor href=#checking-part-d>#</a></h3><p>You know what to do!</p><h2 id=part-e-templating-a-systemd-unit-file>Part e: Templating a systemd unit file
+<a class=anchor href=#part-e-templating-a-systemd-unit-file>#</a></h2><p>Copy the following template into the same directory into your <code>minecraft.pp</code>
+file as <code>minecraft.service.erb</code>.</p><p>Edit the file to be a proper <code>erb</code> template, so that <code>&lt;INSERT YOUR RAM AMOUNT HERE></code> becomes the value of the <code>memory_available</code> variable when puppet runs.
+You want to use the templated variable <code>@memory_available</code> in the <code>.erb</code> file,
+and declare the variable <code>$memory_available</code> it in the <code>.pp</code> file.</p><p>Hint: In the
+<a href="https://docs.google.com/presentation/d/1cKYJh0hAFjGkcFURlHS8U8xoyakSI-LBrq6-WnyrgZI/edit?usp=sharing">slides</a>), there is an example of templating a file.</p><p>Hint 2: A .erb (Embedded Ruby) file means that
+<a href=https://puppet.com/docs/puppet/7/lang_template_erb.html>Ruby</a> is used as the templating language instead of the puppet language.
+Make sure not to confuse the syntax between the two!</p><p>Now edit your <code>minecraft.pp</code> file, so that it sets the <code>$memory_available</code>
+variable to be the <strong>half</strong> the total amount of RAM available to the system (use
+Google and StackOverflow), and that it puts the templated file into
+<code>/etc/systemd/system/minecraft.service</code>.</p><p>Hint: You need to figure out how to define variables and set variables in
+puppet. Note that variables should be prefixed by <code>$</code>. You can assign variables
+just like any other language. Don&rsquo;t forget to look at the sample code on the
+<a href="https://docs.google.com/presentation/d/1cKYJh0hAFjGkcFURlHS8U8xoyakSI-LBrq6-WnyrgZI/edit?usp=sharing">slides</a> (it doesn&rsquo;t cover variable assignment however) and don&rsquo;t forget to use
+<strong>absolute paths</strong>!</p><p>Note that the systemd unit file does not have a proper ExecStop, which maybe
+result in some world corruption.</p><pre tabindex=0><code>[Unit]
+Description=Minecraft Server
+
+Wants=network.target
+After=network.target
+
+[Service]
+User=minecraft
+WorkingDirectory=/home/minecraft
+# This should look like ExecStart=/usr/bin/java -Xmx504578 -jar server.jar
+ExecStart=/usr/bin/java -Xmx&lt;INSERT YOUR RAM AMOUNT HERE&gt; -jar server.jar
+ExecStop=/bin/kill -- $MAINPID TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><h3 id=checking-part-e>Checking Part e
+<a class=anchor href=#checking-part-e>#</a></h3><p>Look at <code>/etc/systemd/system/minecraft.service</code> to ensure it contains the
+contents you want before proceeding.</p><h2 id=part-f-running-the-service>Part f: Running the service
+<a class=anchor href=#part-f-running-the-service>#</a></h2><p>Ensure that the <code>minecraft</code> systemd service is enabled and started.</p><h3 id=checking-part-f>Checking Part f
+<a class=anchor href=#checking-part-f>#</a></h3><p>This is the critical moment! If you&rsquo;ve done everything before correctly, this
+should work (until Minecraft OOMs)! If the systemd unit fails immediately, try
+to run the ExecStart command manually, by going into <code>/home/minecraft/</code> and
+running <code>sudo -u minecraft java -Xmx1009156 -jar server.jar</code>.</p><p>You can verify that something is trying to start by running <code>tail -f /home/minecraft/logs/latest.log</code>. If it ever stops loading, the server has run
+out of memory, and &ldquo;Part h&rdquo; below should have a workaround.</p><h2 id=part-g-backups>Part g: Backups
+<a class=anchor href=#part-g-backups>#</a></h2><p>We should backup our minecraft server!</p><p>Ensure there is a directory <code>/home/minecraft/backups/</code>, owned by the <code>minecraft</code>
+user.</p><p>Ensure there is a script, <code>/home/minecraft/backup.sh</code> that is executable, with
+the following contents however you&rsquo;d like.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#75715e>#!/bin/sh
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>cp -r /home/minecraft/world <span style=color:#e6db74>&#34;/home/minecraft/backups/world-</span><span style=color:#66d9ef>$(</span>date -Is<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span></code></pre></div><p>The command copies the directory containing into the minecraft world into a
+subdirectory of <code>backups</code> indexed by the current date.</p><p>Use puppet to add a cron entry to execute <code>/home/minecraft/backup.sh</code> every
+minute as the minecraft user.</p><h3 id=checking-part-g>Checking Part g
+<a class=anchor href=#checking-part-g>#</a></h3><p>Look in the <code>/home/minecraft/backups</code> contains backups!</p><h2 id=part-h-bonus-optional-if-you-want-minecraft-to-not-out-of-memory>Part h: (Bonus, optional if you want Minecraft to not Out Of Memory)
+<a class=anchor href=#part-h-bonus-optional-if-you-want-minecraft-to-not-out-of-memory>#</a></h2><p>We could be doing this by typing this a bunch of commands to add a swap file,
+and enabling it as swap, but we will do this puppet style!</p><p>Configure puppet to create a 4GB file <code>/swapfile</code> with the command <code>dd if=/dev/zero of=/swapfile bs=2M count=2048</code>. Look through the flags to the
+<code>exec</code> resource to see how you can do this.</p><p>Now configure Puppet to run <code>mkswap /swapfile && swapon /swapfile</code> unless swap
+is currently active, which you can check by seeing if <code>swapon -s | grep /swapfile</code> returns a zero code. There are two arguments that can do this,
+<code>unless</code> or <code>onlyif</code>. Experiment to see which one works.</p><h3 id=checking-part-h>Checking Part h
+<a class=anchor href=#checking-part-h>#</a></h3><p>Run <code>swapon -s</code>, and check that <code>/swapfile</code> is listed. Ensure that there is no
+extranous output when you run puppet, if your checks are correctly done, this
+shouldn&rsquo;t happen. Check <code>/home/minecraft/logs/latest.log</code> to make sure that the
+server has start up properly. If it has, then congratulations!</p><h2 id=part-i-bonus-running-minecraft>Part i: (Bonus, running Minecraft)
+<a class=anchor href=#part-i-bonus-running-minecraft>#</a></h2><p>Due to security issues, the Minecraft server running is only listening to
+<code>127.0.0.1</code>, which means by default you can only access a Minecraft client
+running on the VM. You have two ways to get around this. One is changing
+<code>server-ip</code> in server.properties to a blank string (i.e. <code>server-ip=</code>), which will allow access by
+anybody. If you do this you probably want to set up a whitelist. The other
+option is SSH port forwarding. The command, if run on your machine, captures
+traffic at port 25565 on your local computer, and forwards them to port 25565 on
+your VM. The command will run forever, just leave it in the background while you
+try to connect.</p><pre tabindex=0><code>ssh -NL 25565:localhost:25565 &lt;username&gt;@&lt;username&gt;.decal.ocfhosted.com
+</code></pre><p>If you chose the first option, you can connect by typing your domain name (e.g. <username>.decal.ocfhosted.com) or IP
+into minecraft, if you chose the second, you can connect to <code>localhost</code>.</p><h1 id=part-3-cleanup>Part 3: Cleanup
+<a class=anchor href=#part-3-cleanup>#</a></h1><p>There is currently a cronjob copying the minecraft world every minute. That
+might run you out of disk space. To disable that, you should run <code>sudo crontab -e</code> and remove the line for the backups.</p><p>Trying to run a Minecraft Server constantly might also eat up some system
+resources. You can stop and disable the minecraft systmemd unit manually if it
+is causing issues.</p><p>If you added the swapfile, you might want to remove that.</p><p>Another way you can clean up is with puppet. By default, puppet doesn&rsquo;t remove
+files it doesn&rsquo;t know about. However, you can use <code>ensure => absent</code> to make
+sure files are gone, and similarly for the other resource types.</p><h1 id=part-4-submission>Part 4: Submission
+<a class=anchor href=#part-4-submission>#</a></h1><p>Congratulations on finishing the lab!</p><p>To submit, copy paste the code you have for each section into the gradescope
+submission.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><div class="flex flex-wrap justify-between"><span><a href=/labs/9/ class="flex align-center book-icon"><img src=/svg/backward.svg class=book-icon alt=Previous title="Lab 9 - Containers (Docker)">
+<span>Lab 9 - Containers (Docker)</span>
+</a></span><span><a href=/labs/11/ class="flex align-center book-icon"><span>Lab 11 - Kubernetes</span>
+<img src=/svg/forward.svg class=book-icon alt=Next title="Lab 11 - Kubernetes"></a></span></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div></main></body></html>

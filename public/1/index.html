@@ -1,0 +1,78 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+  Table of contents
+  #
+
+{: .no_toc .text-delta }
+
+TOC
+{:toc}
+
+
+
+  Introduction
+  #
+
+Welcome to the first lab!
+All labs are graded on completeness and effort, so don&rsquo;t worry too much about
+getting an exact right answer. (We&rsquo;ll release staff solutions after the lab is due!)
+Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/1/"><meta property="og:site_name" content="Sysadmin DeCal"><meta property="og:title" content="Lab 1 - Unix, the Shell, OSS"><meta property="og:description" content="Table of contents # {: .no_toc .text-delta }
+TOC {:toc} Introduction # Welcome to the first lab!
+All labs are graded on completeness and effort, so don’t worry too much about getting an exact right answer. (We’ll release staff solutions after the lab is due!)
+Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!"><meta property="og:locale" content="en"><meta property="og:type" content="article"><title>Lab 1 - Unix, the Shell, OSS | Sysadmin DeCal</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/1/><link rel=stylesheet href=/book.min.a66993900f9437bc8b9f3d67f5fea86cd8f2c5ca3eaecc1e818bb26d7ac89625.css integrity="sha256-pmmTkA+UN7yLnz1n9f6obNjyxco+rswegYuybXrIliU=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.0b01ec9dafd16642ab661901e0f52b92b832c78b7d60de776ba2fa33a19f1222.js integrity="sha256-CwHsna/RZkKrZhkB4PUrkrgyx4t9YN53a6L6M6GfEiI=" crossorigin=anonymous></script><script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Sysadmin DeCal</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><a href=/about/>About</a></li><li><a href=/1/ class=active>Lab 1 - Unix, the Shell, OSS</a></li><li><span>Posts</span><ul><li><a href=/posts/my-first-post/>Week 0 Announcement</a></li></ul></li></ul><ul><li><a href=https://github.com/alex-shpak/hugo-book target=_blank rel=noopener>Ed</a></li><li><a href=https://themes.gohugo.io/themes/hugo-book/ target=_blank rel=noopener>Github</a></li><li><a href=https://themes.gohugo.io/themes/hugo-book/ target=_blank rel=noopener>OCF</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>Lab 1 - Unix, the Shell, OSS</h3><label for=toc-control></label></div></header><article class="markdown book-article"><h2 id=table-of-contents>Table of contents
+<a class=anchor href=#table-of-contents>#</a></h2><p>{: .no_toc .text-delta }</p><ol><li>TOC
+{:toc}</li></ol><hr><h2 id=introduction>Introduction
+<a class=anchor href=#introduction>#</a></h2><p>Welcome to the first lab!</p><p>All labs are graded on completeness and effort, so don&rsquo;t worry too much about
+getting an exact right answer. (We&rsquo;ll release staff solutions after the lab is due!)</p><p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!</p><p>It may be convenient to submit your answers to Gradescope as you go.</p><p><strong>Pro Tips:</strong></p><ul><li>Here are some commands you might find helpful:
+<code>vim, ls, cd, man, file, grep, cat, less, wget, nano, tar, ...</code>, (and other inferior text editors)</li><li>Google and <code>man</code> are your friends!</li></ul><h2 id=part-1-shell-spelunking>Part 1: Shell spelunking
+<a class=anchor href=#part-1-shell-spelunking>#</a></h2><p><strong>Everything should be done via the shell!</strong></p><p>The purpose of this lab is to get you comfortable with using the shell for
+things you might typically use a GUI for. While these tasks may seem simplistic
+or limited, you&rsquo;ll quickly find that the commands have many different options
+(flags) to perform tasks that are either impossible or incredibly tedious /
+difficult to complete using traditional methods.</p><p>Don&rsquo;t worry about fully understanding how the commands work just yet- as long
+as you can gain a sense of familiarity with the tools at hand, we&rsquo;ll be in good
+shape to explore them further next week!</p><ol><li><p><code>ssh</code> into <code>tsunami.ocf.berkeley.edu</code> using your OCF account, or login at
+<a href=https://ssh.ocf.berkeley.edu>ssh.ocf.berkeley.edu</a></p></li><li><p>Run the following command to download the file we have provided:
+<code>wget https://github.com/0xcf/decal-labs/raw/master/b1/b01.tgz</code></p><p>A <code>.tgz</code> file is actually a composition of two file formats. Sometimes
+you&rsquo;ll see these files as <code>.tar.gz</code> instead. A common (and old) way of
+archiving is with magnetic tapes. However, in order to archive the data, it
+needs to be a single file, and often you want to archive multiple files at
+once. This is where the <code>tar</code> command comes in (<code>tar</code> stands for tape
+archive). Tar will group (or ungroup) multiple files into a single one.</p><p><code>tar</code>, unless you ask it to, doesn&rsquo;t compress files itself though. This is
+where either <code>gzip</code> (or <code>bzip2</code>) comes in. <code>gzip</code> will compress your file,
+and so, tar + gzip is often used in conjunction. It looks something like
+this: <code>file --(tar)--> file.tar --(gzip)--> file.tar.gz</code>.</p><p>If you read the <code>tar</code> documentation carefully enough, you&rsquo;ll see that you
+can give the command an option to compress your files using <code>gzip</code> as well,
+saving you a total of one line of shell command!</p><p>To unarchive the file we provide you, run the following command:
+<code>tar xvzf b01.tgz</code>. This will provide a <code>b01</code> directory for you with some
+files for the rest of this lab.</p><p><code>tar</code> has a reputation for being a bit tricky with its options:
+<img src=https://imgs.xkcd.com/comics/tar.png alt="XKCD 1168" title="I don't know what's worse--the fact that after 15 years of using tar I still can't keep the flags straight, or that after 15 years of technological advancement I'm still mucking with tar flags that were 15 years old when I started."></p></li><li><p>Go into the <code>b01</code> directory. Make sure you&rsquo;re in there by running <code>pwd</code>
+(Present working directory). <strong>What does <code>pwd</code> give you (conceptually)</strong>?</p></li><li><p>There&rsquo;s a hidden file in the <code>b01</code> directory. <strong>What is the secret?</strong></p></li><li><p>A malicious user made its way into my computer and created a message split
+across all the files in <code>nonsense/</code>. What does it say? <strong>How did you find the message?</strong></p></li><li><p>Go ahead and delete everything in <code>nonsense/</code> with one command. <strong>How did you
+do it?</strong></p></li><li><p>There&rsquo;s a file in <code>b01</code> called <code>big_data.txt</code>. It&rsquo;s 80 megabytes worth of
+random text. For reference, Leo Tolstoy&rsquo;s &ldquo;War and Peace&rdquo;, the novel with a
+whopping 57,287 words depicting the French invasion of Russia and the impact
+of the Napoleonic era on Tsarist society through the stories of five Russian
+aristocratic families with several chapters solely dedicated to
+philosophical prose, is only 3.2 megabytes large.</p><p>For that reason, I don&rsquo;t recommend using <code>cat</code> to print the file. You can
+try it, but you&rsquo;ll be sitting there for a while. There&rsquo;s some text you need
+to find in there! Go find it without actually opening up the file itself!</p><p>Two lines above the only URL in the file is a secret solution. <strong>What is that solution?</strong></p><p>Hints: What makes up a URL (https&mldr;)? What is Context Line Control?</p></li><li><p>Try executing <code>./a_script</code>. You should get something back that says
+<code>permission denied: ./a_script</code>. This is because files have three different
+permissions: read, write, and execute. <strong>Which one does <code>a_script</code> need?</strong> Change
+the file permissions so that you can run the script. <strong>How did you do it?</strong></p></li><li><p>Finally, there&rsquo;s an empty file called <code>hello_world</code> in the directory. Write
+your name in it! <strong>How did you do it?</strong></p></li></ol><h2 id=part-2-general-questions>Part 2: General Questions
+<a class=anchor href=#part-2-general-questions>#</a></h2><p>Feel free to use Google and work in a terminal (where applicable) to
+verify your conjectures.</p><ol><li><p>What differentiates Linux/OSX from operating systems like Windows?</p></li><li><p>What are some differences between the command line and normal (graphical)
+usage of an OS?</p></li><li><p>What is the root directory in Linux filesystems? Answer conceptually, as in depth
+as you would like,</p></li><li><p><code>ls</code> has a lot of cool arguments. Try using them to get extra information such as
+file permissions, owner name, owner group, file size, and late date edited. In addition, I
+want to be able to see the size and have the files ordered by last date
+edited, with the oldest files on top. How would I do this?</p></li><li><p>Instead of showing the first 10 lines of the file <code>big_data.txt</code>, I want to use the
+<code>head</code> command to show the first 4. How would I do that?</p></li><li><p>What&rsquo;s the difference between <code>cat foo > out.txt</code> and <code>cat foo >> out.txt</code>?</p></li><li><p>Briefly, what is the difference between permissive and copyleft licenses?</p></li><li><p>Give an example of a permissive license.</p></li><li><p>Give an example of (a) open-source software and (b) free, but closed-source
+software that you use.</p></li></ol><h2 id=part-3-obtaining-your-vm>Part 3: Obtaining your VM
+<a class=anchor href=#part-3-obtaining-your-vm>#</a></h2><p>Using the public OCF login server will allow you to do basic things like the lab above, but if you want root permission (which lets you do basically whatever you want), you&rsquo;ll need your own use/destroy!</p><p>We will be providing a virtual machine (VM) to all DeCal students with a Berkeley CalNet account. Check your @berkeley.edu email!</p><p>If you are not a Berkeley student, then you will have to obtain your own machine. Of course, you can also set up your own VM if you are just curious. Generally, there are two ways to obtain a VM: use your own computer (local) or use someone else&rsquo;s computer (cloud).</p><h3 id=local-setups>Local Setups:
+<a class=anchor href=#local-setups>#</a></h3><ul><li><a href=https://www.virtualbox.org/>Virtual Box</a></li><li><a href=https://getutm.app/>UTM</a> - Only for MacOS</li></ul><h3 id=cloud-setups>Cloud Setups:
+<a class=anchor href=#cloud-setups>#</a></h3><p>These are usually paid services, but if you have a student email, they provide more than enough free credits for the purposes of this course.</p><ul><li><a href=https://www.digitalocean.com/github-students>Digital Ocean</a></li><li><a href=https://cloud.google.com/free/>GCP</a></li><li><a href=https://azure.microsoft.com/en-us/free/students/>Azure</a></li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><div class="flex flex-wrap justify-between"><span><a href=/about/ class="flex align-center book-icon"><img src=/svg/backward.svg class=book-icon alt=Previous title=About>
+<span>About</span>
+</a></span><span><a href=/posts/my-first-post/ class="flex align-center book-icon"><span>Week 0 Announcement</span>
+<img src=/svg/forward.svg class=book-icon alt=Next title="Week 0 Announcement"></a></span></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div></main></body></html>

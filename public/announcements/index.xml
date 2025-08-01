@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sysadmin DeCal</title><link>http://localhost:1313/announcements/</link><description>Recent content on Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 31 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/announcements/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 0</title><link>http://localhost:1313/announcements/week-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-0/</guid><description>&lt;ol>
+&lt;li>The Linux SysAdmin Decal is back for Spring 2025!&lt;/li>
+&lt;li>Join us at Decal infosessions on 1/28 and 1/30, 7pm @ OCF Lab or at 
+ &lt;a href="ocf.io/meet">ocf.io/meet&lt;/a>! If you weren&amp;rsquo;t able to make it to an infosession, access the slides 
+ &lt;a href="https://docs.google.com/presentation/d/1rFUGRpGWhRGZeFXp39WWkh7sJwK4kjj2E3l-rI0x634/edit?usp=sharing">here&lt;/a>.&lt;/li>
+&lt;li>&lt;strong>To enroll, 
+ &lt;a href="https://forms.gle/eEzeC3w4N9hmeMDA7">fill out lab 0 here&lt;/a>!&lt;/strong> Lab 0 is due &lt;strong>Saturday, Feb. 1st at 11:59pm&lt;/strong> and enrollment keys will be sent to those who complete it.&lt;/li>
+&lt;li>Learn more about the course at the 
+ &lt;a href="http://localhost:1313/about/">about page&lt;/a>.&lt;/li>
+&lt;li>Any questions? Contact us at 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
+&lt;li>Looking for a previous semester&amp;rsquo;s materials? You can view it in the 
+ &lt;a href="http://localhost:1313/archive">archive&lt;/a>.&lt;/li>
+&lt;/ol>
+&lt;!-- 1. **The Linux SysAdmin Decal is back for Spring 2022!**
+1. If you'd like to receive more info on how to enroll, [fill out the interest form](https://docs.google.com/forms/d/1k64KUU4AwevWuMBAp1szpKNIYcYrzEQybUaIZzK78tU/)!
+1. Learn more about the course at the [about page](/about).
+1. There will be two identical infosessions on **Tuesday, Jan. 25, 8 pm** and **Thursday, Jan. 27, 8 pm** on [ocf.io/decalzoom](https://ocf.io/decalzoom).
+1. Lab 0, which must be complete prior to enrolling, will be released after the infosessions.
+1. Any questions? Contact us at [decal@ocf.berkeley.edu](mailto:decal@ocf.berkeley.edu)!
+1. Looking for a previous semester's materials? You can view it in the [archive](/archive). --></description></item><item><title>Week 1</title><link>http://localhost:1313/announcements/week-1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-1/</guid><description>&lt;p>Hi all, this is our first official week for this semester&amp;rsquo;s Linux SysAdmin decal!
+Enrollment codes will be emailed by Monday to students that was accepted. Our
+lecture and lab will be at their normal time on &lt;strong>Tuesday 7-8pm and 8-9pm&lt;/strong> respectively.
+If you&amp;rsquo;re in the Experimental Decal, it will be on &lt;strong>Thursday 7-8pm and 8-9pm&lt;/strong>.
+The lab is now open and you can get a head start if you wish, or you can start during lab time.
+We&amp;rsquo;re looking forward to teaching this class and hope you find the content
+engaging!&lt;/p></description></item><item><title>Week 2</title><link>http://localhost:1313/announcements/week-2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-2/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering the second week of the DeCal! At this point, you should have turned in your Lab 1 on Gradescope. We’ll be taking a look and grading them soon.
+Weekly notes:&lt;/p>
+&lt;ul>
+&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 02/11 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
+&lt;ul>
+&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Lab 2 has been released and can be accessed below.
+&lt;ul>
+&lt;li>Please use the corresponding 
+ &lt;a href="https://edstem.org/us/courses/75831/discussion/6143042">Ed thread for Lab 2&lt;/a> related questions.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Any questions? Post on Ed or reach us at 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
+&lt;/ul></description></item><item><title>Week 3</title><link>http://localhost:1313/announcements/week-3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-3/</guid><description>&lt;p>Hi! Hope everyone&amp;rsquo;s had a good Presidential day weekend! we&amp;rsquo;re entering the third week of the DeCal. At this point, you should have turned in your Lab 2 on Gradescope. We know some people have been struggling with permissions on the Decal VM, and we&amp;rsquo;re looking into the issue. Let us know if this is happening to you on Edstem or through email and you&amp;rsquo;re allowed to submit late!
+Weekly notes:&lt;/p></description></item><item><title>Week 4</title><link>http://localhost:1313/announcements/week-4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-4/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering the fourth week of the DeCal! At this point, you should have turned in your Lab 3 on Gradescope. We’ll be taking a look and grading them soon. Lab 1 and 2 grades have also been released!
+Weekly notes:&lt;/p>
+&lt;ul>
+&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 02/25 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
+&lt;ul>
+&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Lab 4 has been released and can be accessed below.
+&lt;ul>
+&lt;li>Please use the corresponding 
+ &lt;a href="https://edstem.org/us/courses/75831/discussion/751585">Ed thread for Lab 4&lt;/a> related questions.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Any questions? Post on Ed or reach us at 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
+&lt;/ul></description></item><item><title>Week 5</title><link>http://localhost:1313/announcements/week-5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-5/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 5 of the DeCal! At this point, you should have turned in your Lab 4 on Gradescope.
+Weekly notes:&lt;/p>
+&lt;ul>
+&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 03/04 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
+&lt;ul>
+&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Lab 5 has been released and can be accessed below.
+&lt;ul>
+&lt;li>Please use the corresponding 
+ &lt;a href="https://edstem.org/us/courses/75831/discussion/6295257">Ed thread for Lab 5&lt;/a> related questions.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Any questions? Post on Ed or reach us at 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
+&lt;/ul></description></item><item><title>Week 6</title><link>http://localhost:1313/announcements/week-6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-6/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 6 of the DeCal! At this point, you should have turned in your Lab 5 on Gradescope. Regarding Lab 2 and 3 grades, Lab 2 grades should be released now, and Lab 3 is being graded, thank you for your patience!
+Weekly notes:
+&amp;laquo;&amp;laquo;&amp;laquo;&amp;lt; HEAD&lt;/p>
+&lt;ul>
+&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 03/11 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
+&lt;ul>
+&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Lab 6 has been released and can be accessed below.
+&lt;ul>
+&lt;li>Please use the corresponding 
+ &lt;a href="https://edstem.org/us/courses/75831/discussion/6340626">Ed thread for Lab 6&lt;/a> related questions.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Any questions? Post on Ed or reach us at 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
+&lt;/ul></description></item><item><title>Week 7</title><link>http://localhost:1313/announcements/week-7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-7/</guid><description>&lt;p>Any questions? Post on Ed or reach us at 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/p>
+&lt;p>Hi everyone, we&amp;rsquo;re entering week 7 of the DeCal! At this point, you should have turned in your Lab 6 on Gradescope. Weekly notes:&lt;/p>
+&lt;p>Normal schedule, Lecture + Lab on Tuesday 03/18 7-9PM PST. Experimental track on Thursday same time!&lt;/p>
+&lt;p>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/p>
+&lt;p>Lab 7 has been released and can be accessed below.&lt;/p></description></item><item><title>Week 8</title><link>http://localhost:1313/announcements/week-8/</link><pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-8/</guid><description>&lt;p>Happy spring break everyone, we&amp;rsquo;re entering week 8 of the DeCal! At this point, you should have turned in your Lab 7 on Gradescope.
+Weekly notes:&lt;/p>
+&lt;ul>
+&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 04/01 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
+&lt;ul>
+&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Lab 8 has been released and can be accessed below.
+&lt;ul>
+&lt;li>Please use the corresponding 
+ &lt;a href="https://edstem.org/us/courses/75831/discussion/6453780">Ed thread for Lab 8&lt;/a> related questions.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Any questions? Post on Ed or reach us at 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
+&lt;/ul></description></item><item><title>Week 9</title><link>http://localhost:1313/announcements/week-9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-9/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 9 of the DeCal! At this point, you should have turned in your Lab 8 on Gradescope. Most lab should also be graded by now.
+Weekly notes:&lt;/p>
+&lt;ul>
+&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 04/08 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
+&lt;ul>
+&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Lab 9 has been released and can be accessed below.
+&lt;ul>
+&lt;li>Please use the corresponding 
+ &lt;a href="https://edstem.org/us/courses/75831/discussion/6494318">Ed thread for Lab 5&lt;/a> related questions.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Any questions? Post on Ed or reach us at 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
+&lt;/ul></description></item></channel></rss>

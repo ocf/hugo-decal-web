@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Menus on Sysadmin DeCal</title><link>http://localhost:1313/menu/</link><description>Recent content in Menus on Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><atom:link href="http://localhost:1313/menu/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>http://localhost:1313/menu/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/menu/about/</guid><description>&lt;h1 id="about">
+ About
+ &lt;a class="anchor" href="#about">#&lt;/a>
+&lt;/h1>
+&lt;h1 id="course-description">
+ Course Description
+ &lt;a class="anchor" href="#course-description">#&lt;/a>
+&lt;/h1>
+&lt;p>This course covers the basics of setting up and administering a production-quality Linux server environment. By the end of this course, we expect that you will&amp;hellip;&lt;/p>
+&lt;ul>
+&lt;li>be comfortable using GNU/Linux&lt;/li>
+&lt;li>understand how different parts of the OS work together, e.g. init, processes, daemons, filesystems, etc.&lt;/li>
+&lt;li>understand basic networking on Linux&lt;/li>
+&lt;li>have a good sense about maintaining system security&lt;/li>
+&lt;li>understand system administration essentials&lt;/li>
+&lt;li>get a practical taste of what sysadmins do in industry.&lt;/li>
+&lt;/ul>
+&lt;p>While we expect many students will have a CS background, &lt;strong>the only real prerequisite is a desire to learn&lt;/strong> about new and unfamiliar technologies, which is a critical skill for sysadmins. This course is designed to introduce new users to Linux, as well as give more experienced users a taste of what Linux is capable of!&lt;/p></description></item><item><title>Lab 1 - Unix, the Shell, OSS</title><link>http://localhost:1313/menu/1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/menu/1/</guid><description>&lt;h2 id="table-of-contents">
+ Table of contents
+ &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
+&lt;/h2>
+&lt;p>{: .no_toc .text-delta }&lt;/p>
+&lt;ol>
+&lt;li>TOC
+{:toc}&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="introduction">
+ Introduction
+ &lt;a class="anchor" href="#introduction">#&lt;/a>
+&lt;/h2>
+&lt;p>Welcome to the first lab!&lt;/p>
+&lt;p>All labs are graded on completeness and effort, so don&amp;rsquo;t worry too much about
+getting an exact right answer. (We&amp;rsquo;ll release staff solutions after the lab is due!)&lt;/p>
+&lt;p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!&lt;/p></description></item></channel></rss>

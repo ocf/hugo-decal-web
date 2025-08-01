@@ -1,0 +1,401 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+  Table of contents
+  #
+
+{: .no_toc .text-delta }
+
+TOC
+{:toc}
+
+
+In this lab, we&rsquo;ll be learning how to use Git and typical best practices for
+version control!
+
+  Pulling the code
+  #
+
+If you haven&rsquo;t already cloned the decal-lab git repository, run:
+$ git clone https://github.com/ocf/decal-labs.git
+Go to your decal-labs directory and cd into the folder b9. Run git pull
+to pull the latest changes.
+
+  Part 1: Git Basics
+  #
+
+In the b9 directory, we&rsquo;ve provided a basic Python program called rand.py to
+help demonstrate some core Git concepts. rand.py takes command line arguments
+and performs a number of coin flips and outputs the result in your terminal. We
+want to add a feature to rand.py that also lets us perform dice rolls. We will
+simulate the real-world development process by making a branch for our new dice
+rolling feature, making a few commits to that branch, and then merging our
+feature branch into the master branch. You won&rsquo;t need to personally write any
+Python for this lab! You will only need to copy-and-paste the code we provide,
+since this lab is about learning version control and not Python."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/labs/8/"><meta property="og:site_name" content="Sysadmin DeCal"><meta property="og:title" content="Lab 8 - Version Control and Backups"><meta property="og:description" content="Table of contents # {: .no_toc .text-delta }
+TOC {:toc} In this lab, we’ll be learning how to use Git and typical best practices for version control!
+Pulling the code # If you haven’t already cloned the decal-lab git repository, run:
+$ git clone https://github.com/ocf/decal-labs.git Go to your decal-labs directory and cd into the folder b9. Run git pull to pull the latest changes.
+Part 1: Git Basics # In the b9 directory, we’ve provided a basic Python program called rand.py to help demonstrate some core Git concepts. rand.py takes command line arguments and performs a number of coin flips and outputs the result in your terminal. We want to add a feature to rand.py that also lets us perform dice rolls. We will simulate the real-world development process by making a branch for our new dice rolling feature, making a few commits to that branch, and then merging our feature branch into the master branch. You won’t need to personally write any Python for this lab! You will only need to copy-and-paste the code we provide, since this lab is about learning version control and not Python."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="labs"><title>Lab 8 - Version Control and Backups | Sysadmin DeCal</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/labs/8/><link rel=stylesheet href=/book.min.a66993900f9437bc8b9f3d67f5fea86cd8f2c5ca3eaecc1e818bb26d7ac89625.css integrity="sha256-pmmTkA+UN7yLnz1n9f6obNjyxco+rswegYuybXrIliU=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.28d1e126de307ffcd3a8254d9f1c14303f0918b2dfde22cc673bdc49855798da.js integrity="sha256-KNHhJt4wf/zTqCVNnxwUMD8JGLLf3iLMZzvcSYVXmNo=" crossorigin=anonymous></script><script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Sysadmin DeCal</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><a href=/about/>About</a></li><li><input type=checkbox id=section-638171d5990482642c69d9e2d942b1e4 class=toggle>
+<label for=section-638171d5990482642c69d9e2d942b1e4 class=flex><a role=button class=flex-auto>Announcements</a></label><ul><li><a href=/announcements/week-0/>Week 0 Announcement</a></li><li><a href=/announcements/week-1/>Week 1 Announcement</a></li></ul></li><li><input type=checkbox id=section-70822959fae8f27c0f79dc3a8400cebe class=toggle checked>
+<label for=section-70822959fae8f27c0f79dc3a8400cebe class=flex><a role=button class=flex-auto>Labs</a></label><ul><li><a href=/labs/1/>Lab 1 - Unix, the Shell, OSS</a></li><li><a href=/labs/10/>Lab 10 - Puppet</a></li><li><a href=/labs/2/>Lab 2 - Core Shell & Shell Scripting</a></li><li><a href=/labs/3/>Lab 3 - Packages and Packaging</a></li><li><a href=/labs/4/>Lab 4 - Processes and Services</a></li><li><a href=/labs/5/>Lab 5 - Introduction to Networking</a></li><li><a href=/labs/6/>Lab 6 - Web Servers</a></li><li><a href=/labs/7/>Lab 7 - Security Fundamentals</a></li><li><a href=/labs/8/ class=active>Lab 8 - Version Control and Backups</a></li><li><a href=/labs/9/>Lab 9 - Containers (Docker)</a></li><li><a href=/labs/11/>Lab 11 - Kubernetes</a></li><li><a href=/labs/12/>Lab 12 - CUDA</a></li></ul></li><li><a href=/resources/>Resources</a></li></ul><ul><li><a href=https://github.com/alex-shpak/hugo-book target=_blank rel=noopener>Ed</a></li><li><a href=https://themes.gohugo.io/themes/hugo-book/ target=_blank rel=noopener>OCF</a></li><li><a href=https://themes.gohugo.io/themes/hugo-book/ target=_blank rel=noopener>Github</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>Lab 8 - Version Control and Backups</h3><label for=toc-control></label></div></header><article class="markdown book-article"><h2 id=table-of-contents>Table of contents
+<a class=anchor href=#table-of-contents>#</a></h2><p>{: .no_toc .text-delta }</p><ol><li>TOC
+{:toc}</li></ol><hr><p>In this lab, we&rsquo;ll be learning how to use Git and typical best practices for
+version control!</p><h3 id=pulling-the-code>Pulling the code
+<a class=anchor href=#pulling-the-code>#</a></h3><p>If you haven&rsquo;t already cloned the decal-lab git repository, run:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ git clone https://github.com/ocf/decal-labs.git
+</span></span></code></pre></div><p>Go to your <code>decal-labs</code> directory and <code>cd</code> into the folder <code>b9</code>. Run <code>git pull</code>
+to pull the latest changes.</p><h3 id=part-1-git-basics>Part 1: Git Basics
+<a class=anchor href=#part-1-git-basics>#</a></h3><p>In the <code>b9</code> directory, we&rsquo;ve provided a basic Python program called <code>rand.py</code> to
+help demonstrate some core Git concepts. <code>rand.py</code> takes command line arguments
+and performs a number of coin flips and outputs the result in your terminal. We
+want to add a feature to <code>rand.py</code> that also lets us perform dice rolls. We will
+simulate the real-world development process by making a branch for our new dice
+rolling feature, making a few commits to that branch, and then merging our
+feature branch into the master branch. <em>You won&rsquo;t need to personally write any
+Python for this lab!</em> You will only need to copy-and-paste the code we provide,
+since this lab is about learning version control and not Python.</p><h4 id=randpy-demo><code>rand.py</code> demo
+<a class=anchor href=#randpy-demo>#</a></h4><p>Run <code>python3 rand.py -h</code> in your terminal to see the help dialogue for the
+program. At the moment, it takes one positional argument of either <code>coin</code> or
+<code>dice</code> as well as an optional flag <code>-i</code> (or <code>--iterations</code>) if you want to
+flip/roll more than once. The <code>dice</code> argument doesn&rsquo;t work as we haven&rsquo;t
+implemented it yet, but you can try flipping a coin:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>~/decal-labs/b9$ python3 rand.py coin
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span> coin flip<span style=color:#f92672>(</span>s<span style=color:#f92672>)</span> resulted in <span style=color:#ae81ff>0</span> Heads and <span style=color:#ae81ff>1</span> Tails:
+</span></span><span style=display:flex><span>T
+</span></span><span style=display:flex><span>~/decal-labs/b9$ python3 rand.py coin -i <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>10</span> coin flip<span style=color:#f92672>(</span>s<span style=color:#f92672>)</span> resulted in <span style=color:#ae81ff>3</span> Heads and <span style=color:#ae81ff>7</span> Tails:
+</span></span><span style=display:flex><span>T, T, H, T, H, H, T, T, T, T
+</span></span><span style=display:flex><span>~/decal-labs/b9$ python3 rand.py coin -i <span style=color:#ae81ff>999</span>
+</span></span><span style=display:flex><span>Number of flips must be in the range <span style=color:#f92672>[</span><span style=color:#ae81ff>0</span> - 100<span style=color:#f92672>]</span>
+</span></span></code></pre></div><h4 id=creating-a-new-branch>Creating a new branch
+<a class=anchor href=#creating-a-new-branch>#</a></h4><p>Let&rsquo;s start working on the dice rolling feature! When working on a project with
+version control, it&rsquo;s best practice to keep the master branch clean (read:
+mostly bug-free and stable).</p><ul><li><p>Any branches you make will be based on/descended from code in the master
+branch. You don&rsquo;t want to write new code on top of a foundation that&rsquo;s broken
+or buggy!</p></li><li><p>Some organizations may directly deploy the master branch to a production
+environment (live for your users and clients), so new and work-in-progress
+features should be developed in their respective branches and finished before
+merging them into master.</p></li></ul><p>Let&rsquo;s make a branch for our dice rolling feature:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ git checkout -b dice
+</span></span></code></pre></div><p>This makes a new local branch called <code>dice</code> based on the branch that we are
+currently on (<code>master</code>) and switches you to the <code>dice</code> branch. This command is
+basically shorthand for:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ git branch dice       <span style=color:#75715e># Create new branch called &#39;dice&#39;</span>
+</span></span><span style=display:flex><span>$ git checkout dice     <span style=color:#75715e># Switch to branch called &#39;dice&#39;</span>
+</span></span></code></pre></div><p>You can view the branches you&rsquo;ve created by typing <code>git branch</code>. You should see
+two branches at this point, one called <code>master</code> and one called <code>dice</code>. An
+asterisk is placed next to the branch that you&rsquo;ve currently checked out.</p><blockquote><p>You can make <code>git branch</code> (and many other command-line tools) display more
+information by passing the verbose flag <code>-v</code>, or make it display even more
+information by adding additional <code>v</code> characters to the flag (e.g. <code>-vv</code>). For
+example, <code>git branch -v</code> will display the commit message of the most recent
+commit on the branch (aka the <code>HEAD</code>). <code>git branch -vv</code> also displays in square
+brackets the remote branch that the local branch is tracking, if one exists.
+In this repository, <code>master</code> is associated with a remote branch <code>origin/master</code>
+that lives on Github&rsquo;s servers. This means when you <code>git push</code> or <code>pull</code> to/from
+<code>origin master</code>, you are syncing up your local copy of the <code>master</code> branch
+with the remote <code>master</code> branch on Github&rsquo;s servers. At the moment, your newly
+created <code>dice</code> branch is local only, meaning that it is not tracked.
+Therefore attempting to <code>git push</code> or <code>git pull</code> will not work (or Git may ask
+if you want to have a remote branch created).</p></blockquote><h4 id=making-commits>Making commits
+<a class=anchor href=#making-commits>#</a></h4><p>Now that you&rsquo;ve created and swapped to the <code>dice</code> branch, you can safely start
+adding code <em>without</em> modifying the <code>master</code> branch. The code for dice rolling
+will be split up into three commits so that we can demonstrate how to combine
+multiple commits into a single commit later. Open <code>rand.py</code> in your preferred
+text editor. Find the comment in the <code>__main__</code> function that says <code>COMMIT 1</code>
+and add the following code below it like so:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>    <span style=color:#75715e># COMMIT 1: Add -s flag for number of sides on a die</span>
+</span></span><span style=display:flex><span>    parser<span style=color:#f92672>.</span>add_argument(
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;-s&#34;</span>, <span style=color:#e6db74>&#34;--sides&#34;</span>,
+</span></span><span style=display:flex><span>        dest<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;sides&#34;</span>,
+</span></span><span style=display:flex><span>        type<span style=color:#f92672>=</span>int,
+</span></span><span style=display:flex><span>        default<span style=color:#f92672>=</span><span style=color:#ae81ff>6</span>,
+</span></span><span style=display:flex><span>        help<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Number of sides on a die (max=20; ignored when flipping a coin)&#34;</span>
+</span></span><span style=display:flex><span>    )
+</span></span></code></pre></div><blockquote><p>If you&rsquo;re unsure about copying the code correctly, take a look at
+<code>rand_reference.py</code> for what the finished code should look like!</p></blockquote><p>Save and exit the text editor and return to the terminal. Type <code>git status</code> to
+see that <code>rand.py</code> has been changed but not staged. Type <code>git add rand.py</code> to
+stage the file. To &ldquo;stage&rdquo; a file means to add it to the group of files that you
+want to include in your commit.</p><blockquote><p>You may already know <code>git add .</code> to add every changed file in your current
+directory to the staging area, but in some cases you want to only add relevant
+files if you hopped around implementing different things. A commit should be a
+group of changes focused on a single small goal, sub-feature, or bug fix. In
+the event that you need to roll back a commit, you don&rsquo;t want to cause
+collateral damage by undoing changes in an unrelated file that you lumped into
+the commit.</p></blockquote><p>Now, lets commit our changes and write a concise and useful commit message. Type
+<code>git commit -m "Add -s flag for number of sides on a die"</code>. Organizations and
+companies will have different best practices for writing commit messages, but
+here are some common guidelines:</p><ul><li><p><strong>Keep it short.</strong> Typical commits should be one line (some exceptions). If a
+lot of changes have been made, you might want to make multiple commits instead.</p></li><li><p><strong>Make it descriptive.</strong> If someone needs to read the commit history, they&rsquo;re
+not going to know or remember what was changed by a commit that just says
+&ldquo;Fixed bug&rdquo; or &ldquo;WIP&rdquo;.</p></li><li><p>A lot of places like to capitalize the first letter and use the &ldquo;&lt;present
+tense verb> &lt;descriptive thing>&rdquo; sentence structure. For example, &ldquo;Add&rdquo;,
+&ldquo;Fix&rdquo;, or &ldquo;Remove&rdquo; some thing. You can think of your commit message as
+completing the sentence &ldquo;This commit will&mldr;&rdquo;. For example, &ldquo;This commit will
+add -s flag for number of sides on a die&rdquo;.</p></li></ul><p>Next, we will follow the same procedure to make commits 2 and 3.</p><p>Find the comment in the function <code>roll_dice</code> that says <code>COMMIT 2</code> and add the
+following code. Make sure that it&rsquo;s indented properly inside the function! Then
+stage your changes and make a commit with the message <code>"Add dice rolling logic and output dice sum and sequence"</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>    <span style=color:#75715e># COMMIT 2: Add dice rolling logic and output dice sum and sequence</span>
+</span></span><span style=display:flex><span>    diceRecord, diceSum <span style=color:#f92672>=</span> [], <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(iterations):
+</span></span><span style=display:flex><span>        roll <span style=color:#f92672>=</span> random<span style=color:#f92672>.</span>randint(<span style=color:#ae81ff>1</span>, sides)
+</span></span><span style=display:flex><span>        diceRecord<span style=color:#f92672>.</span>append(roll)
+</span></span><span style=display:flex><span>        diceSum <span style=color:#f92672>+=</span> roll
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74> roll(s) of a </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>-sided die resulted in a sum of </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>:&#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>.</span>format(iterations, sides, diceSum))
+</span></span><span style=display:flex><span>    print(<span style=color:#f92672>*</span>diceRecord, sep<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;, &#39;</span>)
+</span></span></code></pre></div><p>Find the comment in the function <code>roll_dice</code> that says <code>COMMIT 3</code> and add the
+following code. Then stage your changes and make a commit with the message
+<code>"Restrict input range for dice iterations and sides"</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>    <span style=color:#75715e># COMMIT 3: Restrict input range for dice iterations and sides</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> iterations <span style=color:#f92672>&gt;</span> MAX_ITERATIONS <span style=color:#f92672>or</span> iterations <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;Number of rolls must be in the range [0 - </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>]&#34;</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span>format(MAX_ITERATIONS))
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> sides <span style=color:#f92672>&gt;</span> MAX_SIDES <span style=color:#f92672>or</span> sides <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>1</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;Number of sides must be in the range [1 - </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>]&#34;</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span>format(MAX_SIDES))
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span>
+</span></span></code></pre></div><p>When you&rsquo;re done, you should now be able to roll dice:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>~/decal-labs/b9$ python3 rand.py dice -i <span style=color:#ae81ff>10</span> -s <span style=color:#ae81ff>20</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>10</span> roll<span style=color:#f92672>(</span>s<span style=color:#f92672>)</span> of a 20-sided die resulted in a sum of 119:
+</span></span><span style=display:flex><span>15, 3, 12, 10, 16, 8, 18, 20, 13, <span style=color:#ae81ff>4</span>
+</span></span></code></pre></div><h4 id=viewing-your-progress>Viewing your progress
+<a class=anchor href=#viewing-your-progress>#</a></h4><p>Let&rsquo;s take a look at the commits you&rsquo;ve made. Type <code>git log</code> to see a history of
+commits. Each commit has some information such as who authored the commit, a
+timestamp for when the commit was created, and the commit message.</p><ul><li><p>The first line of each commit entry has a long hexadecimal string. This is the
+commit <em>hash</em>: think of it as a unique ID that you can use to reference that
+specific commit.</p></li><li><p>Some commits have branch information in parentheses next to the commit hash,
+indicating that they are the most recent commit or <code>HEAD</code> of that branch. Your
+most recent commit should have something like <code>(HEAD -> dice)</code>. The fourth
+commit should have <code>(origin/master, origin/HEAD)</code> because we based our branch
+off of <code>master</code> and have added three new commits on top of it. Note that if
+someone adds new commits to the local or remote <code>master</code>, the branch
+information may change or be out of date.</p></li></ul><p>Type <code>q</code> to exit <code>git log</code>.</p><p>Besides looking at the commit history, you may want to view the actual changes
+in the code. You can use <code>git diff &lt;old commit> &lt;new commit></code> to view the
+difference between two commits. There are a few different ways you can reference
+a commit. One that was mentioned before was copying a commit&rsquo;s hash (note that
+your commit hashes will be different from the example below):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ git diff 3368313c0afb6e306133d604ca72b0287124e8f2 762053064506810dee895219e5b2c2747a202829
+</span></span></code></pre></div><p>You can also copy a small chunk of the beginning of the commit hash instead of
+the entire hash. Because of the way hashes work, it&rsquo;s very unlikely that you&rsquo;ll
+have two commits that have the exact same starting sequence.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ git diff <span style=color:#ae81ff>3368313</span> <span style=color:#ae81ff>7620530</span>
+</span></span></code></pre></div><p>If you&rsquo;re trying to <code>diff</code> two commits that are pretty close together in the
+log, an easier way is to reference commits by their distance from the <code>HEAD</code>
+(most recent) commit using the format <code>HEAD~&lt;number></code>. Since we added three
+commits new commits in <code>dice</code>, we can view the difference between <code>dice</code> and
+<code>master</code> using the following command:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ git diff HEAD~3 HEAD
+</span></span></code></pre></div><h4 id=merge-conflicts-and-rebase>Merge conflicts and <code>rebase</code>
+<a class=anchor href=#merge-conflicts-and-rebase>#</a></h4><p>Now that you&rsquo;ve implemented dice rolling on on your feature branch, you&rsquo;ll want
+to merge your feature into the <code>master</code> branch. This means that Git will take
+your changes on the <code>dice</code> branch and and replay them on the <code>master</code> branch,
+bringing <code>master</code> up to date with <code>dice</code>. However, things can (
+<a href=https://en.wikipedia.org/wiki/Murphy%27s_law>and often will</a>) go wrong when <code>master</code> has new
+commits added to it while you&rsquo;re working on <code>dice</code>. Now, our commits on <code>dice</code>
+may be based on an old version of master. Even worse, someone else may have
+modified the same lines of code on <code>master</code> that we changed on <code>dice</code>,
+resulting in Git not knowing whose lines to use. This is called a <em>merge
+conflict</em>.</p><p>Let&rsquo;s simulate a merge conflict by making a change on <code>master</code>. <strong>Switch to the
+<code>master</code> branch using <code>git checkout master</code>.</strong> Make sure that you&rsquo;re on the
+<code>master</code> branch by checking the output of <code>git branch</code>. Now that you&rsquo;re on the
+<code>master</code> branch, <code>rand.py</code> shouldn&rsquo;t contain the code for the new dice feature
+we added. Go to the comment that says <code>COMMIT 2</code> and add the following code
+below:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>    <span style=color:#75715e># COMMIT 2: Add dice rolling logic and output dice sum and sequence</span>
+</span></span><span style=display:flex><span>    diceSum <span style=color:#f92672>=</span> random<span style=color:#f92672>.</span>randint(<span style=color:#ae81ff>1</span>, iterations <span style=color:#f92672>*</span> <span style=color:#ae81ff>6</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74> roll(s) of a </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>-sided die resulted in a sum of </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>:&#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#f92672>.</span>format(iterations, sides, diceSum))
+</span></span></code></pre></div><p>Now stage the changes and commit with the message <code>"dice rolling WIP"</code>. In this
+totally realistic scenario, our imaginary maverick teammate has added some buggy
+code to <code>master</code>, making your life harder. <strong>Switch back to your <code>dice</code> branch
+with <code>git checkout dice</code></strong> and prepare to handle this merge conflict.</p><p>There are a multiple ways to handle a merge conflict, but the one we will be
+showing you in this lab is using <code>git rebase</code>. Our <code>dice</code> branch is &ldquo;based&rdquo; on
+the <code>master</code> branch at a certain point in time, but the <code>master</code> branch has
+moved forward leaving <code>dice</code> based on an outdated <code>master</code>. Thus, we want to
+&ldquo;re-base&rdquo; <code>dice</code> on the current state of <code>master</code>. While on your <code>dice</code> branch,
+run <code>git rebase master</code>. Git will rewind the commits you&rsquo;ve made on <code>dice</code>, copy
+any new commits made on <code>master</code>, and attempt to replay your commits on top.
+Sometimes <code>rebase</code> will run to completion without your intervention, but if
+there&rsquo;s a merge conflict you will need to resolve it.</p><p>Git will give you instructions on what to do if it encounters a merge conflict
+during a rebase. In this case, open <code>rand.py</code> and find the conflicted zone which
+should have the following format:</p><pre tabindex=0><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Lines of code from the base branch (in this case master)
+=======
+Lines of code from the branch you&#39;re rebasing (in this case dice)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Commit message of the commit that conflicts with the base branch
+</code></pre><p>To fix the conflict, simply keep the lines you want (your lines from <code>dice</code>) and
+delete the other lines in the conflicted zone (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>, <code>=======</code>,
+<code>>>>>>>> dice</code>, and the unwanted code from master), and then save and exit the
+file. Git will take what you&rsquo;ve saved as the exact form of what the file will
+look like at the end of the rebase, so what you&rsquo;re doing is essentially fixing
+the file so that the code runs properly. This means that if you have multiple
+merge conflicts and you decide to mix keeping some lines from the base branch
+and some from your feature branch, you need to make sure the code actually works
+correctly.</p><p>Now that you&rsquo;ve fixed the merge conflict, follow the rebase instructions and
+stage your fixed file (<code>git add rand.py</code>), then run <code>git rebase --continue</code>. If
+Git finds any more merge conflicts for other files, you would follow the same
+procedure as above. However, we only had one conflicted file so our rebase is
+finished! Run <code>git log</code> to see the result of our rebase. You should now see that
+your imaginary teammate&rsquo;s <code>"dice rolling WIP"</code> commit in your branch&rsquo;s history,
+with your commits on top of theirs.</p><p>Wait! We haven&rsquo;t actually <em>merged</em> our commits into the <code>master</code> branch. <strong>If
+you want to do the optional step of combining your commits into a single commit
+before merging, go to the next section. You can also merge now and do the
+optional step later; you won&rsquo;t see the combined commit on <code>master</code> but you will
+still learn the concepts.</strong> Otherwise, switch to the master branch using <code>git checkout master</code> and run <code>git merge dice</code> to integrate your changes from <code>dice</code>
+into <code>master</code>. Now you&rsquo;re done! Don&rsquo;t forget to complete the quick Gradescope
+check below.</p><blockquote><p>Because we ran rebased our branch before merging, we didn&rsquo;t get any merge
+conflicts when running <code>git merge dice</code>. You <em>can</em> simply <code>git merge dice</code>
+without rebasing first, but Git will prompt you to resolve the exact same
+merge conflicts before it allows a merge so you aren&rsquo;t saving yourself any
+work. We decided to show <code>git rebase</code> because it&rsquo;s a good habit to regularly
+sync your branch with its base branch. Run <code>git rebase</code> every so often if you
+suspect there are new changes on <code>master</code> so that any merge conflicts are
+small and incremental. If you work with a large team and toil away on your
+feature branch for several days without rebasing, you may find that when its
+time to merge, your teammates have already updated <code>master</code> many times giving
+you a large backlog of merge conflicts and an even larger headache.</p></blockquote><p><strong>Gradescope</strong>:</p><ol><li><p>On your <code>master</code> branch, type <code>git log</code> and paste a portion of your commit
+history showing the commit(s) you merged in from your <code>dice</code> branch plus a
+few commits into the past for context. If you haven&rsquo;t completed the optional
+&ldquo;Combining commits&rdquo; section, 5-6 of the most recent commits should be
+sufficient. If you have completed the optional section and squashed your
+commits, 3-4 of the most recent commits should be sufficient.</p></li><li><p>On the <code>master</code> branch, use <code>git diff</code> to show the difference between what
+<code>rand.py</code> looks like now versus what it looked like at the start of the lab.
+There are multiple ways to use <code>git diff</code> to do this, so pick any one you
+like. In Gradescope, paste both the <code>git diff</code> command you used and the
+output of the command.</p></li></ol><h4 id=optional-combining-commits>(OPTIONAL) Combining commits
+<a class=anchor href=#optional-combining-commits>#</a></h4><p>Git has the ability to combine multiple commits into a single commit. This
+process is called squashing. You may want to do this if you have work in
+progress commits that you want to combine into a single finished commit, or in
+our case, keeping <code>git log</code> for the <code>master</code> branch more digestible.</p><ul><li><p>Pros: If you have a feature branch with fifty commits, you prevent inundating
+<code>master</code>&rsquo;s history with fifty different commits when merging. When you squash,
+you can make a multi-line commit message where the first line is a summary of
+the feature, and subsequent lines are bullet points containing relevant
+individual commit messages from the individual commits.</p></li><li><p>Cons: You lose the granularity of the history on <code>master</code>, making it more
+difficult if you want to partially roll back your feature. Git also doesn&rsquo;t
+support having multiple authors for a single commit, so if you want to credit
+other contributors you need to add co-author credit somewhere in the commit
+message of your combined commit. Aside: you can see how co-authoring works with GitHub
+<a href=https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors#creating-co-authored-commits-on-the-command-line>here</a>.</p></li></ul><p><strong>First, make sure you&rsquo;re on your <code>dice</code> branch using <code>git checkout dice</code>.</strong> We
+will be performing our squash using the command <code>git rebase</code> in interactive mode
+by passing the <code>-i</code> flag. This may seem a bit unusual that we can run <code>rebase</code>
+without a base branch, but <code>rebase</code> can not only sync branches, but also rewrite
+the history of our current branch.</p><blockquote><p>The format for the command of an interactive rebase is <code>git rebase -i HEAD~#</code>
+where <code>#</code> is the <em>parent commit</em> of the commit where we want to start our
+rebase. This will seem a bit unintuitive if you&rsquo;ve followed how the <code>HEAD~#</code>
+pointer works: to work on our last three commits (<code>HEAD</code>, <code>HEAD~1</code>, and
+<code>HEAD~2</code>), we need to actually run <code>git rebase -i HEAD~3</code>. An easier way to
+remember this is if you want to rebase the last <code>N</code> commits, run <code>git rebase -i HEAD~N</code>. However, we may not always remember how many commits we made so
+its okay to give yourself a little more room/context by using a larger number.</p></blockquote><p>Let&rsquo;s run <code>git rebase -i HEAD~5</code>. This will bring up a text editor with a file
+that we can modify to change the history of commits from <code>HEAD~4</code> to <code>HEAD</code>.
+You&rsquo;ll notice that the commits are in reverse order, starting with the oldest
+commit at the top and newest commit at the bottom. This is because <code>git</code> will
+use this text file as part of a script to replay those commits (with your
+rewritten changes) in chronological order. Your file will have different commit
+hashes and likely a different commit message on the first line than the example
+below:</p><pre tabindex=0><code>pick 7c5bd5d fixed sus
+pick 1f7a1e1 dice rolling WIP
+pick 26e0827 Add -s flag for number of sides on a die
+pick b193d44 Add dice rolling logic and output dice sum and sequence
+pick 554402e Restrict input range for dice iterations and sides
+
+# Rebase 7dac858..554402e onto b193d44 (5 commands)
+# ...
+</code></pre><p>As you can see, Git includes useful instructions on what you can do with commits
+in interactive mode in the commented-out section at the bottom of the file. We
+can combine, delete, reword, or even reorder our commits, along with many more
+options. In our case, we want to <code>squash</code> our two most recent commits into the
+third most recent commit in the list. To do this, replace the word <code>pick</code> with
+the word <code>squash</code> (or just <code>s</code> for short) on the <em>last two lines</em>. <em>Do not
+<code>squash</code> the third line</em>; that will take your three most recent commits and
+meld them with the &ldquo;dice rolling WIP&rdquo; commit, which is a commit from <code>master</code>.
+Your file should look something like this:</p><pre tabindex=0><code>pick 7c5bd5d fixed sus
+pick 1f7a1e1 dice rolling WIP
+pick 26e0827 Add -s flag for number of sides on a die
+squash b193d44 Add dice rolling logic and output dice sum and sequence
+squash 554402e Restrict input range for dice iterations and sides
+
+# Rebase 7dac858..554402e onto b193d44 (5 commands)
+# ...
+</code></pre><p>Save and exit the file. Git will now rewrite the commit history as you
+specified. If you squash commits or do another action that may modify commit
+messages, Git will bring up another text editor for you to modify the commit
+message. Because you squashed, Git made a multi-line commit message by combining
+the three individual commit messages from before you squashed. Let&rsquo;s add a
+useful one-line summary, &ldquo;Add dice roll feature&rdquo;, at the top of the file. You
+can also adjust the formatting to your liking; I like adding bullet points to
+the individual commit messages.</p><pre tabindex=0><code>Add dice roll feature
+
+# This is a combination of 3 commits.
+# This is the 1st commit message:
+
+- Add -s flag for number of sides on a die
+
+# This is the commit message #2:
+
+- Add dice rolling logic and output dice sum and sequence
+
+# This is the commit message #3:
+
+- Restrict input range for dice iterations and sides
+</code></pre><blockquote><p>Git and other tools use the first line of a commit message as a shortened
+version for certain display purposes. For example, try running <code>git log --oneline</code>. As another example, when Github displays the most recent commit
+message next to files and folders in the directory view, the first line of the
+message is shown.</p></blockquote><p>Save the file and exit. The rebase is now complete! Type <code>git log</code> and view your
+new squashed commit. If you didn&rsquo;t already merge your three individual commits
+into <code>master</code>, you can run <code>git merge master</code> to merge in your combined commit.</p><pre tabindex=0><code>commit 6b4f705921f9b06af880f97d36cb0b74e51aeb0c (HEAD -&gt; dice)
+Author: Max Vogel &lt;max-v@berkeley.edu&gt;
+Date:   Sun Apr 3 19:45:51 2022 -0700
+
+    Add dice roll feature
+
+    - Add -s flag for number of sides on a die
+
+    - Add dice rolling logic and output dice sum and sequence
+
+    - Restrict input range for dice iterations and sides
+</code></pre><p><strong>Gradescope</strong>: There&rsquo;s no separate Gradescope check for this optional section,
+but make sure you go back and complete the Gradescope check above in the
+previous section if you&rsquo;ve chosen to do this part first!</p><h3 id=part-2-pull-requests>Part 2: Pull Requests
+<a class=anchor href=#part-2-pull-requests>#</a></h3><p>One of the most common ways to contribute changes to a repository on Github (and
+other similar Git remote hosting services) is through a pull request (often
+shortened to &ldquo;PR&rdquo;). A pull request is basically a proposal to make changes to a
+repository that can be reviewed by others, commented on, and edited before the
+changes are actually approved to be merged into the repository. For example,
+when working on a large project with a team, you may want to submit a pull
+request with your new feature so that team members can review your code for bugs
+or code style mistakes. For projects on public repositories that invite
+contributions from strangers, you can contribute a feature by forking the
+repository (making a copy of it that you own), implementing your feature, and
+then making a pull request to have your contribution merged into the official
+repository.</p><p>First, read up on
+<a href=https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request>how to create a pull
+request</a>
+from Github&rsquo;s documentation. We&rsquo;ve created a dummy repository at
+<a href=https://github.com/ocf/decal-pr-practice>github.com/ocf/decal-pr-practice</a> for you to practice making a simple PR
+from a fork. You will be making a fork of the repo, writing your name in the
+Markdown file in the repo, and then making a PR to merge your change into the
+original repo.</p><ol><li><p>Read about
+<a href=https://docs.github.com/en/github/getting-started-with-github/fork-a-repo>how to fork a
+repo</a>
+from Github&rsquo;s documentation. Make a fork of our dummy repository at
+<a href=https://github.com/ocf/decal-pr-practice>github.com/ocf/decal-pr-practice</a>.</p></li><li><p>Clone your forked repository and create a new branch based on <code>master</code> called
+<code>my-name</code>. Open <code>README.md</code> and replace &ldquo;Tux the Penguin&rdquo; with your name.</p></li><li><p>Stage and commit your change with the commit message <code>Add my name</code>, and then
+<code>git push</code>.</p></li><li><p>Read about
+<a href=https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork>how to make a PR from a
+fork</a>
+from Github&rsquo;s documentation. Make a PR from your branch <code>my-name</code> on your
+forked repo <code>&lt;Your Github username>/decal-pr-practice</code> to the branch
+<code>master</code> on the original repo <code>ocf/decal-pr-practice</code>.</p></li></ol><p>You&rsquo;ve now made a pull request! Github has a lot of features for pull requests,
+feel free to check some of them out.</p><ul><li><p>The main page for the pull request has a timeline of commits and any comments
+from reviewers. PRs can be continually updated by making and pushing new
+commits to your compare branch. Github will track any new changes pushed to
+the compare branch and update your PR. As you can see, I didn&rsquo;t follow my own
+advice and messed up a rebase after trying to sync my fork, leaving duplicate
+commits in my commit history&mldr;</p></li><li><p>The sidebar on the main page has several notable features. You can request
+other people to review your changes, assign others to work on the PR, and link
+an issue that your PR will resolve if it gets merged. Github repositories have
+an &ldquo;Issues&rdquo; tab where one can submit a report about a bug or request a feature
+(e.g.
+<a href=https://github.com/ocf/decal-web/issues>github.com/ocf/decal-web/issues</a>).</p></li><li><p>Go to the &ldquo;Files Changed&rdquo; tab to see a diff of the PR&rsquo;s changes. Reviewers of
+your PR can leave inline comments on a specific line of code by hovering over
+the line and clicking the blue &ldquo;+&rdquo; button that pops up.</p></li></ul><p><strong>Gradescope</strong>: Paste a link to the pull request you made so that it can be
+checked off for completion.</p><h3 id=part-3-questions>Part 3: Questions
+<a class=anchor href=#part-3-questions>#</a></h3><ol><li><p>What caused the merge conflict in the Git exercises you did?</p></li><li><p>Why does Git require us to manually intervene in merge conflicts?</p></li><li><p>In our exercise of making pull requests, why did we fork the repository before making a PR?</p></li><li><p>What command would you use to sync a folder <code>~/Downloads/Linux_ISOs</code> to the
+folder <code>/usr/local/share/Calendar</code>, while preserving file metadata? (hint: use
+rsync)</p></li><li><p>How does rsync determine when to look for changes between files? Select from
+the following: (read up on how rsync works, and what makes it efficient!)</p><p>A. By calculating the checksum of each file and comparing them.</p><p>B. By comparing the entire contents of each file for any differences.</p><p>C. By seeing if the &rsquo;last modified&rsquo; timestamp of the files are different.</p><p>D. By seeing if the &lsquo;created&rsquo; timestamp of the files are different.</p><p>E. By seeing if the permissions of the files are different.</p></li></ol></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><div class="flex flex-wrap justify-between"><span><a href=/labs/7/ class="flex align-center book-icon"><img src=/svg/backward.svg class=book-icon alt=Previous title="Lab 7 - Security Fundamentals">
+<span>Lab 7 - Security Fundamentals</span>
+</a></span><span><a href=/labs/9/ class="flex align-center book-icon"><span>Lab 9 - Containers (Docker)</span>
+<img src=/svg/forward.svg class=book-icon alt=Next title="Lab 9 - Containers (Docker)"></a></span></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div></main></body></html>

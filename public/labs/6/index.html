@@ -1,0 +1,150 @@
+<!doctype html><html lang=en dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+  Table of contents
+  #
+
+{: .no_toc .text-delta }
+
+TOC
+{:toc}
+
+
+
+  Overview
+  #
+
+Networking is key to many services because it allows processes and computers to
+communicate with each other. In this lab, we&rsquo;ll explore different networked services with an emphasis on web services.
+Make sure that you are doing all of these steps on your VM.
+
+  Which networked services are already running?
+  #
+
+There are multiple networked services running on your VM right now. To output the networked services running on the VM use netstat (install using apt)."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://localhost:1313/labs/6/"><meta property="og:site_name" content="Sysadmin DeCal"><meta property="og:title" content="Lab 6 - Web Servers"><meta property="og:description" content="Table of contents # {: .no_toc .text-delta }
+TOC {:toc} Overview # Networking is key to many services because it allows processes and computers to communicate with each other. In this lab, we’ll explore different networked services with an emphasis on web services.
+Make sure that you are doing all of these steps on your VM.
+Which networked services are already running? # There are multiple networked services running on your VM right now. To output the networked services running on the VM use netstat (install using apt)."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="labs"><title>Lab 6 - Web Servers | Sysadmin DeCal</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=http://localhost:1313/labs/6/><link rel=stylesheet href=/book.min.a66993900f9437bc8b9f3d67f5fea86cd8f2c5ca3eaecc1e818bb26d7ac89625.css integrity="sha256-pmmTkA+UN7yLnz1n9f6obNjyxco+rswegYuybXrIliU=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.28d1e126de307ffcd3a8254d9f1c14303f0918b2dfde22cc673bdc49855798da.js integrity="sha256-KNHhJt4wf/zTqCVNnxwUMD8JGLLf3iLMZzvcSYVXmNo=" crossorigin=anonymous></script><script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Sysadmin DeCal</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><a href=/about/>About</a></li><li><input type=checkbox id=section-638171d5990482642c69d9e2d942b1e4 class=toggle>
+<label for=section-638171d5990482642c69d9e2d942b1e4 class=flex><a role=button class=flex-auto>Announcements</a></label><ul><li><a href=/announcements/week-0/>Week 0 Announcement</a></li><li><a href=/announcements/week-1/>Week 1 Announcement</a></li></ul></li><li><input type=checkbox id=section-70822959fae8f27c0f79dc3a8400cebe class=toggle checked>
+<label for=section-70822959fae8f27c0f79dc3a8400cebe class=flex><a role=button class=flex-auto>Labs</a></label><ul><li><a href=/labs/1/>Lab 1 - Unix, the Shell, OSS</a></li><li><a href=/labs/10/>Lab 10 - Puppet</a></li><li><a href=/labs/2/>Lab 2 - Core Shell & Shell Scripting</a></li><li><a href=/labs/3/>Lab 3 - Packages and Packaging</a></li><li><a href=/labs/4/>Lab 4 - Processes and Services</a></li><li><a href=/labs/5/>Lab 5 - Introduction to Networking</a></li><li><a href=/labs/6/ class=active>Lab 6 - Web Servers</a></li><li><a href=/labs/7/>Lab 7 - Security Fundamentals</a></li><li><a href=/labs/8/>Lab 8 - Version Control and Backups</a></li><li><a href=/labs/9/>Lab 9 - Containers (Docker)</a></li><li><a href=/labs/11/>Lab 11 - Kubernetes</a></li><li><a href=/labs/12/>Lab 12 - CUDA</a></li></ul></li><li><a href=/resources/>Resources</a></li></ul><ul><li><a href=https://github.com/alex-shpak/hugo-book target=_blank rel=noopener>Ed</a></li><li><a href=https://themes.gohugo.io/themes/hugo-book/ target=_blank rel=noopener>OCF</a></li><li><a href=https://themes.gohugo.io/themes/hugo-book/ target=_blank rel=noopener>Github</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label><h3>Lab 6 - Web Servers</h3><label for=toc-control></label></div></header><article class="markdown book-article"><h2 id=table-of-contents>Table of contents
+<a class=anchor href=#table-of-contents>#</a></h2><p>{: .no_toc .text-delta }</p><ol><li>TOC
+{:toc}</li></ol><hr><h2 id=overview>Overview
+<a class=anchor href=#overview>#</a></h2><p>Networking is key to many services because it allows processes and computers to
+communicate with each other. In this lab, we&rsquo;ll explore different networked services with an emphasis on web services.</p><p>Make sure that you are doing all of these steps on your VM.</p><h2 id=which-networked-services-are-already-running>Which networked services are already running?
+<a class=anchor href=#which-networked-services-are-already-running>#</a></h2><p>There are multiple networked services running on your VM right now. To output the networked services running on the VM use <code>netstat</code> (install using apt).</p><ul><li><strong>Question 1a:</strong> What command did you use to display the networked services?</li><li><strong>Question 1b:</strong> Paste the output of the command.</li><li><strong>Question 1c:</strong> Choose one service from the output and describe what it does.</li></ul><h2 id=dns>DNS
+<a class=anchor href=#dns>#</a></h2><p>In this section we are going to be setting up our own DNS server! Remember that
+DNS is the system that maps from a domain like <code>ocf.berkeley.edu</code> to an IP like
+<code>169.229.226.23</code> (and <code>2607:f140:8801::1:23</code> for IPv6) so that computers know
+how to send information over the network to servers without people having to
+remember a bunch of numbers to connect to everything.</p><p>First, install the <code>bind9</code> package on your VM to set up a DNS server. Uninstall <code>dnsmasq</code> if it&rsquo;s previously installed on your VM by <code>sudo apt purge dnsmasq</code>.</p><p>Let&rsquo;s check the status of the service using <code>systemctl</code>. <strong>What command can you run to do this?</strong></p><p>In the output of the <code>systemctl</code> command, you should see that the <code>bind9</code>
+service is already running. Let&rsquo;s bring it down temporarily so we can
+investigate: <code>systemctl stop bind9</code></p><p>The service should have a unit file at <code>/lib/systemd/system/named.service</code> or
+<code>/lib/systemd/system/bind9.service</code>. If you print that file (with <code>cat</code> or
+<code>systemctl cat bind9</code>), you should see something like this:</p><pre tabindex=0><code>[Unit]
+Description=BIND Domain Name Server
+Documentation=man:named(8)
+After=network.target
+Wants=nss-lookup.target
+Before=nss-lookup.target
+
+[Service]
+EnvironmentFile=-/etc/default/named
+ExecStart=/usr/sbin/named -f $OPTIONS
+ExecReload=/usr/sbin/rndc reload
+ExecStop=/usr/sbin/rndc stop
+
+[Install]
+WantedBy=multi-user.target
+Alias=bind9.service
+</code></pre><p>This should look somewhat familiar to you after the lecture on networking! Don&rsquo;t
+worry if it doesn&rsquo;t all look familiar since there are some options you haven&rsquo;t
+seen yet in here, but you should at least recognize some of the options used.</p><p>If you now run <code>dig ocf.berkeley.edu @localhost</code> from your VM, you should see
+that the command eventually times out after trying to run for about 15 seconds.
+This is because it is trying to send DNS requests to your VM, but the DNS
+server is not actually running yet so it doesn&rsquo;t get a response. However, if
+<code>@localhost</code> is left off the end of the command, it succeeds. Why is this the
+case? What DNS server are requests currently being sent to if <code>@localhost</code> is
+not specified in the command?</p><p>Try starting the DNS server using the relevant <code>systemctl</code> command. If you
+check the status of the <code>bind9</code> service after starting it, you should see the
+status has changed to say that the service is active and running.</p><p>If you now run <code>dig ocf.berkeley.edu @localhost</code> from your VM, you should now
+see a response containing the correct IP (<code>169.229.226.23</code>)!</p><p>Now to the exciting part, the configuration! Edit <code>/etc/bind/named.conf.local</code>
+with your favorite text editor (add sudo if you don&rsquo;t have write permission). Inside this file, it should be empty apart
+from a few comments at the top because you haven&rsquo;t done any local configuration
+yet. Add a new zone in this file for <code>example.com</code> with these contents:</p><pre tabindex=0><code>zone &#34;example.com&#34; {
+  type master;
+  file &#34;/etc/bind/db.example.com&#34;;
+};
+</code></pre><p>Then, create a file <code>/etc/bind/db.example.com</code> to contain the responses to give
+if anyone sends requests to your DNS server for <code>example.com</code>. The easiest way
+to do this is generally to copy an existing config and then make changes from
+there to get what you want for your config instead of having to start from
+scratch.</p><p>To make this easier, we&rsquo;ve provided a valid config in
+<a href=https://github.com/0xcf/decal-labs/blob/master/6/db.example.com>decal-labs</a>
+that you can copy in place at
+<code>/etc/bind/db.example.com</code>.</p><p>Let&rsquo;s start by adding a record for a subdomain named <code>test.example.com</code>.</p><p>Add the line below to <code>/etc/bind/db.example.com</code>.</p><p><code>test IN A 93.184.216.34</code></p><p>Make sure to reload the <code>bind9</code> service after changing anything in <code>/etc/bind9</code>, since you want the running
+service to change its configuration.</p><p><code>systemctl reload bind9</code></p><p>Now run the commands below. For the first command you should see the result for <code>example.com</code> which should be <code>1.2.3.4</code>.
+For the second command you should see <code>93.184.216.34</code> as the result.</p><p><code>dig @localhost example.com</code></p><p><code>dig @localhost test.example.com</code></p><p>Please add few more records of your choice. Try to add one A record, and a couple of other
+types of records (CNAME, SRV, TXT, etc.). Make sure to reload the <code>bind9</code> after!</p><ul><li><p><strong>Question 2a:</strong> What is the systemctl command to show whether bind9 is running or not?</p></li><li><p><strong>Question 2b:</strong> Why does the dig command (dig ocf.berkeley.edu) work if @localhost is not present at the end (if bind9 is not started) but times out when @localhost is added?</p></li><li><p><strong>Question 2c:</strong> What additional entries did you add to your DNS server config (the db.example.com file)?</p></li><li><p><strong>Question 2d:</strong> What commands did you use to make requests to the local DNS server for your additional entries?</p></li></ul><h2 id=load-balancing>Load Balancing
+<a class=anchor href=#load-balancing>#</a></h2><p>For this section we will be using
+<a href=https://www.haproxy.org/>HAProxy</a>, a
+commonly-used open-source load balancer.
+<a href=https://nginx.org/>NGINX</a> is
+actually
+<a href=https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/>starting to become a load balancer</a> alongside being a web
+server, which is pretty interesting, but HAProxy is still commonly used.</p><p>You can install HAProxy using <code>sudo apt install haproxy</code>.</p><p>First, grab the python file for the service you will be running from the
+<a href=https://github.com/0xcf/decal-labs/blob/master/a7/server.py>decal-labs repo</a> using <code>wget</code> or something similar to download
+it. You&rsquo;ll likely also need to install <code>tornado</code> using <code>sudo apt install python3-tornado</code>.</p><p>Next, run the script using <code>python3 server.py</code>.</p><p>After running <code>python3 server.py</code>, the script will start up 6 different HTTP
+server workers listening on ports 8080 to 8085 (inclusive). Each worker returns
+different content to make it clear which one you are talking to for this lab
+(&ldquo;Hello, I am ID 0&rdquo; for instance), but in real usage they would generally all
+return the same content. You would still want something to distinguish between
+them (maybe a HTTP header saying which host or instance they are?), but only
+for debugging purposes, not like in this lab where they have actually differing
+content.</p><p>You can test out each worker if you&rsquo;d like by making a request (e.g. using cURL)
+individually to each server (<code>http://localhost:8080</code> to <code>http://localhost:8085</code>)
+on your VM.</p><p>The idea behind using a load balancer is that requests will be spread out among
+instances so that if a lot of requests are coming in all at once, they will not
+overload any one instance. Another very useful feature is that if one of the
+instances happens to crash or become unavailable for whatever reason, another
+working server will be used instead. This requires some kind of health checks
+to be implemented to decide whether a server is healthy or not.</p><p>Your job is to do the configuration to get it to work with the services you are given! The main
+config file is at <code>/etc/haproxy/haproxy.cfg</code> and you should only have to append
+to the end of this file to finish this lab. One snippet is provided here for you
+to add to the config already, this will give you a nice status page that you
+can use to see which of the servers is up or down:</p><pre tabindex=0><code>listen stats
+  bind    0.0.0.0:7001
+  bind    [::]:7001
+  mode    http
+  stats   enable
+  stats   hide-version
+  stats   uri /stats
+</code></pre><p>After adding this, if you restart the <code>haproxy</code> service and open
+<code>http://[yourusername].decal.ocfhosted.com:7001/stats</code> in a web browser, you should see a
+page with a table and some statistics information on HAProxy (pid, sessions,
+bytes transferred, uptime, etc.).</p><h3 id=part-1-configuration>Part 1: Configuration
+<a class=anchor href=#part-1-configuration>#</a></h3><p>Your goal is to add a backend and frontend to haproxy&rsquo;s config that proxies to
+all of the running workers on the ports from 8080 to 8085 and listens on port
+7000 on your VM, so that if you go to <code>http://[yourusername].decal.ocfhosted.com:7000</code> you
+can see the responses from the workers. Try refreshing, what do you notice
+happening? Do you notice a pattern? What
+<a href=http://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4-balance>load balancing algorithm</a>
+are you using from your observations? What config did you add to the haproxy
+config file to get this to work? Try changing the algorithm and see what
+happens to your results!</p><h3 id=part-2-health-checks>Part 2: Health Checks
+<a class=anchor href=#part-2-health-checks>#</a></h3><p>Now, after adding all the servers to the backend in the config, add health
+checks for each of them. If you refresh the stats page, what do you notice has
+changed? What color are each of the servers in your backend?</p><h3 id=some-hints-for-parts-1-2>Some hints for Parts 1-2
+<a class=anchor href=#some-hints-for-parts-1-2>#</a></h3><ul><li>You shouldn&rsquo;t need to change the current contents of <code>haproxy.cfg</code>; you&rsquo;ll just need to append additional lines to the bottom of the file.</li><li>You&rsquo;ll need to add two sections, one for <code>frontend</code> and one for <code>backend</code>. Take a look at the Frontend and Backend sections of
+<a href=https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/>The Four Essential Sections of an HAProxy Configuration</a> to learn more about the syntax and options available!</li><li>You can label your frontend and backend sections however you wish.</li><li>You should need to append about 10-15 lines to the config file.</li><li>Make sure you include a line to listen for IPv6 requests in addition to IPv4 (<code>bind [::]:&lt;port number></code>)</li><li>If you&rsquo;d like more hints, feel free to ask on #decal-general!</li></ul><h3 id=part-3-crashing>Part 3: Crashing
+<a class=anchor href=#part-3-crashing>#</a></h3><p>If you make a request to <code>http://[yourusername].decal.ocfhosted.com:7000/crash</code>, it will
+crash the worker that you connect to. What changes in the HAProxy stats page?
+(Try refreshing a few times, the health checks can take a couple seconds to
+update the status from UP -> DOWN) If you make a lot of requests to
+<code>http://[yourusername].decal.ocfhosted.com:7000</code> again, are all the servers present in the
+IDs that are returned in your requests or not? Try crashing a particular worker
+by running <code>curl localhost:&lt;port>/crash</code> on your VM, substituting the port with one of the
+workers that is still up on your instance. What happens on the HAProxy stats
+page? If you crash all the workers, what status code does HAProxy return to you
+when you make a request to the service?</p><ul><li><p><strong>Question 3a:</strong> Do you notice any pattern when you refresh the page multiple times?</p></li><li><p><strong>Question 3b:</strong> What load balancing algorithm are you using?</p></li><li><p><strong>Question 3c:</strong> What did you add to the haproxy config? (just copy and paste the lines you added to the bottom into here)</p></li><li><p><strong>Question 3d:</strong> What do you notice has changed on the stats page after adding health checks? What color are each of the servers in the backend now?</p></li><li><p><strong>Question 3e:</strong> What changes in the stats page when you crash a worker? What happened to the pattern from before?</p></li><li><p><strong>Question 3f:</strong> What HTTP status code (or error message) does HAProxy return if you crash all of the workers?</p></li></ul><p><strong>Remember to submit your answers on Gradescope!</strong></p></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><div class="flex flex-wrap justify-between"><span><a href=/labs/5/ class="flex align-center book-icon"><img src=/svg/backward.svg class=book-icon alt=Previous title="Lab 5 - Introduction to Networking">
+<span>Lab 5 - Introduction to Networking</span>
+</a></span><span><a href=/labs/7/ class="flex align-center book-icon"><span>Lab 7 - Security Fundamentals</span>
+<img src=/svg/forward.svg class=book-icon alt=Next title="Lab 7 - Security Fundamentals"></a></span></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div></main></body></html>
