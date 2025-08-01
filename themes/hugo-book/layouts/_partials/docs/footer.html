@@ -1,0 +1,70 @@
+<div class="flex flex-wrap justify-between">
+
+{{ if and .GitInfo .Site.Params.BookRepo }}
+  <div>
+    {{- $date := partial "docs/date" (dict "Date" .GitInfo.AuthorDate.Local "Format" .Site.Params.BookDateFormat) -}}
+    <a class="flex align-center" href="{{ partial "docs/links/commit" . }}" title='{{ i18n "Last modified by" }} {{ .GitInfo.AuthorName }} | {{ $date }}' target="_blank" rel="noopener">
+      <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="" />
+      <span>{{ $date }}</span>
+    </a>
+  </div>
+{{ end }}
+
+{{ if and .File .Site.Params.BookRepo .Site.Params.BookEditPath }}
+  <div>
+    <a class="flex align-center" href="{{ partial "docs/links/edit" . }}" target="_blank" rel="noopener">
+      <img src="{{ "svg/edit.svg" | relURL }}" class="book-icon" alt="" />
+      <span>{{ i18n "Edit this page" }}</span>
+    </a>
+  </div>
+{{ end }}
+
+</div>
+
+{{ partial "docs/prev-next" . }}
+
+<div class="col-lg-12 text-center">
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.janestreet.com" class="no-underline">
+      <img
+        src="/jane-street.svg"
+        style="height: 50px"
+      />
+    </a>
+    <span style="padding-left: 10px";>
+      Thanks to
+      <a href="https://www.janestreet.com">Jane Street</a> for supporting the DeCal.
+    </span>
+  </p>
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.ocf.berkeley.edu" class="no-underline">
+      <img
+        src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+        alt="Hosted by the OCF"
+        style="height: 50px"
+        style="border: 0"
+    /></a>
+    <span style="padding-left: 10px";>
+      Copyright &copy; 2017-2025
+      <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+      and
+      <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+    </span>
+  </p>
+  <p>
+    <span>
+      This website and its course materials are licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+      available on GitHub
+    </span>
+  </p>
+</div>
+
+{{ $script := resources.Get "clipboard.js" | resources.Minify }}
+{{ with $script.Content }}
+  <script>{{ . | safeJS }}</script>
+{{ end }}
