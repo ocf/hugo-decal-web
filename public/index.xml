@@ -144,7 +144,27 @@ Weekly notes:&lt;/p></description></item><item><title>Lab 4 - Processes and Serv
  Part 0: Set up networking
  &lt;a class="anchor" href="#part-0-set-up-networking">#&lt;/a>
 &lt;/h2>
-&lt;p>Before you start this lab, you&amp;rsquo;ll need to make sure you can access services from your VM in your web browser!&lt;/p></description></item><item><title>Week 4</title><link>http://localhost:1313/announcements/week-4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-4/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering the fourth week of the DeCal! At this point, you should have turned in your Lab 3 on Gradescope. We’ll be taking a look and grading them soon. Lab 1 and 2 grades have also been released!
+&lt;p>Before you start this lab, you&amp;rsquo;ll need to make sure you can access services from your VM in your web browser!&lt;/p></description></item><item><title>Staff</title><link>http://localhost:1313/staff/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/staff/</guid><description>&lt;h1 id="staff">
+ Staff
+ &lt;a class="anchor" href="#staff">#&lt;/a>
+&lt;/h1>
+&lt;h2 id="communication">
+ Communication
+ &lt;a class="anchor" href="#communication">#&lt;/a>
+&lt;/h2>
+&lt;p>Official course communications will primarily be sent via email and mirrored on the front page of the course website.&lt;/p>
+&lt;p>There are several ways you can get in contact with course facilitators:&lt;/p>
+&lt;ol>
+&lt;li>Make a post on 
+ &lt;a href="https://edstem.org/us/courses/42500/discussion/">Ed&lt;/a>. (best for conceptual/debugging/content help)&lt;/li>
+&lt;li>Send a message to #decal-general (or as a private message to a facilitator) either on 
+ &lt;a href="https://ocf.io/slack">Slack&lt;/a> or 
+ &lt;a href="https://ocf.io/discord">Discord&lt;/a>. (best for realtime communications)&lt;/li>
+&lt;li>Email 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>. (best for prospective students and matters that need to go on official record)&lt;/li>
+&lt;/ol>
+&lt;p>See the 
+ &lt;a href="http://localhost:1313/about/">about page&lt;/a> for more information.&lt;/p></description></item><item><title>Week 4</title><link>http://localhost:1313/announcements/week-4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-4/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering the fourth week of the DeCal! At this point, you should have turned in your Lab 3 on Gradescope. We’ll be taking a look and grading them soon. Lab 1 and 2 grades have also been released!
 Weekly notes:&lt;/p>
 &lt;ul>
 &lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 02/25 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!

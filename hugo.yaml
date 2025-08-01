@@ -25,9 +25,6 @@ menu:
     - name: "OCF"
       url: "https://themes.gohugo.io/themes/hugo-book/"
       weight: 20
-    - name: "Github"
-      url: "https://themes.gohugo.io/themes/hugo-book/"
-      weight: 30
 
 params:
   # (Optional, default light) Sets color theme: light, dark or auto.
