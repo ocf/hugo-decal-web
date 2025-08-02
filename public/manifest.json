@@ -1,6 +1,6 @@
 {
-  "name": "Sysadmin DeCal",
-  "short_name": "Sysadmin DeCal",
+  "name": "OCF Sysadmin DeCal",
+  "short_name": "OCF Sysadmin DeCal",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

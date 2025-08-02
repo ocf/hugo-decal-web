@@ -1,8 +1,11 @@
 # hugo server --minify --themesDir ../.. --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
 baseURL: https://decal.ocf.berkeley.edu
-title: Sysadmin DeCal
+title: OCF Sysadmin DeCal
 theme: hugo-book
+
+security:
+  enableInlineShortcodes: true
 
 # Book configuration
 disablePathToLower: true
@@ -20,10 +23,10 @@ menu:
   # before: []
   after:
     - name: "Ed"
-      url: "https://github.com/alex-shpak/hugo-book"
+      url: "https://ocf.berkeley.edu"
       weight: 10
     - name: "OCF"
-      url: "https://themes.gohugo.io/themes/hugo-book/"
+      url: "https://ocf.berkeley.edu"
       weight: 20
 
 params:

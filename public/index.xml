@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on Sysadmin DeCal</title><link>http://localhost:1313/</link><description>Recent content in Home on Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 31 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 0</title><link>http://localhost:1313/announcements/week-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-0/</guid><description>&lt;ol>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on OCF Sysadmin DeCal</title><link>http://localhost:1313/</link><description>Recent content in Home on OCF Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 06 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 0</title><link>http://localhost:1313/announcements/week-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-0/</guid><description>&lt;ol>
 &lt;li>The Linux SysAdmin Decal is back for Spring 2025!&lt;/li>
 &lt;li>Join us at Decal infosessions on 1/28 and 1/30, 7pm @ OCF Lab or at 
  &lt;a href="ocf.io/meet">ocf.io/meet&lt;/a>! If you weren&amp;rsquo;t able to make it to an infosession, access the slides 
@@ -6,7 +6,7 @@
 &lt;li>&lt;strong>To enroll, 
  &lt;a href="https://forms.gle/eEzeC3w4N9hmeMDA7">fill out lab 0 here&lt;/a>!&lt;/strong> Lab 0 is due &lt;strong>Saturday, Feb. 1st at 11:59pm&lt;/strong> and enrollment keys will be sent to those who complete it.&lt;/li>
 &lt;li>Learn more about the course at the 
- &lt;a href="http://localhost:1313/about/">about page&lt;/a>.&lt;/li>
+ &lt;a href="http://localhost:1313/about">about page&lt;/a>.&lt;/li>
 &lt;li>Any questions? Contact us at 
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
 &lt;li>Looking for a previous semester&amp;rsquo;s materials? You can view it in the 
@@ -18,24 +18,7 @@
 1. There will be two identical infosessions on **Tuesday, Jan. 25, 8 pm** and **Thursday, Jan. 27, 8 pm** on [ocf.io/decalzoom](https://ocf.io/decalzoom).
 1. Lab 0, which must be complete prior to enrolling, will be released after the infosessions.
 1. Any questions? Contact us at [decal@ocf.berkeley.edu](mailto:decal@ocf.berkeley.edu)!
-1. Looking for a previous semester's materials? You can view it in the [archive](/archive). --></description></item><item><title>About</title><link>http://localhost:1313/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/about/</guid><description>&lt;h1 id="about">
- About
- &lt;a class="anchor" href="#about">#&lt;/a>
-&lt;/h1>
-&lt;h1 id="course-description">
- Course Description
- &lt;a class="anchor" href="#course-description">#&lt;/a>
-&lt;/h1>
-&lt;p>This course covers the basics of setting up and administering a production-quality Linux server environment. By the end of this course, we expect that you will&amp;hellip;&lt;/p>
-&lt;ul>
-&lt;li>be comfortable using GNU/Linux&lt;/li>
-&lt;li>understand how different parts of the OS work together, e.g. init, processes, daemons, filesystems, etc.&lt;/li>
-&lt;li>understand basic networking on Linux&lt;/li>
-&lt;li>have a good sense about maintaining system security&lt;/li>
-&lt;li>understand system administration essentials&lt;/li>
-&lt;li>get a practical taste of what sysadmins do in industry.&lt;/li>
-&lt;/ul>
-&lt;p>While we expect many students will have a CS background, &lt;strong>the only real prerequisite is a desire to learn&lt;/strong> about new and unfamiliar technologies, which is a critical skill for sysadmins. This course is designed to introduce new users to Linux, as well as give more experienced users a taste of what Linux is capable of!&lt;/p></description></item><item><title>Lab 1 - Unix, the Shell, OSS</title><link>http://localhost:1313/labs/1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/1/</guid><description>&lt;h2 id="table-of-contents">
+1. Looking for a previous semester's materials? You can view it in the [archive](/archive). --></description></item><item><title>Lab 1 - Unix, the Shell, OSS</title><link>http://localhost:1313/labs/1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/1/</guid><description>&lt;h2 id="table-of-contents">
  Table of contents
  &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
 &lt;/h2>
@@ -52,7 +35,20 @@
 &lt;p>Welcome to the first lab!&lt;/p>
 &lt;p>All labs are graded on completeness and effort, so don&amp;rsquo;t worry too much about
 getting an exact right answer. (We&amp;rsquo;ll release staff solutions after the lab is due!)&lt;/p>
-&lt;p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!&lt;/p></description></item><item><title>Week 1</title><link>http://localhost:1313/announcements/week-1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-1/</guid><description>&lt;p>Hi all, this is our first official week for this semester&amp;rsquo;s Linux SysAdmin decal!
+&lt;p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!&lt;/p></description></item><item><title>Syllabus</title><link>http://localhost:1313/syllabus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/syllabus/</guid><description>&lt;h1 id="course-description">
+ Course Description
+ &lt;a class="anchor" href="#course-description">#&lt;/a>
+&lt;/h1>
+&lt;p>This course covers the basics of setting up and administering a production-quality Linux server environment. By the end of this course, we expect that you will&amp;hellip;&lt;/p>
+&lt;ul>
+&lt;li>be comfortable using GNU/Linux&lt;/li>
+&lt;li>understand how different parts of the OS work together, e.g. init, processes, daemons, filesystems, etc.&lt;/li>
+&lt;li>understand basic networking on Linux&lt;/li>
+&lt;li>have a good sense about maintaining system security&lt;/li>
+&lt;li>understand system administration essentials&lt;/li>
+&lt;li>get a practical taste of what sysadmins do in industry.&lt;/li>
+&lt;/ul>
+&lt;p>While we expect many students will have a CS background, &lt;strong>the only real prerequisite is a desire to learn&lt;/strong> about new and unfamiliar technologies, which is a critical skill for sysadmins. This course is designed to introduce new users to Linux, as well as give more experienced users a taste of what Linux is capable of!&lt;/p></description></item><item><title>Week 1</title><link>http://localhost:1313/announcements/week-1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-1/</guid><description>&lt;p>Hi all, this is our first official week for this semester&amp;rsquo;s Linux SysAdmin decal!
 Enrollment codes will be emailed by Monday to students that was accepted. Our
 lecture and lab will be at their normal time on &lt;strong>Tuesday 7-8pm and 8-9pm&lt;/strong> respectively.
 If you&amp;rsquo;re in the Experimental Decal, it will be on &lt;strong>Thursday 7-8pm and 8-9pm&lt;/strong>.
@@ -164,7 +160,7 @@ Weekly notes:&lt;/p></description></item><item><title>Lab 4 - Processes and Serv
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>. (best for prospective students and matters that need to go on official record)&lt;/li>
 &lt;/ol>
 &lt;p>See the 
- &lt;a href="http://localhost:1313/about/">about page&lt;/a> for more information.&lt;/p></description></item><item><title>Week 4</title><link>http://localhost:1313/announcements/week-4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-4/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering the fourth week of the DeCal! At this point, you should have turned in your Lab 3 on Gradescope. We’ll be taking a look and grading them soon. Lab 1 and 2 grades have also been released!
+ &lt;a href="http://localhost:1313/about">about page&lt;/a> for more information.&lt;/p></description></item><item><title>Week 4</title><link>http://localhost:1313/announcements/week-4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-4/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering the fourth week of the DeCal! At this point, you should have turned in your Lab 3 on Gradescope. We’ll be taking a look and grading them soon. Lab 1 and 2 grades have also been released!
 Weekly notes:&lt;/p>
 &lt;ul>
 &lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 02/25 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
@@ -323,7 +319,23 @@ simulate the real-world development process by making a branch for our new dice
 rolling feature, making a few commits to that branch, and then merging our
 feature branch into the master branch. &lt;em>You won&amp;rsquo;t need to personally write any
 Python for this lab!&lt;/em> You will only need to copy-and-paste the code we provide,
-since this lab is about learning version control and not Python.&lt;/p></description></item><item><title>Lab 9 - Containers (Docker)</title><link>http://localhost:1313/labs/9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/9/</guid><description>&lt;h2 id="table-of-contents">
+since this lab is about learning version control and not Python.&lt;/p></description></item><item><title>Week 9</title><link>http://localhost:1313/announcements/week-9/</link><pubDate>Sun, 06 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-9/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 9 of the DeCal! At this point, you should have turned in your Lab 8 on Gradescope. Most lab should also be graded by now.
+Weekly notes:&lt;/p>
+&lt;ul>
+&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 04/08 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
+&lt;ul>
+&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Lab 9 has been released and can be accessed below.
+&lt;ul>
+&lt;li>Please use the corresponding 
+ &lt;a href="https://edstem.org/us/courses/75831/discussion/6494318">Ed thread for Lab 5&lt;/a> related questions.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Any questions? Post on Ed or reach us at 
+ &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
+&lt;/ul></description></item><item><title>Lab 9 - Containers (Docker)</title><link>http://localhost:1313/labs/9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/9/</guid><description>&lt;h2 id="table-of-contents">
  Table of contents
  &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
 &lt;/h2>
@@ -341,23 +353,7 @@ since this lab is about learning version control and not Python.&lt;/p></descrip
 &lt;ul>
 &lt;li>Create and use a Docker container interactively and create a Dockerfile, which allows you to declaratively define your containers.&lt;/li>
 &lt;/ul>
-&lt;p>Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p></description></item><item><title>Week 9</title><link>http://localhost:1313/announcements/week-9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-9/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 9 of the DeCal! At this point, you should have turned in your Lab 8 on Gradescope. Most lab should also be graded by now.
-Weekly notes:&lt;/p>
-&lt;ul>
-&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 04/08 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
-&lt;ul>
-&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Lab 9 has been released and can be accessed below.
-&lt;ul>
-&lt;li>Please use the corresponding 
- &lt;a href="https://edstem.org/us/courses/75831/discussion/6494318">Ed thread for Lab 5&lt;/a> related questions.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Any questions? Post on Ed or reach us at 
- &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 10 - Puppet</title><link>http://localhost:1313/labs/10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/10/</guid><description>&lt;h2 id="table-of-contents">
+&lt;p>Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p></description></item><item><title>Lab 10 - Puppet</title><link>http://localhost:1313/labs/10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/10/</guid><description>&lt;h2 id="table-of-contents">
  Table of contents
  &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
 &lt;/h2>
@@ -393,42 +389,83 @@ deadline will count as an additional completed, on-time lab (so please try it ou
 if you weren&amp;rsquo;t able to finish a previous lab)!&lt;/p>
 &lt;p>This lab is designed to give you some hands-on experience with Kubernetes. By the end of this lab, you should be able to:&lt;/p></description></item><item><title>Lab 12 - CUDA</title><link>http://localhost:1313/labs/12/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/12/</guid><description>&lt;p>This lab is completely optional and is not worth any credit.&lt;/p>
 &lt;p>Access the lab here: 
- &lt;a href="https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing">https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing&lt;/a>&lt;/p></description></item><item><title/><link>http://localhost:1313/resources/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/resources/</guid><description>&lt;p>Linux SysAdmin DeCal: Reading/Resource List&lt;/p>
+ &lt;a href="https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing">https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing&lt;/a>&lt;/p></description></item><item><title/><link>http://localhost:1313/resources/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/resources/</guid><description>&lt;h2 id="readingresource-list">
+ Reading/Resource List
+ &lt;a class="anchor" href="#readingresource-list">#&lt;/a>
+&lt;/h2>
 &lt;p>Spring 2024&lt;/p>
-&lt;p>Lab&lt;/p>
-&lt;p>Topic&lt;/p>
-&lt;p>Reading&lt;/p>
-&lt;p>1&lt;/p>
-&lt;p>History of UNIX, Intro to Shell, FOSS&lt;/p>
+&lt;table>
+ &lt;tr>
+ &lt;th>Lab&lt;/th>
+ &lt;th>Topic&lt;/th>
+ &lt;th>Reading&lt;/th>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>1&lt;/td>
+ &lt;td>History of UNIX, Intro to Shell, FOSS&lt;/td>
+ &lt;td>
+&lt;ul>
+&lt;li>
 &lt;p>Intro to Linux man page 
  &lt;a href="http://man7.org/linux/man-pages/man1/intro.1.html">http://man7.org/linux/man-pages/man1/intro.1.html&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>FOSS licenses 
  &lt;a href="https://choosealicense.com/licenses/">https://choosealicense.com/licenses/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>Basic terminal commands 
  &lt;a href="https://github.com/juanfrans/GSAPP-AP/wiki/Basic-Terminal-Commands">https://github.com/juanfrans/GSAPP-AP/wiki/Basic-Terminal-Commands&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>Resource: tldr is a nice tool for searching up commands 
  &lt;a href="https://tldr.inbrowser.app/">https://tldr.inbrowser.app/&lt;/a>&lt;/p>
-&lt;p>2&lt;/p>
-&lt;p>Core Shell &amp;amp;
-Shell Scripting&lt;/p>
-&lt;p>Core Shell&lt;/p>
+ &lt;/td>
+&lt;/tr>
+&lt;tr>
+ &lt;td>2&lt;/td>
+ &lt;td>Core Shell &amp; Shell Scripting&lt;/td>
+ &lt;td>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Core Shell&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
 &lt;p>Command line shortcuts 
  &lt;a href="http://teohm.com/blog/shortcuts-to-move-faster-in-bash-command-line/">http://teohm.com/blog/shortcuts-to-move-faster-in-bash-command-line/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>How to learn vim 
  &lt;a href="https://medium.com/actualize-network/how-to-learn-vim-a-four-week-plan-cd8b376a9b85">https://medium.com/actualize-network/how-to-learn-vim-a-four-week-plan-cd8b376a9b85&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>Tmux cheat sheet 
  &lt;a href="https://gist.github.com/MohamedAlaa/2961058">https://gist.github.com/MohamedAlaa/2961058&lt;/a>&lt;/p>
-&lt;p>Shell Scripting&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Shell Scripting&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
 &lt;p>Bash reference manual 
  &lt;a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Introduction">https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Introduction&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>Shell Tools and Scripting 
  &lt;a href="https://missing.csail.mit.edu/2020/shell-tools/">https://missing.csail.mit.edu/2020/shell-tools/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>Bash Script Examples&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>
  &lt;a href="https://linuxhint.com/30_bash_script_examples/">https://linuxhint.com/30_bash_script_examples/&lt;/a>&lt;/p>
-&lt;p>3&lt;/p>
-&lt;p>Packages&lt;/p>
+&lt;/tr>
+&lt;tr>
+ &lt;/td>
+ &lt;td>3&lt;/td>
+ &lt;td>Packages&lt;/td>
+ &lt;td>
+&lt;/li>
+&lt;li>
 &lt;p>FPM Documentation 
- &lt;a href="https://github.com/jordansissel/fpm/wiki">https://github.com/jordansissel/fpm/wiki&lt;/a>&lt;/p>
-&lt;p>dpkg man page 
- &lt;a href="https://linux.die.net/man/1/dpkg">https://linux.die.net/man/1/dpkg&lt;/a>&lt;/p></description></item></channel></rss>
+ &lt;a href="https://github.com/jordansissel/fpm/wiki">https://github.com/jordansissel/fpm/wiki&lt;/a>&lt;/p></description></item></channel></rss>

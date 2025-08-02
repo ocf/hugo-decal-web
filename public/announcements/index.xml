@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sysadmin DeCal</title><link>http://localhost:1313/announcements/</link><description>Recent content on Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 31 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/announcements/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 0</title><link>http://localhost:1313/announcements/week-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-0/</guid><description>&lt;ol>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OCF Sysadmin DeCal</title><link>http://localhost:1313/announcements/</link><description>Recent content on OCF Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 06 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/announcements/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 0</title><link>http://localhost:1313/announcements/week-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-0/</guid><description>&lt;ol>
 &lt;li>The Linux SysAdmin Decal is back for Spring 2025!&lt;/li>
 &lt;li>Join us at Decal infosessions on 1/28 and 1/30, 7pm @ OCF Lab or at 
  &lt;a href="ocf.io/meet">ocf.io/meet&lt;/a>! If you weren&amp;rsquo;t able to make it to an infosession, access the slides 
@@ -6,7 +6,7 @@
 &lt;li>&lt;strong>To enroll, 
  &lt;a href="https://forms.gle/eEzeC3w4N9hmeMDA7">fill out lab 0 here&lt;/a>!&lt;/strong> Lab 0 is due &lt;strong>Saturday, Feb. 1st at 11:59pm&lt;/strong> and enrollment keys will be sent to those who complete it.&lt;/li>
 &lt;li>Learn more about the course at the 
- &lt;a href="http://localhost:1313/about/">about page&lt;/a>.&lt;/li>
+ &lt;a href="http://localhost:1313/about">about page&lt;/a>.&lt;/li>
 &lt;li>Any questions? Contact us at 
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
 &lt;li>Looking for a previous semester&amp;rsquo;s materials? You can view it in the 
@@ -111,7 +111,7 @@ Weekly notes:&lt;/p>
 &lt;/li>
 &lt;li>Any questions? Post on Ed or reach us at 
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Week 9</title><link>http://localhost:1313/announcements/week-9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-9/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 9 of the DeCal! At this point, you should have turned in your Lab 8 on Gradescope. Most lab should also be graded by now.
+&lt;/ul></description></item><item><title>Week 9</title><link>http://localhost:1313/announcements/week-9/</link><pubDate>Sun, 06 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-9/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 9 of the DeCal! At this point, you should have turned in your Lab 8 on Gradescope. Most lab should also be graded by now.
 Weekly notes:&lt;/p>
 &lt;ul>
 &lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 04/08 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!

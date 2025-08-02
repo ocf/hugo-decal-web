@@ -1,5 +1,6 @@
 ---
 title: Week 9
+date: 2025-04-06
 weight: 90
 week: 9
 ---

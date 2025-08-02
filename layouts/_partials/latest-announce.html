@@ -1,0 +1,4 @@
+{{ with (index (where site.RegularPages "Type" "announcements").ByDate.Reverse 0) }}
+  <h1 style="margin-top:1rem;">{{ .Title }}</h1>
+  {{ .Content }}
+{{ end }}

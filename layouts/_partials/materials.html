@@ -1,0 +1,39 @@
+{{ range $category, $materials := .Site.Data.materials }}
+  {{ range $materials }}
+
+  </br>
+
+  <div style="background-color: var(--gray-100);padding:6px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 4px 14px rgba(0, 0, 0, 0.05);border-radius:.25rem;">
+    <h3>
+      <b>Week {{ .id }}</b>: {{ .date }}
+    </h3>
+    <p>
+      {{ if eq .id 0 }}
+      <b>Infosession: </b>{{ .name }}
+      {{ else }}
+      <b>Lecture: </b>{{ .name }} |
+      {{ end }}
+
+      {{ if not .hidelink }}
+      <a href={{ .slides }}>
+        <button style="margin-top: 10px;" >Slides</button>
+      </a>
+      <a href={{ .video }}>
+        <button style="margin-top: 10px;" >Recording</button>
+      </a>
+      {{ end }}
+
+    </p>
+    <p>
+      <b>Lab</b>: 
+      {{ if not .hidelink }}
+      <a href="/labs/{{ .id }}">Lab {{ .id }}</a>
+      {{ else }}
+      Lab {{ .id }}
+      {{ end }}
+      due <b>{{ .labdue }}</b>
+    </p>
+  </div>
+
+  {{ end }}
+{{ end }}

@@ -1,9 +1,7 @@
 ---
-title: About
+title: Syllabus
 weight: 10
 ---
-
-# About
 
 # Course Description
 

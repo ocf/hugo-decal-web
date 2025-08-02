@@ -1,0 +1,56 @@
+{{ define "main" }}
+  <h1 style="text-align: center">OCF Linux System Administration DeCal</h1>
+  
+  <h3>
+  A course covering the basics of setting up and administering a production-quality Linux server environment.
+  </h3>
+
+  <br>
+
+  <div style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
+  {{ $image := resources.Get "waddles-wires.png" }}
+  {{ with $image }}
+    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
+  {{ end }}
+  {{ $image := resources.Get "waddles-board.png" }}
+  {{ with $image }}
+    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
+  {{ end }}
+  {{ $image := resources.Get "ocf-url.png" }}
+  {{ with $image }}
+    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
+  {{ end }}
+  {{ $image := resources.Get "waddles-bash.png" }}
+  {{ with $image }}
+    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
+  {{ end }}
+  {{ $image := resources.Get "waddles-duck.png" }}
+  {{ with $image }}
+    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
+  {{ end }}
+  </div>
+  
+  </br>
+  
+  <hr>
+  <div style="line-height: 1.6;">
+  {{ with (index (where site.RegularPages "Type" "announcements").ByDate.Reverse 0) }}
+    <h1 style="margin-top:1rem;">{{ .Title }}</h1>
+    {{ .Content }}
+  {{ end }}
+  </div>
+
+  <hr>
+  </br>
+
+  <h3><b>Lecture</b>: Tuesday 7:00PM - 8:00PM</h3>
+  <h3><b>Lab</b>: Tuesday 8:00PM - 9:00PM</h3>
+
+  </br>
+
+  <h2>Schedule</h2>
+  
+  {{ partial "materials.html" . }}
+
+
+{{ end }}
