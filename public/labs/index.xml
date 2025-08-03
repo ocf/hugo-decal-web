@@ -1,31 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OCF Sysadmin DeCal</title><link>http://localhost:1313/labs/</link><description>Recent content on OCF Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><atom:link href="http://localhost:1313/labs/index.xml" rel="self" type="application/rss+xml"/><item><title>Lab 1 - Unix, the Shell, OSS</title><link>http://localhost:1313/labs/1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/1/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="introduction">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OCF Sysadmin DeCal</title><link>http://localhost:1313/labs/</link><description>Recent content on OCF Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><atom:link href="http://localhost:1313/labs/index.xml" rel="self" type="application/rss+xml"/><item><title>Lab 1 - Unix, the Shell, OSS</title><link>http://localhost:1313/labs/1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/1/</guid><description>&lt;h2 id="introduction">
  Introduction
  &lt;a class="anchor" href="#introduction">#&lt;/a>
 &lt;/h2>
 &lt;p>Welcome to the first lab!&lt;/p>
 &lt;p>All labs are graded on completeness and effort, so don&amp;rsquo;t worry too much about
 getting an exact right answer. (We&amp;rsquo;ll release staff solutions after the lab is due!)&lt;/p>
-&lt;p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!&lt;/p></description></item><item><title>Lab 2 - Core Shell &amp; Shell Scripting</title><link>http://localhost:1313/labs/2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/2/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;p>Welcome to Lab 2! In this lab you will be learning how to work productively in a shell and use that to write your first shell script.&lt;/p>
+&lt;p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!&lt;/p>
+&lt;p>It may be convenient to submit your answers to Gradescope as you go.&lt;/p></description></item><item><title>Lab 2 - Core Shell &amp; Shell Scripting</title><link>http://localhost:1313/labs/2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/2/</guid><description>&lt;p>Welcome to Lab 2! In this lab you will be learning how to work productively in a shell and use that to write your first shell script.&lt;/p>
 &lt;p>Remember to submit your answers in the Gradescope assignment!&lt;/p>
 &lt;p>Don&amp;rsquo;t forget to use Google and &lt;code>man&lt;/code> when stuck. The resources linked at the bottom may be helpful as well.&lt;/p>
 &lt;p>
@@ -36,17 +17,7 @@ getting an exact right answer. (We&amp;rsquo;ll release staff solutions after th
 &lt;/h2>
 &lt;p>This lab can be completed either on tsunami by logging in using ssh or on the VM you set up in the previous lab.
 This lab requires a bash shell, &lt;code>vim&lt;/code>, and &lt;code>tmux&lt;/code>.
-If you do not have tmux or vim installed: &lt;code>sudo apt install vim tmux&lt;/code>&lt;/p></description></item><item><title>Lab 3 - Packages and Packaging</title><link>http://localhost:1313/labs/3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/3/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="about-this-lab">
+If you do not have tmux or vim installed: &lt;code>sudo apt install vim tmux&lt;/code>&lt;/p></description></item><item><title>Lab 3 - Packages and Packaging</title><link>http://localhost:1313/labs/3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/3/</guid><description>&lt;h2 id="about-this-lab">
  About This Lab
  &lt;a class="anchor" href="#about-this-lab">#&lt;/a>
 &lt;/h2>
@@ -65,17 +36,7 @@ of just a grade.&lt;/p>
  Debian: An introduction to &lt;code>apt&lt;/code> and &lt;code>dpkg&lt;/code>
  &lt;a class="anchor" href="#debian-an-introduction-to-apt-and-dpkg">#&lt;/a>
 &lt;/h2>
-&lt;p>In this class, we will be focused on using Debian. As noted within this week&amp;rsquo;s lecture, Debian uses apt/dpkg as its package manager. Other distributions use different package managers.&lt;/p></description></item><item><title>Lab 4 - Processes and Services</title><link>http://localhost:1313/labs/4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/4/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="overview">
+&lt;p>In this class, we will be focused on using Debian. As noted within this week&amp;rsquo;s lecture, Debian uses apt/dpkg as its package manager. Other distributions use different package managers.&lt;/p></description></item><item><title>Lab 4 - Processes and Services</title><link>http://localhost:1313/labs/4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/4/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
@@ -84,32 +45,12 @@ of just a grade.&lt;/p>
  Part 0: Set up networking
  &lt;a class="anchor" href="#part-0-set-up-networking">#&lt;/a>
 &lt;/h2>
-&lt;p>Before you start this lab, you&amp;rsquo;ll need to make sure you can access services from your VM in your web browser!&lt;/p></description></item><item><title>Lab 5 - Introduction to Networking</title><link>http://localhost:1313/labs/5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/5/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h1 id="overview">
+&lt;p>Before you start this lab, you&amp;rsquo;ll need to make sure you can access services from your VM in your web browser!&lt;/p></description></item><item><title>Lab 5 - Introduction to Networking</title><link>http://localhost:1313/labs/5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/5/</guid><description>&lt;h1 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h1>
 &lt;p>It is undeniable that the internet is an important system that has redefined our world. The ability to develop networks and allow devices to communicate is critical to modern day computer systems. This lab will take a look into the basics of computer networking and then examine networks through the perspective of a sysadmin.&lt;/p>
-&lt;p>We will be using web browsing as an analogy to understand the basics of networking. What exactly happens when I go web browsing for cat pictures?&lt;/p></description></item><item><title>Lab 6 - Web Servers</title><link>http://localhost:1313/labs/6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/6/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="overview">
+&lt;p>We will be using web browsing as an analogy to understand the basics of networking. What exactly happens when I go web browsing for cat pictures?&lt;/p></description></item><item><title>Lab 6 - Web Servers</title><link>http://localhost:1313/labs/6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/6/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
@@ -120,17 +61,7 @@ communicate with each other. In this lab, we&amp;rsquo;ll explore different netw
  Which networked services are already running?
  &lt;a class="anchor" href="#which-networked-services-are-already-running">#&lt;/a>
 &lt;/h2>
-&lt;p>There are multiple networked services running on your VM right now. To output the networked services running on the VM use &lt;code>netstat&lt;/code> (install using apt).&lt;/p></description></item><item><title>Lab 7 - Security Fundamentals</title><link>http://localhost:1313/labs/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/7/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;p>For this lab, we will use 
+&lt;p>There are multiple networked services running on your VM right now. To output the networked services running on the VM use &lt;code>netstat&lt;/code> (install using apt).&lt;/p></description></item><item><title>Lab 7 - Security Fundamentals</title><link>http://localhost:1313/labs/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/7/</guid><description>&lt;p>For this lab, we will use 
  &lt;a href="https://gnupg.org">GnuPG&lt;/a> (also referred to as GPG), a free implementation of the 
  &lt;a href="https://openpgp.org/">OpenPGP standard&lt;/a>. As stated by GPG&amp;rsquo;s website:&lt;/p>
 &lt;blockquote>
@@ -141,17 +72,7 @@ communicate with each other. In this lab, we&amp;rsquo;ll explore different netw
  Encryption and Decryption
  &lt;a class="anchor" href="#encryption-and-decryption">#&lt;/a>
 &lt;/h2>
-&lt;p>Encryption takes in a plaintext and a key, returning ciphertext. Decryption takes in a ciphertext and a key, recovering and returning the original plaintext only if the decryption key is valid. The keys for encryption and decryption are long strings of random bits that make it computationally infeasible for an attacker to guess the key and decrypt a ciphertext.&lt;/p></description></item><item><title>Lab 8 - Version Control and Backups</title><link>http://localhost:1313/labs/8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/8/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;p>In this lab, we&amp;rsquo;ll be learning how to use Git and typical best practices for
+&lt;p>Encryption takes in a plaintext and a key, returning ciphertext. Decryption takes in a ciphertext and a key, recovering and returning the original plaintext only if the decryption key is valid. The keys for encryption and decryption are long strings of random bits that make it computationally infeasible for an attacker to guess the key and decrypt a ciphertext.&lt;/p></description></item><item><title>Lab 8 - Version Control and Backups</title><link>http://localhost:1313/labs/8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/8/</guid><description>&lt;p>In this lab, we&amp;rsquo;ll be learning how to use Git and typical best practices for
 version control!&lt;/p>
 &lt;h3 id="pulling-the-code">
  Pulling the code
@@ -173,17 +94,7 @@ simulate the real-world development process by making a branch for our new dice
 rolling feature, making a few commits to that branch, and then merging our
 feature branch into the master branch. &lt;em>You won&amp;rsquo;t need to personally write any
 Python for this lab!&lt;/em> You will only need to copy-and-paste the code we provide,
-since this lab is about learning version control and not Python.&lt;/p></description></item><item><title>Lab 9 - Containers (Docker)</title><link>http://localhost:1313/labs/9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/9/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="overview">
+since this lab is about learning version control and not Python.&lt;/p></description></item><item><title>Lab 9 - Containers (Docker)</title><link>http://localhost:1313/labs/9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/9/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
@@ -191,40 +102,38 @@ since this lab is about learning version control and not Python.&lt;/p></descrip
 &lt;ul>
 &lt;li>Create and use a Docker container interactively and create a Dockerfile, which allows you to declaratively define your containers.&lt;/li>
 &lt;/ul>
-&lt;p>Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p></description></item><item><title>Lab 10 - Puppet</title><link>http://localhost:1313/labs/10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/10/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
+&lt;p>Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p>
+&lt;h2 id="getting-started-with-docker">
+ Getting started with Docker
+ &lt;a class="anchor" href="#getting-started-with-docker">#&lt;/a>
 &lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h1 id="overview">
+&lt;p>You have a couple of options for 
+ &lt;a href="https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/">installing Docker&lt;/a>. It is recommended to follow the &amp;ldquo;Install using the apt repository&amp;rdquo; section.&lt;/p></description></item><item><title>Lab 10 - Puppet</title><link>http://localhost:1313/labs/10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/10/</guid><description>&lt;h1 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h1>
 &lt;p>For this lab, we will be installing and configuring a Minecraft server. All of
 this configuration can be successfully done without a Minecraft client or knowledge
 on how to play the game itself.&lt;/p>
-&lt;p>&lt;strong>If you want to actually be able to connect to the server:&lt;/strong> If you&amp;rsquo;re not using the provided VM make sure your Linux VM has enough RAM to host the server (2-4Gb).&lt;/p></description></item><item><title>Lab 11 - Kubernetes</title><link>http://localhost:1313/labs/11/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/11/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
+&lt;p>&lt;strong>If you want to actually be able to connect to the server:&lt;/strong> If you&amp;rsquo;re not using the provided VM make sure your Linux VM has enough RAM to host the server (2-4Gb).&lt;/p>
+&lt;h2 id="getting-help">
+ Getting help
+ &lt;a class="anchor" href="#getting-help">#&lt;/a>
 &lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="overview">
+&lt;p>If you want any help with any part of this lab, join the OCF
+Discord (
+ &lt;a href="https://ocf.io/discord">https://ocf.io/discord&lt;/a>) and ask in the #decal-general channel!&lt;/p></description></item><item><title>Lab 11 - Kubernetes</title><link>http://localhost:1313/labs/11/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/11/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
 &lt;p>&lt;strong>NOTE:&lt;/strong> This lab is completely optional. Completing it before the late lab
 deadline will count as an additional completed, on-time lab (so please try it out
 if you weren&amp;rsquo;t able to finish a previous lab)!&lt;/p>
-&lt;p>This lab is designed to give you some hands-on experience with Kubernetes. By the end of this lab, you should be able to:&lt;/p></description></item><item><title>Lab 12 - CUDA</title><link>http://localhost:1313/labs/12/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/12/</guid><description>&lt;p>This lab is completely optional and is not worth any credit.&lt;/p>
+&lt;p>This lab is designed to give you some hands-on experience with Kubernetes. By the end of this lab, you should be able to:&lt;/p>
+&lt;ul>
+&lt;li>Understand the basic components of a Kubernetes deployment, including pods, services, and ingresses&lt;/li>
+&lt;li>Run your own simple Kubernetes deployment&lt;/li>
+&lt;/ul>
+&lt;p>Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p></description></item><item><title>Lab 12 - CUDA</title><link>http://localhost:1313/labs/12/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/12/</guid><description>&lt;p>This lab is completely optional and is not worth any credit.&lt;/p>
 &lt;p>Access the lab here: 
  &lt;a href="https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing">https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing&lt;/a>&lt;/p></description></item></channel></rss>

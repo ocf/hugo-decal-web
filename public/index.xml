@@ -18,24 +18,15 @@
 1. There will be two identical infosessions on **Tuesday, Jan. 25, 8 pm** and **Thursday, Jan. 27, 8 pm** on [ocf.io/decalzoom](https://ocf.io/decalzoom).
 1. Lab 0, which must be complete prior to enrolling, will be released after the infosessions.
 1. Any questions? Contact us at [decal@ocf.berkeley.edu](mailto:decal@ocf.berkeley.edu)!
-1. Looking for a previous semester's materials? You can view it in the [archive](/archive). --></description></item><item><title>Lab 1 - Unix, the Shell, OSS</title><link>http://localhost:1313/labs/1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/1/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="introduction">
+1. Looking for a previous semester's materials? You can view it in the [archive](/archive). --></description></item><item><title>Lab 1 - Unix, the Shell, OSS</title><link>http://localhost:1313/labs/1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/1/</guid><description>&lt;h2 id="introduction">
  Introduction
  &lt;a class="anchor" href="#introduction">#&lt;/a>
 &lt;/h2>
 &lt;p>Welcome to the first lab!&lt;/p>
 &lt;p>All labs are graded on completeness and effort, so don&amp;rsquo;t worry too much about
 getting an exact right answer. (We&amp;rsquo;ll release staff solutions after the lab is due!)&lt;/p>
-&lt;p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!&lt;/p></description></item><item><title>Syllabus</title><link>http://localhost:1313/syllabus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/syllabus/</guid><description>&lt;h1 id="course-description">
+&lt;p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!&lt;/p>
+&lt;p>It may be convenient to submit your answers to Gradescope as you go.&lt;/p></description></item><item><title>Syllabus</title><link>http://localhost:1313/syllabus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/syllabus/</guid><description>&lt;h1 id="course-description">
  Course Description
  &lt;a class="anchor" href="#course-description">#&lt;/a>
 &lt;/h1>
@@ -54,17 +45,7 @@ lecture and lab will be at their normal time on &lt;strong>Tuesday 7-8pm and 8-9
 If you&amp;rsquo;re in the Experimental Decal, it will be on &lt;strong>Thursday 7-8pm and 8-9pm&lt;/strong>.
 The lab is now open and you can get a head start if you wish, or you can start during lab time.
 We&amp;rsquo;re looking forward to teaching this class and hope you find the content
-engaging!&lt;/p></description></item><item><title>Lab 2 - Core Shell &amp; Shell Scripting</title><link>http://localhost:1313/labs/2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/2/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;p>Welcome to Lab 2! In this lab you will be learning how to work productively in a shell and use that to write your first shell script.&lt;/p>
+engaging!&lt;/p></description></item><item><title>Lab 2 - Core Shell &amp; Shell Scripting</title><link>http://localhost:1313/labs/2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/2/</guid><description>&lt;p>Welcome to Lab 2! In this lab you will be learning how to work productively in a shell and use that to write your first shell script.&lt;/p>
 &lt;p>Remember to submit your answers in the Gradescope assignment!&lt;/p>
 &lt;p>Don&amp;rsquo;t forget to use Google and &lt;code>man&lt;/code> when stuck. The resources linked at the bottom may be helpful as well.&lt;/p>
 &lt;p>
@@ -91,17 +72,7 @@ Weekly notes:&lt;/p>
 &lt;/li>
 &lt;li>Any questions? Post on Ed or reach us at 
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 3 - Packages and Packaging</title><link>http://localhost:1313/labs/3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/3/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="about-this-lab">
+&lt;/ul></description></item><item><title>Lab 3 - Packages and Packaging</title><link>http://localhost:1313/labs/3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/3/</guid><description>&lt;h2 id="about-this-lab">
  About This Lab
  &lt;a class="anchor" href="#about-this-lab">#&lt;/a>
 &lt;/h2>
@@ -121,17 +92,7 @@ of just a grade.&lt;/p>
  &lt;a class="anchor" href="#debian-an-introduction-to-apt-and-dpkg">#&lt;/a>
 &lt;/h2>
 &lt;p>In this class, we will be focused on using Debian. As noted within this week&amp;rsquo;s lecture, Debian uses apt/dpkg as its package manager. Other distributions use different package managers.&lt;/p></description></item><item><title>Week 3</title><link>http://localhost:1313/announcements/week-3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-3/</guid><description>&lt;p>Hi! Hope everyone&amp;rsquo;s had a good Presidential day weekend! we&amp;rsquo;re entering the third week of the DeCal. At this point, you should have turned in your Lab 2 on Gradescope. We know some people have been struggling with permissions on the Decal VM, and we&amp;rsquo;re looking into the issue. Let us know if this is happening to you on Edstem or through email and you&amp;rsquo;re allowed to submit late!
-Weekly notes:&lt;/p></description></item><item><title>Lab 4 - Processes and Services</title><link>http://localhost:1313/labs/4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/4/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="overview">
+Weekly notes:&lt;/p></description></item><item><title>Lab 4 - Processes and Services</title><link>http://localhost:1313/labs/4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/4/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
@@ -176,17 +137,7 @@ Weekly notes:&lt;/p>
 &lt;/li>
 &lt;li>Any questions? Post on Ed or reach us at 
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 5 - Introduction to Networking</title><link>http://localhost:1313/labs/5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/5/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h1 id="overview">
+&lt;/ul></description></item><item><title>Lab 5 - Introduction to Networking</title><link>http://localhost:1313/labs/5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/5/</guid><description>&lt;h1 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h1>
@@ -207,17 +158,7 @@ Weekly notes:&lt;/p>
 &lt;/li>
 &lt;li>Any questions? Post on Ed or reach us at 
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 6 - Web Servers</title><link>http://localhost:1313/labs/6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/6/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="overview">
+&lt;/ul></description></item><item><title>Lab 6 - Web Servers</title><link>http://localhost:1313/labs/6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/6/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
@@ -245,17 +186,7 @@ Weekly notes:
 &lt;/li>
 &lt;li>Any questions? Post on Ed or reach us at 
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 7 - Security Fundamentals</title><link>http://localhost:1313/labs/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/7/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;p>For this lab, we will use 
+&lt;/ul></description></item><item><title>Lab 7 - Security Fundamentals</title><link>http://localhost:1313/labs/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/7/</guid><description>&lt;p>For this lab, we will use 
  &lt;a href="https://gnupg.org">GnuPG&lt;/a> (also referred to as GPG), a free implementation of the 
  &lt;a href="https://openpgp.org/">OpenPGP standard&lt;/a>. As stated by GPG&amp;rsquo;s website:&lt;/p>
 &lt;blockquote>
@@ -287,17 +218,7 @@ Weekly notes:&lt;/p>
 &lt;/li>
 &lt;li>Any questions? Post on Ed or reach us at 
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 8 - Version Control and Backups</title><link>http://localhost:1313/labs/8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/8/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;p>In this lab, we&amp;rsquo;ll be learning how to use Git and typical best practices for
+&lt;/ul></description></item><item><title>Lab 8 - Version Control and Backups</title><link>http://localhost:1313/labs/8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/8/</guid><description>&lt;p>In this lab, we&amp;rsquo;ll be learning how to use Git and typical best practices for
 version control!&lt;/p>
 &lt;h3 id="pulling-the-code">
  Pulling the code
@@ -335,17 +256,7 @@ Weekly notes:&lt;/p>
 &lt;/li>
 &lt;li>Any questions? Post on Ed or reach us at 
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 9 - Containers (Docker)</title><link>http://localhost:1313/labs/9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/9/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
-&lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="overview">
+&lt;/ul></description></item><item><title>Lab 9 - Containers (Docker)</title><link>http://localhost:1313/labs/9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/9/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
@@ -353,41 +264,39 @@ Weekly notes:&lt;/p>
 &lt;ul>
 &lt;li>Create and use a Docker container interactively and create a Dockerfile, which allows you to declaratively define your containers.&lt;/li>
 &lt;/ul>
-&lt;p>Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p></description></item><item><title>Lab 10 - Puppet</title><link>http://localhost:1313/labs/10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/10/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
+&lt;p>Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p>
+&lt;h2 id="getting-started-with-docker">
+ Getting started with Docker
+ &lt;a class="anchor" href="#getting-started-with-docker">#&lt;/a>
 &lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h1 id="overview">
+&lt;p>You have a couple of options for 
+ &lt;a href="https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/">installing Docker&lt;/a>. It is recommended to follow the &amp;ldquo;Install using the apt repository&amp;rdquo; section.&lt;/p></description></item><item><title>Lab 10 - Puppet</title><link>http://localhost:1313/labs/10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/10/</guid><description>&lt;h1 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h1>
 &lt;p>For this lab, we will be installing and configuring a Minecraft server. All of
 this configuration can be successfully done without a Minecraft client or knowledge
 on how to play the game itself.&lt;/p>
-&lt;p>&lt;strong>If you want to actually be able to connect to the server:&lt;/strong> If you&amp;rsquo;re not using the provided VM make sure your Linux VM has enough RAM to host the server (2-4Gb).&lt;/p></description></item><item><title>Lab 11 - Kubernetes</title><link>http://localhost:1313/labs/11/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/11/</guid><description>&lt;h2 id="table-of-contents">
- Table of contents
- &lt;a class="anchor" href="#table-of-contents">#&lt;/a>
+&lt;p>&lt;strong>If you want to actually be able to connect to the server:&lt;/strong> If you&amp;rsquo;re not using the provided VM make sure your Linux VM has enough RAM to host the server (2-4Gb).&lt;/p>
+&lt;h2 id="getting-help">
+ Getting help
+ &lt;a class="anchor" href="#getting-help">#&lt;/a>
 &lt;/h2>
-&lt;p>{: .no_toc .text-delta }&lt;/p>
-&lt;ol>
-&lt;li>TOC
-{:toc}&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="overview">
+&lt;p>If you want any help with any part of this lab, join the OCF
+Discord (
+ &lt;a href="https://ocf.io/discord">https://ocf.io/discord&lt;/a>) and ask in the #decal-general channel!&lt;/p></description></item><item><title>Lab 11 - Kubernetes</title><link>http://localhost:1313/labs/11/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/11/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
 &lt;p>&lt;strong>NOTE:&lt;/strong> This lab is completely optional. Completing it before the late lab
 deadline will count as an additional completed, on-time lab (so please try it out
 if you weren&amp;rsquo;t able to finish a previous lab)!&lt;/p>
-&lt;p>This lab is designed to give you some hands-on experience with Kubernetes. By the end of this lab, you should be able to:&lt;/p></description></item><item><title>Lab 12 - CUDA</title><link>http://localhost:1313/labs/12/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/12/</guid><description>&lt;p>This lab is completely optional and is not worth any credit.&lt;/p>
+&lt;p>This lab is designed to give you some hands-on experience with Kubernetes. By the end of this lab, you should be able to:&lt;/p>
+&lt;ul>
+&lt;li>Understand the basic components of a Kubernetes deployment, including pods, services, and ingresses&lt;/li>
+&lt;li>Run your own simple Kubernetes deployment&lt;/li>
+&lt;/ul>
+&lt;p>Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p></description></item><item><title>Lab 12 - CUDA</title><link>http://localhost:1313/labs/12/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/12/</guid><description>&lt;p>This lab is completely optional and is not worth any credit.&lt;/p>
 &lt;p>Access the lab here: 
  &lt;a href="https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing">https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing&lt;/a>&lt;/p></description></item><item><title/><link>http://localhost:1313/resources/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/resources/</guid><description>&lt;h2 id="readingresource-list">
  Reading/Resource List
