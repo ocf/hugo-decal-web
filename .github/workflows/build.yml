@@ -10,14 +10,14 @@ on:
 jobs:
 
   check-flake:
-    runs-on: ci-ocf-decal-web
+    runs-on: ci-ocf-hugo-decal-web
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/flake-checker-action@v9
 
   build_and_deploy:
 
-    runs-on: ci-ocf-decal-web
+    runs-on: ci-ocf-hugo-decal-web
 
     steps:
       - name: Checkout
@@ -34,5 +34,5 @@ jobs:
           chmod 400 known_hosts
 
       - name: Deploy with rsync
-        run: nix develop .#deploy -c rsync -e "ssh -v -o UserKnownHostsFile=known_hosts -i id_ed25519" --verbose --compress --partial --checksum --progress --human-readable --archive --delete result/ deploy-bestdocs@amethyst.ocf.berkeley.edu:/var/www/bestdocs
+        run: nix develop .#deploy -c rsync -e "ssh -v -o UserKnownHostsFile=known_hosts -i id_ed25519" --verbose --compress --partial --checksum --progress --human-readable --archive --delete result/ deploy-decal@amethyst.ocf.berkeley.edu:/var/www/decal
 
