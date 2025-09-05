@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 7 - Security Fundamentals | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Lab 7 - Security Fundamentals" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/labs/7/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/labs/7/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 7 - Security Fundamentals" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Lab 7 - Security Fundamentals","url":"https://decal.ocf.berkeley.edu/labs/7/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#encryption-and-decryption">Encryption and Decryption</a><ol><li><a href="#symmetric-cryptography">Symmetric Cryptography</a></li><li><a href="#asymmetric-cryptography">Asymmetric Cryptography</a></li><li><a href="#signatures">Signatures</a></li></ol></li><li><a href="#hashing-checksums">Hashing (Checksums)</a></li><li><a href="#file-security">File Security</a></li><li><a href="#lab-checkoff">Lab Checkoff</a><ol><li><a href="#submission">Submission</a></li><li><a href="#setup">Setup</a></li><li><a href="#encryption-and-decryption-1">Encryption and Decryption</a></li><li><a href="#hashing-checksums-1">Hashing (Checksums)</a></li><li><a href="#file-security-1">File Security</a></li></ol></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab 7 - Security Fundamentals</h1>
+        
+        <p>Facilitator: <a href="/staff#owen-thompson,-luke-peters,-joey-li">Owen Thompson, Luke Peters, Joey Li</a></p>
+        
+        
+        7 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#encryption-and-decryption" id="markdown-toc-encryption-and-decryption">Encryption and Decryption</a>    <ol>
+      <li><a href="#symmetric-cryptography" id="markdown-toc-symmetric-cryptography">Symmetric Cryptography</a></li>
+      <li><a href="#asymmetric-cryptography" id="markdown-toc-asymmetric-cryptography">Asymmetric Cryptography</a>        <ol>
+          <li><a href="#gpg-keyring-abstraction" id="markdown-toc-gpg-keyring-abstraction">GPG Keyring Abstraction</a></li>
+        </ol>
+      </li>
+      <li><a href="#signatures" id="markdown-toc-signatures">Signatures</a></li>
+    </ol>
+  </li>
+  <li><a href="#hashing-checksums" id="markdown-toc-hashing-checksums">Hashing (Checksums)</a></li>
+  <li><a href="#file-security" id="markdown-toc-file-security">File Security</a></li>
+  <li><a href="#lab-checkoff" id="markdown-toc-lab-checkoff">Lab Checkoff</a>    <ol>
+      <li><a href="#submission" id="markdown-toc-submission">Submission</a></li>
+      <li><a href="#setup" id="markdown-toc-setup">Setup</a></li>
+      <li><a href="#encryption-and-decryption-1" id="markdown-toc-encryption-and-decryption-1">Encryption and Decryption</a></li>
+      <li><a href="#hashing-checksums-1" id="markdown-toc-hashing-checksums-1">Hashing (Checksums)</a></li>
+      <li><a href="#file-security-1" id="markdown-toc-file-security-1">File Security</a></li>
+    </ol>
+  </li>
+</ol><hr />
+
+<p>For this lab, we will use <a href="https://gnupg.org">GnuPG</a> (also referred to as GPG), a free implementation of the <a href="https://openpgp.org/">OpenPGP standard</a>. As stated by GPG’s website:</p>
+<blockquote>
+  <p>GnuPG allows you to encrypt and sign your data and communications; it features a versatile key management system, along with access modules for all kinds of public key directories.</p>
+</blockquote>
+
+<p>The <a href="https://www.gnupg.org/gph/de/manual/r1023.html">GPG manual page</a> might be useful.</p>
+      <h2 id="encryption-and-decryption">
+        
+        
+          <a href="#encryption-and-decryption" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Encryption and Decryption
+        
+        
+      </h2>
+    
+<p>Encryption takes in a plaintext and a key, returning ciphertext. Decryption takes in a ciphertext and a key, recovering and returning the original plaintext only if the decryption key is valid. The keys for encryption and decryption are long strings of random bits that make it computationally infeasible for an attacker to guess the key and decrypt a ciphertext.</p>
+
+<p><img src="https://docs.oracle.com/cd/E19424-01/820-4811/images/scrypt.gif" alt="alt" /></p>
+      <h3 id="symmetric-cryptography">
+        
+        
+          <a href="#symmetric-cryptography" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Symmetric Cryptography
+        
+        
+      </h3>
+    
+<p>In symmetric cryptography, the keys used for encryption and decryption are the same.</p>
+
+<p>To try it out:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">gpg --symmetric [FILE]</code> on any file to output a <code class="language-plaintext highlighter-rouge">[FILE].gpg</code> file which is the encrypted version of the inputted file. You’ll need to enter a password when encrypting the file.</li>
+  <li><code class="language-plaintext highlighter-rouge">gpg --decrypt [FILE].gpg</code> on the encrypted version of original file, upon which you’ll need to enter the original password.</li>
+</ol>
+
+<p>In this GPG implementation, encryption and decryption of your file both require knowledge of a single password, which in this case serves as the symmetric key.</p>
+      <h3 id="asymmetric-cryptography">
+        
+        
+          <a href="#asymmetric-cryptography" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Asymmetric Cryptography
+        
+        
+      </h3>
+    
+<p>In asymmetric cryptography, two separate keys are respectively used for encryption and decryption. These two keys come in a public-private pair. The public key is made known publicly and used to encrypt data. Whereas, the private key is kept secret by the owner and used to decrypt data. Encryption of a file with a public key implies that only someone with the corresponding private key can the decrypt the resulting encrypted file.</p>
+      <h4 id="gpg-keyring-abstraction">
+        
+        
+          <a href="#gpg-keyring-abstraction" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> GPG Keyring Abstraction
+        
+        
+      </h4>
+    
+<p>GPG uses a “keyring” as a centralized location to hold all of a user’s keys. You’ll need to add/import a key to your keyring if you wish to use it and keep it around. Similarly, if you wish to share a key with someone else, you can export your key (which makes a copy of your key) and have them import it to their keyring.</p>
+
+<p>To try it out:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">gpg --full-generate-key</code> to generate a GPG public-private key pair. It’ll ask for a password.
+<em>If your machine is taking a while to generate a key, it may be due to a lack of entropy (randomness) that is needed for a long, random key. <code class="language-plaintext highlighter-rouge">sudo apt-get install haveged</code> will install a daemon that generates entropy.</em></li>
+  <li><code class="language-plaintext highlighter-rouge">gpg --recipient [RECIPIENT] --encrypt [FILE]</code> which’ll encrypt <code class="language-plaintext highlighter-rouge">[FILE]</code> with <code class="language-plaintext highlighter-rouge">[RECIPIENT]</code>’s public key (for now, try encrypting a file with your own public key).</li>
+  <li><code class="language-plaintext highlighter-rouge">gpg --decrypt [FILE].gpg</code> will search through your keyring and decrypt the file with the appropriate private key (if you possess the correct private key, of course). 
+<em>You don’t need to specify which key to decrypt a file with because GPG-encrypted files and keys contain metadata that allow GPG to pick the correct key from the keyring to decrypt the file with.</em></li>
+</ol>
+      <h3 id="signatures">
+        
+        
+          <a href="#signatures" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Signatures
+        
+        
+      </h3>
+    
+<p>The asymmetric scheme involving encryption with public key and decryption with private key can also be reversed to implement digital signatures whose role is equivalent to that of physical signatures. In this reversed scheme, the private key is used to sign a file, producing a signature on that file. And the corresponding public key is used to verify the signature. Therefore, only a person with the private key can produce a signature, but anyone with the corresponding public key can verify that signature.</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Illustration_of_digital_signature.svg/1920px-Illustration_of_digital_signature.svg.png" alt="alt" /></p>
+
+<p>To try it out:
+<code class="language-plaintext highlighter-rouge">gpg --sign [FILE]</code> to sign <code class="language-plaintext highlighter-rouge">[FILE]</code> with your private key. <code class="language-plaintext highlighter-rouge">gpg --verify [FILE].gpg</code> to verify that the file was signed by one of public keys on your keyring.</p>
+      <h2 id="hashing-checksums">
+        
+        
+          <a href="#hashing-checksums" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hashing (Checksums)
+        
+        
+      </h2>
+    
+<p>Hash functions deterministically map arbitrary-length data to a fixed-length string of bits (AKA a hash). As a result, the latter can serve as a summary of the former if the former exceeds the latter in terms of byte length. For instance, if we download a 1GB file and want to verify its integrity, instead of re-downloading the entire file again, we can simply compute a 256-bit hash of the file on our end and compare it to the 256-bit hash of source, which is known as a checksum.</p>
+
+<p>To try it out:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">sha1sum [FILE]</code> to get the SHA1 hash of <code class="language-plaintext highlighter-rouge">[FILE]</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">md5sum [FILE]</code> to get the MD5 hash of <code class="language-plaintext highlighter-rouge">[FILE]</code>.</li>
+</ol>
+
+<p>There are <a href="https://en.wikipedia.org/wiki/List_of_hash_functions">many hash functions</a>, only some of which satisfy the requirements of cryptographic hash functions. Crytographic hash functions primarily differ from their non-cryptographic counterparts in that they provide a property that make it computationally infeasible to forge a pre-hash file that maps to the same hash. If you are interested in all of the properties of a cryptographic hash function, <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">read here</a>. In particular, SHA1 and MD5 have been proven to no longer be cryptographically secure and are only used for checksums to ensure data integrity.</p>
+      <h2 id="file-security">
+        
+        
+          <a href="#file-security" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> File Security
+        
+        
+      </h2>
+    
+<p>The UNIX permission model has 3 components: permissions given to the file’s (1) owning user, (2) owning group and (3) others/everyone else. Permissions themselves have 3 subcomponents: (1) read, (2) write and (3) execute, enforcing the ability to read, write or execute a file.</p>
+
+<p><img src="https://www.comentum.com/images/permissions.jpg" alt="alt" /></p>
+
+<p>To try it out:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">ls -l</code> shows all the permissions of the current directory’s files in the leftmost column.</li>
+  <li><code class="language-plaintext highlighter-rouge">chown [-R] [NEWUSER]:[NEWGROUP] [FILE]</code> to change <code class="language-plaintext highlighter-rouge">[FILE]</code>’s  user and group ownerships respectively to <code class="language-plaintext highlighter-rouge">[NEWUSER]</code> and <code class="language-plaintext highlighter-rouge">[NEWGROUP]</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">chmod [-R] [PERMISSIONS] [FILE]</code> to set <code class="language-plaintext highlighter-rouge">[FILE]</code> with specified <code class="language-plaintext highlighter-rouge">[PERMISSIONS]</code>.</li>
+</ol>
+      <h2 id="lab-checkoff">
+        
+        
+          <a href="#lab-checkoff" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Lab Checkoff
+        
+        
+      </h2>
+    
+      <h3 id="submission">
+        
+        
+          <a href="#submission" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Submission
+        
+        
+      </h3>
+    
+<p>Submit answers to each question on Gradescope.</p>
+      <h3 id="setup">
+        
+        
+          <a href="#setup" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Setup
+        
+        
+      </h3>
+    
+<p>You should complete this lab on your student VM.</p>
+
+<p>Once you’re connected to your VM, you’ll need download files for this lab:</p>
+
+<p><code class="language-plaintext highlighter-rouge">wget https://github.com/0xcf/decal-labs/raw/master/7/lab7.zip</code>
+   <code class="language-plaintext highlighter-rouge">unzip lab7.zip -d lab7</code>
+   <code class="language-plaintext highlighter-rouge">cd lab7</code></p>
+      <h3 id="encryption-and-decryption-1">
+        
+        
+          <a href="#encryption-and-decryption-1" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Encryption and Decryption
+        
+        
+      </h3>
+    
+<ol>
+  <li>Decrypt <code class="language-plaintext highlighter-rouge">file1.txt.gpg</code> with the password <code class="language-plaintext highlighter-rouge">ocfdecal</code> (<em>for real-life purposes, never store passwords in plaintext</em>). What are the decrypted contents of <code class="language-plaintext highlighter-rouge">file1.txt.gpg</code>?</li>
+  <li>What command allows you to import a key?</li>
+  <li>What command allows you to export a key to a file? (Add the <code class="language-plaintext highlighter-rouge">--armor</code> flag to ASCII-encode the key so it can be sent easily in text form)</li>
+  <li>What command allows you to see all of the keys on your keyring?</li>
+  <li>Use the private key <code class="language-plaintext highlighter-rouge">lab7privkey</code> to decrypt the file <code class="language-plaintext highlighter-rouge">file2.txt.gpg</code> (<em>for real-life purposes, it is necessary to keep private keys secret</em>). What are the decrypted contents of <code class="language-plaintext highlighter-rouge">b8/file2.txt.gpg</code>?</li>
+</ol>
+      <h3 id="hashing-checksums-1">
+        
+        
+          <a href="#hashing-checksums-1" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hashing (Checksums)
+        
+        
+      </h3>
+    
+<ol>
+  <li>What is the MD5 hash of <code class="language-plaintext highlighter-rouge">file3.txt</code>?</li>
+  <li>What is the SHA1 hash of the MD5 hash of <code class="language-plaintext highlighter-rouge">file3.txt</code>? In other words, what is <code class="language-plaintext highlighter-rouge">SHA1(MD5(file3.txt))</code>?</li>
+</ol>
+      <h3 id="file-security-1">
+        
+        
+          <a href="#file-security-1" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> File Security
+        
+        
+      </h3>
+    
+<p>Run <code class="language-plaintext highlighter-rouge">sudo setup.sh</code> before beginning this section.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">file4.txt</code>: What are the permissions of this file? Explain what they allow and disallow.</li>
+  <li><code class="language-plaintext highlighter-rouge">file5</code>: Make this file executable and execute it. What is its printout?</li>
+  <li><code class="language-plaintext highlighter-rouge">file6.txt</code>: Change this file to be under your ownership. What command did you use?</li>
+  <li><code class="language-plaintext highlighter-rouge">file7.txt</code>: Make this file readable only to you. What command did you use?</li>
+  <li><code class="language-plaintext highlighter-rouge">file8.txt</code>: Change this file’s permissions such that only root should be able to read this file and no one should be able to edit it. What command did you use?</li>
+  <li><code class="language-plaintext highlighter-rouge">file9.txt</code>: Choose any method to make this file readable to you and unreadable to the previous owner. What command did you use?</li>
+</ol>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.nvidia.com/en-us/" class="no-underline">
+        <img
+          src="/assets/images/nvidia.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Thanks to
+        <a href="https://www.nvidia.com">Nvidia</a> for sponsoring GPUs to the OCF.
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2022
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

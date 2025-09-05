@@ -1,0 +1,921 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/archives/2022-spring/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/archives/2022-spring/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/archives/2022-spring/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/archives/2022-spring/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 9 - Version Control and Backups | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Lab 9 - Version Control and Backups" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/archives/2022-spring/labs/b9/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/archives/2022-spring/labs/b9/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 9 - Version Control and Backups" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Lab 9 - Version Control and Backups","url":"https://decal.ocf.berkeley.edu/archives/2022-spring/labs/b9/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#pulling-the-code">Pulling the code</a></li><li><a href="#part-1-git-basics">Part 1: Git Basics</a></li><li><a href="#part-2-pull-requests">Part 2: Pull Requests</a></li><li><a href="#part-3-questions">Part 3: Questions</a></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab 9 - Version Control and Backups</h1>
+        
+        <p>Facilitator: <a href="/staff#max-vogel">Max Vogel</a></p>
+        
+        
+        25 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#pulling-the-code" id="markdown-toc-pulling-the-code">Pulling the code</a></li>
+  <li><a href="#part-1-git-basics" id="markdown-toc-part-1-git-basics">Part 1: Git Basics</a>    <ol>
+      <li><a href="#randpy-demo" id="markdown-toc-randpy-demo"><code class="language-plaintext highlighter-rouge">rand.py</code> demo</a></li>
+      <li><a href="#creating-a-new-branch" id="markdown-toc-creating-a-new-branch">Creating a new branch</a></li>
+      <li><a href="#making-commits" id="markdown-toc-making-commits">Making commits</a></li>
+      <li><a href="#viewing-your-progress" id="markdown-toc-viewing-your-progress">Viewing your progress</a></li>
+      <li><a href="#merge-conflicts-and-rebase" id="markdown-toc-merge-conflicts-and-rebase">Merge conflicts and <code class="language-plaintext highlighter-rouge">rebase</code></a></li>
+      <li><a href="#optional-combining-commits" id="markdown-toc-optional-combining-commits">(OPTIONAL) Combining commits</a></li>
+    </ol>
+  </li>
+  <li><a href="#part-2-pull-requests" id="markdown-toc-part-2-pull-requests">Part 2: Pull Requests</a></li>
+  <li><a href="#part-3-questions" id="markdown-toc-part-3-questions">Part 3: Questions</a></li>
+</ol><hr />
+
+<p>In this lab, we’ll be learning how to use Git and typical best practices for
+version control!</p>
+      <h3 id="pulling-the-code">
+        
+        
+          <a href="#pulling-the-code" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pulling the code
+        
+        
+      </h3>
+    
+
+<p>If you haven’t already cloned the decal-lab git repository, run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/0xcf/decal-labs.git
+</code></pre></div></div>
+
+<p>Go to your <code class="language-plaintext highlighter-rouge">decal-labs</code> directory and <code class="language-plaintext highlighter-rouge">cd</code> into the folder <code class="language-plaintext highlighter-rouge">b9</code>. Run <code class="language-plaintext highlighter-rouge">git pull</code>
+to pull the latest changes.</p>
+      <h3 id="part-1-git-basics">
+        
+        
+          <a href="#part-1-git-basics" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Part 1: Git Basics
+        
+        
+      </h3>
+    
+
+<p>In the <code class="language-plaintext highlighter-rouge">b9</code> directory, we’ve provided a basic Python program called <code class="language-plaintext highlighter-rouge">rand.py</code> to
+help demonstrate some core Git concepts. <code class="language-plaintext highlighter-rouge">rand.py</code> takes command line arguments
+and performs a number of coin flips and outputs the result in your terminal. We
+want to add a feature to <code class="language-plaintext highlighter-rouge">rand.py</code> that also lets us perform dice rolls. We will
+simulate the real-world development process by making a branch for our new dice
+rolling feature, making a few commits to that branch, and then merging our
+feature branch into the master branch. <em>You won’t need to personally write any
+Python for this lab!</em> You will only need to copy-and-paste the code we provide,
+since this lab is about learning version control and not Python.</p>
+      <h4 id="randpy-demo">
+        
+        
+          <a href="#randpy-demo" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">rand.py</code> demo
+        
+        
+      </h4>
+    
+
+<p>Run <code class="language-plaintext highlighter-rouge">python3 rand.py -h</code> in your terminal to see the help dialogue for the
+program. At the moment, it takes one positional argument of either <code class="language-plaintext highlighter-rouge">coin</code> or
+<code class="language-plaintext highlighter-rouge">dice</code> as well as an optional flag <code class="language-plaintext highlighter-rouge">-i</code> (or <code class="language-plaintext highlighter-rouge">--iterations</code>) if you want to
+flip/roll more than once. The <code class="language-plaintext highlighter-rouge">dice</code> argument doesn’t work as we haven’t
+implemented it yet, but you can try flipping a coin:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/decal-labs/b9<span class="nv">$ </span>python3 rand.py coin
+1 coin flip<span class="o">(</span>s<span class="o">)</span> resulted <span class="k">in </span>0 Heads and 1 Tails:
+T
+~/decal-labs/b9<span class="nv">$ </span>python3 rand.py coin <span class="nt">-i</span> 10
+10 coin flip<span class="o">(</span>s<span class="o">)</span> resulted <span class="k">in </span>3 Heads and 7 Tails:
+T, T, H, T, H, H, T, T, T, T
+~/decal-labs/b9<span class="nv">$ </span>python3 rand.py coin <span class="nt">-i</span> 999
+Number of flips must be <span class="k">in </span>the range <span class="o">[</span>0 - 100]
+</code></pre></div></div>
+      <h4 id="creating-a-new-branch">
+        
+        
+          <a href="#creating-a-new-branch" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Creating a new branch
+        
+        
+      </h4>
+    
+
+<p>Let’s start working on the dice rolling feature! When working on a project with
+version control, it’s best practice to keep the master branch clean (read:
+mostly bug-free and stable).</p>
+
+<ul>
+  <li>
+    <p>Any branches you make will be based on/descended from code in the master
+branch. You don’t want to write new code on top of a foundation that’s broken
+or buggy!</p>
+  </li>
+  <li>
+    <p>Some organizations may directly deploy the master branch to a production
+environment (live for your users and clients), so new and work-in-progress
+features should be developed in their respective branches and finished before
+merging them into master.</p>
+  </li>
+</ul>
+
+<p>Let’s make a branch for our dice rolling feature:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> dice
+</code></pre></div></div>
+
+<p>This makes a new local branch called <code class="language-plaintext highlighter-rouge">dice</code> based on the branch that we are
+currently on (<code class="language-plaintext highlighter-rouge">master</code>) and switches you to the <code class="language-plaintext highlighter-rouge">dice</code> branch. This command is
+basically shorthand for:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git branch dice       <span class="c"># Create new branch called 'dice'</span>
+<span class="nv">$ </span>git checkout dice     <span class="c"># Switch to branch called 'dice'</span>
+</code></pre></div></div>
+
+<p>You can view the branches you’ve created by typing <code class="language-plaintext highlighter-rouge">git branch</code>. You should see
+two branches at this point, one called <code class="language-plaintext highlighter-rouge">master</code> and one called <code class="language-plaintext highlighter-rouge">dice</code>. An
+asterisk is placed next to the branch that you’ve currently checked out.</p>
+
+<blockquote>
+  <p>You can make <code class="language-plaintext highlighter-rouge">git branch</code> (and many other command-line tools) display more
+information by passing the verbose flag <code class="language-plaintext highlighter-rouge">-v</code>, or make it display even more
+information by adding additional <code class="language-plaintext highlighter-rouge">v</code> characters to the flag (e.g. <code class="language-plaintext highlighter-rouge">-vv</code>). For
+example, <code class="language-plaintext highlighter-rouge">git branch -v</code> will display the commit message of the most recent
+commit on the branch (aka the <code class="language-plaintext highlighter-rouge">HEAD</code>). <code class="language-plaintext highlighter-rouge">git branch -vv</code> also displays in square
+brackets  the remote branch that the local branch is tracking, if one exists.
+In this repository, <code class="language-plaintext highlighter-rouge">master</code> is associated with a remote branch <code class="language-plaintext highlighter-rouge">origin/master</code>
+that lives on Github’s servers. This means when you <code class="language-plaintext highlighter-rouge">git push</code> or <code class="language-plaintext highlighter-rouge">pull</code> to/from
+<code class="language-plaintext highlighter-rouge">origin master</code>, you are syncing up your local copy of the <code class="language-plaintext highlighter-rouge">master</code> branch
+with the remote <code class="language-plaintext highlighter-rouge">master</code> branch on Github’s servers. At the moment, your newly
+created <code class="language-plaintext highlighter-rouge">dice</code> branch is local only, meaning that it is not tracked.
+Therefore attempting to <code class="language-plaintext highlighter-rouge">git push</code> or <code class="language-plaintext highlighter-rouge">git pull</code> will not work (or Git may ask
+if you want to have a remote branch created).</p>
+</blockquote>
+      <h4 id="making-commits">
+        
+        
+          <a href="#making-commits" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Making commits
+        
+        
+      </h4>
+    
+
+<p>Now that you’ve created and swapped to the <code class="language-plaintext highlighter-rouge">dice</code> branch, you can safely start
+adding code <em>without</em> modifying the <code class="language-plaintext highlighter-rouge">master</code> branch. The code for dice rolling
+will be split up into three commits so that we can demonstrate how to combine
+multiple commits into a single commit later. Open <code class="language-plaintext highlighter-rouge">rand.py</code> in your preferred
+text editor. Find the comment in the <code class="language-plaintext highlighter-rouge">__main__</code> function that says <code class="language-plaintext highlighter-rouge">COMMIT 1</code>
+and add the following code below it like so:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1"># COMMIT 1: Add -s flag for number of sides on a die
+</span>    <span class="n">parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s">"-s"</span><span class="p">,</span> <span class="s">"--sides"</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s">"sides"</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s">"Number of sides on a die (max=20; ignored when flipping a coin)"</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>If you’re unsure about copying the code correctly, take a look at
+<code class="language-plaintext highlighter-rouge">rand_reference.py</code> for what the finished code should look like!</p>
+</blockquote>
+
+<p>Save and exit the text editor and return to the terminal. Type <code class="language-plaintext highlighter-rouge">git status</code> to
+see that <code class="language-plaintext highlighter-rouge">rand.py</code> has been changed but not staged. Type <code class="language-plaintext highlighter-rouge">git add rand.py</code> to
+stage the file. To “stage” a file means to add it to the group of files that you
+want to include in your commit.</p>
+
+<blockquote>
+  <p>You may already know <code class="language-plaintext highlighter-rouge">git add .</code> to add every changed file in your current
+directory to the staging area, but in some cases you want to only add relevant
+files if you hopped around implementing different things. A commit should be a
+group of changes focused on a single small goal, sub-feature, or bug fix. In
+the event that you need to roll back a commit, you don’t want to cause
+collateral damage by undoing changes in an unrelated file that you lumped into
+the commit.</p>
+</blockquote>
+
+<p>Now, lets commit our changes and write a concise and useful commit message. Type
+<code class="language-plaintext highlighter-rouge">git commit -m "Add -s flag for number of sides on a die"</code>. Organizations and
+companies will have different best practices for writing commit messages, but
+here are some common guidelines:</p>
+
+<ul>
+  <li>
+    <p><strong>Keep it short.</strong> Typical commits should be one line (some exceptions). If a
+lot of changes have been made, you might want to make multiple commits instead.</p>
+  </li>
+  <li>
+    <p><strong>Make it descriptive.</strong> If someone needs to read the commit history, they’re
+not going to know or remember what was changed by a commit that just says
+“Fixed bug” or “WIP”.</p>
+  </li>
+  <li>
+    <p>A lot of places like to capitalize the first letter and use the “&lt;present
+tense verb&gt; &lt;descriptive thing&gt;” sentence structure. For example, “Add”,
+“Fix”, or “Remove” some thing. You can think of your commit message as
+completing the sentence “This commit will…”. For example, “This commit will
+add -s flag for number of sides on a die”.</p>
+  </li>
+</ul>
+
+<p>Next, we will follow the same procedure to make commits 2 and 3.</p>
+
+<p>Find the comment in the function <code class="language-plaintext highlighter-rouge">roll_dice</code> that says <code class="language-plaintext highlighter-rouge">COMMIT 2</code> and add the
+following code. Make sure that it’s indented properly inside the function! Then
+stage your changes and make a commit with the message <code class="language-plaintext highlighter-rouge">"Add dice rolling logic
+and output dice sum and sequence"</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1"># COMMIT 2: Add dice rolling logic and output dice sum and sequence
+</span>    <span class="n">diceRecord</span><span class="p">,</span> <span class="n">diceSum</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+        <span class="n">roll</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span>
+        <span class="n">diceRecord</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">roll</span><span class="p">)</span>
+        <span class="n">diceSum</span> <span class="o">+=</span> <span class="n">roll</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"{} roll(s) of a {}-sided die resulted in a sum of {}:"</span>
+            <span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">sides</span><span class="p">,</span> <span class="n">diceSum</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="o">*</span><span class="n">diceRecord</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">', '</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Find the comment in the function <code class="language-plaintext highlighter-rouge">roll_dice</code> that says <code class="language-plaintext highlighter-rouge">COMMIT 3</code> and add the
+following code. Then stage your changes and make a commit with the message
+<code class="language-plaintext highlighter-rouge">"Restrict input range for dice iterations and sides"</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1"># COMMIT 3: Restrict input range for dice iterations and sides
+</span>    <span class="k">if</span> <span class="n">iterations</span> <span class="o">&gt;</span> <span class="n">MAX_ITERATIONS</span> <span class="ow">or</span> <span class="n">iterations</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Number of rolls must be in the range [0 - {}]"</span>
+                <span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">MAX_ITERATIONS</span><span class="p">))</span>
+        <span class="k">return</span>
+
+    <span class="k">if</span> <span class="n">sides</span> <span class="o">&gt;</span> <span class="n">MAX_SIDES</span> <span class="ow">or</span> <span class="n">sides</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Number of sides must be in the range [1 - {}]"</span>
+                <span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">MAX_SIDES</span><span class="p">))</span>
+        <span class="k">return</span>
+</code></pre></div></div>
+
+<p>When you’re done, you should now be able to roll dice:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/decal-labs/b9<span class="nv">$ </span>python3 rand.py dice <span class="nt">-i</span> 10 <span class="nt">-s</span> 20
+10 roll<span class="o">(</span>s<span class="o">)</span> of a 20-sided die resulted <span class="k">in </span>a <span class="nb">sum </span>of 119:
+15, 3, 12, 10, 16, 8, 18, 20, 13, 4
+</code></pre></div></div>
+      <h4 id="viewing-your-progress">
+        
+        
+          <a href="#viewing-your-progress" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Viewing your progress
+        
+        
+      </h4>
+    
+
+<p>Let’s take a look at the commits you’ve made. Type <code class="language-plaintext highlighter-rouge">git log</code> to see a history of
+commits. Each commit has some information such as who authored the commit, a
+timestamp for when the commit was created, and the commit message.</p>
+
+<ul>
+  <li>
+    <p>The first line of each commit entry has a long hexadecimal string. This is the
+commit <em>hash</em>: think of it as a unique ID that you can use to reference that
+specific commit.</p>
+  </li>
+  <li>
+    <p>Some commits have branch information in parentheses next to the commit hash,
+indicating that they are the most recent commit or <code class="language-plaintext highlighter-rouge">HEAD</code> of that branch. Your
+most recent commit should have something like <code class="language-plaintext highlighter-rouge">(HEAD -&gt; dice)</code>. The fourth
+commit should have <code class="language-plaintext highlighter-rouge">(origin/master, origin/HEAD)</code> because we based our branch
+off of <code class="language-plaintext highlighter-rouge">master</code> and have added three new commits on top of it. Note that if
+someone adds new commits to the local or remote <code class="language-plaintext highlighter-rouge">master</code>, the branch
+information may change or be out of date.</p>
+  </li>
+</ul>
+
+<p>Type <code class="language-plaintext highlighter-rouge">q</code> to exit <code class="language-plaintext highlighter-rouge">git log</code>.</p>
+
+<p>Besides looking at the commit history, you may want to view the actual changes
+in the code. You can use <code class="language-plaintext highlighter-rouge">git diff &lt;old commit&gt; &lt;new commit&gt;</code> to view the
+difference between two commits. There are a few different ways you can reference
+a commit. One that was mentioned before was copying a commit’s hash (note that
+your commit hashes will be different from the example below):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff 3368313c0afb6e306133d604ca72b0287124e8f2 762053064506810dee895219e5b2c2747a202829
+</code></pre></div></div>
+
+<p>You can also copy a small chunk of the beginning of the commit hash instead of
+the entire hash. Because of the way hashes work, it’s very unlikely that you’ll
+have two commits that have the exact same starting sequence.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff 3368313 7620530
+</code></pre></div></div>
+
+<p>If you’re trying to <code class="language-plaintext highlighter-rouge">diff</code> two commits that are pretty close together in the
+log, an easier way is to reference commits by their distance from the <code class="language-plaintext highlighter-rouge">HEAD</code>
+(most recent) commit using the format <code class="language-plaintext highlighter-rouge">HEAD~&lt;number&gt;</code>. Since we added three
+commits new commits in <code class="language-plaintext highlighter-rouge">dice</code>, we can view the difference between <code class="language-plaintext highlighter-rouge">dice</code> and
+<code class="language-plaintext highlighter-rouge">master</code> using the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff HEAD~3 HEAD
+</code></pre></div></div>
+      <h4 id="merge-conflicts-and-rebase">
+        
+        
+          <a href="#merge-conflicts-and-rebase" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Merge conflicts and <code class="language-plaintext highlighter-rouge">rebase</code>
+        
+        
+      </h4>
+    
+
+<p>Now that you’ve implemented dice rolling on on your feature branch, you’ll want
+to merge your feature into the <code class="language-plaintext highlighter-rouge">master</code> branch. This means that Git will take
+your changes on the <code class="language-plaintext highlighter-rouge">dice</code> branch and and replay them on the <code class="language-plaintext highlighter-rouge">master</code> branch,
+bringing <code class="language-plaintext highlighter-rouge">master</code> up to date with <code class="language-plaintext highlighter-rouge">dice</code>. However, things can (<a href="https://en.wikipedia.org/wiki/Murphy%27s_law">and often will</a>) go wrong when <code class="language-plaintext highlighter-rouge">master</code> has new
+commits added to it while you’re working on <code class="language-plaintext highlighter-rouge">dice</code>. Now, our commits on <code class="language-plaintext highlighter-rouge">dice</code>
+may be based on an old version of master. Even worse, someone else may have
+modified the same lines of code on <code class="language-plaintext highlighter-rouge">master</code> that we changed on <code class="language-plaintext highlighter-rouge">dice</code>,
+resulting in Git not knowing whose lines to use. This is called a <em>merge
+conflict</em>.</p>
+
+<p>Let’s simulate a merge conflict by making a change on <code class="language-plaintext highlighter-rouge">master</code>. <strong>Switch to the
+<code class="language-plaintext highlighter-rouge">master</code> branch using <code class="language-plaintext highlighter-rouge">git checkout master</code>.</strong> Make sure that you’re on the
+<code class="language-plaintext highlighter-rouge">master</code> branch by checking the output of <code class="language-plaintext highlighter-rouge">git branch</code>. Now that you’re on the
+<code class="language-plaintext highlighter-rouge">master</code> branch, <code class="language-plaintext highlighter-rouge">rand.py</code> shouldn’t contain the code for the new dice feature
+we added. Go to the comment that says <code class="language-plaintext highlighter-rouge">COMMIT 2</code> and add the following code
+below:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1"># COMMIT 2: Add dice rolling logic and output dice sum and sequence
+</span>    <span class="n">diceSum</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"{} roll(s) of a {}-sided die resulted in a sum of {}:"</span>
+            <span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">sides</span><span class="p">,</span> <span class="n">diceSum</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Now stage the changes and commit with the message <code class="language-plaintext highlighter-rouge">"dice rolling WIP"</code>. In this
+totally realistic scenario, our imaginary maverick teammate has added some buggy
+code to <code class="language-plaintext highlighter-rouge">master</code>, making your life harder. <strong>Switch back to your <code class="language-plaintext highlighter-rouge">dice</code> branch
+with <code class="language-plaintext highlighter-rouge">git checkout dice</code></strong> and prepare to handle this merge conflict.</p>
+
+<p>There are a multiple ways to handle a merge conflict, but the one we will be
+showing you in this lab is using <code class="language-plaintext highlighter-rouge">git rebase</code>. Our <code class="language-plaintext highlighter-rouge">dice</code> branch is “based” on
+the <code class="language-plaintext highlighter-rouge">master</code> branch at a certain point in time, but the <code class="language-plaintext highlighter-rouge">master</code> branch has
+moved forward leaving <code class="language-plaintext highlighter-rouge">dice</code> based on an outdated <code class="language-plaintext highlighter-rouge">master</code>. Thus, we want to
+“re-base” <code class="language-plaintext highlighter-rouge">dice</code> on the current state of <code class="language-plaintext highlighter-rouge">master</code>. While on your <code class="language-plaintext highlighter-rouge">dice</code> branch,
+run <code class="language-plaintext highlighter-rouge">git rebase master</code>. Git will rewind the commits you’ve made on <code class="language-plaintext highlighter-rouge">dice</code>, copy
+any new commits made on <code class="language-plaintext highlighter-rouge">master</code>, and attempt to replay your commits on top.
+Sometimes <code class="language-plaintext highlighter-rouge">rebase</code> will run to completion without your intervention, but if
+there’s a merge conflict you will need to resolve it.</p>
+
+<p>Git will give you instructions on what to do if it encounters a merge conflict
+during a rebase. In this case, open <code class="language-plaintext highlighter-rouge">rand.py</code> and find the conflicted zone which
+should have the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Lines of code from the base branch (in this case master)
+=======
+Lines of code from the branch you're rebasing (in this case dice)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Commit message of the commit that conflicts with the base branch
+</code></pre></div></div>
+
+<p>To fix the conflict, simply keep the lines you want (your lines from <code class="language-plaintext highlighter-rouge">dice</code>) and
+delete the other lines in the conflicted zone (<code class="language-plaintext highlighter-rouge">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>, <code class="language-plaintext highlighter-rouge">=======</code>,
+<code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;&gt;&gt;&gt;&gt; dice</code>, and the unwanted code from master), and then save and exit the
+file. Git will take what you’ve saved as the exact form of what the file will
+look like at the end of the rebase, so what you’re doing is essentially fixing
+the file so that the code runs properly. This means that if you have multiple
+merge conflicts and you decide to mix keeping some lines from the base branch
+and some from your feature branch, you need to make sure the code actually works
+correctly.</p>
+
+<p>Now that you’ve fixed the merge conflict, follow the rebase instructions and
+stage your fixed file (<code class="language-plaintext highlighter-rouge">git add rand.py</code>), then run <code class="language-plaintext highlighter-rouge">git rebase --continue</code>. If
+Git finds any more merge conflicts for other files, you would follow the same
+procedure as above. However, we only had one conflicted file so our rebase is
+finished! Run <code class="language-plaintext highlighter-rouge">git log</code> to see the result of our rebase. You should now see that
+your imaginary teammate’s <code class="language-plaintext highlighter-rouge">"dice rolling WIP"</code> commit in your branch’s history,
+with your commits on top of theirs.</p>
+
+<p>Wait! We haven’t actually <em>merged</em> our commits into the <code class="language-plaintext highlighter-rouge">master</code> branch. <strong>If
+you want to do the optional step of combining your commits into a single commit
+before merging, go to the next section. You can also merge now and do the
+optional step later; you won’t see the combined commit on <code class="language-plaintext highlighter-rouge">master</code> but you will
+still learn the concepts.</strong> Otherwise, switch to the master branch using <code class="language-plaintext highlighter-rouge">git
+checkout master</code> and run <code class="language-plaintext highlighter-rouge">git merge dice</code> to integrate your changes from <code class="language-plaintext highlighter-rouge">dice</code>
+into <code class="language-plaintext highlighter-rouge">master</code>. Now you’re done! Don’t forget to complete the quick Gradescope
+check below.</p>
+
+<blockquote>
+  <p>Because we ran rebased our branch before merging, we didn’t get any merge
+conflicts when running <code class="language-plaintext highlighter-rouge">git merge dice</code>. You <em>can</em> simply <code class="language-plaintext highlighter-rouge">git merge dice</code>
+without rebasing first, but Git will prompt you to resolve the exact same
+merge conflicts before it allows a merge so you aren’t saving yourself any
+work. We decided to show <code class="language-plaintext highlighter-rouge">git rebase</code> because it’s a good habit to regularly
+sync your branch with its base branch. Run <code class="language-plaintext highlighter-rouge">git rebase</code> every so often if you
+suspect there are new changes on <code class="language-plaintext highlighter-rouge">master</code> so that any merge conflicts are
+small and incremental. If you work with a large team and toil away on your
+feature branch for several days without rebasing, you may find that when its
+time to merge, your teammates have already updated <code class="language-plaintext highlighter-rouge">master</code> many times giving
+you a large backlog of merge conflicts and an even larger headache.</p>
+</blockquote>
+
+<p><strong>Gradescope</strong>:</p>
+
+<ol>
+  <li>
+    <p>On your <code class="language-plaintext highlighter-rouge">master</code> branch, type <code class="language-plaintext highlighter-rouge">git log</code> and paste a portion of your commit
+history showing the commit(s) you merged in from your <code class="language-plaintext highlighter-rouge">dice</code> branch plus a
+few commits into the past for context. If you haven’t completed the optional
+“Combining commits” section, 5-6 of the most recent commits should be
+sufficient. If you have completed the optional section and squashed your
+commits, 3-4 of the most recent commits should be sufficient.</p>
+  </li>
+  <li>
+    <p>On the <code class="language-plaintext highlighter-rouge">master</code> branch, use <code class="language-plaintext highlighter-rouge">git diff</code> to show the difference between what
+<code class="language-plaintext highlighter-rouge">rand.py</code> looks like now versus what it looked like at the start of the lab.
+There are multiple ways to use <code class="language-plaintext highlighter-rouge">git diff</code> to do this, so pick any one you
+like. In Gradescope, paste both the <code class="language-plaintext highlighter-rouge">git diff</code> command you used and the
+output of the command.</p>
+  </li>
+</ol>
+      <h4 id="optional-combining-commits">
+        
+        
+          <a href="#optional-combining-commits" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> (OPTIONAL) Combining commits
+        
+        
+      </h4>
+    
+
+<p>Git has the ability to combine multiple commits into a single commit. This
+process is called squashing. You may want to do this if you have work in
+progress commits that you want to combine into a single finished commit, or in
+our case, keeping <code class="language-plaintext highlighter-rouge">git log</code> for the <code class="language-plaintext highlighter-rouge">master</code> branch more digestible.</p>
+
+<ul>
+  <li>
+    <p>Pros: If you have a feature branch with fifty commits, you prevent inundating
+<code class="language-plaintext highlighter-rouge">master</code>’s history with fifty different commits when merging. When you squash,
+you can make a multi-line commit message where the first line is a summary of
+the feature, and subsequent lines are bullet points containing relevant
+individual commit messages from the individual commits.</p>
+  </li>
+  <li>
+    <p>Cons: You lose the granularity of the history on <code class="language-plaintext highlighter-rouge">master</code>, making it more
+difficult if you want to partially roll back your feature. Git also doesn’t
+support having multiple authors for a single commit, so if you want to credit
+other contributors you need to add co-author credit somewhere in the commit
+message of your combined commit. Aside: you can see how co-authoring works with GitHub <a href="https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors#creating-co-authored-commits-on-the-command-line">here</a>.</p>
+  </li>
+</ul>
+
+<p><strong>First, make sure you’re on your <code class="language-plaintext highlighter-rouge">dice</code> branch using <code class="language-plaintext highlighter-rouge">git checkout dice</code>.</strong> We
+will be performing our squash using the command <code class="language-plaintext highlighter-rouge">git rebase</code> in interactive mode
+by passing the <code class="language-plaintext highlighter-rouge">-i</code> flag. This may seem a bit unusual that we can run <code class="language-plaintext highlighter-rouge">rebase</code>
+without a base branch, but <code class="language-plaintext highlighter-rouge">rebase</code> can not only sync branches, but also rewrite
+the history of our current branch.</p>
+
+<blockquote>
+  <p>The format for the command of an interactive rebase is <code class="language-plaintext highlighter-rouge">git rebase -i HEAD~#</code>
+where <code class="language-plaintext highlighter-rouge">#</code> is the <em>parent commit</em> of the commit where we want to start our
+rebase. This will seem a bit unintuitive if you’ve followed how the <code class="language-plaintext highlighter-rouge">HEAD~#</code>
+pointer works: to work on our last three commits (<code class="language-plaintext highlighter-rouge">HEAD</code>, <code class="language-plaintext highlighter-rouge">HEAD~1</code>, and
+<code class="language-plaintext highlighter-rouge">HEAD~2</code>), we need to actually run <code class="language-plaintext highlighter-rouge">git rebase -i HEAD~3</code>. An easier way to
+remember this is if you want to rebase the last <code class="language-plaintext highlighter-rouge">N</code> commits, run <code class="language-plaintext highlighter-rouge">git rebase
+-i HEAD~N</code>. However, we may not always remember how many commits we made so
+its okay to give yourself a little more room/context by using a larger number.</p>
+</blockquote>
+
+<p>Let’s run <code class="language-plaintext highlighter-rouge">git rebase -i HEAD~5</code>. This will bring up a text editor with a file
+that we can modify to change the history of commits from <code class="language-plaintext highlighter-rouge">HEAD~4</code> to <code class="language-plaintext highlighter-rouge">HEAD</code>.
+You’ll notice that the commits are in reverse order, starting with the oldest
+commit at the top and newest commit at the bottom. This is because <code class="language-plaintext highlighter-rouge">git</code> will
+use this text file as part of a script to replay those commits (with your
+rewritten changes) in chronological order. Your file will have different commit
+hashes and likely a different commit message on the first line than the example
+below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pick 7c5bd5d fixed sus
+pick 1f7a1e1 dice rolling WIP
+pick 26e0827 Add -s flag for number of sides on a die
+pick b193d44 Add dice rolling logic and output dice sum and sequence
+pick 554402e Restrict input range for dice iterations and sides
+
+# Rebase 7dac858..554402e onto b193d44 (5 commands)
+# ...
+</code></pre></div></div>
+
+<p>As you can see, Git includes useful instructions on what you can do with commits
+in interactive mode in the commented-out section at the bottom of the file. We
+can combine, delete, reword, or even reorder our commits, along with many more
+options. In our case, we want to <code class="language-plaintext highlighter-rouge">squash</code> our two most recent commits into the
+third most recent commit in the list. To do this, replace the word <code class="language-plaintext highlighter-rouge">pick</code> with
+the word <code class="language-plaintext highlighter-rouge">squash</code> (or just <code class="language-plaintext highlighter-rouge">s</code> for short) on the <em>last two lines</em>. <em>Do not
+<code class="language-plaintext highlighter-rouge">squash</code> the third line</em>; that will take your three most recent commits and
+meld them with the “dice rolling WIP” commit, which is a commit from <code class="language-plaintext highlighter-rouge">master</code>.
+Your file should look something like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pick 7c5bd5d fixed sus
+pick 1f7a1e1 dice rolling WIP
+pick 26e0827 Add -s flag for number of sides on a die
+squash b193d44 Add dice rolling logic and output dice sum and sequence
+squash 554402e Restrict input range for dice iterations and sides
+
+# Rebase 7dac858..554402e onto b193d44 (5 commands)
+# ...
+</code></pre></div></div>
+
+<p>Save and exit the file. Git will now rewrite the commit history as you
+specified. If you squash commits or do another action that may modify commit
+messages, Git will bring up another text editor for you to modify the commit
+message. Because you squashed, Git made a multi-line commit message by combining
+the three individual commit messages from before you squashed. Let’s add a
+useful one-line summary, “Add dice roll feature”, at the top of the file. You
+can also adjust the formatting to your liking; I like adding bullet points to
+the individual commit messages.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Add dice roll feature
+
+# This is a combination of 3 commits.
+# This is the 1st commit message:
+
+- Add -s flag for number of sides on a die
+
+# This is the commit message #2:
+
+- Add dice rolling logic and output dice sum and sequence
+
+# This is the commit message #3:
+
+- Restrict input range for dice iterations and sides
+</code></pre></div></div>
+
+<blockquote>
+  <p>Git and other tools use the first line of a commit message as a shortened
+version for certain display purposes. For example, try running <code class="language-plaintext highlighter-rouge">git log
+--oneline</code>. As another example, when Github displays the most recent commit
+message next to files and folders in the directory view, the first line of the
+message is shown.</p>
+</blockquote>
+
+<p>Save the file and exit. The rebase is now complete! Type <code class="language-plaintext highlighter-rouge">git log</code> and view your
+new squashed commit. If you didn’t already merge your three individual commits
+into <code class="language-plaintext highlighter-rouge">master</code>, you can run <code class="language-plaintext highlighter-rouge">git merge master</code> to merge in your combined commit.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit 6b4f705921f9b06af880f97d36cb0b74e51aeb0c (HEAD -&gt; dice)
+Author: Max Vogel &lt;max-v@berkeley.edu&gt;
+Date:   Sun Apr 3 19:45:51 2022 -0700
+
+    Add dice roll feature
+
+    - Add -s flag for number of sides on a die
+
+    - Add dice rolling logic and output dice sum and sequence
+
+    - Restrict input range for dice iterations and sides
+</code></pre></div></div>
+
+<p><strong>Gradescope</strong>: There’s no separate Gradescope check for this optional section,
+but make sure you go back and complete the Gradescope check above in the
+previous section if you’ve chosen to do this part first!</p>
+      <h3 id="part-2-pull-requests">
+        
+        
+          <a href="#part-2-pull-requests" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Part 2: Pull Requests
+        
+        
+      </h3>
+    
+
+<p>One of the most common ways to contribute changes to a repository on Github (and
+other similar Git remote hosting services) is through a pull request (often
+shortened to “PR”). A pull request is basically a proposal to make changes to a
+repository that can be reviewed by others, commented on, and edited before the
+changes are actually approved to be merged into the repository. For example,
+when working on a large project with a team, you may want to submit a pull
+request with your new feature so that team members can review your code for bugs
+or code style mistakes. For projects on public repositories that invite
+contributions from strangers, you can contribute a feature by forking the
+repository (making a copy of it that you own), implementing your feature, and
+then making a pull request to have your contribution merged into the official
+repository.</p>
+
+<p>First, read up on <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request">how to create a pull
+request</a>
+from Github’s documentation. We’ve created a dummy repository at
+<a href="https://github.com/0xcf/decal-pr-practice">github.com/0xcf/decal-pr-practice</a> for you to practice making a simple PR
+from a fork. You will be making a fork of the repo, writing your name in the
+Markdown file in the repo, and then making a PR to merge your change into the
+original repo.</p>
+
+<ol>
+  <li>
+    <p>Read about <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">how to fork a
+repo</a>
+from Github’s documentation. Make a fork of our dummy repository at
+<a href="https://github.com/0xcf/decal-pr-practice">github.com/0xcf/decal-pr-practice</a>.</p>
+  </li>
+  <li>
+    <p>Clone your forked repository and create a new branch based on <code class="language-plaintext highlighter-rouge">master</code> called
+<code class="language-plaintext highlighter-rouge">my-name</code>. Open <code class="language-plaintext highlighter-rouge">README.md</code> and replace “Tux the Penguin” with your name.</p>
+  </li>
+  <li>
+    <p>Stage and commit your change with the commit message <code class="language-plaintext highlighter-rouge">Add my name</code>, and then
+<code class="language-plaintext highlighter-rouge">git push</code>.</p>
+  </li>
+  <li>
+    <p>Read about <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork">how to make a PR from a
+fork</a>
+from Github’s documentation. Make a PR from your branch <code class="language-plaintext highlighter-rouge">my-name</code> on your
+forked repo <code class="language-plaintext highlighter-rouge">&lt;Your Github username&gt;/decal-pr-practice</code> to the branch
+<code class="language-plaintext highlighter-rouge">master</code> on the original repo <code class="language-plaintext highlighter-rouge">0xcf/decal-pr-practice</code>.</p>
+  </li>
+</ol>
+
+<p>You’ve now made a pull request! Github has a lot of features for pull requests,
+feel free to check some of them out. This lab you’re reading right now was
+merged through a PR, which you can view at
+<a href="https://github.com/0xcf/decal-web/pull/216">github.com/0xcf/decal-web/pull/216</a>.</p>
+
+<ul>
+  <li>
+    <p>The main page for the pull request has a timeline of commits and any comments
+from reviewers. PRs can be continually updated by making and pushing new
+commits to your compare branch. Github will track any new changes pushed to
+the compare branch and update your PR. As you can see, I didn’t follow my own
+advice and messed up a rebase after trying to sync my fork, leaving duplicate
+commits in my commit history…</p>
+  </li>
+  <li>
+    <p>The sidebar on the main page has several notable features. You can request
+other people to review your changes, assign others to work on the PR, and link
+an issue that your PR will resolve if it gets merged. Github repositories have
+an “Issues” tab where one can submit a report about a bug or request a feature
+(e.g. <a href="https://github.com/0xcf/decal-web/issues">github.com/0xcf/decal-web/issues</a>). The Github issue associated
+with the PR for this lab is at <a href="https://github.com/0xcf/decal-web/issues/184">github.com/0xcf/decal-web/issues/184</a>.</p>
+  </li>
+  <li>
+    <p>Go to the “Files Changed” tab to see a diff of the PR’s changes. Reviewers of
+your PR can leave inline comments on a specific line of code by hovering over
+the line and clicking the blue “+” button that pops up.</p>
+  </li>
+</ul>
+
+<p><strong>Gradescope</strong>: Paste a link to the pull request you made so that it can be
+checked off for completion.</p>
+      <h3 id="part-3-questions">
+        
+        
+          <a href="#part-3-questions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Part 3: Questions
+        
+        
+      </h3>
+    
+
+<ol>
+  <li>
+    <p>What caused the merge conflict in the Git exercises you did?</p>
+  </li>
+  <li>
+    <p>Why does Git require us to manually intervene in merge conflicts?</p>
+  </li>
+  <li>
+    <p>What command would you use to sync a folder <code class="language-plaintext highlighter-rouge">~/Downloads/Linux_ISOs</code> to the
+folder <code class="language-plaintext highlighter-rouge">/usr/local/share/Calendar</code>, while preserving file metadata? (hint: use
+rsync)</p>
+  </li>
+  <li>
+    <p>How does rsync determine when to look for changes between files? Select from
+the following:</p>
+
+    <p>A. By calculating the checksum of each file and comparing them.</p>
+
+    <p>B. By comparing the entire contents of each file for any differences.</p>
+
+    <p>C. By seeing if the ‘last modified’ timestamp of the files are different.</p>
+
+    <p>D. By seeing if the ‘created’ timestamp of the files are different.</p>
+
+    <p>E. By seeing if the permissions of the files are different.</p>
+  </li>
+  <li>
+    <p>Consider a file <code class="language-plaintext highlighter-rouge">str1</code> containing the string ‘abcd’. You rsync it to another
+file <code class="language-plaintext highlighter-rouge">str2</code>, and then replace ‘abcd’ with ‘aaaa’ on str1. If you run <code class="language-plaintext highlighter-rouge">rsync
+--append str1 str2</code>, what will the contents of str2 be?</p>
+  </li>
+</ol>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com" class="no-underline">
+        <img
+          src="/archives/2022-spring/assets/images/digitalocean.png"
+          style="height: 34px; width: 200px"
+      /></a>
+      <span>
+        With great appreciation to
+        <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring
+        the VMs used in both tracks of the DeCal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/archives/2022-spring/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2021
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+
