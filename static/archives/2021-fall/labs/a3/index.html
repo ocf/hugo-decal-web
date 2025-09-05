@@ -1,0 +1,1104 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Advanced Lab 3 - Pre-install Setup and Installation | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Advanced Lab 3 - Pre-install Setup and Installation" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.io/archives/2021-fall/labs/a3/" />
+<meta property="og:url" content="https://decal.ocf.io/archives/2021-fall/labs/a3/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Advanced Lab 3 - Pre-install Setup and Installation" />
+<script type="application/ld+json">
+{"@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"url":"https://decal.ocf.io/archives/2021-fall/labs/a3/","headline":"Advanced Lab 3 - Pre-install Setup and Installation","description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#a-preliminary-message-read-this-section-carefully">A preliminary message (read this section carefully!)</a></li><li><a href="#setup">Setup</a><ol><li><a href="#acquire-installation-media">Acquire installation media</a></li><li><a href="#create-vm">Create VM</a></li></ol></li><li><a href="#partitioning-time">Partitioning time</a><ol><li><a href="#create-partitions">Create partitions</a></li><li><a href="#create-filesystems">Create filesystems</a></li><li><a href="#mount-the-new-filesystems">Mount the new filesystems</a></li></ol></li><li><a href="#installation">Installation</a><ol><li><a href="#mirrors">Mirrors</a></li><li><a href="#continue-according-to-archwiki">Continue according to ArchWiki!</a></li><li><a href="#initramfs">initramfs</a></li><li><a href="#root-password">Root password</a></li><li><a href="#boot-loader">Boot loader</a></li></ol></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Advanced Lab 3 - Pre-install Setup and Installation</h1>
+        
+        <p>Facilitator: <a href="/staff#laksith">Laksith</a></p>
+        
+        
+        24 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#a-preliminary-message-read-this-section-carefully" id="markdown-toc-a-preliminary-message-read-this-section-carefully">A preliminary message (read this section carefully!)</a></li>
+  <li><a href="#setup" id="markdown-toc-setup">Setup</a>    <ol>
+      <li><a href="#acquire-installation-media" id="markdown-toc-acquire-installation-media">Acquire installation media</a></li>
+      <li><a href="#create-vm" id="markdown-toc-create-vm">Create VM</a></li>
+    </ol>
+  </li>
+  <li><a href="#partitioning-time" id="markdown-toc-partitioning-time">Partitioning time</a>    <ol>
+      <li><a href="#create-partitions" id="markdown-toc-create-partitions">Create partitions</a></li>
+      <li><a href="#create-filesystems" id="markdown-toc-create-filesystems">Create filesystems</a>        <ol>
+          <li><a href="#esp" id="markdown-toc-esp">ESP</a></li>
+          <li><a href="#root-partition" id="markdown-toc-root-partition">Root partition</a>            <ol>
+              <li><a href="#wiping" id="markdown-toc-wiping">Wiping</a></li>
+              <li><a href="#setting-up-the-encrypted-device" id="markdown-toc-setting-up-the-encrypted-device">Setting up the encrypted device</a></li>
+              <li><a href="#creating-the-actual-filesystem" id="markdown-toc-creating-the-actual-filesystem">Creating the actual filesystem</a></li>
+            </ol>
+          </li>
+          <li><a href="#swap" id="markdown-toc-swap">Swap</a></li>
+        </ol>
+      </li>
+      <li><a href="#mount-the-new-filesystems" id="markdown-toc-mount-the-new-filesystems">Mount the new filesystems</a></li>
+    </ol>
+  </li>
+  <li><a href="#installation" id="markdown-toc-installation">Installation</a>    <ol>
+      <li><a href="#mirrors" id="markdown-toc-mirrors">Mirrors</a></li>
+      <li><a href="#continue-according-to-archwiki" id="markdown-toc-continue-according-to-archwiki">Continue according to ArchWiki!</a></li>
+      <li><a href="#initramfs" id="markdown-toc-initramfs">initramfs</a></li>
+      <li><a href="#root-password" id="markdown-toc-root-password">Root password</a></li>
+      <li><a href="#boot-loader" id="markdown-toc-boot-loader">Boot loader</a></li>
+    </ol>
+  </li>
+</ol><hr />
+      <h2 id="a-preliminary-message-read-this-section-carefully">
+        
+        
+          <a href="#a-preliminary-message-read-this-section-carefully" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> A preliminary message (read this section carefully!)
+        
+        
+      </h2>
+    
+
+<p>In this lab we will be installing Arch Linux into a virtual machine.
+In this lab you will need to <strong>pay close attention to detail:</strong> mistakes
+may not be apparent for quite a while later, and can cause <em>huge</em>
+headaches. As always, make sure to take advantage of #decal-general and other
+resources if you need help! Also, in this lab, the
+<a href="https://wiki.archlinux.org">ArchWiki</a> will be an invaluable resource
+that we will be referencing a lot.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>Throughout the lab, additional notes will be formatted like this.
+These notes are the <em>only</em> sections of the lab that you can safely
+skip. They will provide additional interesting information and
+context, so I recommend reading them anyway!</p>
+  </blockquote>
+</div>
+
+<p>As always, you will need to submit this lab on Gradescope. Any time
+you see “<strong>GRADESCOPE:</strong>” in this lab, stop and make sure that you
+have submitted the relevant answer or output to Gradescope. In most
+cases, it will be <strong>hard or impossible</strong> to go back and get the answer
+later in the lab. <strong>If you realize you forgot to submit something,
+do not worry! Simply explain what you did / what command you ran
+rather than restarting.</strong></p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>We chose to install Arch Linux in this lab for a few reasons. First,
+Arch Linux gives you tools to handle monotonous tasks (like
+<code class="language-plaintext highlighter-rouge">genfstab</code>, which does the dirty work of writing out <code class="language-plaintext highlighter-rouge">/etc/fstab</code>)
+while leaving the more complicated and more customizable tasks to
+you. Second, Arch is widely used and experience with Arch can
+usually be applied to other distributions as well. Third,
+ArchWiki. Seriously. It’s that good.</p>
+  </blockquote>
+</div>
+
+<p><strong>Make sure you allocate about 2 hours for this lab (don’t do it last minute!)</strong> Trying to rush the process may result in skipping over key details and could require you to restart. That being said though, it ideally shouldn’t take much longer than that. <strong>If you’ve had to restart multiple times or have otherwise tried for a long time with no success, contact staff.</strong> We don’t want you to get stuck for 6 hours etc.</p>
+      <h2 id="setup">
+        
+        
+          <a href="#setup" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Setup
+        
+        
+      </h2>
+    
+
+<p>We will be setting up virtual machine <em>inside</em> your student VM.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>Yes, this is a “nested” virtual machine.</p>
+  </blockquote>
+</div>
+
+<p>First, connect to your student VM using the credentials that were
+emailed to you. If you haven’t yet, you will need to reset your
+password when you first log in. Please use a <a href="https://xkcd.com/936">safe
+password</a> and don’t lose it!</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>If you’re enrolled in this DeCal, you should have a student VM. If
+you’re not, we can’t guarantee that these techniques will work on
+other systems (for a variety of reasons). However, you can obtain a
+system that’s very similar to a student VM by creating a Droplet on
+DigitalOcean. Normally this Droplet would cost some amount of money,
+but you can get free DigitalOcean credits by using the <a href="https://education.github.com/pack">GitHub
+Student Developer Pack</a>. You can
+follow <a href="https://www.digitalocean.com/docs/droplets/how-to/create/">the instructions on the DigitalOcean
+website</a>
+to create the Droplet. When selecting an image, choose Ubuntu 20.04.</p>
+  </blockquote>
+</div>
+
+<p><strong>PLEASE READ</strong>: Before starting the lab,
+run <code class="language-plaintext highlighter-rouge">sudo apt update</code>, then <code class="language-plaintext highlighter-rouge">sudo apt upgrade</code>, and finally <code class="language-plaintext highlighter-rouge">sudo
+reboot</code>. You will lose connection when your DO droplet reboots, then
+<code class="language-plaintext highlighter-rouge">ssh</code> back in and begin the lab.</p>
+
+<p>Now that you are connected to your student VM, we will need to install
+some packages that will allow us to create our nested Arch Linux VM.
+Run</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">--no-install-recommends</span> qemu-kvm qemu-utils libvirt-daemon-system libvirt-clients virtinst ovmf
+</code></pre></div></div>
+<div class="code-example">
+
+  <blockquote>
+    <p>QEMU is a system for running virtual machines, and it can use KVM,
+which is a kernel module that supports the virtualization under the
+hood. We can install this with the package <code class="language-plaintext highlighter-rouge">qemu-kvm</code>. <code class="language-plaintext highlighter-rouge">libvirt</code>
+(installed via <code class="language-plaintext highlighter-rouge">libvirt-daemon-system and libvirt-clients</code>) is a system for managing these
+QEMU/KVM virtual machines. <code class="language-plaintext highlighter-rouge">qemu-utils</code> provides necessary tools for
+creating virtual drives, and is used by <code class="language-plaintext highlighter-rouge">virt-install</code>. <code class="language-plaintext highlighter-rouge">virtinst</code>
+will provide the script <code class="language-plaintext highlighter-rouge">virt-install</code>, which we will use to create
+the virtual machine. We add <code class="language-plaintext highlighter-rouge">--no-install-recommends</code> because
+<code class="language-plaintext highlighter-rouge">virtinst</code> has a recommended dependency <code class="language-plaintext highlighter-rouge">virt-viewer</code>, which depends
+on the <a href="https://en.wikipedia.org/wiki/X_Window_System">X11 system</a>.
+However, this is a lot of packages that are only useful if we have a
+GUI (which we don’t!) so we want to skip recommended dependencies.
+Finally, <code class="language-plaintext highlighter-rouge">ovmf</code> is an additional library that will let us use
+<a href="https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface">UEFI</a>
+(instead of the older BIOS spec) to boot the VM.</p>
+  </blockquote>
+</div>
+      <h3 id="acquire-installation-media">
+        
+        
+          <a href="#acquire-installation-media" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Acquire installation media
+        
+        
+      </h3>
+    
+
+<p>Next, we need to get the installation media. Go to
+https://mirrors.ocf.berkeley.edu/archlinux/iso/latest/ to find the latest Arch
+release. Using the <code class="language-plaintext highlighter-rouge">wget</code> command within your VM, download the <code class="language-plaintext highlighter-rouge">.iso</code> file found
+within this directory as well as the <code class="language-plaintext highlighter-rouge">.iso.sig</code> signature file that we will use
+to verify the authenticity of the <code class="language-plaintext highlighter-rouge">.iso</code> file. For example, the current release
+at the time of writing is <code class="language-plaintext highlighter-rouge">2021.09.01</code>, so you would run the following commands:<br />
+<strong>Currently the OCF mirrors are under maintenance, and will lead to really slow download speeds, so we will use another mirror.</strong></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="s1">'http://ca.us.mirror.archlinux-br.org/iso/2021.09.01/archlinux-2021.09.01-x86_64.iso'</span>
+wget <span class="s1">'http://ca.us.mirror.archlinux-br.org/iso/2021.09.01/archlinux-2021.09.01-x86_64.iso.sig'</span>
+</code></pre></div></div>
+<p>Note that Arch is a <a href="https://en.wikipedia.org/wiki/Rolling_release">“rolling
+release”</a> distribution (as
+opposed to distros like Ubuntu that release distinct versions e.g. Ubuntu 18.04,
+Ubuntu 20.04), so it is updated frequently. Therefore, the links used above are
+likely out of date by the time you’re reading this! Make sure to find the
+correct files for the latest release, do not just copy and paste the commands
+above.</p>
+
+<p>You can run <code class="language-plaintext highlighter-rouge">ls</code> to see the two files that were downloaded.</p>
+
+<p>Notice that we are downloading this from the OCF software mirrors
+(<code class="language-plaintext highlighter-rouge">mirrors.ocf.berkeley.edu</code>). There’s nothing stopping the OCF from
+modifying the <code class="language-plaintext highlighter-rouge">.iso</code> file and inserting malicious code that will end
+up running on our machine. To avoid this, we need to verify that the
+signature we downloaded is valid, and matches the file we downloaded.
+For more info, see
+<a href="https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature">https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature</a>.</p>
+
+<p>To verify the signature, run <code class="language-plaintext highlighter-rouge">gpg --keyserver-options
+auto-key-retrieve --verify file.sig</code>, replacing <code class="language-plaintext highlighter-rouge">file.sig</code> with the
+downloaded <code class="language-plaintext highlighter-rouge">.sig</code> file. You’ll see information about who created this
+signature. We want to know that this signature is from an Arch Linux
+developer. To be pretty confident of that, go to
+<a href="https://www.archlinux.org/people/developers/">https://www.archlinux.org/people/developers/</a>
+and find the developer who is said to have created this
+signature. Under their info click on the link that says “PGP
+Key”. You’ll see a bunch of info about their PGP key. Check that the
+“Fingerprint” listed near the top of this page matches the “Primary
+key fingerprint” in the <code class="language-plaintext highlighter-rouge">gpg</code> output. If not, something is very
+wrong!</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>If the <code class="language-plaintext highlighter-rouge">gpg</code> commmand above to verify the signature doesn’t work,
+try using the OCF’s keyserver by appending this to the original
+command: <code class="language-plaintext highlighter-rouge">--keyserver=hkp://pgp.ocf.berkeley.edu</code>.</p>
+  </blockquote>
+</div>
+
+<p><strong>GRADESCOPE</strong>: Who is the developer that created this signature, and
+what is their key’s fingerprint?</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>Note that this test is only resilient if www.archlinux.org is <em>not</em>
+compromised. To be more confident, you might want to try to find
+this fingerprint somewhere else, or independently verify this key
+somehow. Traditionally this is done via the <a href="https://en.wikipedia.org/wiki/Web_of_trust">web of
+trust</a>, but new systems
+such as <a href="https://keybase.io">Keybase</a> are trying to find alternate
+solutions to this fundamental problem of “How do I know you are who
+you say you are?”</p>
+  </blockquote>
+</div>
+      <h3 id="create-vm">
+        
+        
+          <a href="#create-vm" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create VM
+        
+        
+      </h3>
+    
+
+<p>Now, we need to actually create our VM. <strong><em>(Don’t run this command
+until you’ve read the next paragraph!)</em></strong> To do this, you will run</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>virt-install <span class="nt">--name</span> archvm <span class="nt">--memory</span> 575 <span class="nt">--cpu</span> host <span class="nt">--vcpus</span> 1 <span class="nt">--disk</span> <span class="nv">size</span><span class="o">=</span>5 <span class="nt">--network</span> <span class="nv">network</span><span class="o">=</span>default <span class="nt">--boot</span> uefi <span class="nt">--graphics</span> none <span class="nt">--cdrom</span> archlinux-2021.09.01-x86_64.iso
+</code></pre></div></div>
+
+<p>This will do some initial setup, and then drop us into a virtual
+serial console connected to the VM. You’ll see some boot options and a
+timer. Press <code class="language-plaintext highlighter-rouge">e</code> to edit the first boot option before the timer runs
+out! By default, Arch will not enable the serial console we are
+currently using to connect to the VM, so we need to manually add it to
+the kernel command line. Once we’re editing this command line, hit
+<code class="language-plaintext highlighter-rouge">END</code> to jump to the end of the line and carefully add a space and
+then <code class="language-plaintext highlighter-rouge">console=ttyS0</code>. When you’re confident you’ve typed it right, hit
+enter to start booting the kernel.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>Normally, we use “terminal emulators” (like Terminal or iTerm on
+Mac, or GNOME Terminal or Terminator on Linux) to access the
+console. Alternatively, we can use the console via terminals running
+via a keyboard and display. (To see this, hit <code class="language-plaintext highlighter-rouge">ctrl-alt-F1</code> on an
+OCF lab computer. Hit <code class="language-plaintext highlighter-rouge">ctrl-alt-F7</code> to get back to the GUI.) The
+option we are using here is accessing the console via a serial port
+connection, which in the modern age is pretty rare. However, we’re
+not using a real serial port of course—since we’re using a virtual
+machine, the serial port is also virtualized. libvirt provides
+convenient this convenient tooling to connect to this virtual serial
+port from the console we already have with the host machine (your
+student VM).</p>
+  </blockquote>
+</div>
+
+<p>We’re communicating with the VM via this virtual serial connection. If
+you wanted to detatch from this, you would hit the key combo <code class="language-plaintext highlighter-rouge">ctrl-]</code>,
+and reconnect by running the command <code class="language-plaintext highlighter-rouge">sudo virsh console archvm</code>.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>In most cases if you disconnect and have to restart in the middle,
+you can just run <code class="language-plaintext highlighter-rouge">sudo virsh console archvm</code> to reconnect. If you
+really mess up, you can start things over by stopping the VM
+(<code class="language-plaintext highlighter-rouge">sudo virsh destroy archvm</code>), deleting the VM
+(<code class="language-plaintext highlighter-rouge">sudo virsh undefine archvm --nvram --remove-all-storage</code>), and
+then recreating it by starting over from the command above. If for
+some reason, your VM gets turned off before you are done installing
+Arch, it may be possible to reconnect the archiso and reboot the VM
+using the archiso. However, doing this is out of scope for this lab.</p>
+  </blockquote>
+</div>
+
+<p>You should start seeing a bunch of lines that start with <code class="language-plaintext highlighter-rouge">[   OK   ]</code>,
+and eventually you will see a login prompt.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>Since the installation media is basically just a preinstalled Linux
+system that makes it easy to install Linux on another system, this
+is the info about the booting “archiso” system. So, nothing is
+actually installed on the VM yet, but we are booting into a
+temporary Linux system that will help us install Linux permanently
+on the VM.</p>
+  </blockquote>
+</div>
+
+<p>Once you see a login prompt, enter <code class="language-plaintext highlighter-rouge">root</code> as the username, and you
+should get in! You’re now at the archiso command line.</p>
+
+<p><strong>Debugging Note:</strong> If you are thrown out of the VM unexpectedly and
+were unable to complete the install, when rebooting you may be booted
+into the UEFI Shell (since Arch hasn’t actually been installed on the
+disk yet). To resolve this, follow <a href="https://mycfg.net/articles/booting-from-a-cdrom-in-a-kvm-guest-using-libvirt/">these instructions</a>
+to boot back into the installer instead, replacing the 
+<code class="language-plaintext highlighter-rouge">/isos/systemresucecd-x86-2.2.0.iso</code> path with the location of your Arch ISO.</p>
+
+<p><strong>GRADESCOPE</strong>: Use the <code class="language-plaintext highlighter-rouge">hostnamectl</code> command to get the current
+hostname. What is it? Then, use <code class="language-plaintext highlighter-rouge">ip addr</code> to find the current IP
+address (look at the <code class="language-plaintext highlighter-rouge">inet</code> line under <code class="language-plaintext highlighter-rouge">ens2</code>, it’s the stuff at the
+beginning of the line, not including the <code class="language-plaintext highlighter-rouge">/24</code>). What is your IP
+address? In another terminal, try to ping this IP address from your
+student VM, and then also from tsunami (ssh.ocf.berkeley.edu). Can
+either of them reach it?</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>We’ll discuss networking, and why you see these results, in a later
+lecture.</p>
+  </blockquote>
+
+  <blockquote>
+    <p>Notice we are booted using UEFI (hence <code class="language-plaintext highlighter-rouge">-boot uefi</code> in the
+virt-install line). Check out the ArchWiki
+(<a href="https://wiki.archlinux.org/index.php/Installation_guide#Verify_the_boot_mode">https://wiki.archlinux.org/index.php/Installation_guide#Verify_the_boot_mode</a>)
+for more info. Also, notice that we are already connected to the
+internet! Our virtual network uses DHCP, and the archiso knows to
+try to autoconfigure using DHCP. We will talk more about DHCP and
+other networking configuration later in the course. Finally, notice
+that we’ve conveniently inherited the system clock, so the time
+inside the VM should be right. You can run <code class="language-plaintext highlighter-rouge">date</code> to see.</p>
+  </blockquote>
+</div>
+      <h2 id="partitioning-time">
+        
+        
+          <a href="#partitioning-time" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Partitioning time
+        
+        
+      </h2>
+    
+
+<p>The first order of business is to set up the
+<a href="https://en.wikipedia.org/wiki/Disk_partitioning">partitions</a> that we will be
+using for this installation. We are going to use a simple partition scheme:</p>
+<ul>
+  <li>an EFI system partition (ESP)</li>
+  <li>one encrypted partition that holds our root filesystem</li>
+  <li>a small partition for swap space</li>
+</ul>
+
+<p>This is a very common scheme and is totally a scheme you could use if
+you were installing Arch on your own computer (except that you’ll
+hopefully have more than 5GiB to work with)!</p>
+
+<p><strong>GRADESCOPE</strong>: Give a brief and basic explanation of the purpose of having (1)
+the EFI system partition and (2) the swap partition. These explanations can be
+as short as one sentence, just try to get a general sense of why we have these
+partitions.</p>
+      <h3 id="create-partitions">
+        
+        
+          <a href="#create-partitions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create partitions
+        
+        
+      </h3>
+    
+
+<p>We will use <a href="https://wiki.archlinux.org/index.php/Fdisk"><code class="language-plaintext highlighter-rouge">fdisk</code></a> to create our
+partitions. Before we start the actual partitioning process, run <code class="language-plaintext highlighter-rouge">fdisk -l</code>. You
+should see that your VM has a single storage device called <code class="language-plaintext highlighter-rouge">/dev/sda</code>. Linux has
+special <a href="https://wiki.archlinux.org/index.php/Device_file">device files</a> that
+correspond to each “block device” (e.g. hard drives, SSDs, and partitions on the
+aformentioned storage devices) discovered by the operating system. These device
+files live in the <code class="language-plaintext highlighter-rouge">/dev</code> folder. Read more about the naming convention for
+storage devices and their partitions
+<a href="https://wiki.archlinux.org/index.php/Device_file#Block_device_names">here</a>.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>Test your understanding: What would be the name of the device file
+corresponding to the fourth partition on the second discovered storage device?</p>
+  </blockquote>
+</div>
+
+<p>Now to start the actual partitioning process, run <code class="language-plaintext highlighter-rouge">fdisk /dev/sda</code>.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>Note that you’ll be making a bunch of changes to the partition table, but
+these changes are not made immediately. So, if you make a mistake, you can
+just start again from step 1 without damaging anything.</p>
+  </blockquote>
+</div>
+
+<ol>
+  <li>Create a GPT table by typing <code class="language-plaintext highlighter-rouge">g</code> (then hit enter).</li>
+  <li>Create your ESP by typing <code class="language-plaintext highlighter-rouge">n</code>. Use the default partition number and
+first sector (just hit enter to automatically take the default).
+For the last sector, type <code class="language-plaintext highlighter-rouge">+512M</code> to allocate 512MiB for the
+partition.</li>
+  <li>Type <code class="language-plaintext highlighter-rouge">t</code> to change the type of the new partition (partition 1) to
+“EFI System”. You will have to list the types and find the right
+ID. (Note: press <code class="language-plaintext highlighter-rouge">q</code> to get out of the list of filesystem types).</li>
+  <li>Create your main root partition by typing <code class="language-plaintext highlighter-rouge">n</code> again. Use the
+default partition number and first sector. To leave 512MiB at the
+end of the disk for our swap partition, type <code class="language-plaintext highlighter-rouge">-512M</code> for the last
+sector. (This partition should already have the correct type,
+“Linux filesystem”, so you won’t need to change that.)</li>
+  <li>Create your swap partition by typing <code class="language-plaintext highlighter-rouge">n</code> one last time, and just
+take all the defaults.</li>
+  <li>Type <code class="language-plaintext highlighter-rouge">t</code> to change the type of the swap partition (partition 3) to
+“Linux swap”, as in step 3.</li>
+  <li>Type <code class="language-plaintext highlighter-rouge">p</code> to show the current partition table with all the changes
+you’ve made. You should see an “EFI System” partition that is
+512MiB, a “Linux filesystem” partition that is 4GiB, and a “Linux
+swap” partition that is 512MiB.</li>
+  <li>If everything looks right, type <code class="language-plaintext highlighter-rouge">w</code> to finally actually write the
+changes to disk.</li>
+</ol>
+
+<p>At this point, <code class="language-plaintext highlighter-rouge">fdisk</code> should exit.</p>
+
+<p><strong>GRADESCOPE</strong>: To see your final results, run <code class="language-plaintext highlighter-rouge">fdisk -l /dev/sda</code> and
+paste the output into Gradescope.</p>
+
+<p>At this point, you’ve created the disk partitions, but nothing is on
+them yet. Now we need to put the filesystems you will use on these
+partitions!</p>
+      <h3 id="create-filesystems">
+        
+        
+          <a href="#create-filesystems" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create filesystems
+        
+        
+      </h3>
+    
+      <h4 id="esp">
+        
+        
+          <a href="#esp" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP
+        
+        
+      </h4>
+    
+
+<p>The ESP (EFI System Partition) has to be in a FAT format. For more
+information about the ESP, see
+<a href="https://wiki.archlinux.org/index.php/EFI_system_partition">https://wiki.archlinux.org/index.php/EFI_system_partition</a>.</p>
+
+<p>Your ESP should be <code class="language-plaintext highlighter-rouge">/dev/sda1</code> (refer back to output from
+<code class="language-plaintext highlighter-rouge">fdisk -l /dev/sda</code>). Run <code class="language-plaintext highlighter-rouge">mkfs.fat -F32 /dev/sda1</code> to create the
+FAT32 filesystem.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>These instructions are straight from
+<a href="https://wiki.archlinux.org/index.php/EFI_system_partition#Format_the_partition">https://wiki.archlinux.org/index.php/EFI_system_partition#Format_the_partition</a>.</p>
+  </blockquote>
+</div>
+      <h4 id="root-partition">
+        
+        
+          <a href="#root-partition" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Root partition
+        
+        
+      </h4>
+    
+
+<p>Our root partition should be <code class="language-plaintext highlighter-rouge">/dev/sda2</code>.</p>
+
+<p>We are going to encrypt the root partition. This makes things a bit
+more complicated, but thankfully the ArchWiki will help us out!</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>Encryption is basically essentially in modern devices. If you do not
+encrypt your drive, anyone who has access to that drive can simply
+take it out of your machine and read everything on it. Your account
+password doesn’t protect against anything. However, if you do use
+encryption, you will not be able to get anything off the disk at all
+without the encryption password.</p>
+  </blockquote>
+</div>
+      <h5 id="wiping">
+        
+        
+          <a href="#wiping" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Wiping
+        
+        
+      </h5>
+    
+
+<p>A previous version of this lab mentioned that you should wipe your device before encrypting.</p>
+
+<p>While this may provide some benefits on older (spinning-disk) hard drives, it will <em>significantly reduce</em>
+the lifetime of modern solid-state drives. As DigitalOcean VMs, probably your laptop, and almost all modern
+computers use solid state drives, this section has been removed.</p>
+
+<p>If you’d like to see the older version of this lab, <a href="https://decal.ocf.berkeley.edu/archives/2020-fall/labs/a3#wiping">see here</a>.</p>
+      <h5 id="setting-up-the-encrypted-device">
+        
+        
+          <a href="#setting-up-the-encrypted-device" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Setting up the encrypted device
+        
+        
+      </h5>
+    
+
+<p>Again, this is taken from the ArchWiki. <a href="https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LUKS_on_a_partition">Follow
+along!</a></p>
+
+<p>First, set up the encrypted partition. For this lab, use the
+encryption passphrase <code class="language-plaintext highlighter-rouge">ilovelinux</code>.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup <span class="nt">-y</span> <span class="nt">-v</span> luksFormat /dev/sda2
+</code></pre></div></div>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>A note on passphrases: don’t use a passphrase like this! A good way
+to come up with passphrases is just to take 6 random words (and I
+mean actually random, not like
+<a href="https://xkcd.com/1210">xkcd.com/1210</a> random). One way to generate
+such a password is the command <code class="language-plaintext highlighter-rouge">shuf -n 6 /usr/share/dict/words</code>
+(you might have to install a package like <code class="language-plaintext highlighter-rouge">wamerican</code> on
+Ubuntu/Debian or <code class="language-plaintext highlighter-rouge">words</code> on Arch). We will talk more about security
+(including password security) later in the course.</p>
+  </blockquote>
+</div>
+
+<p>Now that the encrypted partition has been created, let’s open it!</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup open /dev/sda2 cryptroot
+</code></pre></div></div>
+
+<p><strong>GRADESCOPE</strong>: Run <code class="language-plaintext highlighter-rouge">lsblk</code> to see the hierarchy of these partitions.
+Paste this output into Gradescope!</p>
+      <h5 id="creating-the-actual-filesystem">
+        
+        
+          <a href="#creating-the-actual-filesystem" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Creating the actual filesystem
+        
+        
+      </h5>
+    
+
+<p>We now have a blank pseudo-partition (“block device”)
+<code class="language-plaintext highlighter-rouge">/dev/mapper/cryptroot</code>, that’s actually backed by encrypted
+<code class="language-plaintext highlighter-rouge">/dev/sda2</code> disk partition. However, there’s no filesystem here
+yet. Create it by doing</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkfs.ext4 /dev/mapper/cryptroot
+</code></pre></div></div>
+
+<p><strong>GRADESCOPE</strong>: What previous command we ran is similar to this
+command, and what’s the difference? (Bonus: why?)</p>
+      <h4 id="swap">
+        
+        
+          <a href="#swap" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Swap
+        
+        
+      </h4>
+    
+
+<p>Our swap partition should be <code class="language-plaintext highlighter-rouge">/dev/sda3</code>. The swap space isn’t really
+a <em>filesystem</em>, but we still need to set it up. Thankfully, this is
+pretty straightforward:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkswap /dev/sda3
+</code></pre></div></div>
+
+<p>Then, enable it with</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swapon /dev/sda3
+</code></pre></div></div>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>If you don’t know about swap, it is basically a specially designated
+section of disk that the operating system can use as memory in case
+it runs out of actual memory. For more info, check out
+<a href="https://wiki.archlinux.org/index.php/Swap">https://wiki.archlinux.org/index.php/Swap</a>.</p>
+  </blockquote>
+</div>
+      <h3 id="mount-the-new-filesystems">
+        
+        
+          <a href="#mount-the-new-filesystems" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Mount the new filesystems
+        
+        
+      </h3>
+    
+
+<p>We’ve now created all our filesystems, but in order to access them, we
+need to mount them.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>What does mounting mean? The <code class="language-plaintext highlighter-rouge">man</code> page for the <code class="language-plaintext highlighter-rouge">mount</code> command provides a
+nice description: “All files accessible in a Unix system are arranged in one
+big tree, the file hierarchy, rooted at /. These files can be spread out over
+several devices. The mount command serves to attach the filesystem found on
+some device to the big file tree. Conversely, the umount(8) command will
+detach it again.” We are currently in the “file tree” of the Arch live
+environment, which does not include the new ESP and root filesystems we
+created for our future Arch installation. Using <code class="language-plaintext highlighter-rouge">mount</code>, we can attach these
+filesystems to our live environment filesystem and access them as if they were
+directories at the mount point. Once the ESP and root filesystems are visible
+to the current filesystem, we can start installing a boot loader to the ESP
+filesystem and our permanent Arch OS to the root filesystem.</p>
+  </blockquote>
+</div>
+
+<p>We’re going to use <code class="language-plaintext highlighter-rouge">/mnt</code> as the temporary root of the new Arch installation.
+Thus, we mount the root filesystem at <code class="language-plaintext highlighter-rouge">/mnt</code>, and the ESP at <code class="language-plaintext highlighter-rouge">/mnt/boot</code> (since
+the ESP will normally be mounted at <code class="language-plaintext highlighter-rouge">/boot</code>). Hopefully this will make a little
+more sense once we begin installing the system.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount /dev/mapper/cryptroot /mnt
+<span class="nb">mkdir</span> /mnt/boot
+mount /dev/sda1 /mnt/boot
+</code></pre></div></div>
+
+<p><strong>GRADESCOPE</strong>:</p>
+
+<ol>
+  <li>
+    <p>You can see every single filesystem that’s currently mounted by running the
+<code class="language-plaintext highlighter-rouge">mount</code> command. Run it, and look for the two filesystems we just mounted.
+Copy all the output over to Gradescope.</p>
+  </li>
+  <li>
+    <p>Another common Linux partitioning scheme is to have a separate <code class="language-plaintext highlighter-rouge">/home</code>
+partition in addition to the partitions we created above. This can be useful
+in case something goes catastrophically wrong with your operating system to
+the point where you need to reinstall it. You can wipe your root filesystem
+and reinstall your OS while leaving your <code class="language-plaintext highlighter-rouge">/home</code> partition untouched, saving
+your user folder(s) with personal files like documents and photos without
+needing to restore from a backup. Hypothetically, if we had made a separate
+<code class="language-plaintext highlighter-rouge">/home</code> partition and filesystem in the previous steps, what command(s) would
+we need to run to mount it? Assume the <code class="language-plaintext highlighter-rouge">/home</code> partition is <code class="language-plaintext highlighter-rouge">/dev/sda3</code>.</p>
+  </li>
+</ol>
+      <h2 id="installation">
+        
+        
+          <a href="#installation" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Installation
+        
+        
+      </h2>
+    
+
+<p>With our partitions all set up and ready to get going, we can start
+installing out system onto them!</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>Much of this will be straight from the ArchWiki installation guide,
+starting at
+<a href="https://wiki.archlinux.org/index.php/Installation_guide#Installation">https://wiki.archlinux.org/index.php/Installation_guide#Installation</a>.
+It’s a good idea to follow along there as well to see what
+modifications we are making.</p>
+  </blockquote>
+</div>
+      <h3 id="mirrors">
+        
+        
+          <a href="#mirrors" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Mirrors
+        
+        
+      </h3>
+    
+
+<p><strong>Please skip this step as the OCF mirrors are currently down and doing this would make the download speeds really slow.</strong></p>
+
+<p>We need to tell Arch which software mirror to use when downloading
+packages. Go ahead and just put the OCF mirror at the top! Edit
+<code class="language-plaintext highlighter-rouge">/etc/pacman.d/mirrorlist</code> using <code class="language-plaintext highlighter-rouge">vim</code>/<code class="language-plaintext highlighter-rouge">emacs</code>/<code class="language-plaintext highlighter-rouge">nano</code> and put the
+following line at the top:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Server = https://mirrors.ocf.berkeley.edu/archlinux/$repo/os/$arch
+</code></pre></div></div>
+
+<p>(We’re usually lower down in the file but putting us at the top will
+make things a bit faster to install.)</p>
+      <h3 id="continue-according-to-archwiki">
+        
+        
+          <a href="#continue-according-to-archwiki" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Continue according to ArchWiki!
+        
+        
+      </h3>
+    
+
+<p>Follow the arch wiki exactly from
+<a href="https://wiki.archlinux.org/index.php/Installation_guide#Install_essential_packages">https://wiki.archlinux.org/index.php/Installation_guide#Install_essential_packages</a>
+down until you get to the “Initramfs” section. If you get stuck, check out the
+following hints:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">vim</code> is not installed in the chroot by default. You can do
+<code class="language-plaintext highlighter-rouge">pacman -S vim</code> to install it, or just use plain old <code class="language-plaintext highlighter-rouge">vi</code>.</li>
+  <li>Our timezone is <code class="language-plaintext highlighter-rouge">America/Los_Angeles</code>.</li>
+  <li>The locale you want to use is <code class="language-plaintext highlighter-rouge">en_US.UTF-8</code>.</li>
+  <li>You shouldn’t need to change the keyboard layout.</li>
+  <li>You can pick whatever you want for your hostname. OCF machines are
+all named after “disasters”, so it can be fun to come up with a
+creative name that fit that theme.</li>
+</ul>
+      <h3 id="initramfs">
+        
+        
+          <a href="#initramfs" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> initramfs
+        
+        
+      </h3>
+    
+
+<p>The initramfs is the minimal stuff that’s loaded into RAM that helps
+Linux get started when you first boot. On Arch, there’s a system to
+generate this initramfs. You need to tell it to support disk
+encryption.</p>
+
+<p>Based on the <a href="https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio">ArchWiki’s
+instructions</a>,
+we need to edit <code class="language-plaintext highlighter-rouge">/etc/mkinitcpio.conf</code>. You should see a line like</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HOOKS=(base udev autodetect ...)
+</code></pre></div></div>
+
+<p>We need to add the <code class="language-plaintext highlighter-rouge">keymap</code> and <code class="language-plaintext highlighter-rouge">encrypt</code> hooks, and move the
+<code class="language-plaintext highlighter-rouge">keyboard</code> hook earlier in the line. When you’re done, it should look
+like</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HOOKS=(base udev autodetect keyboard keymap modconf block encrypt filesystems fsck)
+</code></pre></div></div>
+
+<p>The <em>order</em> of these hooks matters! Be careful.</p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">mkinitcpio -p linux</code> to generate the new initramfs based on the
+new config file.</p>
+      <h3 id="root-password">
+        
+        
+          <a href="#root-password" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Root password
+        
+        
+      </h3>
+    
+
+<p>Use <code class="language-plaintext highlighter-rouge">passwd</code> to set the root password to <code class="language-plaintext highlighter-rouge">itoolovelinux</code>.</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>As mentioned for the disk encryption passphrase, don’t use a
+password like this in real life! Choose a strong root password using
+a method like the one from earlier. User programs shouldn’t be able
+to compromise this password, because it would allow a single program
+(which should generally be untrusted) to access everything on your
+computer.</p>
+  </blockquote>
+</div>
+      <h3 id="boot-loader">
+        
+        
+          <a href="#boot-loader" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Boot loader
+        
+        
+      </h3>
+    
+
+<p>Historically, GRUB has been the only reasonable choice of boot loader. However,
+with the advent of UEFI, there are lots of different good options (or my
+personal favorite, <a href="https://wiki.archlinux.org/index.php/EFISTUB#Using_UEFI_directly">no bootloader at
+all</a>). In this
+lab, we are going to use
+<a href="https://wiki.archlinux.org/index.php/Systemd-boot">systemd-boot</a>.</p>
+
+<p>We can install systemd-boot to our ESP by running</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bootctl <span class="nt">--path</span><span class="o">=</span>/boot <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>We now need to tell systemd-boot that our Arch Linux installation
+exists and how to start it! Create a bootloader entry by creating the file
+<code class="language-plaintext highlighter-rouge">/boot/loader/entries/arch.conf</code> with these contents:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options cryptdevice=UUID=290d6a44-2964-48a0-a71e-ea3df0525987:cryptroot root=/dev/mapper/cryptroot rw console=ttyS0
+</code></pre></div></div>
+
+<p><strong>IMPORTANT NOTE:</strong> You will need to replace
+<code class="language-plaintext highlighter-rouge">290d6a44-2964-48a0-a71e-ea3df0525987</code> with the correct UUID for your
+encrypted <code class="language-plaintext highlighter-rouge">/dev/sda2</code> partition. To find the correct UUID, run <code class="language-plaintext highlighter-rouge">ls -l
+/dev/disk/by-uuid</code> and look for the line with <code class="language-plaintext highlighter-rouge">-&gt; ../../sda2</code>. This
+line will have the UUID you need. <strong>If you make a mistake here, you
+can mess things up pretty bad! TRIPLE-CHECK this file!</strong></p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>We could use a name like <code class="language-plaintext highlighter-rouge">/dev/sda2</code> instead of
+<code class="language-plaintext highlighter-rouge">UUID=290d6a44-2964-48a0-a71e-ea3df0525987</code> here. However, these
+names like <code class="language-plaintext highlighter-rouge">/dev/sdXX</code> are not guaranteed to always be the same. A
+kernel update or hardware changes can mean that <code class="language-plaintext highlighter-rouge">/dev/sda2</code> is now
+<code class="language-plaintext highlighter-rouge">/dev/sdb2</code>, or vice versa. This will mean we won’t be able to boot,
+and in particularly bad cases, can lead to data loss. For this
+reason, we should use UUIDs whenever possible, because they cannot
+change. See
+<a href="https://wiki.archlinux.org/index.php/Persistent_block_device_naming">https://wiki.archlinux.org/index.php/Persistent_block_device_naming</a>
+for more info about this.</p>
+  </blockquote>
+
+  <blockquote>
+    <p>Also, remember how we had to add <code class="language-plaintext highlighter-rouge">console=ttyS0</code> when we first
+booted the archiso? We can add that option here to make it permanent
+for the new system, so the console will always be enabled.</p>
+  </blockquote>
+</div>
+
+<p>Type <code class="language-plaintext highlighter-rouge">exit</code> to exit the chroot and then type <code class="language-plaintext highlighter-rouge">reboot</code> to REBOOT AND
+FINISH THE INSTALLATION! Congrats!</p>
+
+<div class="code-example">
+
+  <blockquote>
+    <p>If things don’t work after you reboot, don’t panic! Please make a
+Ask for help on #decal-general, and we will try to help you
+recover things.</p>
+  </blockquote>
+</div>
+
+<p>When it reboots, you will be asked for the disk encryption password,
+and then you should see a login prompt. Log in as root using the
+password you set!</p>
+
+<p><strong>GRADESCOPE</strong>: To show off your newly installed Arch system, run the
+following commands and paste the output into Gradescope:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hostname -f
+ip addr
+mount
+lsblk
+uname -a
+</code></pre></div></div>
+
+<p><strong>Debugging Note:</strong> If the <code class="language-plaintext highlighter-rouge">hostname</code> command is not found, you may need to install it by running <code class="language-plaintext highlighter-rouge">sudo pacman -S inetutils</code>. Doing so may also reveal that your internet connection is not yet configured. If this is the case, then you will likely need to <code class="language-plaintext highlighter-rouge">sudo systemctl enable systemd-resolved</code> and/or <code class="language-plaintext highlighter-rouge">sudo systemctl enable systemd-networkd</code> and/or <code class="language-plaintext highlighter-rouge">sudo systemctl enable dhcpcd</code> and/or <code class="language-plaintext highlighter-rouge">ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf </code>. You can see more information about this in the ArchWiki: https://wiki.archlinux.org/index.php/systemd-networkd. If these instructions do not work, you may also need to <a href="https://mycfg.net/articles/booting-from-a-cdrom-in-a-kvm-guest-using-libvirt/">reboot into the Arch installer</a> and <a href="https://unix.stackexchange.com/questions/259938/how-to-reinstall-dhcpcd-without-internet-connection/260017">use pacstrap to install dhcpcd</a>.</p>
+
+<p>When you are done, you can hit <code class="language-plaintext highlighter-rouge">ctrl-]</code> to detach your console from
+the Arch VM and get back to your normal student VM shell.</p>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com" class="no-underline">
+        <img
+          src="/assets/images/digitalocean.png"
+          style="height: 34px; width: 200px"
+      /></a>
+      <span>
+        With great appreciation to
+        <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring
+        the VMs used in both tracks of the DeCal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2021
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

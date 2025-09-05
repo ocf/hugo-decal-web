@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.8.0/github-markdown.min.css">
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+
+<title>Advanced Lab 1 - Hands-On Linux System Administration DeCal</title>
+
+<article class="markdown-body">
+  <h1>Advanced Lab 1</h1>
+  <ul id="markdown-toc">
+  <li><a href="#a-note-on-labs" id="markdown-toc-a-note-on-labs">A Note on Labs</a></li>
+  <li><a href="#workflow" id="markdown-toc-workflow">Workflow</a></li>
+  <li><a href="#question-1" id="markdown-toc-question-1">Question 1</a></li>
+  <li><a href="#question-2" id="markdown-toc-question-2">Question 2</a></li>
+  <li><a href="#question-3" id="markdown-toc-question-3">Question 3</a></li>
+  <li><a href="#question-4-extra" id="markdown-toc-question-4-extra">Question 4 (Extra)</a></li>
+  <li><a href="#submission" id="markdown-toc-submission">Submission</a></li>
+  <li><a href="#footnotes" id="markdown-toc-footnotes">Footnotes</a></li>
+</ul>
+
+<h3 id="a-note-on-labs">A Note on Labs</h3>
+<p>Labs are graded on completion. Treat this lab as seeds of exploration instead 
+of just a grade.</p>
+
+<p>As this is the first lab, we have done our best to make it as straightforward as possible. Bash scripting
+isn’t the main goal of the DeCal but this lab should introduce you to some fun bash features you may not have encountered before, such as loops and shell expansions, that you’ll probably find useful in the future.</p>
+
+<p>If you ever find yourself confused, stuck, and/or curious to learn more, <strong>talk to us about it!</strong> The best way to connect with us (and your peers) is through our <a href="https://fco.slack.com/archives/CN0FQ9BUN">Slack channel</a>.</p>
+
+<h3 id="workflow">Workflow</h3>
+<p>This lab can be done on your own UNIX-like machine, or you can ssh into
+<code class="highlighter-rouge">tsunami.ocf.berkeley.edu</code> using your OCF account to finish the lab there. As always,
+<code class="highlighter-rouge">man</code> and Google will be your friends.</p>
+
+<h2 id="question-1">Question 1</h2>
+
+<p>At some point, everyone has looked at a problem and thought to themselves:
+“Hey, I can do this in one line!”</p>
+
+<p>Lets find out if you can. I need to sort out some of my most listened to albums
+by making directories for each of them, specifically for my favorite artist Future.</p>
+
+<p>I have hosted a list of my favorite albums followed by their respective artist at 
+<code class="highlighter-rouge">https://raw.githubusercontent.com/0xcf/decal-labs/master/a1/albums.txt</code>,
+in a comma delimited format like <code class="highlighter-rouge">Die Lit, Playboi Carti</code>. For the GOAT artist Future,
+I want to create a folder for each of his albums. For example, for an entry like
+<code class="highlighter-rouge">SUPER SLIMEY, Future</code> I would expect a directory called <code class="highlighter-rouge">SUPER SLIMEY</code> to be created.</p>
+
+<p><strong>TLDR</strong>: You need to fetch the list from the web, filter out the albums we want,
+trim out the album name, and then make a directory for each one, all in one line.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat albums.txt
+...
+Drip or Drown 2, Gunna
+Playboi Carti, Playboi Carti
+DS2 (Deluxe), Future  &lt;-- GOAT album detected!
+Drip Harder, Lil Baby
+The WIZRD, Future  &lt;-- GOAT album detected!
+What a Time To Be Alive, Drake
+...
+
+# After our magic one liner...
+
+$ ls
+'DS2 (Deluxe)'   'The WIZRD`   ...
+# We got our new directories!
+</code></pre></div></div>
+
+<p>Hints:</p>
+<ul>
+  <li>What common text manipulation commands can help you solve this?</li>
+  <li>As always, be aware that there isn’t one unique solution to this problem!</li>
+  <li>Also be aware that <code class="highlighter-rouge">xargs</code> behaves differently on different platforms.</li>
+</ul>
+
+<p>Submit your one line solution!</p>
+
+<h2 id="question-2">Question 2</h2>
+
+<p>With the invention of the <code class="highlighter-rouge">.norm</code> file format, file extension innovation is at its peak!<sup id="fnref:xkcd"><a href="#fn:xkcd" class="footnote">1</a></sup></p>
+
+<p>However, your computer is old and doesn’t support it, so we’ll need to convert all of the files ending in <code class="highlighter-rouge">.norm</code> into <code class="highlighter-rouge">.docx</code> files.</p>
+
+<p>Using Bash functions and shell wildcard expansion, write a
+shell script <code class="highlighter-rouge">rename.sh</code> to batch rename file extensions in a particular directory.</p>
+
+<p>Example:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls </span>Documents/
+cats.norm data.norm dogs.norm ...
+<span class="nv">$ </span>./rename Documents norm docx <span class="c"># Run your script!</span>
+renaming Documents/data.norm to Documents/data.docx
+renaming Documents/cats.norm to Documents/cats.docx
+renaming Documents/dogs.norm to Documents/dogs.docx
+...
+<span class="nv">$ </span><span class="nb">ls </span>Documents/
+cats.docx data.docx dogs.docx ...
+</code></pre></div></div>
+
+<p>Your script should be able to convert between any arbitrary file formats, not just <code class="highlighter-rouge">.norm</code> and <code class="highlighter-rouge">.docx</code>! For example:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span>
+<span class="c"># Creates a new directory tmp and adds 26 new files a.dat, b.dat ... to z.dat into it</span>
+<span class="nv">$ </span>mkdir tmp <span class="o">&amp;&amp;</span> touch tmp/<span class="o">{</span>a..z<span class="o">}</span>.dat 
+<span class="nv">$ </span>./rename.sh tmp dat txt
+renaming tmp/a.dat to tmp/a.txt
+...
+renaming tmp/z.dat to tmp/z.txt
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-lAh</span> tmp | <span class="nb">grep</span> .txt | wc <span class="nt">-l</span> <span class="c"># Gets the number of lines in ls which contain .txt</span>
+26
+</code></pre></div></div>
+
+<p>for bonus points, instead of using something like <code class="highlighter-rouge">sed</code> to affect the rename,
+use <a href="https://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash">shell parameter expansion</a>.</p>
+
+<h2 id="question-3">Question 3</h2>
+
+<p>I like Lisp and Scheme, and miss <code class="highlighter-rouge">car</code> and <code class="highlighter-rouge">cdr</code> in my usual programming tasks.<sup id="fnref:carcdr"><a href="#fn:carcdr" class="footnote">2</a></sup></p>
+
+<p>In bash, implement <code class="highlighter-rouge">car</code> and <code class="highlighter-rouge">cdr</code> (aka <code class="highlighter-rouge">head</code> and <code class="highlighter-rouge">tail</code>) such that they
+operate on file paths.</p>
+
+<p>e.g.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./car /home/a/ab/abizer/some/path
+home
+<span class="nv">$ </span>./cdr /home/a/ab/abizer/some/path
+a/ab/abizer/some/path
+</code></pre></div></div>
+
+<p>There’s no need to use complicated string manipulation for this task.
+You may assume that only absolute paths<sup id="fnref:paths"><a href="#fn:paths" class="footnote">3</a></sup> will be given.</p>
+
+<p>bonus points: generalize this solution to work for <code class="highlighter-rouge">cadr</code>, <code class="highlighter-rouge">caddr</code>, etc.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./cadr /home/a/ab/abizer/some/path
+a
+<span class="nv">$ </span>./cddr /home/a/ab/abizer/some/path
+ab/abizer/some/path
+</code></pre></div></div>
+
+<p>Hint: The easiest way to do this is with one very short command.</p>
+
+<h2 id="question-4-extra">Question 4 (Extra)</h2>
+
+<p>This question is optional but it’s quite fun and you should do it if you have the time!</p>
+
+<p>Using Bash functions, write a script <code class="highlighter-rouge">mkrandom.sh</code> that generates a user-specified number
+of files of user-specified size filled with random content.</p>
+
+<p>e.g.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./mkrandom.sh 10 100  <span class="c"># create 10 100 byte random files</span>
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-lAh</span>
+total 44K
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 1
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 10
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 2
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 3
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 4
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 5
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 6
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 7
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 8
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 9
+<span class="nt">-rwxr-xr-x</span> 1 abizer ocf  147 Sep 16 21:56 mkrandom
+</code></pre></div></div>
+
+<p>You may want to look into <code class="highlighter-rouge">dd</code><sup id="fnref:dd"><a href="#fn:dd" class="footnote">4</a></sup> and the <code class="highlighter-rouge">iflag=fullblock</code> argument,
+<code class="highlighter-rouge">seq</code>, and <code class="highlighter-rouge">/dev/random</code><sup id="fnref:rand"><a href="#fn:rand" class="footnote">5</a></sup>.</p>
+
+<h2 id="submission">Submission</h2>
+<p>Submit your solutions on Gradescope! There’ll be some extra feedback questions as well that we would appreciate you filling out.</p>
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes">
+  <ol>
+    <li id="fn:xkcd">
+      <p>Relevant xkcd: <a href="https://xkcd.com/2116/">https://xkcd.com/2116/</a> <a href="#fnref:xkcd" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:carcdr">
+      <p>Aren’t too familiar with <code class="highlighter-rouge">car</code> and <code class="highlighter-rouge">cdr</code>? <a href="https://medium.com/@aleksandrasays/my-other-car-is-a-cdr-3058e6743c15">Here’s a brief article about it.</a>. If you take CS61A, you’ll see it there as well! <a href="#fnref:carcdr" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:paths">
+      <p>As a quick reminder, absolute paths always start from the root directory (<code class="highlighter-rouge">/</code>), whereas relative paths start from the current directory. <a href="#fnref:paths" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:dd">
+      <p><code class="highlighter-rouge">dd</code> is a command used to copy files.<sup id="fnref:dd2"><a href="#fn:dd2" class="footnote">6</a></sup> It’s most commonly used to clone data from one device to another, such as when you want to <a href="https://wiki.archlinux.org/index.php/USB_flash_installation_medium">generate a bootable Linux USB drive</a>. <a href="#fnref:dd" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:rand">
+      <p>A curious individual might find the device file <code class="highlighter-rouge">/dev/urandom</code> as well. What’s
+the difference? True randomness is a rather difficult problem for computers, as they’re
+expected to do the same thing given the same state, so they pull in random data from
+metrics like internal temperature and mouse movement. Unfortunately, such entropy may
+not exist in certain machines and gathering entropy may be prohibitively long. Thus,
+<code class="highlighter-rouge">/dev/urandom</code>, or “unlimited random”, is a useful source when such randomness is not
+cryptographically critical. <a href="#fnref:rand" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:dd2">
+      <p>“But wait,” a nearby straw-man asks, “isn’t that what <code class="highlighter-rouge">cp</code> does?”<sup id="fnref:dd3"><a href="#fn:dd3" class="footnote">7</a></sup> <a href="#fnref:dd2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:dd3">
+      <p>They are indeed right, but <code class="highlighter-rouge">dd</code> has some useful features such as partial writing
+and reading that make it handy in weirder scenarios, such as devices.  StackOverflow has
+a <a href="https://superuser.com/questions/609211/why-do-we-use-cp-to-copy-files-and-not-dd-in-unix-derivatives">good explainer</a> and the ArchWiki has some <a href="https://wiki.archlinux.org/index.php/Dd">common examples</a>. <a href="#fnref:dd3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+
+  <br>
+<footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com">
+        <img src="/images/digitalocean.png" style="height: 34px; width: 200px;" /></a>
+      &nbsp;&nbsp;With great appreciation to
+      <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring the
+      VMs used in both tracks of the DeCal
+    </p>
+    <p>
+      <a href="https://www.linode.com">
+        <img src="/images/linode.png" style="height: 50px; width: 125px;" /></a>
+      &nbsp;&nbsp;Huge thanks to
+      <a href="https://www.linode.com">Linode</a> for sponsoring the equipment 
+      used to record digital lectures for the Decal
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu">
+        <img src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+             alt="Hosted by the OCF" style="border: 0;" /></a>
+      Copyright &copy; 2017-2020
+      <a href="https://www.ocf.berkeley.edu">
+        Open Computing Facility
+      </a>
+      and
+      <a href="https://xcf.berkeley.edu">
+        eXperimental Computing Facility
+      </a>
+    </p>
+    <p>
+      This website is licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/">
+        Source Code
+      </a>
+      available on GitHub
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+</article>
+

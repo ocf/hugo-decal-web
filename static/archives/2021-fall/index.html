@@ -1,0 +1,945 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Home | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Home" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.io/archives/2021-fall/" />
+<meta property="og:url" content="https://decal.ocf.io/archives/2021-fall/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Home" />
+<script type="application/ld+json">
+{"@type":"Course","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"url":"https://decal.ocf.io/archives/2021-fall/","headline":"Home","description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","name":"Linux Sysadmin Decal","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<body>
+  <!-- This makes the page opaque until the screen is loaded. Matches the preferred dark-mode color of the user. -->
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+    <symbol id="svg-search" viewBox="0 0 24 24">
+      <title>Search</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </symbol>
+    <symbol id="svg-menu" viewBox="0 0 24 24">
+      <title>Menu</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+        <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </symbol>
+    <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+      <title>Expand</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </symbol>
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+      <title>Document</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+      </svg>
+    </symbol>
+  </svg>
+
+  <div class="side-bar">
+    <div class="site-header">
+      <a href="https://decal.ocf.io/archives/2021-fall/" class="site-title lh-tight">
+  Sysadmin DeCal
+
+</a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
+      
+        <ul class="nav-list"><li class="nav-list-item active"><a href="https://decal.ocf.io/archives/2021-fall/" class="nav-list-link active">Home</a></li><li class="nav-list-item"><a href="https://decal.ocf.io/archives/2021-fall/about/" class="nav-list-link">About</a></li><li class="nav-list-item"><a href="https://decal.ocf.io/archives/2021-fall/announcements/" class="nav-list-link">Announcements</a></li><li class="nav-list-item"><a href="https://decal.ocf.io/archives/2021-fall/staff/" class="nav-list-link">Staff</a></li><li class="nav-list-item"><a href="https://decal.ocf.io/archives/2021-fall/archive/" class="nav-list-link">Archive</a></li></ul>
+
+      
+    </nav>
+    <footer class="site-footer">
+      <button type="button" name="theme-toggle" class="btn mb-md-3" onclick="toggleDark()">Toggle Dark Theme</button>
+      <br />
+      This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    </footer>
+  </div>
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+      
+        <div class="search">
+          <div class="search-input-wrap">
+            <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Sysadmin DeCal" aria-label="Search Sysadmin DeCal" autocomplete="off">
+            <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+          </div>
+          <div id="search-results" class="search-results"></div>
+        </div>
+      
+      
+      
+        <nav aria-label="Auxiliary" class="aux-nav">
+          <ul class="aux-nav-list">
+            
+              <li class="aux-nav-list-item">
+                <a href="https://piazza.com/class/kp7hxhi8kd221n" class="site-button"
+                  
+                  target="_blank" rel="noopener noreferrer"
+                  
+                >
+                  Piazza
+                </a>
+              </li>
+            
+              <li class="aux-nav-list-item">
+                <a href="https://ocf.berkeley.edu/" class="site-button"
+                  
+                  target="_blank" rel="noopener noreferrer"
+                  
+                >
+                  OCF
+                </a>
+              </li>
+            
+              <li class="aux-nav-list-item">
+                <a href="https://xcf.berkeley.edu/" class="site-button"
+                  
+                  target="_blank" rel="noopener noreferrer"
+                  
+                >
+                  XCF
+                </a>
+              </li>
+            
+          </ul>
+        </nav>
+      
+    </div>
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+      <div id="main-content" class="main-content" role="main">
+        
+          <h1 class="mb-2" id="linux-system-administration-decal">
+        
+        
+          <a href="#linux-system-administration-decal" class="anchor-heading" aria-labelledby="linux-system-administration-decal"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Linux System Administration Decal
+        
+        
+      </h1>
+    
+<p class="fs-6 fw-300">A course covering the basics of setting up and administering a production-quality Linux server environment.</p>
+
+<div class="announcement">
+      <h2>
+        
+        
+          Week 11 Announcements
+        
+        
+      </h2>
+    
+  <span class="announcement-meta">
+    
+    Nov 22
+    &middot;
+    
+    
+    1 min read
+  </span>
+  <div>
+    <p>Hi everyone!</p>
+
+<p>Lab 11 is now released and available on the Decal website <a href="https://decal.ocf.berkeley.edu/labs/11/">here</a>. Lab 11 is <strong>completely optional</strong> and can be used to replace another lab you haven’t done for full credit if desired (i.e. you just need to complete any 10 labs).</p>
+
+<p>Lab 11 is applicable to both tracks, and involves writing a Puppet script to auto-provision a Minecraft server!</p>
+
+<p>This will also be the very last lab of the semester. <strong>All labs, including late labs and Lab 11, will have a final due date of Sunday, December 12 at 11:59pm</strong> (the weekend before finals). This will allow us to have time to process and submit grades.</p>
+
+<p>We are very much hoping to give everyone credit for participating this semester! If the deadline is approaching and you feel like you are unable to complete the required labs, please either send us an email at decal@ocf.berkeley.edu or make a private Piazza post, and we will do what we can to accommodate your situation.</p>
+
+<p>Hope y’all have an awesome Thanksgiving, and feel free to reply with any questions you have!</p>
+
+  </div>
+</div>
+
+<p><a href="/announcements/" class="btn btn-outline fs-3">Announcements</a></p>
+      <h2 id="weekly-schedule">
+        
+        
+          <a href="#weekly-schedule" class="anchor-heading" aria-labelledby="weekly-schedule"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Weekly Schedule
+        
+        
+      </h2>
+    
+
+<div class="schedule">
+  <ul class="schedule-timeline" style="min-width: 650px">
+    
+    <li class="schedule-time">7:30 PM </li>
+    
+    <li class="schedule-time">8:00 PM </li>
+    
+    <li class="schedule-time">8:30 PM </li>
+    
+    <li class="schedule-time">9:00 PM </li>
+    
+    <li class="schedule-time">9:30 PM </li>
+    
+    <li class="schedule-time">10:00 PM </li>
+    
+  </ul>
+  <ul class="schedule-group">
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Monday
+        
+        
+      </h2>
+    
+      
+    </li>
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Tuesday
+        
+        
+      </h2>
+    
+      
+      <ul class="schedule-events" style="height: 240px">
+      
+        
+        
+        
+        
+        <li class="schedule-event beginner-lab" style="top: 40px; height: 120px;">
+          <div class="name">Beginner Lab</div>
+          <div class="time">8:00 PM–9:00 PM</div>
+          
+          <div class="location">ocf.io/decalzoom<br />171 MLK Student Union</div>
+          
+        </li>
+      
+      </ul>
+      
+    </li>
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Wednesday
+        
+        
+      </h2>
+    
+      
+    </li>
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Thursday
+        
+        
+      </h2>
+    
+      
+      <ul class="schedule-events" style="height: 240px">
+      
+        
+        
+        
+        
+        <li class="schedule-event advanced-lab" style="top: 40px; height: 120px;">
+          <div class="name">Advanced Lab</div>
+          <div class="time">8:00 PM–9:00 PM</div>
+          
+          <div class="location">ocf.io/decalzoom<br />171 MLK Student Union</div>
+          
+        </li>
+      
+      </ul>
+      
+    </li>
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Friday
+        
+        
+      </h2>
+    
+      
+    </li>
+    
+  </ul>
+</div>
+      <h1 id="calendar">
+        
+        
+          <a href="#calendar" class="anchor-heading" aria-labelledby="calendar"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Calendar
+        
+        
+      </h1>
+    
+
+<div class="module">
+      <h2 class="text-gamma" id="week-0-8302021">
+        
+        
+          <a href="#week-0-8302021" class="anchor-heading" aria-labelledby="week-0-8302021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 0: 8/30/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Infosession</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-yellow">Infosession</strong><a href="https://ocf.io/decalzoom">ocf.io/decalzoom</a></dt>
+        <dd><a href="https://docs.google.com/presentation/u/4/d/1reHYTzb-19HYRSWwZkmXI8Oa-r328vqJ28VtHmNazGA/edit">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-yellow">Lab</strong><a href="https://docs.google.com/forms/d/10O6C7dWiRRc1O-q46jx_q-3IIWQobwFdn9TmyQ8qt5M/edit">Lab 0</a></dt>
+        <dd><strong>Lab due Sat. 9/4</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-1-962021">
+        
+        
+          <a href="#week-1-962021" class="anchor-heading" aria-labelledby="week-1-962021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 1: 9/6/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://www.youtube.com/playlist?list=PLbFJdEcMM5GHnbRDEgJ5HNdOzmS5QrNXG">History of UNIX, intro to shell, FOSS</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1AtnXiOZniLuP9QcnG8_OT1lwmhISRk2_zeANpXgycaY/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b1">Lab b1</a>     <a href="https://docs.google.com/document/d/1SaaiUpLzfY6Mo8EJXhi9V_JK7V8Z2d5ctZsbeRWgzKU/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 9/11</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://www.youtube.com/watch?v=TBsxgbGwtnA">Advanced Introduction to UNIX</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1P4HcAr1NcxFEL1m9bIokiBP1zOODHj8YQMPFSafeWko/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a1">Lab a1</a>     <a href="https://docs.google.com/document/d/12IYqVnEZfSUz0wPUyItKP6M5Axbn4qjWeu0TJ72AHFU/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 9/11</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-2-9132021">
+        
+        
+          <a href="#week-2-9132021" class="anchor-heading" aria-labelledby="week-2-9132021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 2: 9/13/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://www.youtube.com/watch?v=TXNpIIlcHm4&amp;feature=youtu.be">Core Shell</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1o7CWAAa21JYll_isRd-oR3dhurBAPzQA5desEhxvwH0/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b2">Lab b2</a>     <a href="https://docs.google.com/document/d/18d2eJ6sdD-HvLIRY0z2eC-hx8Rbaaxc0Tk7iHn9aJ5E/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 9/18</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://youtu.be/M0vPXQycer0">Packages</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1RMNPRHNoh4a5KWwXY8fBWJ49nBafxbo4g-OvSZZ85V8/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a2">Lab a2</a>     <a href="https://docs.google.com/document/d/1sYrT0-6nlKaKSdNfKPIVQC7qT5TfIr4ufbpAE1xUtJM/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 9/18</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-3-9202021">
+        
+        
+          <a href="#week-3-9202021" class="anchor-heading" aria-labelledby="week-3-9202021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 3: 9/20/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://www.youtube.com/watch?v=7xAGcmhkflM">Shell Scripting</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1LG8G_fbduqo9K2NOtQDjHkmNCMim0kQOmo-0q3fvmRc/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b3">Lab b3</a>     <a href="https://docs.google.com/document/d/1rs5FCTN99iLzRgV5UHskgQdCrRUJ5vrVY9Mw1acYj9U/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 9/25</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://www.youtube.com/watch?v=MnsUBRIw-74&amp;feature=youtu.be">DIY Linux Pre-Install</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1oLtsjsEIsvChOI31_5YYFhILfzGlyx7Hk9DsL1Nv-mc/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a3">Lab a3</a>     <a href="https://docs.google.com/document/d/1df8kIAWw7Xxetg_Y5eJXE-1eXgYAHsDW9A3rL5NU1VU/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 9/25</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-4-9272021">
+        
+        
+          <a href="#week-4-9272021" class="anchor-heading" aria-labelledby="week-4-9272021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 4: 9/27/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://youtu.be/Uh7N86zjYm4">Compiling, Distros, and Packaging</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1UJHO7fXok-6RN7DAJ5SPTqcCXiRSR8hpGZx9OQMnMOU/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b4">Lab b4</a>     <a href="https://docs.google.com/document/d/1RPEfOSC0XyLcXpF3Kqq7oV_bo7I_7dZCle3_fQlMGqk/edit">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/2</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://youtu.be/BVbHnEv8L9s">Linux Post-Install</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1b5nggnCS-qzkpp62xvnq5eGrJcgsYAvqlwIsx-Z6ETI/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a4">Lab a4</a>     <a href="https://docs.google.com/document/d/1AA2kDoGSrg5z-6EhFcl8UpGfVxpftMtpGkKoj3pJHHk/edit">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/2</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-5-1042021">
+        
+        
+          <a href="#week-5-1042021" class="anchor-heading" aria-labelledby="week-5-1042021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 5: 10/4/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://youtu.be/cPkLsSFKwPM">Networking 101</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1DCN2fViHjAS7PoS98dsVC-LNwPN_jvaAKIuVFaRJrM0/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b5">Lab b5</a>     <a href="https://docs.google.com/document/d/1ltsmW3Tg_VRN9Slt9nSYAxZtqMAFQvlsO6NsJjag6m0/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/9</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://youtu.be/AS293JoAr8s">Processes and Services</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1sv5Bxw9Fet9utjFU8xGDntawLVmBOT9YpCt9mJ2V6Dg/edit" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a5">Lab a5</a>     <a href="https://docs.google.com/document/d/1gCotUApMFWvhGXpkXozwOkPhd4AGYqp7jmyyutbkIIM/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/9</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-6-10112021">
+        
+        
+          <a href="#week-6-10112021" class="anchor-heading" aria-labelledby="week-6-10112021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 6: 10/11/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://youtu.be/Z_q1zkeWEFs">Processes</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1AS1BYX8jdBQGBviBGgcZPREIePrsgkT7pc-9Wk_RkS0/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b6">Lab b6</a>     <a href="https://docs.google.com/document/d/1LQQzsYmZrplLFdCykMwBcXJwb7qu35ZqlXJogonhNCI/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/16</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://youtu.be/DPKRivN9ga4">Networking 102</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/14XXyjUxUohINsg93qD-8SHP1mPpTTnBoZ3NHmMVTJqY/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a6">Lab a6</a>     <a href="https://docs.google.com/document/d/1D9V_4VB4vu2FYRrQgID2m98ak2qEzXAuqWr2hSUoz1U/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/16</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-7-10182021">
+        
+        
+          <a href="#week-7-10182021" class="anchor-heading" aria-labelledby="week-7-10182021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 7: 10/18/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://youtu.be/y3mIzYtCPeY">Services</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1N67saQd3NWrBLrk1oEOE2UdLa4Ny_qjDBUAZQolXsUE/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b7">Lab b7</a>     <a href="https://docs.google.com/document/d/1u5KV_LIfUbQHvPbspq_ejHxO1LsxHskMIlcHVgi0AhQ/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/23</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://youtu.be/5clc5xi5FDo">Networked Services</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/11nMxy5iJTS3YDBLqT3O5i8cbbRdtS2Hxf4QRbHJiGBo/edit" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a7">Lab a7</a>     <a href="https://docs.google.com/document/d/1YiSOMMNl_H5XNmvEqo53tCQ8xHFurqBMkIq6dWJ7ExE/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/23</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-8-10252021">
+        
+        
+          <a href="#week-8-10252021" class="anchor-heading" aria-labelledby="week-8-10252021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 8: 10/25/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://www.youtube.com/watch?v=hqrWBYm5-Zg&amp;feature=youtu.be">Security Fundamentals</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1t6fU6qPELZvBo7N_KZLDiLDsS2DJPcgySIXZjIVfKho/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b8">Lab b8</a>     <a href="https://docs.google.com/document/d/1izHUZNfQHGPcdvLuYJhB9iPtABFGo8sxvRpwALqHkvw/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/30</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://youtu.be/T9hakIIYUkk">Config Management</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1ZAXSwjM9_SncvD8GGQgbPI2g3KlSsIZi2-xxeHwfSWA/edit" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a8">Lab a8</a>     <a href="https://docs.google.com/document/d/1cQ5w2uZN1uZB2UJXCloBj3TFcppyWjJGu7hbLerREtA/edit?usp=sharing">(Solution)</a></dt>
+        <dd><strong>Lab due Sat. 10/30</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-9-1112021">
+        
+        
+          <a href="#week-9-1112021" class="anchor-heading" aria-labelledby="week-9-1112021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 9: 11/1/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://youtu.be/X4yGMr9c64U">Version Control and Backups</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1NxdvuLkWSzRvtnj41AkvGU00ub_XUbk8wlIxWxm0ok4/edit">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b9">Lab b9</a></dt>
+        <dd><strong>Lab due Sat. 11/6</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://youtu.be/j4ryvaVJURs">Advanced Security</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/12ypck2LSIaNGq5RpLmIb4gbAX-GP2pCSgf4l9VMuq1k/edit" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a9">Lab a9</a></dt>
+        <dd><strong>Lab due Sat. 11/6</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-10-1182021">
+        
+        
+          <a href="#week-10-1182021" class="anchor-heading" aria-labelledby="week-10-1182021"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 10: 11/8/2021
+        
+        
+      </h2>
+    
+
+  <dl>
+    <dt>Beginner Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-green">Lecture</strong><a href="https://www.youtube.com/watch?v=JhgEg1YTO7c&amp;feature=youtu.be">Cloud, Containers, and Config Management</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1aiSnR1zT2qM-RcLnrCC1FhTqjnzKOQvMyR5r_hJr9V0/edit?usp=sharing">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-blue">Lab</strong><a href="labs/b10">Lab b10</a></dt>
+        <dd><strong>Lab due Sat. 11/20</strong></dd>
+      </dl>
+    </dd>
+    <dt>Advanced Track</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-purple">Lecture</strong><a href="https://www.youtube.com/watch?v=tCg77GmZUqo">Virtualization, Containers, Distributed Architecture</a></dt>
+        <dd><a href="https://docs.google.com/presentation/d/1EEUT0Z-odYYEmdC9Z1AAh7gVFLH3L2om9CHpqpklhOk/edit?usp=sharing" target="_blank">Slides</a></dd>
+      </dl>
+    </dd>
+    <dd>
+      <dl>
+        <dt><strong class="label label-red">Lab</strong><a href="labs/a10">Lab a10</a></dt>
+        <dd><strong>Lab due Sat. 11/20</strong></dd>
+      </dl>
+    </dd>
+  </dl>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-11">
+        
+        
+          <a href="#week-11" class="anchor-heading" aria-labelledby="week-11"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 11
+        
+        
+      </h2>
+    
+  <dl>
+    <dt>Extra Lab! (Optional)</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-yellow">Lab</strong> <a href="labs/11">Lab 11</a></dt>
+        <dd><strong>Lab due Sun. 12/12</strong></dd>
+      </dl>
+    </dd>
+    <dt>Special Guest Lecture</dt>
+    <dd>
+      <dl>
+        <dt><strong class="label label-yellow">Lecture</strong> TBA</dt>
+        <dd>Date/Details TBA</dd>
+      </dl>
+    </dd>
+  </dl>
+</div>
+
+        
+
+        
+
+        
+        
+          <hr>
+          <footer>
+            
+
+            <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com" class="no-underline">
+        <img
+          src="/assets/images/digitalocean.png"
+          style="height: 34px; width: 200px"
+      /></a>
+      <span>
+        With great appreciation to
+        <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring
+        the VMs used in both tracks of the DeCal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2021
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+
+            
+          </footer>
+        
+
+      </div>
+    </div>
+
+    
+      
+
+      <div class="search-overlay"></div>
+    
+  </div>
+  
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

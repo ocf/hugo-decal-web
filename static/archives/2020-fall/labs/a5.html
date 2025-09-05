@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.8.0/github-markdown.min.css">
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+
+<title>Advanced Lab 5 - Processes and Services - Hands-On Linux System Administration DeCal</title>
+
+<article class="markdown-body">
+  <h1>Advanced Lab 5 - Processes and Services</h1>
+  <ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#using-systemd" id="markdown-toc-using-systemd">Using systemd</a>    <ul>
+      <li><a href="#what-services-are-running-right-now" id="markdown-toc-what-services-are-running-right-now">What services are running right now?</a></li>
+      <li><a href="#controlling-services" id="markdown-toc-controlling-services">Controlling Services</a></li>
+      <li><a href="#creating-a-service" id="markdown-toc-creating-a-service">Creating a service</a></li>
+      <li><a href="#debugging" id="markdown-toc-debugging">Debugging</a></li>
+      <li><a href="#crash-the-service" id="markdown-toc-crash-the-service">Crash the service!</a></li>
+    </ul>
+  </li>
+  <li><a href="#exploration" id="markdown-toc-exploration">Exploration</a></li>
+  <li><a href="#submission" id="markdown-toc-submission">Submission</a></li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+<p>For this lab, we are going to deep dive into the components and systemd. We will do this by writing our own systemd service from scratch, while showing the benefits of running a service with systemd. This lab should be completed on your decal VM.</p>
+
+<h2 id="using-systemd">Using systemd</h2>
+<h3 id="what-services-are-running-right-now">What services are running right now?</h3>
+<p>Run <code class="highlighter-rouge">systemctl</code>. You’ll see a long table of every unit known to systemd.
+Let’s narrow it down to services for now. Run <code class="highlighter-rouge">systemctl --type=service</code>. Now you can see a list of all services running on your computer. Each of these services is a daemon running in the background. Do you see any familiar services running?</p>
+
+<p><strong>Question 1:</strong> What is the name of a systemd service running on your system? What does it do?</p>
+
+<h3 id="controlling-services">Controlling Services</h3>
+<p>Now let’s use <code class="highlighter-rouge">systemd</code> to control a an nginx web server. If you don’t have it already, install nginx by issuing <code class="highlighter-rouge">sudo apt install nginx</code>. Once that is done we can tell systemd to start the service with the following: <code class="highlighter-rouge">sudo systemctl start nginx</code>. Run <code class="highlighter-rouge">systemctl status nginx</code> to ensure it is running and navigate to http://<em>yourvm</em>.decal.xcf.sh/ – you should be greeted by the nginx default landing page. (You may need to update <a href="labs/a4#setting-up-a-firewall">the firewall you set up in lab A4 to allow connections to port 80</a>.)</p>
+
+<blockquote>
+  <p>Note: If you have a webserver running from lab A4, you may need to
+shut it down, so that port 80 is available for nginx to use.</p>
+</blockquote>
+
+<p>Now let’s make nginx listen for connections on the nonstandard port 420. In <code class="highlighter-rouge">/etc/nginx/sites-available/default</code> change the following lines:</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">listen</span> <span class="mi">80</span> <span class="s">default_server</span><span class="p">;</span>
+<span class="k">listen</span> <span class="s">[::]:80</span> <span class="s">default_server</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>to:</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">listen</span> <span class="mi">420</span> <span class="s">default_server</span><span class="p">;</span>
+<span class="k">listen</span> <span class="s">[::]:420</span> <span class="s">default_server</span><span class="p">;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>TIP: The first line configures the server to listen on <em>IPv4</em>, and
+the second line configures <em>IPv6</em>.</p>
+</blockquote>
+
+<p>Tell systemd that nginx has changed configuration and needs reloading with: <code class="highlighter-rouge">sudo systemctl reload nginx</code>.
+(Once again, you may need to allow port 420 through your firewall.)
+Now, accessing http://<em>yourvm</em>.decal.xcf.sh/ should now give you a connection refused error and your webserver will only be accessible via http://<em>yourvm</em>.decal.xcf.sh:420/.</p>
+
+<p>Note that not all services can be reloaded; systemd will notify you if this is the case and such services will have to be restarted instead with: <code class="highlighter-rouge">sudo systemctl restart yourservice</code>.</p>
+
+<p>Finally go ahead and stop the nginx service with <code class="highlighter-rouge">sudo systemctl stop nginx</code>.</p>
+
+<p><strong>Question 2:</strong> What is the difference between <code class="highlighter-rouge">systemctl reload yourservice</code> and <code class="highlighter-rouge">systemctl restart yourservice?</code></p>
+
+<h3 id="creating-a-service">Creating a service</h3>
+<p>Let’s set up a web server and create a systemd unit for it. Make sure <code class="highlighter-rouge">git</code> is installed; if it’s not, install it using <code class="highlighter-rouge">apt</code>.</p>
+
+<p>To get the code, run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget https://decal.ocf.berkeley.edu/static/a5/a5.tar.gz
+$ tar xvf a5.tar.gz
+</code></pre></div></div>
+
+<p>The materials for this part of the lab will be in the <code class="highlighter-rouge">a5</code> directory.
+We will also need to install some dependencies. Go ahead and execute the following commands:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># apt update
+# apt install build-essential make python-virtualenv
+</code></pre></div></div>
+
+<p>Now run <code class="highlighter-rouge">./run</code>. This should start up a simple web server at http://yourvm.decal.xcf.sh:5000. (Again… might need to open the port in your firewall.)</p>
+
+<p>Your mission, should you choose to accept it, is to write a systemd service that manages this web server. To do this, make a new unit file in <code class="highlighter-rouge">/etc/systemd/system/toy.service</code>. Refer to the slides for an example; DigitalOcean also has a <a href="https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files">good guide</a> on how to write systemd units. Here is a skeleton; all you need to do is fill in the values for each field.</p>
+
+<pre><code class="language-systemd">[Unit]
+Description=
+Requires=
+After=
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=
+User=
+</code></pre>
+
+<p>Some questions worth considering while writing this unit file are:</p>
+<ul>
+  <li>What units needs to be started before a webserver starts? (Hint: you can get a list of special “target” units using <code class="highlighter-rouge">systemctl --type=target</code>.)</li>
+  <li>What script should systemd run to start the webserver?</li>
+  <li>Units run by root as default. Is that a safe practice for web servers?</li>
+</ul>
+
+<p>You are encouraged to experiment with other fields as suits your liking.
+Once you have finished creating <code class="highlighter-rouge">toy.service</code>, let’s start the service and have the it start whenever our machine is booted.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl start toy.service
+# systemctl enable toy.service
+</code></pre></div></div>
+
+<h3 id="debugging">Debugging</h3>
+<p>You can check if the unit file succeeded by running <code class="highlighter-rouge">systemctl status toy.service</code>. If you are having issues with the unit file or the web server, check the logs for this unit by running <code class="highlighter-rouge">journalctl -u toy.service</code>.  If you run into errors don’t get demoralized (it is, after all, only a decal); as a sysadmin you’ll have to become comfortable making sense of arcane error messages.</p>
+
+<blockquote>
+  <p>TIP: You can omit the <code class="highlighter-rouge">.service</code> in <code class="highlighter-rouge">systemctl</code> command for
+speed. If the unit is another type (e.g. target, socket, or timer),
+you must include the type. We include the <code class="highlighter-rouge">.service</code> for clarity.</p>
+</blockquote>
+
+<h3 id="crash-the-service">Crash the service!</h3>
+<p>One of the great benefits of using systemd to manage your services is that you don’t have to worry unnecessarily about bringing a process back up if it crashes. So let’s crash the service! You can do this by either sending a POST request with the json payload <code class="highlighter-rouge">{"crash":"true"}</code> to http://yourvm.decal.xcf.sh:5000/crash (Hint: use <code class="highlighter-rouge">cURL</code>) or by killing the webserver manually by sending a signal – both will cause the unit to crash. You can verify if you succeeded by running <code class="highlighter-rouge">systemctl status toy.service</code>, and the unit should either be in an <code class="highlighter-rouge">inactive</code> or <code class="highlighter-rouge">failed</code> state, depending on how you killed it.</p>
+
+<p><strong>Question 3:</strong> What command did you run to crash the service?</p>
+
+<p>Now add the following the <code class="highlighter-rouge">/etc/systemd/system/toy.service</code> under the <code class="highlighter-rouge">Service</code> directive:</p>
+
+<pre><code class="language-systemd">Restart=always
+RestartSec=10
+</code></pre>
+
+<p>To tell systemd that the unit file has changed run <code class="highlighter-rouge">sudo systemctl daemon-reload</code>. Now start your webserver and crash it again in any way you please, and you should see that it come back online after 10 seconds! Note that you can also run <code class="highlighter-rouge">daemon-reload</code> and change a unit file while a service is running.</p>
+
+<p><strong>Question 4:</strong> Upload your fully featured <code class="highlighter-rouge">toy.service</code> file to Gradescope.</p>
+
+<h2 id="exploration">Exploration</h2>
+<p>Congratulations, you have completed the lab! This is just the tip of the iceberg when it comes to processes and services. If you want to learn more, here are some related topics you can look into.</p>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Init">Wikipedia’s article on init systems</a></li>
+  <li><a href="https://felipec.wordpress.com/2013/11/04/init/">The construction of a basic init system</a></li>
+  <li><a href="https://engineeringblog.yelp.com/2016/01/dumb-init-an-init-for-docker.html">Yelp’s dumb-init, a lightweight init system for docker containers</a></li>
+  <li><a href="https://www.howtogeek.com/119815/htg-explains-what-is-a-zombie-process-on-linux/">Zombie Processes</a></li>
+  <li><a href="http://0pointer.de/blog/projects/socket-activated-containers.html">Socket activation</a></li>
+  <li>Systemd has been the source of a considerable amount of controversy. <a href="http://without-systemd.org/wiki/index.php/Main_Page">Opponents</a> allege that it violates the Unix philosophy of “do one thing and do it well”, and that it has had too much scope creep, among other complaints.</li>
+  <li>Everything you wanted to know about Unix <a href="https://www.win.tue.nl/~aeb/linux/lk/lk-10.html">threads, processes, process groups and sessions</a>. Bear in mind that this document is a little dated when it comes to the code about threads, and its description of what happens when a pseudotty is closed is not actually correct.</li>
+</ul>
+
+<h2 id="submission">Submission</h2>
+
+<p>Go to Gradescope to submit your answers!</p>
+
+
+  <br>
+<footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com">
+        <img src="/images/digitalocean.png" style="height: 34px; width: 200px;" /></a>
+      &nbsp;&nbsp;With great appreciation to
+      <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring the
+      VMs used in both tracks of the DeCal
+    </p>
+    <p>
+      <a href="https://www.linode.com">
+        <img src="/images/linode.png" style="height: 50px; width: 125px;" /></a>
+      &nbsp;&nbsp;Huge thanks to
+      <a href="https://www.linode.com">Linode</a> for sponsoring the equipment 
+      used to record digital lectures for the Decal
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu">
+        <img src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+             alt="Hosted by the OCF" style="border: 0;" /></a>
+      Copyright &copy; 2017-2020
+      <a href="https://www.ocf.berkeley.edu">
+        Open Computing Facility
+      </a>
+      and
+      <a href="https://xcf.berkeley.edu">
+        eXperimental Computing Facility
+      </a>
+    </p>
+    <p>
+      This website is licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/">
+        Source Code
+      </a>
+      available on GitHub
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+</article>
+

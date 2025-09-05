@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/archives/2022-spring/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/archives/2022-spring/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/archives/2022-spring/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/archives/2022-spring/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 8 - Configuration Management | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Lab 8 - Configuration Management" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/archives/2022-spring/labs/a8/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/archives/2022-spring/labs/a8/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 8 - Configuration Management" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Lab 8 - Configuration Management","url":"https://decal.ocf.berkeley.edu/archives/2022-spring/labs/a8/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#the-setting">The Setting</a></li><li><a href="#aside-installing-puppet-on-your-student-vm">Aside: Installing Puppet on your student VM</a></li><li><a href="#your-task-in-plain-english">Your task, in plain English</a></li><li><a href="#hints-if-you-need-them">Hints (if you need them)</a></li><li><a href="#extra-fun-completely-optional">Extra fun (completely optional)</a></li><li><a href="#submission">Submission</a></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab 8 - Configuration Management</h1>
+        
+        
+        5 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#the-setting" id="markdown-toc-the-setting">The Setting</a></li>
+  <li><a href="#aside-installing-puppet-on-your-student-vm" id="markdown-toc-aside-installing-puppet-on-your-student-vm">Aside: Installing Puppet on your student VM</a></li>
+  <li><a href="#your-task-in-plain-english" id="markdown-toc-your-task-in-plain-english">Your task, in plain English</a></li>
+  <li><a href="#hints-if-you-need-them" id="markdown-toc-hints-if-you-need-them">Hints (if you need them)</a></li>
+  <li><a href="#extra-fun-completely-optional" id="markdown-toc-extra-fun-completely-optional">Extra fun (completely optional)</a></li>
+  <li><a href="#submission" id="markdown-toc-submission">Submission</a></li>
+</ol><hr />
+      <h2 id="the-setting">
+        
+        
+          <a href="#the-setting" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> The Setting
+        
+        
+      </h2>
+    
+
+<p>You’re suddenly awoken by an alarm. Still drowsy from sleep, you check the time 
+on your phone. <em>7:00am??</em> you think to yourself. <em>No way. I don’t even have any 
+8ams. In fact, I haven’t woken up this early since…</em> Looking back at your phone 
+again, which you realize is now 2 times thicker and suddenly has a 3.5mm audio 
+port, you check the year. You may have thought Berkeley was hell, but now you’ve 
+traveled back in time for some true suffering: high school.</p>
+
+<p>After getting dressed and lamenting your disastrous teenage fashion sense, you 
+get a text message on your dumb phone. Sighing, you open it even though it’s 
+going to cost you 10 cents.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM: 5cr1p7k1dd1337
+MSG: w31c0m3 b4ck t0 h1ghsk00l. i h4v3 a t45k f0r j00: j00 mu5t 1n5ta11 th3
+f0ll0w1ng 5cr1p7 0n 3v3ry c0mput3r 1n j00r sk00l by the 3nd 0f t0d4y, 0r j00l
+b3 5tuCk 5ever.
+
+j00r sk00l u535 puppet, s0 j00 c4n ju57 wr1t3 a m0dul3 f0r th15. F1l3s R @
+https://github.com/0xcf/decal-labs 1n a8/
+</code></pre></div></div>
+
+<p>Rubbing your eyes, you try to understand 5cr1p7k1dd1337’s arcane runes once again:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Welcome back to high school. I have a task for you: you must install the
+following script on every computer in your school by the end of today, or
+you'll be stuck forever.
+
+Your school uses puppet, so you can just write a module for this. Files are in
+the decal-labs repo (https://github.com/0xcf/decal-labs) in the a8/ directory.
+</code></pre></div></div>
+
+<p><em>Great</em>, you think to yourself, <em>good thing I’m currently taking the best DeCal at 
+UC Berkeley, the Linux SysAdmin DeCal! This is gonna be a piece of cake</em>.</p>
+      <h2 id="aside-installing-puppet-on-your-student-vm">
+        
+        
+          <a href="#aside-installing-puppet-on-your-student-vm" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Aside: Installing Puppet on your student VM
+        
+        
+      </h2>
+    
+
+<p>In order to save yourself from your circumstances, you’ll need to set up Puppet on
+your student VM so you can test your changes. Luckily, we’ve provided a snippet
+of code to install the Puppet agent. Run the following block of code on your VM:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://apt.puppetlabs.com/puppet6-release-bionic.deb &amp;&amp; \
+sudo dpkg -i puppet6-release-bionic.deb &amp;&amp; \
+sudo apt-get update &amp;&amp; \
+sudo apt-get -y install puppet-agent
+</code></pre></div></div>
+
+<p>Puppet will automatically add itself to <code class="language-plaintext highlighter-rouge">PATH</code>, but you may have to relog into
+your VM for this to take effect. Afterwards, ensure you can run <code class="language-plaintext highlighter-rouge">puppet</code>, 
+and you should be good to go!</p>
+      <h2 id="your-task-in-plain-english">
+        
+        
+          <a href="#your-task-in-plain-english" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Your task, in plain English
+        
+        
+      </h2>
+    
+
+<p>You need to write a puppet module that places a script <code class="language-plaintext highlighter-rouge">hack_everything</code> into 
+<code class="language-plaintext highlighter-rouge">/usr/local/bin/</code> and sets up a cronjob to run the script repeatedly and append 
+its output to a file. Your module will need to install the dependencies for the 
+script and ensure that all of the pieces are installed correctly.</p>
+
+<p><strong>There are three main parts you’ll need to work on:</strong></p>
+
+<ol>
+  <li>Installing the packages the script depends on</li>
+  <li>Placing the script in the right directory, and placing a file the script depends on in the right directory</li>
+  <li>Setting up cronjob to run the script every 30 minutes and append its output to a file</li>
+</ol>
+
+<p><strong>We’ve provided skeleton code for you in the <a href="https://github.com/0xcf/decal-labs">decal-labs</a> repository in <code class="language-plaintext highlighter-rouge">a8</code>, so make sure
+to <code class="language-plaintext highlighter-rouge">git pull</code> the latest version!</strong> The script <code class="language-plaintext highlighter-rouge">hack_everything</code> is located in 
+<code class="language-plaintext highlighter-rouge">a8/modules/hacked/files/hack_everything</code>.</p>
+
+<p><strong>The only file you need to change is in <code class="language-plaintext highlighter-rouge">a8/modules/hacked/manifests/hacked.pp</code>.</strong>
+We’ve included some hints and points to relevant documentation that will help you
+complete this manifest.</p>
+
+<p>Although we are only applying your manifest on one machine (your DeCal VM), you could,
+in theory, apply this module on thousands of machines that are connected to a puppet-master!
+How neat is that!</p>
+
+<p>While you’re writing the manifest, there’s an easy way to check your syntax: you can 
+use the command <code class="language-plaintext highlighter-rouge">puppet parser validate hacking.pp</code>.</p>
+
+<p>Once you have completed your manifest, you can apply the changes to your system
+with this command (assuming you cloned <code class="language-plaintext highlighter-rouge">decal-labs</code> into $HOME):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo env "PATH=$PATH" puppet apply --modulepath=$HOME/decal-labs/a8/modules $HOME/decal-labs/a8/manifests/default.pp
+</code></pre></div></div>
+
+<p>Basically, we’re running puppet locally on the module we just created. 
+<code class="language-plaintext highlighter-rouge">default.pp</code> is just a file that includes the hacked module you’re editing, 
+and we need to be sure to include the path to the modules so puppet can find them.</p>
+
+<p>The weird little <code class="language-plaintext highlighter-rouge">env</code> part is due to a Debian security feature known as <code class="language-plaintext highlighter-rouge">secure_path</code>,
+which resets your <code class="language-plaintext highlighter-rouge">PATH</code> when you run sudo. Since <code class="language-plaintext highlighter-rouge">puppet</code> is not in this list of 
+default paths, running it with regular <code class="language-plaintext highlighter-rouge">sudo</code> won’t work.</p>
+
+<p>Once this is done, you should be able to run the command <code class="language-plaintext highlighter-rouge">hack_everything</code> 
+(as the script is now in your path). Try it out!</p>
+      <h2 id="hints-if-you-need-them">
+        
+        
+          <a href="#hints-if-you-need-them" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hints (if you need them)
+        
+        
+      </h2>
+    
+
+<ul>
+  <li>The <a href="https://github.com/0xcf/decal-labs/tree/master/a8">skeleton code</a> has links to relevant docs. You should clone/download the <code class="language-plaintext highlighter-rouge">decal-labs</code> repository if you haven’t already.</li>
+  <li><a href="https://github.com/ocf/puppet/blob/4e37cbedd228d89bc2f32234dbb4fc54114faa9d/modules/ocf_desktop/manifests/suspend.pp">Here</a> is an example puppet manifest that might be helpful.</li>
+  <li>More hints are available at live lab or by asking on #decal-general!</li>
+</ul>
+      <h2 id="extra-fun-completely-optional">
+        
+        
+          <a href="#extra-fun-completely-optional" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Extra fun (completely optional)
+        
+        
+      </h2>
+    
+
+<p>Using your knowledge of config management, you might like to try any of the following:</p>
+
+<ul>
+  <li>Self-host something from <a href="https://github.com/awesome-selfhosted/awesome-selfhosted">awesome-selfhosted</a> by writing a Puppet config file</li>
+  <li>Try out another config management tool like <a href="https://www.ansible.com/">Ansible</a> and consider how they differ.</li>
+  <li>Check out the <a href="https://ocf.io/gh/p">OCF Puppet repository</a>, and submit a PR!</li>
+</ul>
+      <h2 id="submission">
+        
+        
+          <a href="#submission" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Submission
+        
+        
+      </h2>
+    
+
+<p>Congratulations on finishing the lab!</p>
+
+<p>To submit, upload <code class="language-plaintext highlighter-rouge">hacking.pp</code> into the Gradescope submission. (You <strong>do not</strong> need to upload the rest of the files in the skeleton, just the one file!)</p>
+
+<p><strong>Providing feedback:</strong> Since the submission consists entirely of the single file upload, there is no dedicated feedback question. Please leave your comments in the bottom of <code class="language-plaintext highlighter-rouge">hacking.pp</code> - there should be a section in the skeleton with more instructions. Thanks!</p>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com" class="no-underline">
+        <img
+          src="/archives/2022-spring/assets/images/digitalocean.png"
+          style="height: 34px; width: 200px"
+      /></a>
+      <span>
+        With great appreciation to
+        <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring
+        the VMs used in both tracks of the DeCal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/archives/2022-spring/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2021
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,228 @@
+RewriteEngine On
+
+RedirectMatch 404 /\.git
+
+# Redirect signups to the google form
+RewriteRule ^gdrive$ https://drive.google.com/drive/folders/1RJk3uFtdeT3ZF2ZfwyeFPIbeZBMp3oPg [R=302,L]
+RewriteRule ^slack$ https://fco.slack.com [R=302,L]
+RewriteRule ^syllabus(\.pdf)?$ https://docs.google.com/document/u/4/d/e/2PACX-1vQwMYxii-b0OLO7qEbnSvq4MP9fp95XORznytEuK-FWMlIzx_WLvivUIcZ2yIfNzHdwBAJGorebaGxf/pub [R=302,L,NC]
+
+
+
+RewriteRule ^slides/0$ https://docs.google.com/presentation/d/1lTx2vAodmr0i5evZ5VFUOEZDVm0v6PGL7IGJM1M7Jro/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/0$ https://www.youtube.com/watch?v=QCUXD8fwVS4 [R=302,L]
+
+
+RewriteRule ^labs/0$ https://docs.google.com/forms/d/1lFVW7TQ0414qH15bRbeuwxYWXIw8lOxLL9n_hnwIBgA/ [R=302,L]
+
+
+
+RewriteRule ^slides/b1$ https://docs.google.com/presentation/d/1AtnXiOZniLuP9QcnG8_OT1lwmhISRk2_zeANpXgycaY/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/b1$ https://youtu.be/pkSYJpxb9hk [R=302,L]
+
+
+RewriteRule ^labs/b1$ labs/b1 [R=302,L]
+
+
+
+RewriteRule ^slides/b2$ https://docs.google.com/presentation/d/1o7CWAAa21JYll_isRd-oR3dhurBAPzQA5desEhxvwH0/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/b2$ https://www.youtube.com/watch?v=TXNpIIlcHm4&feature=youtu.be [R=302,L]
+
+
+RewriteRule ^labs/b2$ labs/b2 [R=302,L]
+
+
+
+RewriteRule ^slides/b3$ https://docs.google.com/presentation/d/1LG8G_fbduqo9K2NOtQDjHkmNCMim0kQOmo-0q3fvmRc/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/b3$ https://www.youtube.com/watch?v=7xAGcmhkflM [R=302,L]
+
+
+RewriteRule ^labs/b3$ labs/b3 [R=302,L]
+
+
+
+RewriteRule ^slides/b4$ https://docs.google.com/presentation/d/1UJHO7fXok-6RN7DAJ5SPTqcCXiRSR8hpGZx9OQMnMOU/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/b4$ https://youtu.be/Uh7N86zjYm4 [R=302,L]
+
+
+RewriteRule ^labs/b4$ labs/b4 [R=302,L]
+
+
+
+RewriteRule ^slides/b5$ https://docs.google.com/presentation/d/1DCN2fViHjAS7PoS98dsVC-LNwPN_jvaAKIuVFaRJrM0/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/b5$ https://youtu.be/cPkLsSFKwPM [R=302,L]
+
+
+RewriteRule ^labs/b5$ labs/b5 [R=302,L]
+
+
+
+RewriteRule ^slides/b6$ https://docs.google.com/presentation/d/1AS1BYX8jdBQGBviBGgcZPREIePrsgkT7pc-9Wk_RkS0/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/b6$ https://youtu.be/Z_q1zkeWEFs [R=302,L]
+
+
+RewriteRule ^labs/b6$ labs/b6 [R=302,L]
+
+
+
+RewriteRule ^slides/b7$ https://docs.google.com/presentation/d/1N67saQd3NWrBLrk1oEOE2UdLa4Ny_qjDBUAZQolXsUE/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/b7$ https://youtu.be/y3mIzYtCPeY [R=302,L]
+
+
+RewriteRule ^labs/b7$ labs/b7 [R=302,L]
+
+
+
+RewriteRule ^slides/b8$ https://docs.google.com/presentation/d/1tKAhg5-0jeh7ZBynQFukkK10saKHeouJpyQcerboPYg/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/b8$ https://www.youtube.com/watch?v=hqrWBYm5-Zg&feature=youtu.be [R=302,L]
+
+
+RewriteRule ^labs/b8$ labs/b8 [R=302,L]
+
+
+
+RewriteRule ^slides/b9$ https://docs.google.com/presentation/d/1NxdvuLkWSzRvtnj41AkvGU00ub_XUbk8wlIxWxm0ok4/edit [R=302,L]
+
+
+RewriteRule ^video/b9$ https://youtu.be/X4yGMr9c64U [R=302,L]
+
+
+RewriteRule ^labs/b9$ labs/b9 [R=302,L]
+
+
+
+RewriteRule ^slides/b10$ https://docs.google.com/presentation/d/1aiSnR1zT2qM-RcLnrCC1FhTqjnzKOQvMyR5r_hJr9V0/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/b10$ https://www.youtube.com/watch?v=JhgEg1YTO7c&feature=youtu.be [R=302,L]
+
+
+RewriteRule ^labs/b10$ labs/b10 [R=302,L]
+
+
+
+RewriteRule ^slides/a1$ https://docs.google.com/presentation/d/1P4HcAr1NcxFEL1m9bIokiBP1zOODHj8YQMPFSafeWko/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/a1$ https://www.youtube.com/watch?v=TBsxgbGwtnA [R=302,L]
+
+
+RewriteRule ^labs/a1$ labs/a1 [R=302,L]
+
+
+
+RewriteRule ^slides/a2$ https://docs.google.com/presentation/d/1RMNPRHNoh4a5KWwXY8fBWJ49nBafxbo4g-OvSZZ85V8/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/a2$ https://youtu.be/M0vPXQycer0 [R=302,L]
+
+
+RewriteRule ^labs/a2$ labs/a2 [R=302,L]
+
+
+
+RewriteRule ^slides/a3$ https://docs.google.com/presentation/d/1oLtsjsEIsvChOI31_5YYFhILfzGlyx7Hk9DsL1Nv-mc/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/a3$ https://www.youtube.com/watch?v=MnsUBRIw-74&feature=youtu.be [R=302,L]
+
+
+RewriteRule ^labs/a3$ labs/a3 [R=302,L]
+
+
+
+RewriteRule ^slides/a4$ https://docs.google.com/presentation/d/1b5nggnCS-qzkpp62xvnq5eGrJcgsYAvqlwIsx-Z6ETI/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/a4$ https://youtu.be/BVbHnEv8L9s [R=302,L]
+
+
+RewriteRule ^labs/a4$ labs/a4 [R=302,L]
+
+
+
+RewriteRule ^slides/a5$ https://docs.google.com/presentation/d/1sv5Bxw9Fet9utjFU8xGDntawLVmBOT9YpCt9mJ2V6Dg/edit [R=302,L]
+
+
+RewriteRule ^video/a5$ https://youtu.be/AS293JoAr8s [R=302,L]
+
+
+RewriteRule ^labs/a5$ labs/a5 [R=302,L]
+
+
+
+RewriteRule ^slides/a6$ https://docs.google.com/presentation/d/14XXyjUxUohINsg93qD-8SHP1mPpTTnBoZ3NHmMVTJqY/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/a6$ https://youtu.be/DPKRivN9ga4 [R=302,L]
+
+
+RewriteRule ^labs/a6$ labs/a6 [R=302,L]
+
+
+
+RewriteRule ^slides/a7$ https://docs.google.com/presentation/d/11nMxy5iJTS3YDBLqT3O5i8cbbRdtS2Hxf4QRbHJiGBo/edit [R=302,L]
+
+
+RewriteRule ^video/a7$ https://youtu.be/5clc5xi5FDo [R=302,L]
+
+
+RewriteRule ^labs/a7$ labs/a7 [R=302,L]
+
+
+
+RewriteRule ^slides/a8$ https://docs.google.com/presentation/d/1ZAXSwjM9_SncvD8GGQgbPI2g3KlSsIZi2-xxeHwfSWA/edit [R=302,L]
+
+
+RewriteRule ^video/a8$ https://youtu.be/T9hakIIYUkk [R=302,L]
+
+
+RewriteRule ^labs/a8$ labs/a8 [R=302,L]
+
+
+
+RewriteRule ^slides/a9$ https://docs.google.com/presentation/d/12ypck2LSIaNGq5RpLmIb4gbAX-GP2pCSgf4l9VMuq1k/edit [R=302,L]
+
+
+RewriteRule ^video/a9$ https://youtu.be/j4ryvaVJURs [R=302,L]
+
+
+RewriteRule ^labs/a9$ labs/a9 [R=302,L]
+
+
+
+RewriteRule ^slides/a10$ https://docs.google.com/presentation/d/1EEUT0Z-odYYEmdC9Z1AAh7gVFLH3L2om9CHpqpklhOk/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^video/a10$ https://www.youtube.com/watch?v=tCg77GmZUqo [R=302,L]
+
+
+RewriteRule ^labs/a10$ labs/a10 [R=302,L]
+
+
+
+
+
+
+
+
+
+

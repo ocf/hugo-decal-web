@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 5 - Introduction to Networking | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Lab 5 - Introduction to Networking" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/labs/5/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/labs/5/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 5 - Introduction to Networking" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Lab 5 - Introduction to Networking","url":"https://decal.ocf.berkeley.edu/labs/5/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#overview">Overview</a></li><li><a href="#mac">MAC</a><ol><li><a href="#ip">IP</a></li><li><a href="#arp">ARP</a></li><li><a href="#dns">DNS</a></li><li><a href="#dns-records">DNS Records</a></li><li><a href="#tcp-and-udp">TCP and UDP</a></li><li><a href="#ports-optional">Ports (Optional)</a></li></ol></li><li><a href="#sysadmin-commands">Sysadmin Commands</a></li><li><a href="#exercises">Exercises</a><ol><li><a href="#short-answer-questions">Short Answer Questions</a></li><li><a href="#programming-exercise">Programming Exercise</a></li><li><a href="#submission">Submission</a></li></ol></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab 5 - Introduction to Networking</h1>
+        
+        <p>Facilitator: <a href="/staff#nikhil-ograin">Nikhil Ograin</a></p>
+        
+        
+        17 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#mac" id="markdown-toc-mac">MAC</a>    <ol>
+      <li><a href="#ip" id="markdown-toc-ip">IP</a></li>
+      <li><a href="#arp" id="markdown-toc-arp">ARP</a></li>
+      <li><a href="#dns" id="markdown-toc-dns">DNS</a></li>
+      <li><a href="#dns-records" id="markdown-toc-dns-records">DNS Records</a></li>
+      <li><a href="#tcp-and-udp" id="markdown-toc-tcp-and-udp">TCP and UDP</a></li>
+      <li><a href="#ports-optional" id="markdown-toc-ports-optional">Ports (Optional)</a></li>
+    </ol>
+  </li>
+  <li><a href="#sysadmin-commands" id="markdown-toc-sysadmin-commands">Sysadmin Commands</a></li>
+  <li><a href="#exercises" id="markdown-toc-exercises">Exercises</a>    <ol>
+      <li><a href="#short-answer-questions" id="markdown-toc-short-answer-questions">Short Answer Questions</a></li>
+      <li><a href="#programming-exercise" id="markdown-toc-programming-exercise">Programming Exercise</a></li>
+      <li><a href="#submission" id="markdown-toc-submission">Submission</a></li>
+    </ol>
+  </li>
+</ol><hr />
+      <h1 id="overview">
+        
+        
+          <a href="#overview" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+        
+        
+      </h1>
+    
+<p>It is undeniable that the internet is an important system that has redefined our world. The ability to develop networks and allow devices to communicate is critical to modern day computer systems.  This lab will take a look into the basics of computer networking and then examine networks through the perspective of a sysadmin.</p>
+
+<p>We will be using web browsing as an analogy to understand the basics of networking. What exactly happens when I go web browsing for cat pictures?</p>
+
+<p>But first let’s take a short dive into the details of networking.</p><hr />
+      <h1 id="mac">
+        
+        
+          <a href="#mac" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> MAC
+        
+        
+      </h1>
+    
+<p>Media access control (MAC) addresses are identifiers uniquely assigned to network interfaces.
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/94/MAC-48_Address.svg" alt="alt text" title="MAC address format" /></p>
+
+<p>Since the MAC address is unique this is often referred to as the physical address. The octets are often written in hexadecimal and delimited by colons. An example MAC address is  <code class="language-plaintext highlighter-rouge">00:14:22:01:23:45</code>. Note that the first 3 octets refer to the Organizationally Unique Identifier (OUI) which can help identify manufacturers.  Fun fact – the <code class="language-plaintext highlighter-rouge">00:14:22</code> above is an OUI for Dell.</p>
+      <h2 id="ip">
+        
+        
+          <a href="#ip" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> IP
+        
+        
+      </h2>
+    
+<p>IP addresses are means of identifying devices connected to a network under Internet Protocol. There are two versions of the internet protocol, IPv4 and IPv6, that which differ on the size of their addresses. An example IPv6 address is <code class="language-plaintext highlighter-rouge">2001:0db8:85a3:0000:0000:8a2e:0370:7334</code> which is considerably longer than an IPv4 address like <code class="language-plaintext highlighter-rouge">127.0.0.1</code>.  For the sake of time we will only go over IPv4, but IPv6 is certainly gaining ground and worth checking out!</p>
+
+<p>IPv4 addresses are 32 bits, i.e. 4 bytes, long and are delimited by a dot (.) every byte. An example IPv4 address is <code class="language-plaintext highlighter-rouge">127.0.0.1</code>. Coincidentally this address is known as the loopback address which maps to the loopback interface on your own machine. This allows network applications to communicate with one another if they are running on the same machine, in this case your machine. But why <code class="language-plaintext highlighter-rouge">127.0.0.1</code> and not <code class="language-plaintext highlighter-rouge">127.0.0.0</code> or <code class="language-plaintext highlighter-rouge">127.0.0.2</code>?</p>
+
+<p>The answer is that <code class="language-plaintext highlighter-rouge">127.0.0.1</code> is simply convention, but technically any address in the network block <code class="language-plaintext highlighter-rouge">127.0.0.0/8</code> is a valid loopback address. But what exactly is a network block?</p>
+
+<p>In IPv4 we can partition a block of addresses into a subnet. This is written in a format known as CIDR. Let’s take the subnet above as an example <code class="language-plaintext highlighter-rouge">127.0.0.0/8</code>. The number that comes after the slash (<code class="language-plaintext highlighter-rouge">/</code>), in this case 8, is the subnet mask. This represents how many bits are in the network address, the remaining bits identify a host within the network. In this case the network address is <code class="language-plaintext highlighter-rouge">127.0.0.0</code> and the Mask is <code class="language-plaintext highlighter-rouge">255.0.0.0</code>. So <code class="language-plaintext highlighter-rouge">127.0.0.1</code> would be the first host in the <code class="language-plaintext highlighter-rouge">127.0.0.0/8</code> network and so on and so forth.</p>
+
+<p>This diagram provides a visual breakdown of CIDR addressing
+<img src="https://i.imgur.com/dEgcX0R.png" alt="alt text" title="CIDR addressing example courtesy of CS168" /></p>
+      <h2 id="arp">
+        
+        
+          <a href="#arp" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ARP
+        
+        
+      </h2>
+    
+<p>Address Resolution Protocol (ARP) is a protocol used to resolve IP addresses to MAC addresses. In order to understand ARP, we first discuss two ways to send a frame, unicast and broadcast.  In the context of Layer 2, unicasting a frame means to send that frame to exactly one MAC address.  On the other hand, broadcasting a frame by sending it to the broadcast address means the frame should be sent to every device on the network, effectively “flooding” the local network.</p>
+
+<p>For example let’s imagine a sender, A, who has MAC <code class="language-plaintext highlighter-rouge">00:DE:AD:BE:EF:00</code>,  broadcasting a message that essentially asks “Who has IP address <code class="language-plaintext highlighter-rouge">42.42.42.42</code> please tell A at <code class="language-plaintext highlighter-rouge">00:DE:AD:BE:EF:00</code>”.</p>
+
+<p>If a machine, B, with MAC <code class="language-plaintext highlighter-rouge">12:34:56:78:9a:bc</code> has the IP address <code class="language-plaintext highlighter-rouge">42.42.42.42</code> they send a unicast reply back to the sender with the info “<code class="language-plaintext highlighter-rouge">12:34:56:78:9a:bc</code> has <code class="language-plaintext highlighter-rouge">42.42.42.42</code>”. The sender stores this information in an ARP table so whenever it receives packets meant for machine B i.e. a packet with an destination IP address of <code class="language-plaintext highlighter-rouge">42.42.42.42</code> it sends the packet to MAC it received from B.</p>
+
+<p>In order to route IP packets, devices have what is known as a routing table. Routing entries are stored in the routing table and they are essentially rules that tell the device how packets should be forwarded based on IP. A routing entry specifies a subnet and the interface that corresponds to that entry. The device chooses an entry with a subnet that is most specific to a given packet and forwards it out the interface on that entry.</p>
+
+<p>Routing tables are usually to also have a default gateway. This serves as the default catch all for packets in the absence of a more specific matching entry.</p>
+
+<p>Take this routing table for example.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>default via 10.0.2.2 dev eth0
+10.0.2.0/24 dev eth0  proto kernel  scope link  src 10.0.2.15
+10.0.2.128/25 dev eth0  proto kernel  scope link  src 10.0.2.15
+192.168.162.0/24 dev eth1  proto kernel  scope link  src 192.168.162.162
+</code></pre></div></div>
+<p>A packet destined for <code class="language-plaintext highlighter-rouge">8.8.8.8</code> would be forwarded out <code class="language-plaintext highlighter-rouge">eth0</code>, the default gateway.</p>
+
+<p>A packet destined for <code class="language-plaintext highlighter-rouge">10.0.2.1</code> would be forwarded according to the second entry, out of <code class="language-plaintext highlighter-rouge">eth0</code>.</p>
+
+<p>A packet destined for <code class="language-plaintext highlighter-rouge">10.0.2.254</code> would be forwarded according to the third entry, out of <code class="language-plaintext highlighter-rouge">eth0</code>.</p>
+
+<p>A packet destined for <code class="language-plaintext highlighter-rouge">192.168.162.254</code> would be forwarded according to the fourth entry, out of <code class="language-plaintext highlighter-rouge">eth1</code>.</p>
+      <h2 id="dns">
+        
+        
+          <a href="#dns" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> DNS
+        
+        
+      </h2>
+    
+<p>We’ve gone over IP addresses and how they are means of communicating with a host over IP, but  while IP addresses are machine friendly (computers love numbers) they aren’t exactly human friendly. It’s hard enough trying to remember phone numbers, memorizing 32 bit IP addresses isn’t going to be any easier.</p>
+
+<p>But it’s much easier for us to remember names like www.google.com, www.facebook.com, or coolmath-games.com. So out of this conflict the Domain Name System (DNS) was born as a compromise between machine friendly IP addresses and human friendly domain names.</p>
+
+<p>DNS is a system that maps a domain name like google.com to <code class="language-plaintext highlighter-rouge">172.217.6.78</code>. When you query for google.com your computer sends out a DNS query for google.com to a DNS server. Assuming things are properly configured and google.com has a valid corresponding address you will receive a response from an authoritative server that essentially says “google.com has IP address <code class="language-plaintext highlighter-rouge">x.x.x.x</code>”.</p>
+
+<p>Now let’s flush out this black magic a bit…</p>
+      <h2 id="dns-records">
+        
+        
+          <a href="#dns-records" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> DNS Records
+        
+        
+      </h2>
+    
+<p>DNS servers store data in the form of Resource Records (RR). Resource records are essentially a tuple of (name, value, type, TTL). TTL stands for “Time to Live” and represents the duration of time (in seconds) a DNS Record may be cached for. While there are a wide variety of types of DNS Records, the ones we are most concerned with are:</p>
+<ol>
+  <li>
+    <p><strong>A records</strong>
+name = hostname
+value = IP address</p>
+
+    <p>This record is very simply the record that has the IP address for a given hostname, essentially the information we want to end up with.</p>
+  </li>
+  <li>
+    <p><strong>NS records</strong></p>
+
+    <p>name = domain</p>
+
+    <p>value = name of dns server for domain</p>
+
+    <p>This record points to another dns server that can provide an authoritative  answer for the domain. Think of this as redirecting you to another nameserver.</p>
+  </li>
+  <li>
+    <p><strong>CNAME records</strong></p>
+
+    <p>name = alias</p>
+
+    <p>value = canonical name</p>
+
+    <p>These records point to the canonical name for a given alias for example docs.google.com would be an alias which simply points to documents.google.com
+try www.facebook.com</p>
+  </li>
+  <li>
+    <p><strong>MX records</strong>
+The record used by mail service.</p>
+  </li>
+</ol>
+      <h2 id="tcp-and-udp">
+        
+        
+          <a href="#tcp-and-udp" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> TCP and UDP
+        
+        
+      </h2>
+    
+<p>Now we will transition into a discussion on the protocols at the transport layer. The two most well known protocols at this layer are Transmission Control Protocol (TCP) and User Datagram Protocol (UDP).</p>
+
+<p>TCP is a stateful stream oriented protocol that ensures reliable transport. Reliable transport essentially guarantees that information arrives wholly intact and in order at the destination.</p>
+
+<p>TCP is a connection oriented protocol which means it must first establish a connection before sending any data.  This connection exchanges information that is the mechanisms TCP uses to provide reliable transport amongst other features.  A TCP connection begins with something known as the TCP handshake.</p>
+
+<p>The TCP handshake consists of setting certain flags in the TCP header of packets exchanged between sender and receiver.  The sender initiating a TCP connection by first sending a SYN, a packet with the SYN flag set.  The server acknowledges this connection request by sending back a SYN-ACK, a packet with both the SYN and ACK flags set. The client acknowledges this by sending one final ACK back to the server, and the connection is then established.</p>
+
+<p>TCP then begins transmitting data and if it successfully arrives on the other end of the connection then an ACK is issued. Therefore if data is lost, reordered, or corrupted, TCP is capable of recognizing this and sends a request for retransmission of any lost data.</p>
+
+<p>TCP also has a procedure to close connections. We only consider a graceful termination here, abrupt terminations have a different procedure we will not go over. If you’re interested, CS168 has some great material <a href="https://drive.google.com/file/d/0B4GG2Ks7ZJf5RlpRby1Qbk8zcTg/view">here</a>. Let’s assume machine A wants to close its connection to machine B.</p>
+
+<p>A begins by sending a FIN. B must respond by sending a FIN and an ACK. If B only sends a ACK the connection persist and additional data can be sent until an FIN is sent. On the other hand B can also send just one packet with both FIN and ACK flags set, i.e. FIN+ACK if B is ready to close the connection and doesn’t need to send additional data Once A has received a FIN and an ACK it sends one last ACK to signal the connection termination.</p>
+
+<p>UDP is stateless connectionless protocol. UDP focuses on sending messages in datagrams. Being connectionless UDP also doesn’t incur the overhead of the TCP handshake and termination. UDP also makes no guarantees about reliable transport so messages may be corrupted, arrive out of order, or not arrive at all. For this reason UDP is sometimes called Unreliable Datagram Protocol.</p>
+
+<p>While UDP makes no guarantees about reliable transport it doesn’t suffer from the overhead of establishing and closing connections like in TCP. UDP is therefore ideal for usage cases where we just want to send packets quickly and losing a few of those isn’t disastrous.</p>
+
+<p>Moreover, compared to TCP each UDP datagram sent needs to be individually received. While for TCP you pass a stream of data that is transparently split into some number of sends and the data stream is transparently reconstructed as a whole on the other end.</p>
+      <h2 id="ports-optional">
+        
+        
+          <a href="#ports-optional" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Ports (Optional)
+        
+        
+      </h2>
+    
+<p>Ports define a service endpoint, broadly speaking – ports mark a point of traffic ingress and egress.  Whereas IP addresses connect hosts, ports connect process that run on such hosts.  Only one process can be bound to a port at a time.  Ports are represented by a 16 bit number meaning thus ranging from 0 to 65535.  Ports from 0 to 1023 are well known ports, i.e. system ports.  Using these ports usually has a stricter requirement.  1024 to 49151 are registered ports. IANA maintains the official <a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">list</a> of well-known and registered ranges. The remaining ports from 49152 to 65535 are ephemeral ports which can be dynamically allocated for communication sessions on a per request basis.</p>
+
+<p>Some port numbers for well known services are as follows:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Port</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SSH</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>DNS</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <td>HTTP</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>HTTPS</td>
+      <td>443</td>
+    </tr>
+  </tbody>
+</table></div>
+      <h1 id="sysadmin-commands">
+        
+        
+          <a href="#sysadmin-commands" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Sysadmin Commands
+        
+        
+      </h1>
+    
+<p>As a sysadmin, trying to diagnose network issues can often be pretty challenging. Given the scale and complexity of networks, it’s tough trying to narrow down the scope of a problem to a point of failure. What follows is a list of commands/tools that can help with triaging problems. There are a lot of tools and we don’t expect you to memorize every single detail. However, it is important to know what tools exist and when to use them when problems inevitably arise. If you ever need more details the <code class="language-plaintext highlighter-rouge">man</code> pages for these commands are a great place to turn to for reference.</p>
+
+<p>Tools also tend to overlap in functionality – for example there are multiple tools that can display interface information or test connectivity.  When possible, it is a good idea to use multiple tools to cross-check one another.</p>
+
+<p>Note that when it comes to real world networks there are even more factors to consider that we haven’t touched on like network security. For example, two machines can have a fully functioning connection but if one machine has been configured to drop all packets then it might seem as if they aren’t connected.</p>
+
+<p>So take the output of these tools with a grain of salt, they a means of narrowing down issues. It is important not to misinterpret outputs or jump to conclusions too quickly.</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">hostname</code>
+A simple and straightforward command that can display information about a host, IP addresses, FQDN, and etc.  Make sure to also check out <code class="language-plaintext highlighter-rouge">host</code>, which is a similar command that provides more detailed information by doing a lookup on a given name.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ping</code>
+Another simple command, most of the time you’ll be using ping as a first step towards testing connectivity. If ping can’t reach a host then there is likely an issue with connectivity. The ping tool does this by sending out ICMP messages to the host expecting a response. (More on the protocol <a href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol">here</a>)</p>
+
+    <p>Moreover ping also provides metrics for Round Trip Time (RTT) and packet loss.  Round trip time is defined as the time it takes for a response to arrive after sending the ping packet.  These can prove to be very useful statistics.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">traceroute</code>
+Traceroute sends packets Time to Live (TTL) equal to the number of hops. Routers decrease the value of TTL for incoming packets. If a packet’s TTL = 0 then the router drops it and may send back diagnostic information to the source about the router’s identity. Otherwise the router continues forwarding the packet.</p>
+
+    <p>Traceroute provides a detailed view of the routers that a packet traverses while on its way to a destination.</p>
+
+    <p>If router does not respond within a timeout then traceroute prints an asterisk.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">arp</code>
+Provides info on and the ability to manipulate the ARP cache of the system.</p>
+
+    <p>With arp you can display the system arp table.  Add, remove, or modify arp entries and much more.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">dig</code>
+Utility for doing dns query and triaging DNS issues.</p>
+
+    <p>Dig by default performs queries to nameservers in <code class="language-plaintext highlighter-rouge">/etc/resolv.conf</code> but some options allow you to: specify name server, choose query type (iterative vs recursive), and much more – making <code class="language-plaintext highlighter-rouge">dig</code> a very flexible DNS tool.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ip</code>
+<code class="language-plaintext highlighter-rouge">ip</code> is a command with many subcommands offering a lot of functionality – so much it can be overwhelming at first. You will most commonly be using ip to display/modify routing, IP addresses, or network interfaces.</p>
+
+    <p>It will take time to get use to how much functionality is included in this command but for reference here is a pretty compact <a href="https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf">cheatsheet</a>. A few common use cases include: <code class="language-plaintext highlighter-rouge">ip addr</code> which displays information on your IP addresses, <code class="language-plaintext highlighter-rouge">ip route</code> which displays information on your routing table, and <code class="language-plaintext highlighter-rouge">ip link</code> which displays information about your network interfaces.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">curl</code>
+cURL does as its name suggests, and allows you to see the contents at certain URLs. Beyond this it’s also an extremely powerful program that lets you interact with and inspect servers over several different protocols certain protocols such as HTTP, FTP, etc …</p>
+
+    <p>Be sure to check out its <a href="https://curl.haxx.se/docs/">documentation</a> for specific use cases.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">wget</code>
+<code class="language-plaintext highlighter-rouge">wget</code> is quite similar to <code class="language-plaintext highlighter-rouge">curl</code> in the sense that they are both command line tools designed to transfer data from or to servers with certain protocols and both come with a bunch of features.</p>
+
+    <p>There are differences between the commands, two notable examples being that wget is command line only meaning there no library or API.  However, wget has a big advantage of being able to download recursively. You can read a bit more on the two tools <a href="https://daniel.haxx.se/docs/curl-vs-wget.html">here</a>.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">netstat</code> (Optional)
+This tool is good for printing network connections, routing tables, and probing sockets, amongst other functions.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">netstat</code> also has functionality to probe sockets for activity and displays information such protocol (UDP/TCP)</p>
+
+    <p>If you are investigating sockets <code class="language-plaintext highlighter-rouge">ss</code> and <code class="language-plaintext highlighter-rouge">lsof</code> are also options you may want to consider</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">tcpdump</code> (Optional)
+Perfect for monitoring incoming or outgoing traffic on a machine.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">tcpdump</code> offers countless options when it comes to analyzing traffic: it can capture packets, log traffic, compute metrics, filter traffic, monitor specific interfaces, etc. As a primer you can check out these <a href="https://www.rationallyparanoid.com/articles/tcpdump.html">examples</a>.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">nc</code> (Optional)
+Netcat is a very powerful tool that can be used for just about anything involving TCP or UDP.  It can open TCP connections, send UDP packets, listen on arbitrary TCP and UDP ports, do port scanning, and deal with both IPv4 and IPv6.</p>
+  </li>
+</ol>
+      <h1 id="exercises">
+        
+        
+          <a href="#exercises" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Exercises
+        
+        
+      </h1>
+    
+      <h2 id="short-answer-questions">
+        
+        
+          <a href="#short-answer-questions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Short Answer Questions
+        
+        
+      </h2>
+    
+<ol>
+  <li>Does HTTP use TCP or UDP and why? How about Discord and Skype, why?</li>
+  <li>Who manufactured the NIC with mac address 52:54:00:d7:ce:cc?</li>
+  <li>How many distinct hosts can 127.0.0.0/8 contain?</li>
+  <li>What are three types of records you can get when you perform a DNS lookup of google.com using the dig command?</li>
+  <li>Is the result of running ping enough to determine whether or not you can reach a server? Why or why not?</li>
+</ol>
+      <h2 id="programming-exercise">
+        
+        
+          <a href="#programming-exercise" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Programming Exercise
+        
+        
+      </h2>
+    
+<ol>
+  <li>Write a shell script <code class="language-plaintext highlighter-rouge">is_on.sh</code> so that <code class="language-plaintext highlighter-rouge">is_on.sh host</code> shows whether <code class="language-plaintext highlighter-rouge">host</code> is online. If it is, show “OK”. If it’s not, show “Host is not reachable”. Don’t show anything else. Some clarifications:
+    <ul>
+      <li>A host is online here means the <code class="language-plaintext highlighter-rouge">ping</code> to the host is successful</li>
+      <li>Just <code class="language-plaintext highlighter-rouge">ping</code> the server once (we assume the internet connection is reliable and the packet will not be dropped)</li>
+      <li>You can use <code class="language-plaintext highlighter-rouge">man ping</code> to see how to make the <code class="language-plaintext highlighter-rouge">ping</code> only ping the server once, and what the return value of <code class="language-plaintext highlighter-rouge">ping</code> command means. Use <code class="language-plaintext highlighter-rouge">if</code> to decide what to print.</li>
+    </ul>
+  </li>
+  <li>Write a shell script <code class="language-plaintext highlighter-rouge">mac.sh</code> which processes the output of <code class="language-plaintext highlighter-rouge">ip</code> command and displays the MAC address of the network interface <code class="language-plaintext highlighter-rouge">ens3</code> of your VM.
+    <ul>
+      <li>First figure out how to use <code class="language-plaintext highlighter-rouge">ip</code> command to get an output which contains the information we want</li>
+      <li>Then use <code class="language-plaintext highlighter-rouge">head</code> and <code class="language-plaintext highlighter-rouge">tail</code> command and pipes to tailor <code class="language-plaintext highlighter-rouge">ip</code>’s output to one line</li>
+      <li>Use <code class="language-plaintext highlighter-rouge">cut</code> command (<a href="https://www.geeksforgeeks.org/cut-command-linux-examples/">Examples</a>) to get the MAC address. Since we know that the MAC address has fixed length, feel free to count the indices.</li>
+      <li>The final shell script only has to have one line, although a answer with multiple lines are also acceptable.</li>
+    </ul>
+  </li>
+</ol>
+      <h2 id="submission">
+        
+        
+          <a href="#submission" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Submission
+        
+        
+      </h2>
+    
+<p>Go to Gradescope for submission.</p>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.nvidia.com/en-us/" class="no-underline">
+        <img
+          src="/assets/images/nvidia.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Thanks to
+        <a href="https://www.nvidia.com">Nvidia</a> for sponsoring GPUs to the OCF.
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the DeCal.
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2024
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+
