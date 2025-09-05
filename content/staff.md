@@ -46,14 +46,14 @@ hello
 
 
 {{% columns %}}
-![carl.jpg](/staff-pics/carl.jpg)
+![carl.jpg](/staff-pics/chenghao.jpg)
 <--->
 ### Chenghao Li
 `lic`
 ****
 [lic@ocf.berkeley.edu](mailto:lic@ocf.berkeley.edu)
 
-TODO
+hi
 <--->
 <--->
 {{% /columns %}}
