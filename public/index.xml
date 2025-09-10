@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on OCF Sysadmin DeCal</title><link>http://localhost:1313/</link><description>Recent content in Home on OCF Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 06 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 0</title><link>http://localhost:1313/announcements/week-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-0/</guid><description>&lt;ol>
-&lt;li>The Linux SysAdmin Decal is back for Spring 2025!&lt;/li>
-&lt;li>Join us at Decal infosessions on 1/28 and 1/30, 7pm @ OCF Lab or at 
- &lt;a href="ocf.io/meet">ocf.io/meet&lt;/a>! If you weren&amp;rsquo;t able to make it to an infosession, access the slides 
- &lt;a href="https://docs.google.com/presentation/d/1rFUGRpGWhRGZeFXp39WWkh7sJwK4kjj2E3l-rI0x634/edit?usp=sharing">here&lt;/a>.&lt;/li>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on OCF Sysadmin DeCal</title><link>http://localhost:1313/</link><description>Recent content in Home on OCF Sysadmin DeCal</description><generator>Hugo</generator><language>en</language><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml"/><item><title>Week 0</title><link>http://localhost:1313/announcements/week-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-0/</guid><description>&lt;ol>
+&lt;li>The Linux SysAdmin Decal is back for Fall 2025!&lt;/li>
+&lt;li>Join us at Decal infosessions on 9/02 and 9/04, 7pm @ OCF Lab or at 
+ &lt;a href="ocf.io/meet">ocf.io/meet&lt;/a>!&lt;/li>
 &lt;li>&lt;strong>To enroll, 
- &lt;a href="https://forms.gle/eEzeC3w4N9hmeMDA7">fill out lab 0 here&lt;/a>!&lt;/strong> Lab 0 is due &lt;strong>Saturday, Feb. 1st at 11:59pm&lt;/strong> and enrollment keys will be sent to those who complete it.&lt;/li>
+ &lt;a href="https://forms.gle/JXjWwG8AKBajVnHZ7">fill out lab 0 here&lt;/a>!&lt;/strong> Lab 0 opens after the first infosession and is due &lt;strong>Saturday, Sept. 6th at 11:59pm&lt;/strong>.&lt;/li>
 &lt;li>Learn more about the course at the 
  &lt;a href="http://localhost:1313/about">about page&lt;/a>.&lt;/li>
 &lt;li>Any questions? Contact us at 
@@ -25,7 +24,7 @@
 &lt;p>Welcome to the first lab!&lt;/p>
 &lt;p>All labs are graded on completeness and effort, so don&amp;rsquo;t worry too much about
 getting an exact right answer. (We&amp;rsquo;ll release staff solutions after the lab is due!)&lt;/p>
-&lt;p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!&lt;/p>
+&lt;p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Matrix/IRC in the &lt;code>#decal&lt;/code> channel!&lt;/p>
 &lt;p>It may be convenient to submit your answers to Gradescope as you go.&lt;/p></description></item><item><title>Syllabus</title><link>http://localhost:1313/syllabus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/syllabus/</guid><description>&lt;h1 id="course-description">
  Course Description
  &lt;a class="anchor" href="#course-description">#&lt;/a>
@@ -39,13 +38,7 @@ getting an exact right answer. (We&amp;rsquo;ll release staff solutions after th
 &lt;li>understand system administration essentials&lt;/li>
 &lt;li>get a practical taste of what sysadmins do in industry.&lt;/li>
 &lt;/ul>
-&lt;p>While we expect many students will have a CS background, &lt;strong>the only real prerequisite is a desire to learn&lt;/strong> about new and unfamiliar technologies, which is a critical skill for sysadmins. This course is designed to introduce new users to Linux, as well as give more experienced users a taste of what Linux is capable of!&lt;/p></description></item><item><title>Week 1</title><link>http://localhost:1313/announcements/week-1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-1/</guid><description>&lt;p>Hi all, this is our first official week for this semester&amp;rsquo;s Linux SysAdmin decal!
-Enrollment codes will be emailed by Monday to students that was accepted. Our
-lecture and lab will be at their normal time on &lt;strong>Tuesday 7-8pm and 8-9pm&lt;/strong> respectively.
-If you&amp;rsquo;re in the Experimental Decal, it will be on &lt;strong>Thursday 7-8pm and 8-9pm&lt;/strong>.
-The lab is now open and you can get a head start if you wish, or you can start during lab time.
-We&amp;rsquo;re looking forward to teaching this class and hope you find the content
-engaging!&lt;/p></description></item><item><title>Lab 2 - Core Shell &amp; Shell Scripting</title><link>http://localhost:1313/labs/2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/2/</guid><description>&lt;p>Welcome to Lab 2! In this lab you will be learning how to work productively in a shell and use that to write your first shell script.&lt;/p>
+&lt;p>While we expect many students will have a CS background, &lt;strong>the only real prerequisite is a desire to learn&lt;/strong> about new and unfamiliar technologies, which is a critical skill for sysadmins. This course is designed to introduce new users to Linux, as well as give more experienced users a taste of what Linux is capable of!&lt;/p></description></item><item><title>Lab 2 - Core Shell &amp; Shell Scripting</title><link>http://localhost:1313/labs/2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/2/</guid><description>&lt;p>Welcome to Lab 2! In this lab you will be learning how to work productively in a shell and use that to write your first shell script.&lt;/p>
 &lt;p>Remember to submit your answers in the Gradescope assignment!&lt;/p>
 &lt;p>Don&amp;rsquo;t forget to use Google and &lt;code>man&lt;/code> when stuck. The resources linked at the bottom may be helpful as well.&lt;/p>
 &lt;p>
@@ -56,23 +49,7 @@ engaging!&lt;/p></description></item><item><title>Lab 2 - Core Shell &amp; Shell
 &lt;/h2>
 &lt;p>This lab can be completed either on tsunami by logging in using ssh or on the VM you set up in the previous lab.
 This lab requires a bash shell, &lt;code>vim&lt;/code>, and &lt;code>tmux&lt;/code>.
-If you do not have tmux or vim installed: &lt;code>sudo apt install vim tmux&lt;/code>&lt;/p></description></item><item><title>Week 2</title><link>http://localhost:1313/announcements/week-2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-2/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering the second week of the DeCal! At this point, you should have turned in your Lab 1 on Gradescope. We’ll be taking a look and grading them soon.
-Weekly notes:&lt;/p>
-&lt;ul>
-&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 02/11 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
-&lt;ul>
-&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Lab 2 has been released and can be accessed below.
-&lt;ul>
-&lt;li>Please use the corresponding 
- &lt;a href="https://edstem.org/us/courses/75831/discussion/6143042">Ed thread for Lab 2&lt;/a> related questions.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Any questions? Post on Ed or reach us at 
- &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 3 - Packages and Packaging</title><link>http://localhost:1313/labs/3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/3/</guid><description>&lt;h2 id="about-this-lab">
+If you do not have tmux or vim installed: &lt;code>sudo apt install vim tmux&lt;/code>&lt;/p></description></item><item><title>Lab 3 - Packages and Packaging</title><link>http://localhost:1313/labs/3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/3/</guid><description>&lt;h2 id="about-this-lab">
  About This Lab
  &lt;a class="anchor" href="#about-this-lab">#&lt;/a>
 &lt;/h2>
@@ -91,8 +68,7 @@ of just a grade.&lt;/p>
  Debian: An introduction to &lt;code>apt&lt;/code> and &lt;code>dpkg&lt;/code>
  &lt;a class="anchor" href="#debian-an-introduction-to-apt-and-dpkg">#&lt;/a>
 &lt;/h2>
-&lt;p>In this class, we will be focused on using Debian. As noted within this week&amp;rsquo;s lecture, Debian uses apt/dpkg as its package manager. Other distributions use different package managers.&lt;/p></description></item><item><title>Week 3</title><link>http://localhost:1313/announcements/week-3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-3/</guid><description>&lt;p>Hi! Hope everyone&amp;rsquo;s had a good Presidential day weekend! we&amp;rsquo;re entering the third week of the DeCal. At this point, you should have turned in your Lab 2 on Gradescope. We know some people have been struggling with permissions on the Decal VM, and we&amp;rsquo;re looking into the issue. Let us know if this is happening to you on Edstem or through email and you&amp;rsquo;re allowed to submit late!
-Weekly notes:&lt;/p></description></item><item><title>Lab 4 - Processes and Services</title><link>http://localhost:1313/labs/4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/4/</guid><description>&lt;h2 id="overview">
+&lt;p>In this class, we will be focused on using Debian. As noted within this week&amp;rsquo;s lecture, Debian uses apt/dpkg as its package manager. Other distributions use different package managers.&lt;/p></description></item><item><title>Lab 4 - Processes and Services</title><link>http://localhost:1313/labs/4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/4/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
@@ -121,44 +97,12 @@ Weekly notes:&lt;/p></description></item><item><title>Lab 4 - Processes and Serv
  &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>. (best for prospective students and matters that need to go on official record)&lt;/li>
 &lt;/ol>
 &lt;p>See the 
- &lt;a href="http://localhost:1313/about">about page&lt;/a> for more information.&lt;/p></description></item><item><title>Week 4</title><link>http://localhost:1313/announcements/week-4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-4/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering the fourth week of the DeCal! At this point, you should have turned in your Lab 3 on Gradescope. We’ll be taking a look and grading them soon. Lab 1 and 2 grades have also been released!
-Weekly notes:&lt;/p>
-&lt;ul>
-&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 02/25 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
-&lt;ul>
-&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Lab 4 has been released and can be accessed below.
-&lt;ul>
-&lt;li>Please use the corresponding 
- &lt;a href="https://edstem.org/us/courses/75831/discussion/751585">Ed thread for Lab 4&lt;/a> related questions.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Any questions? Post on Ed or reach us at 
- &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 5 - Introduction to Networking</title><link>http://localhost:1313/labs/5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/5/</guid><description>&lt;h1 id="overview">
+ &lt;a href="http://localhost:1313/about">about page&lt;/a> for more information.&lt;/p></description></item><item><title>Lab 5 - Introduction to Networking</title><link>http://localhost:1313/labs/5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/5/</guid><description>&lt;h1 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h1>
 &lt;p>It is undeniable that the internet is an important system that has redefined our world. The ability to develop networks and allow devices to communicate is critical to modern day computer systems. This lab will take a look into the basics of computer networking and then examine networks through the perspective of a sysadmin.&lt;/p>
-&lt;p>We will be using web browsing as an analogy to understand the basics of networking. What exactly happens when I go web browsing for cat pictures?&lt;/p></description></item><item><title>Week 5</title><link>http://localhost:1313/announcements/week-5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-5/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 5 of the DeCal! At this point, you should have turned in your Lab 4 on Gradescope.
-Weekly notes:&lt;/p>
-&lt;ul>
-&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 03/04 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
-&lt;ul>
-&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Lab 5 has been released and can be accessed below.
-&lt;ul>
-&lt;li>Please use the corresponding 
- &lt;a href="https://edstem.org/us/courses/75831/discussion/6295257">Ed thread for Lab 5&lt;/a> related questions.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Any questions? Post on Ed or reach us at 
- &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 6 - Web Servers</title><link>http://localhost:1313/labs/6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/6/</guid><description>&lt;h2 id="overview">
+&lt;p>We will be using web browsing as an analogy to understand the basics of networking. What exactly happens when I go web browsing for cat pictures?&lt;/p></description></item><item><title>Lab 6 - Web Servers</title><link>http://localhost:1313/labs/6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/6/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
@@ -169,24 +113,7 @@ communicate with each other. In this lab, we&amp;rsquo;ll explore different netw
  Which networked services are already running?
  &lt;a class="anchor" href="#which-networked-services-are-already-running">#&lt;/a>
 &lt;/h2>
-&lt;p>There are multiple networked services running on your VM right now. To output the networked services running on the VM use &lt;code>netstat&lt;/code> (install using apt).&lt;/p></description></item><item><title>Week 6</title><link>http://localhost:1313/announcements/week-6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-6/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 6 of the DeCal! At this point, you should have turned in your Lab 5 on Gradescope. Regarding Lab 2 and 3 grades, Lab 2 grades should be released now, and Lab 3 is being graded, thank you for your patience!
-Weekly notes:
-&amp;laquo;&amp;laquo;&amp;laquo;&amp;lt; HEAD&lt;/p>
-&lt;ul>
-&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 03/11 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
-&lt;ul>
-&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Lab 6 has been released and can be accessed below.
-&lt;ul>
-&lt;li>Please use the corresponding 
- &lt;a href="https://edstem.org/us/courses/75831/discussion/6340626">Ed thread for Lab 6&lt;/a> related questions.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Any questions? Post on Ed or reach us at 
- &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 7 - Security Fundamentals</title><link>http://localhost:1313/labs/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/7/</guid><description>&lt;p>For this lab, we will use 
+&lt;p>There are multiple networked services running on your VM right now. To output the networked services running on the VM use &lt;code>netstat&lt;/code> (install using apt).&lt;/p></description></item><item><title>Lab 7 - Security Fundamentals</title><link>http://localhost:1313/labs/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/7/</guid><description>&lt;p>For this lab, we will use 
  &lt;a href="https://gnupg.org">GnuPG&lt;/a> (also referred to as GPG), a free implementation of the 
  &lt;a href="https://openpgp.org/">OpenPGP standard&lt;/a>. As stated by GPG&amp;rsquo;s website:&lt;/p>
 &lt;blockquote>
@@ -197,28 +124,7 @@ Weekly notes:
  Encryption and Decryption
  &lt;a class="anchor" href="#encryption-and-decryption">#&lt;/a>
 &lt;/h2>
-&lt;p>Encryption takes in a plaintext and a key, returning ciphertext. Decryption takes in a ciphertext and a key, recovering and returning the original plaintext only if the decryption key is valid. The keys for encryption and decryption are long strings of random bits that make it computationally infeasible for an attacker to guess the key and decrypt a ciphertext.&lt;/p></description></item><item><title>Week 7</title><link>http://localhost:1313/announcements/week-7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-7/</guid><description>&lt;p>Any questions? Post on Ed or reach us at 
- &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/p>
-&lt;p>Hi everyone, we&amp;rsquo;re entering week 7 of the DeCal! At this point, you should have turned in your Lab 6 on Gradescope. Weekly notes:&lt;/p>
-&lt;p>Normal schedule, Lecture + Lab on Tuesday 03/18 7-9PM PST. Experimental track on Thursday same time!&lt;/p>
-&lt;p>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/p>
-&lt;p>Lab 7 has been released and can be accessed below.&lt;/p></description></item><item><title>Week 8</title><link>http://localhost:1313/announcements/week-8/</link><pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-8/</guid><description>&lt;p>Happy spring break everyone, we&amp;rsquo;re entering week 8 of the DeCal! At this point, you should have turned in your Lab 7 on Gradescope.
-Weekly notes:&lt;/p>
-&lt;ul>
-&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 04/01 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
-&lt;ul>
-&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Lab 8 has been released and can be accessed below.
-&lt;ul>
-&lt;li>Please use the corresponding 
- &lt;a href="https://edstem.org/us/courses/75831/discussion/6453780">Ed thread for Lab 8&lt;/a> related questions.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Any questions? Post on Ed or reach us at 
- &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 8 - Version Control and Backups</title><link>http://localhost:1313/labs/8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/8/</guid><description>&lt;p>In this lab, we&amp;rsquo;ll be learning how to use Git and typical best practices for
+&lt;p>Encryption takes in a plaintext and a key, returning ciphertext. Decryption takes in a ciphertext and a key, recovering and returning the original plaintext only if the decryption key is valid. The keys for encryption and decryption are long strings of random bits that make it computationally infeasible for an attacker to guess the key and decrypt a ciphertext.&lt;/p></description></item><item><title>Lab 8 - Version Control and Backups</title><link>http://localhost:1313/labs/8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/8/</guid><description>&lt;p>In this lab, we&amp;rsquo;ll be learning how to use Git and typical best practices for
 version control!&lt;/p>
 &lt;h3 id="pulling-the-code">
  Pulling the code
@@ -240,23 +146,7 @@ simulate the real-world development process by making a branch for our new dice
 rolling feature, making a few commits to that branch, and then merging our
 feature branch into the master branch. &lt;em>You won&amp;rsquo;t need to personally write any
 Python for this lab!&lt;/em> You will only need to copy-and-paste the code we provide,
-since this lab is about learning version control and not Python.&lt;/p></description></item><item><title>Week 9</title><link>http://localhost:1313/announcements/week-9/</link><pubDate>Sun, 06 Apr 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/announcements/week-9/</guid><description>&lt;p>Hi everyone, we&amp;rsquo;re entering week 9 of the DeCal! At this point, you should have turned in your Lab 8 on Gradescope. Most lab should also be graded by now.
-Weekly notes:&lt;/p>
-&lt;ul>
-&lt;li>Normal schedule, Lecture + Lab on &lt;strong>Tuesday 04/08 7-9PM PST&lt;/strong>. Experimental track on Thursday same time!
-&lt;ul>
-&lt;li>Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Lab 9 has been released and can be accessed below.
-&lt;ul>
-&lt;li>Please use the corresponding 
- &lt;a href="https://edstem.org/us/courses/75831/discussion/6494318">Ed thread for Lab 5&lt;/a> related questions.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Any questions? Post on Ed or reach us at 
- &lt;a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu&lt;/a>!&lt;/li>
-&lt;/ul></description></item><item><title>Lab 9 - Containers (Docker)</title><link>http://localhost:1313/labs/9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/9/</guid><description>&lt;h2 id="overview">
+since this lab is about learning version control and not Python.&lt;/p></description></item><item><title>Lab 9 - Containers (Docker)</title><link>http://localhost:1313/labs/9/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/labs/9/</guid><description>&lt;h2 id="overview">
  Overview
  &lt;a class="anchor" href="#overview">#&lt;/a>
 &lt;/h2>
@@ -377,4 +267,158 @@ if you weren&amp;rsquo;t able to finish a previous lab)!&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>FPM Documentation 
- &lt;a href="https://github.com/jordansissel/fpm/wiki">https://github.com/jordansissel/fpm/wiki&lt;/a>&lt;/p></description></item></channel></rss>
+ &lt;a href="https://github.com/jordansissel/fpm/wiki">https://github.com/jordansissel/fpm/wiki&lt;/a>&lt;/p></description></item><item><title>Archives</title><link>http://localhost:1313/archives/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/archives/</guid><description>&lt;h1 id="decal-archives">
+ DeCal Archives
+ &lt;a class="anchor" href="#decal-archives">#&lt;/a>
+&lt;/h1>
+&lt;p>Here you can find past DeCal websites and materials.&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Semester&lt;/th>
+ &lt;th>Link&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>2024 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2024-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2024 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2024-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2023 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2023-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2023 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2023-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2022 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2022-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2021 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2021-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2021 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2021-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2020 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2020-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2019 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2019-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2018 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2018-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2018 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2018-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2017 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2017-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2012 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2012-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2012 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2012-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2011 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2011-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2010 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2010-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2009 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2009-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2008 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2008-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2008 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2008-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2007 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2007-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2006 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2006-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2005 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2005-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2005 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2005-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2004 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2004-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2002 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2002-fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2002 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2002-spring">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2001 Fall&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2001-fall/decal/2001fall">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>2001 Spring&lt;/td>
+ &lt;td>
+ &lt;a href="../archives/2001-spring/intro-to-sysad-decal">archive&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item></channel></rss>

@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 2 - Core Shell &amp; Shell Scripting | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Lab 2 - Core Shell &amp; Shell Scripting" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/labs/2/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/labs/2/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 2 - Core Shell &amp; Shell Scripting" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Lab 2 - Core Shell &amp; Shell Scripting","url":"https://decal.ocf.berkeley.edu/labs/2/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#setting-up">Setting up</a></li><li><a href="#a-quick-intro-to-vim">A quick intro to <code class="language-plaintext highlighter-rouge">vim</code></a><ol><li><a href="#why-vim">Why <code class="language-plaintext highlighter-rouge">vim</code>?</a></li><li><a href="#hello-world">Hello World</a></li><li><a href="#the-vim-modes">The <code class="language-plaintext highlighter-rouge">vim</code> Modes</a></li><li><a href="#questions">Questions</a></li></ol></li><li><a href="#a-quick-intro-to-tmuxoptional">A quick intro to tmux(Optional)</a><ol><li><a href="#why-tmux">Why tmux?</a></li><li><a href="#getting-started">Getting Started:</a></li><li><a href="#questions-optional">Questions (Optional)</a></li></ol></li><li><a href="#scripting">Scripting</a></li><li><a href="#why-scripting">Why Scripting?</a></li><li><a href="#scripting-lab-assignment">Scripting Lab Assignment</a></li><li><a href="#skeleton-code">Skeleton Code</a></li><li><a href="#some-tips-to-make-things-easier">Some tips to make things easier</a></li><li><a href="#submitting-the-lab">Submitting the lab</a></li><li><a href="#additional-resources">Additional Resources</a></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab 2 - Core Shell & Shell Scripting</h1>
+        
+        <p>Facilitator: <a href="/staff#jaysa-garcia,-albert-ye">Jaysa Garcia, Albert Ye</a></p>
+        
+        
+        11 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#setting-up" id="markdown-toc-setting-up">Setting up</a></li>
+  <li><a href="#a-quick-intro-to-vim" id="markdown-toc-a-quick-intro-to-vim">A quick intro to <code class="language-plaintext highlighter-rouge">vim</code></a>    <ol>
+      <li><a href="#why-vim" id="markdown-toc-why-vim">Why <code class="language-plaintext highlighter-rouge">vim</code>?</a></li>
+      <li><a href="#hello-world" id="markdown-toc-hello-world">Hello World</a></li>
+      <li><a href="#the-vim-modes" id="markdown-toc-the-vim-modes">The <code class="language-plaintext highlighter-rouge">vim</code> Modes</a>        <ol>
+          <li><a href="#normal-mode" id="markdown-toc-normal-mode">Normal mode:</a></li>
+          <li><a href="#insert-mode" id="markdown-toc-insert-mode">Insert mode:</a></li>
+          <li><a href="#visual-mode" id="markdown-toc-visual-mode">Visual mode:</a></li>
+        </ol>
+      </li>
+      <li><a href="#questions" id="markdown-toc-questions">Questions</a></li>
+    </ol>
+  </li>
+  <li><a href="#a-quick-intro-to-tmuxoptional" id="markdown-toc-a-quick-intro-to-tmuxoptional">A quick intro to tmux(Optional)</a>    <ol>
+      <li><a href="#why-tmux" id="markdown-toc-why-tmux">Why tmux?</a></li>
+      <li><a href="#getting-started" id="markdown-toc-getting-started">Getting Started:</a></li>
+      <li><a href="#questions-optional" id="markdown-toc-questions-optional">Questions (Optional)</a></li>
+    </ol>
+  </li>
+  <li><a href="#scripting" id="markdown-toc-scripting">Scripting</a></li>
+  <li><a href="#why-scripting" id="markdown-toc-why-scripting">Why Scripting?</a></li>
+  <li><a href="#scripting-lab-assignment" id="markdown-toc-scripting-lab-assignment">Scripting Lab Assignment</a></li>
+  <li><a href="#skeleton-code" id="markdown-toc-skeleton-code">Skeleton Code</a></li>
+  <li><a href="#some-tips-to-make-things-easier" id="markdown-toc-some-tips-to-make-things-easier">Some tips to make things easier</a></li>
+  <li><a href="#submitting-the-lab" id="markdown-toc-submitting-the-lab">Submitting the lab</a></li>
+  <li><a href="#additional-resources" id="markdown-toc-additional-resources">Additional Resources</a></li>
+</ol><hr />
+
+<p>Welcome to Lab 2! In this lab you will be learning how to work productively in a shell and use that to write your first shell script.</p>
+
+<p>Remember to submit your answers in the Gradescope assignment!</p>
+
+<p>Don’t forget to use Google and <code class="language-plaintext highlighter-rouge">man</code> when stuck. The resources linked at the bottom may be helpful as well.</p>
+
+<p><img src="https://imgs.xkcd.com/comics/automation.png" alt="XKCD 1319" /></p>
+      <h2 id="setting-up">
+        
+        
+          <a href="#setting-up" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Setting up
+        
+        
+      </h2>
+    
+<p>This lab can be completed either on tsunami by logging in using ssh or on the VM you set up in the previous lab. 
+This lab requires a bash shell, <code class="language-plaintext highlighter-rouge">vim</code>, and <code class="language-plaintext highlighter-rouge">tmux</code>.
+If you do not have tmux or vim installed: <code class="language-plaintext highlighter-rouge">sudo apt install vim tmux</code></p>
+      <h2 id="a-quick-intro-to-vim">
+        
+        
+          <a href="#a-quick-intro-to-vim" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> A quick intro to <code class="language-plaintext highlighter-rouge">vim</code>
+        
+        
+      </h2>
+    
+
+<p><code class="language-plaintext highlighter-rouge">vim</code> is a very widely used text editor. It’s well known for its customizability and plethora of keybinds. While it may be somewhat unintuitive to use at first (since a lot of common keybinds for things like copy-paste, saving, or exiting don’t do what you think they will), it’s well worth learning about, and you’ll certainly come across it all the time when working in the shell!</p>
+      <h3 id="why-vim">
+        
+        
+          <a href="#why-vim" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Why <code class="language-plaintext highlighter-rouge">vim</code>?
+        
+        
+      </h3>
+    
+<ul>
+  <li>It’s a descendant of vi, which was written in Berkeley by Bill Joy, who went on to found Sun Microsystems.</li>
+  <li>Sometimes you will be suddenly thrown into <code class="language-plaintext highlighter-rouge">vim</code> via merging git conflicts or other programs.</li>
+  <li>It’s included in practically every UNIX environment.</li>
+  <li>You can be very productive when familiar with it.</li>
+</ul>
+      <h3 id="hello-world">
+        
+        
+          <a href="#hello-world" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hello World
+        
+        
+      </h3>
+    
+
+<p>To get started with learning <code class="language-plaintext highlighter-rouge">vim</code>, run the command <code class="language-plaintext highlighter-rouge">vimtutor</code>. This will walk you through the below material in an interactive manner! You aren’t required to finish the entire tutorial, but we encourage you to at least complete lesson 1. You can then use this section as reference if you forget anything.</p>
+      <h3 id="the-vim-modes">
+        
+        
+          <a href="#the-vim-modes" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> The <code class="language-plaintext highlighter-rouge">vim</code> Modes
+        
+        
+      </h3>
+    
+
+<p>Vim is a modal text editor, meaning that you can change editing modes in order to do different things. There are 3 primarily used modes: <strong>Normal</strong>, <strong>Insert</strong>, and <strong>Visual</strong> mode.</p>
+      <h4 id="normal-mode">
+        
+        
+          <a href="#normal-mode" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Normal mode:
+        
+        
+      </h4>
+    
+<ul>
+  <li>Used for moving around and performing actions
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">hjkl</code> to move left, up, down, and right (arrow keys work too but hjkl is usually faster to use!)</li>
+      <li><code class="language-plaintext highlighter-rouge">G</code> to move to end of file, <code class="language-plaintext highlighter-rouge">gg</code> to move to beginning</li>
+      <li><code class="language-plaintext highlighter-rouge">i</code> to enter <strong>i</strong>nsert mode (<code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">o</code> also change mode in different ways)</li>
+      <li><code class="language-plaintext highlighter-rouge">dd</code> to cut a line</li>
+      <li><code class="language-plaintext highlighter-rouge">yy</code> to copy a line</li>
+      <li><code class="language-plaintext highlighter-rouge">p</code> to paste</li>
+      <li><code class="language-plaintext highlighter-rouge">/</code> to search</li>
+      <li><code class="language-plaintext highlighter-rouge">u</code> to undo</li>
+    </ul>
+  </li>
+  <li>Type in commands with <code class="language-plaintext highlighter-rouge">:</code>
+    <ul>
+      <li>Save with <code class="language-plaintext highlighter-rouge">:w</code></li>
+      <li>Exit with <code class="language-plaintext highlighter-rouge">:q</code></li>
+    </ul>
+  </li>
+  <li>Explore more commands online! Here’s a cool <a href="https://devhints.io/vim">cheat sheet</a> to get you started.</li>
+</ul>
+      <h4 id="insert-mode">
+        
+        
+          <a href="#insert-mode" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Insert mode:
+        
+        
+      </h4>
+    
+<p><img src="https://d26aqo05ggejx9.cloudfront.net/i.gif" alt="Example" /></p>
+<ul>
+  <li>Used for editing text like a usual editor</li>
+  <li>Arrow keys to move</li>
+  <li>Esc to exit to normal mode (lots of people bind it to Caps Lock)</li>
+</ul>
+      <h4 id="visual-mode">
+        
+        
+          <a href="#visual-mode" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Visual mode:
+        
+        
+      </h4>
+    
+<ul>
+  <li>Enter with <code class="language-plaintext highlighter-rouge">v</code> from normal mode</li>
+  <li>Used to select text visually</li>
+  <li>Modify selection with normal mode movement commands</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">o</code> to move the cursor to the other side of the selection</li>
+  <li>Yanking, deleting, and pasting use <code class="language-plaintext highlighter-rouge">y</code>, <code class="language-plaintext highlighter-rouge">d</code>, <code class="language-plaintext highlighter-rouge">p</code> (sound familiar?)</li>
+</ul>
+
+<p>A key feature of <code class="language-plaintext highlighter-rouge">vim</code> is <strong>chaining together commands</strong>.
+  Normal mode is essentially a massive amount of shortcuts that you can combine to quickly navigate and edit a file.
+  Want to move down 3 lines?
+  You know that <code class="language-plaintext highlighter-rouge">j</code> means move down 1 line, so you can use <code class="language-plaintext highlighter-rouge">3j</code> to move down 3.
+  <code class="language-plaintext highlighter-rouge">d</code> is for deletion and <code class="language-plaintext highlighter-rouge">w</code> is to jump to the next word, so what does <code class="language-plaintext highlighter-rouge">dw</code> do?</p>
+      <h3 id="questions">
+        
+        
+          <a href="#questions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Questions
+        
+        
+      </h3>
+    
+<p>Try playing around with <a href="https://raw.githubusercontent.com/0xcf/decal-web/master/labs/2.md">lab2.md</a> while looking up some new commands. Use <code class="language-plaintext highlighter-rouge">wget</code> to download it!</p>
+
+<ol>
+  <li>How would you delete the previous 10 lines?</li>
+  <li>How would you jump back to the shell without exiting <code class="language-plaintext highlighter-rouge">vim</code>?</li>
+  <li>How would you edit a new file alongside another file?</li>
+  <li>How would you indent a block of text?</li>
+  <li>Tell us about one other cool vim feature you found out about that isn’t mentioned in this lab!</li>
+</ol>
+      <h2 id="a-quick-intro-to-tmuxoptional">
+        
+        
+          <a href="#a-quick-intro-to-tmuxoptional" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> A quick intro to tmux(Optional)
+        
+        
+      </h2>
+    
+<p>While we reccomend that you complete this section of the lab, it’s completely optional and will not affect your lab grade. Feel free to skip ahead to the <a href="#scripting">Scripting Section</a>.</p>
+
+<p><img src="https://lightrains.com/assets/img/blog/tmux-tips.png" alt="Example" /></p>
+      <h3 id="why-tmux">
+        
+        
+          <a href="#why-tmux" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Why tmux?
+        
+        
+      </h3>
+    
+<ul>
+  <li>You can open multiple windows when sshed into a machine.</li>
+  <li>You can go compile and run programs while editing them.</li>
+  <li>You can logout and ssh back in without having to reopen all your files.</li>
+</ul>
+      <h3 id="getting-started">
+        
+        
+          <a href="#getting-started" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Getting Started:
+        
+        
+      </h3>
+    
+<ul>
+  <li>Start a session with <code class="language-plaintext highlighter-rouge">tmux</code>.</li>
+  <li>Detach from a session with <code class="language-plaintext highlighter-rouge">Ctrl-b d</code> (press d after releasing <code class="language-plaintext highlighter-rouge">Ctrl-b</code>)</li>
+  <li>Split into 2 panes with <code class="language-plaintext highlighter-rouge">Ctrl-b %</code> (vertical) or <code class="language-plaintext highlighter-rouge">Ctrl-b "</code> (horizontal)</li>
+  <li>Swap current pane with <code class="language-plaintext highlighter-rouge">Ctrl-b o</code></li>
+  <li>Find more information about tmux online. You might find [this cheat sheet][Tmux cheat sheet] helpful!</li>
+</ul>
+      <h3 id="questions-optional">
+        
+        
+          <a href="#questions-optional" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Questions (Optional)
+        
+        
+      </h3>
+    
+
+<ol>
+  <li>Make a new tmux session. Using tmux shortcuts, try to make your session have a similar layout to the one below, and <strong>upload a screenshot of it to Gradescope!</strong></li>
+</ol>
+
+<p><img src="/assets/images/labs/b2/tmux-layout.png" alt="tmux layout" /></p>
+
+<p>Some things to note:</p>
+<ul>
+  <li>The top left panel is resized. By how much, it doesn’t matter.</li>
+  <li>The top right panel is named “Hello World”. (You can see this name displayed on the bottom left.)</li>
+  <li>You don’t need to run any of the commands I did, but they do look pretty cool :) Try to figure out what command the bottom panel is running, and what it does!</li>
+  <li>Don’t worry about copying the layout exactly. The purpose of this exercise is simply to help you get comfortable making custom layouts in tmux.</li>
+</ul>
+
+<ol>
+  <li>If you haven’t already, detach from your current tmux session using <code class="language-plaintext highlighter-rouge">Ctrl+b d</code>. Now, what command would you type to attach back to it?</li>
+  <li>What command will delete your session?</li>
+  <li>What command will create a new session?</li>
+</ol>
+      <h2 id="scripting">
+        
+        
+          <a href="#scripting" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Scripting
+        
+        
+      </h2>
+    
+      <h2 id="why-scripting">
+        
+        
+          <a href="#why-scripting" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Why Scripting?
+        
+        
+      </h2>
+    
+
+<p>Many of the tasks that someone would like to perform on a computer are regular, 
+require repetition, or are menial or tedious to do by hand. Shell scripting 
+allows one to interact programmatically with a shell to do certain tasks. For 
+example, the command for scanning log files in the previous topic guide could 
+be automated to be performed on a schedule by means of a shell script. <code class="language-plaintext highlighter-rouge">bash</code> 
+scripts are an incredibly powerful tool for sysadmins to automate tasks that 
+are otherwise difficult to remember or long-running.</p>
+
+<p>In cases where shell syntax is inappropriate for the task at hand, one can 
+instead call into programs written in other languages, such as Python, which 
+can read from stdin, process data, and write to stdout.</p>
+
+<p>Before you jump into the assignment we reccomend reading through our <a href="/labs/scripting">Scripting Reference</a> which provides a introduction to Bash and Python(optional part in this lab) scripting in Linux. Feel free to come back to this reference as you work through the assignment.</p>
+      <h2 id="scripting-lab-assignment">
+        
+        
+          <a href="#scripting-lab-assignment" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Scripting Lab Assignment
+        
+        
+      </h2>
+    
+
+<p>You’ll be completing a classic first shell scripting assignment: make a 
+phonebook.</p>
+
+<p>Write a shell script <code class="language-plaintext highlighter-rouge">phonebook</code> which has the following behavior:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">./phonebook new &lt;name&gt; &lt;number&gt;</code> adds an entry to the phonebook. Don’t worry about duplicates (always add a new entry, even if the name is the same).</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">./phonebook list</code> displays every entry in the phonebook (in no particular 
+order). If the phonebook has no entries, display <code class="language-plaintext highlighter-rouge">phonebook is empty</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">./phonebook remove &lt;name&gt;</code> deletes all entries associated with that name. Do nothing if that name is not in the phonebook.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">./phonebook clear</code> deletes the entire phonebook.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">./phonebook lookup &lt;name&gt;</code> displays all phone number(s) associated with that name. You can assume all phone numbers are in the form <code class="language-plaintext highlighter-rouge">ddd-ddd-dddd</code> where <code class="language-plaintext highlighter-rouge">d</code> is a digit from 0-9.</p>
+    <ul>
+      <li><strong>NOTE:</strong> You can print the name as well as the number for each line. For an additional challenge, try printing all phone numbers <em>without</em> their names. (See the example below for more details)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>For example,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./phonebook new <span class="s2">"Linus Torvalds"</span> 101-110-0111
+<span class="nv">$ </span>./phonebook list
+Linus Torvalds 101-110-1010
+<span class="nv">$ </span>./phonebook new <span class="s2">"Tux Penguin"</span> 555-666-7777
+<span class="nv">$ </span>./phonebook new <span class="s2">"Linus Torvalds"</span> 222-222-2222
+<span class="nv">$ </span>./phonebook list
+Linus Torvalds 101-110-1010
+Tux Penguin 555-666-7777
+Linus Torvalds 222-222-2222
+<span class="c"># OPTIONAL BEHAVIOR</span>
+<span class="nv">$ </span>./phonebook lookup <span class="s2">"Linus Torvalds"</span> 
+101-110-1010
+222-222-2222
+<span class="c"># ALTERNATIVE BEHAVIOR</span>
+<span class="nv">$ </span>./phonebook lookup <span class="s2">"Linus Torvalds"</span>
+Linus Torvalds 101-110-1010
+Linus Torvalds 222-222-2222
+<span class="nv">$ </span>./phonebook remove <span class="s2">"Linus Torvalds"</span>
+<span class="nv">$ </span>./phonebook list
+Tux Penguin 555-666-7777
+<span class="nv">$ </span>./phonebook clear
+<span class="nv">$ </span>./phonebook list
+phonebook is empty
+</code></pre></div></div>
+
+<p>If you run into an edge case that isn’t described here, you can handle it however you wish (or don’t handle it at all). You can assume all inputs are in the correct format.</p>
+      <h2 id="skeleton-code">
+        
+        
+          <a href="#skeleton-code" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Skeleton Code
+        
+        
+      </h2>
+    
+
+<p>To help you in this task, skeleton code for this lab can be found 
+<a href="https://github.com/0xcf/decal-labs/tree/master/2">here</a>.
+Once you are done with this task, you can submit your work on Gradescope.</p>
+
+<p><strong>As an optional (but recommended) assignment:</strong> Try implementing the same
+Phonebook behavior, but in <code class="language-plaintext highlighter-rouge">python</code>! This will highlight some of the strengths
+and weaknesses between the two languages. If you’re already familiar with <code class="language-plaintext highlighter-rouge">python</code>,
+you may find it helpful to do this before implementing it in <code class="language-plaintext highlighter-rouge">bash</code>.</p>
+      <h2 id="some-tips-to-make-things-easier">
+        
+        
+          <a href="#some-tips-to-make-things-easier" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Some tips to make things easier
+        
+        
+      </h2>
+    
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">bash</code> has an append operator <code class="language-plaintext highlighter-rouge">&gt;&gt;</code> which, as you might guess, appends the
+data from its first argument to the end of the second argument.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>foobar.txt
+foobar
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"hello, reader"</span> <span class="o">&gt;&gt;</span> foobar.txt
+<span class="nv">$ </span><span class="nb">cat </span>foobar.txt
+foobar
+hello, reader
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">bash</code> also has a redirect operator <code class="language-plaintext highlighter-rouge">&gt;</code>, which takes the output of one 
+command and outputs it to a file.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>foobar.txt
+foobar
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"hello"</span> <span class="o">&gt;</span> foobar.txt
+<span class="nv">$ </span><span class="nb">cat </span>foobar.txt
+hello
+<span class="nv">$ </span><span class="o">&gt;</span> foobar.txt
+<span class="nv">$ </span><span class="nb">cat </span>foobar.txt
+<span class="err">$</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Remember that you can simply write to and read from a file to persist data.</li>
+  <li>In bash, changing lines can be done through the <code class="language-plaintext highlighter-rouge">sed</code> command. If you wish to do so, the format
+ <code class="language-plaintext highlighter-rouge">sed -i "s/&lt;old&gt;/&lt;new&gt;/g" ./filename</code> may be helpful in this lab (e.g. for deleting a line or part of a line). For example:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"hello 123"</span> <span class="o">&gt;</span> foobar.txt <span class="c"># writes hello to foobar.txt</span>
+<span class="nv">$ </span><span class="nb">cat </span>foobar.txt
+hello 123
+<span class="nv">$ </span><span class="nb">sed</span> <span class="nt">-i</span> <span class="s2">"s/h/j/g"</span> foobar.txt
+<span class="nv">$ </span><span class="nb">cat </span>foobar.txt
+jello 123
+<span class="c"># You can also use regex: learn more at regex101.com</span>
+<span class="nv">$ </span><span class="nb">sed</span> <span class="nt">-i</span> <span class="s2">"s/[0-9]</span><span class="se">\{</span><span class="s2">3</span><span class="se">\}</span><span class="s2">/world/g"</span> foobar.txt
+<span class="nv">$ </span><span class="nb">cat </span>foobar.txt
+jello world
+</code></pre></div>    </div>
+  </li>
+  <li>Recall that <code class="language-plaintext highlighter-rouge">bash</code> exposes its command line arguments through the 
+<code class="language-plaintext highlighter-rouge">$&lt;integer&gt;</code> positional parameters:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="c"># contents of argscript.sh</span>
+
+<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./argscript.sh foo bar
+foo
+bar
+</code></pre></div></div>
+
+<ul>
+  <li>In <code class="language-plaintext highlighter-rouge">bash</code>, single quotes <code class="language-plaintext highlighter-rouge">''</code> preserve the literal value of the characters 
+they enclose. Double quotes <code class="language-plaintext highlighter-rouge">""</code> preserve the literal value of all characters 
+except for <code class="language-plaintext highlighter-rouge">$</code>, backticks <code class="language-plaintext highlighter-rouge">`</code>, and the backslash <code class="language-plaintext highlighter-rouge">\\</code>. The most important 
+implication of this is that double quotes allow for variable interpolation, 
+while single quotes do not. You can think of single quotes and the stronger 
+“escape everything” syntax while double quotes are the more lax “escape most 
+things” syntax.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">'$LANG'</span>
+<span class="nv">$LANG</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$LANG</span><span class="s2">"</span>
+en_US.UTF-8
+</code></pre></div></div>
+
+<ul>
+  <li>In <code class="language-plaintext highlighter-rouge">python</code>, you can interact with command-line arguments through the 
+<code class="language-plaintext highlighter-rouge">sys.argv</code> list</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># !/usr/bin/python
+# contents of argscript.py
+</span>
+<span class="kn">import</span> <span class="nn">sys</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1"># end of file
+</span></code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./argscript.py foo bar
+foo
+bar
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">python</code> lets you manipulate files with the <code class="language-plaintext highlighter-rouge">open</code> function, commonly used 
+with the <code class="language-plaintext highlighter-rouge">with</code> control structure</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># !/usr/bin/python
+# contents of fileman.py
+</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'./newfile.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"hello from python</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="c1"># end of file
+</span></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python fileman.py
+<span class="nv">$ </span><span class="nb">cat </span>newfile.txt
+hello from python
+</code></pre></div></div>
+<ul>
+  <li>If you are getting permission denied issues, you will probably need to make your <code class="language-plaintext highlighter-rouge">phonebook.sh</code> executable: <code class="language-plaintext highlighter-rouge">chmod +x phonebook.sh</code></li>
+</ul>
+      <h2 id="submitting-the-lab">
+        
+        
+          <a href="#submitting-the-lab" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Submitting the lab
+        
+        
+      </h2>
+    
+<p>Once you’re done remember to submit your answers to Gradescope.
+There are multiple valid answers for some of the questions.</p>
+
+<p>For the scripting assignment, you will need to upload a file containing your script. If you edit and test your script in your VM using <code class="language-plaintext highlighter-rouge">vim</code> or another shell editor, you can <a href="https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/#copy-a-remote-file-to-a-local-system-using-the-scp-command">copy the file to your local machine using <code class="language-plaintext highlighter-rouge">scp</code></a> or simply copy-paste the text into a local file.</p>
+
+<p>Don’t be stressed about getting something correct; just have fun exploring.We’ll release the answers after the lab is due!</p>
+      <h2 id="additional-resources">
+        
+        
+          <a href="#additional-resources" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Additional Resources
+        
+        
+      </h2>
+    
+<p><a href="http://teohm.com/blog/shortcuts-to-move-faster-in-bash-command-line/">Keybindings</a></p>
+
+<p><a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">Learning vim progressively</a></p>
+
+<p><a href="https://gist.github.com/MohamedAlaa/2961058">Tmux cheat sheet</a></p>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.janestreet.com" class="no-underline">
+        <img
+          src="/assets/images/jane-street.svg"
+          style="height: 50px"
+        />
+      </a>
+      <span>
+        Thanks to
+        <a href="https://www.janestreet.com">Jane Street</a> for supporting the DeCal.
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2024
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

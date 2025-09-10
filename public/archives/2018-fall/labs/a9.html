@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.8.0/github-markdown.min.css">
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+
+<title>Lab 9 - Security - Hands-On Linux System Administration DeCal</title>
+
+<article class="markdown-body">
+  <h1>Lab 9 - Security</h1>
+  <p>In this lab, we’re going to use a few security tools so you can get your hands on them.</p>
+
+<h1 id="hashing">Hashing</h1>
+<p>A <em>hash function</em> is any function that can be used to map data of arbitrary size to data
+of a fixed size. (<a href="https://en.wikipedia.org/wiki/Hash_function">Wikipedia</a>).  This can be
+as trivial as taking the first 8 bits of a file, or finding the value of the data modulus
+<em>n</em>.</p>
+
+<p>A cryptographic hash function has the following additional property: Given an output, we
+should not be able to derive any information about the input, nor should we be able to
+find another input with the same output. This is formalized by the three following rules:</p>
+<ul>
+  <li>Pre-image resistance: Given any hash value <em>h</em>, it is computationally infeasible to find</li>
+  <li>an input  <em>x</em> such that hash(<em>x</em>) = <em>h</em>.  Second pre-image resistance: Given a fixed 
+input <em>x</em>, it is computationally infeasible to find a different input <em>x’</em> such that</li>
+  <li>hash(<em>x</em>) = hash(<em>x’</em>).  Collision resistance: It is computationally infeasible to find
+any two different inputs <em>x</em> and <em>y</em> such that hash(<em>x</em>) = hash(<em>y</em>).</li>
+</ul>
+
+<p>What is the use of such a function? Consider your favorite Linux distro. Mirrors (such as
+the <a href="https://mirrors.ocf.berkeley.edu">OCF</a>) are an excellent mechanism for distribution.
+Unfortunately, how is one supposed to trust that a mirror didn’t install some form of
+malware? This is where the checksum (or the result of hashing data) comes into play: A
+hash is miniscule compared to the original image (&lt;512 bits vs &gt;800MB of Arch). Thus,
+developers are able to distribute checksums at a much lower cost. Because of the nature of
+these hash functions, even the tiniest change results in completely different checksums,
+rendering any modification without detection impossible. I’ve provided a few sha256 sums.
+In the lab, answer which <a href="https://decal.ocf.berkeley.edu/static/a9/corpuses.tgz">corpus</a>
+belongs to <code class="highlighter-rouge">5876fcc87f2db7adbd548cad3ca225c6a3e815f8fc737902588f1f2ca216247e</code>?</p>
+
+<h1 id="public-key-encryption">Public Key Encryption</h1>
+<p>Public key encryption provides a nifty way for people to securely send messages without
+trading symmetric keys beforehand. One of the more “common” ways is through GPG-encrypted
+mail. Send me an email with you OCF username at <code class="highlighter-rouge">mdcha@ocf.berkeley.edu</code> encrypted with my
+public key. You can find my public key on <a href="https://pgp.mit.edu">MIT’s key server</a>. My
+fingerprint is <code class="highlighter-rouge">FA17 A706 5591 C293 C00C  D52F 0BF0 AB95 491E C5BC</code></p>
+
+<h2 id="haveged"><code class="highlighter-rouge">haveged</code></h2>
+<p>If you try to make keys on your VM, you might find it to be exteremely slow.  Generating
+your keys requires entropy. Install <code class="highlighter-rouge">haveged</code> to make this process go faster.</p>
+
+<h1 id="network-security">Network security.</h1>
+<ol>
+  <li>
+    <p>Make a list of all the services running on your student VM that are accessible from the
+public internet, what user they are running as, and what port they are listening on.
+Use the tools you learned about in lab 5, such as <code class="highlighter-rouge">netstat</code>, as well as tools like
+<code class="highlighter-rouge">ps</code>. You may also want to point <code class="highlighter-rouge">nmap -A</code> at your VM from another machine, such as
+tsunami.</p>
+  </li>
+  <li>
+    <p>Use less and grep to open up and search your SSH login log file, located in
+<code class="highlighter-rouge">/var/log/auth.log</code>. Besides yourself, is anyone trying to log in? Who and why?</p>
+  </li>
+</ol>
+
+<h1 id="threat-modeling">Threat Modeling</h1>
+<p>Choose <em>any</em> chapter in the range 10-26 from Ross Anderson’s <a href="https://www.cl.cam.ac.uk/~rja14/book.html">Security
+Engineering</a>. Write up a threat model of a
+described environemnt. In particular, answer the following questions:</p>
+<ul>
+  <li>What do I want to protect?</li>
+  <li>Who do I want to protect it from?</li>
+  <li>How bad are the consequences if I fail?</li>
+  <li>How likely is it that I will need to protect it?</li>
+  <li>How much trouble am I willing to go through to try to prevent potential consequences?</li>
+</ul>
+
+<p>This question can be answered in any coherent, human-readable (YAML/JSON doesn’t count)
+format, e.g. bullet point, essay-style.</p>
+
+<h1 id="submission">Submission</h1>
+<p>Fill out the <a href="https://goo.gl/forms/iOFwbQFgHVgi4UEv2">Google Form</a> once you’re done!</p>
+
+
+  <br>
+<footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com">
+        <img src="/images/digitalocean.png" style="height: 34px; width: 200px;" /></a>
+      &nbsp;&nbsp;With great appreciation to
+      <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring the
+      VMs used in both tracks of the DeCal
+    </p>
+
+    <p>
+      <a href="https://www.ocf.berkeley.edu">
+        <img src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+             alt="Hosted by the OCF" style="border: 0;" /></a>
+      Copyright &copy; 2017-2018
+      <a href="https://www.ocf.berkeley.edu">
+        Open Computing Facility
+      </a>
+      and
+      <a href="https://xcf.berkeley.edu">
+        eXperimental Computing Facility
+      </a>
+    </p>
+    <p>
+      This website is licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/">
+        Source Code
+      </a>
+      available on GitHub
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+</article>
+

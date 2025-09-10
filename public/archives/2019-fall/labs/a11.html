@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.8.0/github-markdown.min.css">
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+
+<title>Lab 11 - Security - Hands-On Linux System Administration DeCal</title>
+
+<article class="markdown-body">
+  <h1>Lab 11 - Security</h1>
+  <h2 id="overview">Overview</h2>
+<p>This lab is a bit unique compared to the rest, very little programming is
+involved.</p>
+
+<h2 id="getting-help">Getting help</h2>
+<p>If you want any help with any part of this lab, join the OCF slack
+(<a href="https://ocf.io/slack">https://ocf.io/slack</a>), and mention me (slack: @mdcha, IRC: dongkyun) in
+ #decal-general.</p>
+
+<h2 id="part-1-threat-modeling">Part 1: Threat Modeling</h2>
+<p>Read the below prompts and answer any related questions. These questions may
+take some research and googling. Remember:</p>
+<ol>
+  <li>What are you protecting?</li>
+  <li>Who are your adversaries?</li>
+  <li>How likely is it you will need to protect it?</li>
+  <li>What are the consequences of failing to protect it?</li>
+  <li>How many resources should you devote to protecting it?</li>
+</ol>
+
+<h3 id="example-safekeeping">Example: Safekeeping</h3>
+<p>This one is just for reference, you don’t have to answer it:</p>
+
+<p>You run a safe storage facility for customers to store a variety of valuables.
+Describe your threat model.</p>
+
+<p>In this scenario, you’re responsible for your clients’ valuables. There are a
+multitude of adversaries, including burglars ranging from smash-and-grab to more
+sophisticated attackers, disgruntled employees, clients looking to claim
+fradulent loss, and natural disasters such as earthquakes, fires, or tornados.</p>
+
+<p>Storage facilties containing potentially high amounts of valuables in close
+proximity to each other may serve as enticing targets for attackers and failing
+to protect the facility would result in a loss of trust that would be
+devastating for a business.</p>
+
+<p>In order to protect against burglars, an variety of protections can be enabled
+from increased surveillance to 24/7 guards. The rational amount of security
+depends on the level of desired profit and likelihood of a break-in.</p>
+
+<p>Allowing clients to install their own security protects allows them protection
+agaisnt both disgruntled employees and acts as a protection mechanism against
+fradulent clients.</p>
+
+<h3 id="illicit-activity">Illicit Activity</h3>
+<p>You’re a drug dealer that communicates to your clients over SMS and offers to
+take Venmo. You usually offer to meet them at a local park only a few blocks
+away from your apartment.</p>
+
+<p>First create a threat model and then determine how to go about your business
+more securely.</p>
+
+<p>Secondly, if you were a fed, what tools do you have at your disposal, and how
+could you go about building a case against the above drug dealer?</p>
+
+<h3 id="subversive-journalism">Subversive Journalism</h3>
+<p>You’re a journalist criticizing the local authoritarian government and trying to
+get your story to ProPublica. Describe your threat model and how you would
+safely deliver the information.</p>
+
+<h2 id="part-2-network-security">Part 2: Network Security</h2>
+<p>Make a list of all the services running on your student VM that are accessible
+from the public internet, what user they are running as, and what port they are
+listening on. Use the tools you learned about in lecture 6, such as <code class="highlighter-rouge">netstat</code>,
+as well as tools like <code class="highlighter-rouge">ps</code>. You may also want to point <code class="highlighter-rouge">nmap -A</code> at your VM from
+another machine, such as <code class="highlighter-rouge">tsunami</code>.</p>
+
+<p>Use <code class="highlighter-rouge">less</code> and <code class="highlighter-rouge">grep</code> to open up and search your SSH login log file, located in
+<code class="highlighter-rouge">/var/log/auth.log</code>. Besides yourself, is anyone else trying to log in? Who?</p>
+
+<h2 id="part-3-hashes">Part 3: Hashes</h2>
+<p>Find the checksum for the binary of a software you use. What is the software and
+checksum? How did you check the checksum?</p>
+
+<h2 id="part-4-submission">Part 4: Submission</h2>
+
+<p>Congratulations on finishing the lab!</p>
+
+<p>To submit, insert answer you have for each section into the gradescope
+submission.</p>
+
+
+  <br>
+<footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com">
+        <img src="/images/digitalocean.png" style="height: 34px; width: 200px;" /></a>
+      &nbsp;&nbsp;With great appreciation to
+      <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring the
+      VMs used in both tracks of the DeCal
+    </p>
+
+    <p>
+      <a href="https://www.ocf.berkeley.edu">
+        <img src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+             alt="Hosted by the OCF" style="border: 0;" /></a>
+      Copyright &copy; 2017-2019
+      <a href="https://www.ocf.berkeley.edu">
+        Open Computing Facility
+      </a>
+      and
+      <a href="https://xcf.berkeley.edu">
+        eXperimental Computing Facility
+      </a>
+    </p>
+    <p>
+      This website is licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/">
+        Source Code
+      </a>
+      available on GitHub
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+</article>
+

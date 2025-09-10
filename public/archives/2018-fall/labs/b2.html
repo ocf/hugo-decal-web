@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.8.0/github-markdown.min.css">
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+
+<title>Beginner Lab 2 - Core Shell - Hands-On Linux System Administration DeCal</title>
+
+<article class="markdown-body">
+  <h1>Beginner Lab 2 - Core Shell</h1>
+  <p>Welcome to Lab 2! In this lab you will be learning how to work productively in a shell.</p>
+
+<p>Don’t forget to use Google and <code class="highlighter-rouge">man</code> when stuck. The resources linked at the bottom may be helpful as well.</p>
+
+<p><img src="https://imgs.xkcd.com/comics/automation.png" alt="XKCD 1319" /></p>
+
+<h2 id="setting-up">Setting up</h2>
+
+<p>This lab requires a <code class="highlighter-rouge">bash</code> shell, <code class="highlighter-rouge">vim</code>, and <code class="highlighter-rouge">tmux</code>.</p>
+
+<h2 id="ssh-secure-shell">SSH (Secure Shell)</h2>
+
+<p>SSH allows you to log in to a remote computer through the internet. It is the equivalent of opening a shell on a remote computer.</p>
+
+<p>The usage is <code class="highlighter-rouge">ssh [remote username]@[remote host]</code>.</p>
+
+<h3 id="question">Question</h3>
+
+<ol>
+  <li>Log on to <code class="highlighter-rouge">tsunami.ocf.berkeley.edu</code> with your OCF username and password. There is a file in <code class="highlighter-rouge">~staff/public_html/decal</code>. Open it. What is the secret in the file?</li>
+</ol>
+
+<h2 id="managing-files-pipes-and-redirection">Managing Files, Pipes and Redirection</h2>
+
+<h3 id="combining-commands">Combining commands</h3>
+
+<p>Chaining together commands is essential to automating your way through the shell. Here’s a quick cheat sheet:</p>
+
+<p><code class="highlighter-rouge">&gt;</code> : Redirect stdout to a file. (Will overwrite the file)</p>
+
+<p><code class="highlighter-rouge">&gt;&gt;</code> : Append stdout to a file.</p>
+
+<p><code class="highlighter-rouge">&lt;</code> : Read input from a file.</p>
+
+<p><code class="highlighter-rouge">|</code> : Send output from one program to the input of the next.</p>
+
+<h3 id="questions">Questions</h3>
+
+<ol>
+  <li>What line could you use to save the first 10 lines of a file that do not contain any vowels to a new file called <code class="highlighter-rouge">return.txt</code>?</li>
+  <li>How could you save the last 3 lines of <code class="highlighter-rouge">ls</code> into <code class="highlighter-rouge">output.txt</code>? (See <code class="highlighter-rouge">tail</code>)</li>
+  <li>You have a set of old log files that you want to <code class="highlighter-rouge">move</code> to a directory of newer logs. What flag would you use to avoid overwriting the newer log file?</li>
+</ol>
+
+<h3 id="other-useful-tricks">Other useful tricks</h3>
+
+<p><code class="highlighter-rouge">!!</code> can be used to repeat the previous command in the shell.</p>
+
+<p>E.g.</p>
+
+<p><code class="highlighter-rouge">
+    python program.py = python program.py
+    sudo !!           = sudo python program.py
+</code></p>
+
+<p><code class="highlighter-rouge">!:[num]</code> is treated as the previous command’s [num] argument.</p>
+
+<p>E.g.</p>
+
+<p><code class="highlighter-rouge">
+    touch doc.txt = touch doc.txt
+    vim doc.txt   = vim !:1
+</code></p>
+
+<p>Note: This behavior is from bash and some other shells that implement it.</p>
+
+<h2 id="a-quick-intro-to-vim">A quick intro to <code class="highlighter-rouge">vim</code></h2>
+
+<h3 id="why-vim">Why <code class="highlighter-rouge">vim</code>?</h3>
+
+<ul>
+  <li>It’s a descendant of vi, which was written in Berkeley.</li>
+  <li>Sometimes you will be suddenly thrown into <code class="highlighter-rouge">vim</code> via merging git conflicts or other programs.</li>
+  <li>It’s included in practically every UNIX environment.</li>
+  <li>You can be very productive when familiar with it.</li>
+  <li>It’s fast and lightweight and runs on everything.</li>
+</ul>
+
+<h3 id="hello-world">Hello World</h3>
+<p>Vim is a modal text editor, meaning that you can change editing modes in order to do different things.
+There are 3 primarily used modes: <strong>Normal</strong>, <strong>Insert</strong>, and <strong>Visual</strong> mode.</p>
+
+<h4 id="normal-mode">Normal mode:</h4>
+<ul>
+  <li>Used for moving around and editing text</li>
+  <li><code class="highlighter-rouge">hjkl</code> to move left, up, down, and right</li>
+  <li><code class="highlighter-rouge">G</code> to move to end of file, <code class="highlighter-rouge">gg</code> to move to beginning</li>
+  <li><code class="highlighter-rouge">i</code> to enter <strong>i</strong>nsert mode (<code class="highlighter-rouge">a</code>, <code class="highlighter-rouge">o</code> also change mode in different ways)</li>
+  <li><code class="highlighter-rouge">dd</code> to cut a line</li>
+  <li><code class="highlighter-rouge">yy</code> to copy a line</li>
+  <li><code class="highlighter-rouge">p</code> to paste</li>
+  <li><code class="highlighter-rouge">/</code> to search</li>
+  <li><code class="highlighter-rouge">u</code> to undo</li>
+  <li>Type in commands with <code class="highlighter-rouge">:</code></li>
+  <li>Save with <code class="highlighter-rouge">:w</code></li>
+  <li>Exit with <code class="highlighter-rouge">:q</code></li>
+  <li>Explore more commands online!</li>
+</ul>
+
+<h4 id="insert-mode">Insert mode:</h4>
+
+<p><img src="https://d26aqo05ggejx9.cloudfront.net/i.gif" alt="Example" /></p>
+
+<ul>
+  <li>Used for editing text like a usual editor</li>
+  <li>Arrow keys to move</li>
+  <li>Esc to exit to normal mode (lots of people bind it to Caps Lock)</li>
+</ul>
+
+<h4 id="visual-mode">Visual mode:</h4>
+
+<ul>
+  <li>Enter with <code class="highlighter-rouge">v</code> from normal mode</li>
+  <li>Used to select text visually</li>
+  <li>Modify selection with normal mode movement commands</li>
+  <li>Use <code class="highlighter-rouge">o</code> to move the cursor to the other side of the selection</li>
+  <li>Yanking, deleting, and pasting use <code class="highlighter-rouge">y</code>, <code class="highlighter-rouge">d</code>, <code class="highlighter-rouge">p</code> (sound familiar?)</li>
+</ul>
+
+<p>A key feature of <code class="highlighter-rouge">vim</code> is <strong>chaining together commands</strong>. Normal mode is essentially a massive amount of shortcuts that you can combine to quickly navigate and edit a file. Want to move down 3 lines? You know that <code class="highlighter-rouge">j</code> means move down 1 line, so you can use <code class="highlighter-rouge">3j</code> to move down 3. <code class="highlighter-rouge">d</code> is for deletion and <code class="highlighter-rouge">w</code> is to jump to the next word, so what does <code class="highlighter-rouge">dw</code> do?</p>
+
+<h3 id="questions-1">Questions</h3>
+
+<p>Try playing around with <a href="https://raw.githubusercontent.com/tanx16/decal-web/acbe5e9c8fb16bdfb26c39d4b29090240cba6d7d/labs/b2.md">lab2.md</a> while looking up some new commands. Use <code class="highlighter-rouge">wget</code> to download it!</p>
+
+<ul>
+  <li>How would you delete the 10 lines above your cursor?</li>
+  <li>How would you put <code class="highlighter-rouge">vim</code> in the background?</li>
+  <li>How would you enter the shell without exiting <code class="highlighter-rouge">vim</code>, or putting it in the background?</li>
+  <li>How would you edit a new file alongside another file within <code class="highlighter-rouge">vim</code>?</li>
+  <li>How would you indent a block of text?</li>
+  <li>How could you add line numbers to <code class="highlighter-rouge">vim</code>?</li>
+</ul>
+
+<h3 id="if-youre-interested-in-emacs-instead">If you’re interested in <code class="highlighter-rouge">emacs</code> instead</h3>
+
+<ul>
+  <li>Use <a href="http://readline.kablamo.org/emacs.html">this</a> cheatsheet</li>
+</ul>
+
+<h2 id="a-quick-intro-to-tmux">A quick intro to tmux</h2>
+
+<p><img src="https://lightrains.com/assets/img/blog/tmux-tips.png" alt="Example" /></p>
+
+<h3 id="why-tmux">Why tmux?</h3>
+
+<ul>
+  <li>You can open multiple windows when sshed into a machine.</li>
+  <li>You can go compile and run programs while editing them.</li>
+  <li>You can logout and ssh back in without having to reopen all your files.</li>
+</ul>
+
+<h3 id="getting-started">Getting Started:</h3>
+
+<ul>
+  <li>Start a session with <code class="highlighter-rouge">tmux</code>.</li>
+  <li>Detach from a session with <code class="highlighter-rouge">Ctrl-b d</code> (press d after releasing <code class="highlighter-rouge">Ctrl-b</code>)</li>
+  <li>Split into 2 panes with <code class="highlighter-rouge">Ctrl-b %</code> (vertical) and <code class="highlighter-rouge">Ctrl-b "</code> (horizontal)</li>
+  <li>Swap current pane with <code class="highlighter-rouge">Ctrl-b o</code></li>
+  <li>Create new window with <code class="highlighter-rouge">Ctrl-b c</code></li>
+  <li>Go to next window with <code class="highlighter-rouge">Ctrl-b n</code></li>
+  <li>Go to previous window with <code class="highlighter-rouge">Ctrl-b p</code></li>
+</ul>
+
+<h3 id="question-1">Question</h3>
+
+<ul>
+  <li>Describe something you learned about tmux that was not covered in the lab or lecture, e.g. sessions, window management, or customization. Take a look at the resources linked at the bottom for inspiration.</li>
+</ul>
+
+<h3 id="advanced-usage-optional">Advanced usage (optional)</h3>
+
+<ul>
+  <li>Tmux can be used to share your session with others.</li>
+  <li>Try remapping shortcuts like the prefix <code class="highlighter-rouge">Ctrl-b</code> to something more convenient.</li>
+  <li><code class="highlighter-rouge">Ctrl-b [</code> can be used to scroll around buffers and copy things.</li>
+</ul>
+
+<h3 id="checking-off">Checking off</h3>
+
+<p>Once you’re done remember to fill out the <a href="https://goo.gl/vt5vo7">check off form</a>. There are multiple valid answers for some of the questions. Please answer the feedback questions if there’s anything you want to say!</p>
+
+<h3 id="resources">Resources</h3>
+
+<p>One of the best parts about vim and tmux is their customizability. Look up some configuration files (aka dotfiles) online and see what you like!</p>
+
+<p><a href="http://teohm.com/blog/shortcuts-to-move-faster-in-bash-command-line/">Keybindings</a></p>
+
+<p><a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">Learning vim progressively</a></p>
+
+<p><a href="https://gist.github.com/MohamedAlaa/2961058">Tmux cheat sheet</a></p>
+
+
+  <br>
+<footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com">
+        <img src="/images/digitalocean.png" style="height: 34px; width: 200px;" /></a>
+      &nbsp;&nbsp;With great appreciation to
+      <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring the
+      VMs used in both tracks of the DeCal
+    </p>
+
+    <p>
+      <a href="https://www.ocf.berkeley.edu">
+        <img src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+             alt="Hosted by the OCF" style="border: 0;" /></a>
+      Copyright &copy; 2017-2018
+      <a href="https://www.ocf.berkeley.edu">
+        Open Computing Facility
+      </a>
+      and
+      <a href="https://xcf.berkeley.edu">
+        eXperimental Computing Facility
+      </a>
+    </p>
+    <p>
+      This website is licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/">
+        Source Code
+      </a>
+      available on GitHub
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+</article>
+

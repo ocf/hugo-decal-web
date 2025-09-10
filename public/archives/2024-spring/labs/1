@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 1 - Unix, the Shell, OSS | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Lab 1 - Unix, the Shell, OSS" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/labs/1/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/labs/1/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 1 - Unix, the Shell, OSS" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Lab 1 - Unix, the Shell, OSS","url":"https://decal.ocf.berkeley.edu/labs/1/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#introduction">Introduction</a></li><li><a href="#part-1-shell-spelunking">Part 1: Shell spelunking</a></li><li><a href="#part-2-general-questions">Part 2: General Questions</a></li><li><a href="#part-3-obtaining-your-vm">Part 3: Obtaining your VM</a><ol><li><a href="#local-setups">Local Setups:</a></li><li><a href="#cloud-setups">Cloud Setups:</a></li></ol></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab 1 - Unix, the Shell, OSS</h1>
+        
+        <p>Facilitator: <a href="/staff#darlnim-park,-jaysa-garcia">Darlnim Park, Jaysa Garcia</a></p>
+        
+        
+        6 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#part-1-shell-spelunking" id="markdown-toc-part-1-shell-spelunking">Part 1: Shell spelunking</a></li>
+  <li><a href="#part-2-general-questions" id="markdown-toc-part-2-general-questions">Part 2: General Questions</a></li>
+  <li><a href="#part-3-obtaining-your-vm" id="markdown-toc-part-3-obtaining-your-vm">Part 3: Obtaining your VM</a>    <ol>
+      <li><a href="#local-setups" id="markdown-toc-local-setups">Local Setups:</a></li>
+      <li><a href="#cloud-setups" id="markdown-toc-cloud-setups">Cloud Setups:</a></li>
+    </ol>
+  </li>
+</ol><hr />
+      <h2 id="introduction">
+        
+        
+          <a href="#introduction" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Introduction
+        
+        
+      </h2>
+    
+<p>Welcome to the first lab!</p>
+
+<p>All labs are graded on completeness and effort, so don’t worry too much about
+getting an exact right answer. (We’ll release staff solutions after the lab is due!)</p>
+
+<p>Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Slack!</p>
+
+<p>It may be convenient to submit your answers to Gradescope as you go.</p>
+
+<p><strong>Pro Tips:</strong></p>
+<ul>
+  <li>Here are some commands you might find helpful:
+<code class="language-plaintext highlighter-rouge">vim, ls, cd, man, file, grep, cat, less, wget, nano, tar, ...</code>, (and other inferior text editors)</li>
+  <li>Google and <code class="language-plaintext highlighter-rouge">man</code> are your friends!</li>
+</ul>
+      <h2 id="part-1-shell-spelunking">
+        
+        
+          <a href="#part-1-shell-spelunking" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Part 1: Shell spelunking
+        
+        
+      </h2>
+    
+<p><strong>Everything should be done via the shell!</strong></p>
+
+<p>The purpose of this lab is to get you comfortable with using the shell for
+things you might typically use a GUI for. While these tasks may seem simplistic
+or limited, you’ll quickly find that the commands have many different options
+(flags) to perform tasks that are either impossible or incredibly tedious /
+difficult to complete using traditional methods.</p>
+
+<p>Don’t worry about fully understanding how the commands work just yet- as long
+as you can gain a sense of familiarity with the tools at hand, we’ll be in good
+shape to explore them further next week!</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ssh</code> into <code class="language-plaintext highlighter-rouge">tsunami.ocf.berkeley.edu</code> using your OCF account, or login at
+<a href="https://ssh.ocf.berkeley.edu">ssh.ocf.berkeley.edu</a></p>
+  </li>
+  <li>
+    <p>Run the following command to download the file we have provided:
+<code class="language-plaintext highlighter-rouge">wget https://github.com/0xcf/decal-labs/raw/master/b1/b01.tgz</code></p>
+
+    <p>A <code class="language-plaintext highlighter-rouge">.tgz</code> file is actually a composition of two file formats. Sometimes
+you’ll see these files as <code class="language-plaintext highlighter-rouge">.tar.gz</code> instead. A common (and old) way of
+archiving is with magnetic tapes. However, in order to archive the data, it
+needs to be a single file, and often you want to archive multiple files at
+once. This is where the <code class="language-plaintext highlighter-rouge">tar</code> command comes in (<code class="language-plaintext highlighter-rouge">tar</code> stands for tape
+archive). Tar will group (or ungroup) multiple files into a single one.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">tar</code>, unless you ask it to, doesn’t compress files itself though. This is
+where either <code class="language-plaintext highlighter-rouge">gzip</code> (or <code class="language-plaintext highlighter-rouge">bzip2</code>) comes in. <code class="language-plaintext highlighter-rouge">gzip</code> will compress your file,
+and so, tar + gzip is often used in conjunction. It looks something like
+this: <code class="language-plaintext highlighter-rouge">file --(tar)--&gt; file.tar --(gzip)--&gt; file.tar.gz</code>.</p>
+
+    <p>If you read the <code class="language-plaintext highlighter-rouge">tar</code> documentation carefully enough, you’ll see that you
+can give the command an option to compress your files using <code class="language-plaintext highlighter-rouge">gzip</code> as well,
+saving you a total of one line of shell command!</p>
+
+    <p>To unarchive the file we provide you, run the following command:
+<code class="language-plaintext highlighter-rouge">tar xvzf b01.tgz</code>. This will provide a <code class="language-plaintext highlighter-rouge">b01</code> directory for you with some
+files for the rest of this lab.</p>
+
+    <p><code class="language-plaintext highlighter-rouge">tar</code> has a reputation for being a bit tricky with its options:
+<img src="https://imgs.xkcd.com/comics/tar.png" alt="XKCD 1168" title="I don't know what's worse--the fact that after 15 years of using tar I still can't keep the flags straight, or that after 15 years of technological advancement I'm still mucking with tar flags that were 15 years old when I started." /></p>
+  </li>
+  <li>
+    <p>Go into the <code class="language-plaintext highlighter-rouge">b01</code> directory. Make sure you’re in there by running <code class="language-plaintext highlighter-rouge">pwd</code>
+(Present working directory). <strong>What does <code class="language-plaintext highlighter-rouge">pwd</code> give you (conceptually)</strong>?</p>
+  </li>
+  <li>
+    <p>There’s a hidden file in the <code class="language-plaintext highlighter-rouge">b01</code> directory. <strong>What is the secret?</strong></p>
+  </li>
+  <li>
+    <p>A malicious user made its way into my computer and created a message split
+across all the files in <code class="language-plaintext highlighter-rouge">nonsense/</code>. What does it say? <strong>How did you find the message?</strong> (Hint: <code class="language-plaintext highlighter-rouge">ls</code> and/or
+<code class="language-plaintext highlighter-rouge">xargs</code> will be helpful here. If you want a challenge, try to do this in a single short command- but it’s ok to find it by any means available.)</p>
+  </li>
+  <li>
+    <p>Go ahead and delete everything in <code class="language-plaintext highlighter-rouge">nonsense/</code> with one command. <strong>How did you
+do it?</strong></p>
+  </li>
+  <li>
+    <p>There’s a file in <code class="language-plaintext highlighter-rouge">b01</code> called <code class="language-plaintext highlighter-rouge">big_data.txt</code>. It’s 80 megabytes worth of
+random text. For reference, Leo Tolstoy’s “War and Peace”, the novel with a
+whopping 57,287 words depicting the French invasion of Russia and the impact
+of the Napoleonic era on Tsarist society through the stories of five Russian
+aristocratic families with several chapters solely dedicated to
+philosophical prose, is only 3.2 megabytes large.</p>
+
+    <p>For that reason, I don’t recommend using <code class="language-plaintext highlighter-rouge">cat</code> to print the file. You can
+try it, but you’ll be sitting there for a while. There’s some text you need
+to find in there! Go find it without actually opening up the file itself!</p>
+
+    <p>Two lines above the only URL in the file is a secret solution. <strong>What is that solution?</strong></p>
+
+    <p>Hints: What makes up a URL (https…)? What is Context Line Control?</p>
+  </li>
+  <li>
+    <p>Try executing <code class="language-plaintext highlighter-rouge">./a_script</code>. You should get something back that says
+<code class="language-plaintext highlighter-rouge">permission denied: ./a_script</code>. This is because files have three different
+permissions: read, write, and execute. <strong>Which one does <code class="language-plaintext highlighter-rouge">a_script</code> need?</strong> Change
+the file permissions so that you can run the script. <strong>How did you do it?</strong></p>
+  </li>
+  <li>
+    <p>Finally, there’s an empty file called <code class="language-plaintext highlighter-rouge">hello_world</code> in the directory. Write
+your name in it! <strong>How did you do it?</strong></p>
+  </li>
+</ol>
+      <h2 id="part-2-general-questions">
+        
+        
+          <a href="#part-2-general-questions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Part 2: General Questions
+        
+        
+      </h2>
+    
+
+<p>Feel free to use Google and work in a terminal (where applicable) to
+verify your conjectures.</p>
+
+<ol>
+  <li>
+    <p>What differentiates Linux/OSX from operating systems like Windows?</p>
+  </li>
+  <li>
+    <p>What are some differences between the command line and normal (graphical)
+usage of an OS?</p>
+  </li>
+  <li>
+    <p>What is the root directory in Linux filesystems? Answer conceptually, as in depth
+as you would like,</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ls</code> has a lot of cool arguments. Try using them to get extra information such as
+file permissions, owner name, owner group, file size, and late date edited. In addition, I
+want to be able to see the size and have the files ordered by last date
+edited, with the oldest files on top. How would I do this?</p>
+  </li>
+  <li>
+    <p>Instead of showing the first 10 lines of the file <code class="language-plaintext highlighter-rouge">big_data.txt</code>, I want to use the
+<code class="language-plaintext highlighter-rouge">head</code> command to show the first 4. How would I do that?</p>
+  </li>
+  <li>
+    <p>What’s the difference between <code class="language-plaintext highlighter-rouge">cat foo &gt; out.txt</code> and <code class="language-plaintext highlighter-rouge">cat foo &gt;&gt; out.txt</code>?</p>
+  </li>
+  <li>
+    <p>Briefly, what is the difference between permissive and copyleft licenses?</p>
+  </li>
+  <li>
+    <p>Give an example of a permissive license.</p>
+  </li>
+  <li>
+    <p>Give an example of (a) open-source software and (b) free, but closed-source
+software that you use.</p>
+  </li>
+</ol>
+      <h2 id="part-3-obtaining-your-vm">
+        
+        
+          <a href="#part-3-obtaining-your-vm" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Part 3: Obtaining your VM
+        
+        
+      </h2>
+    
+<p>Using the public OCF login server will allow you to do basic things like the lab above, but if you want root permission (which lets you do basically whatever you want), you’ll need your own use/destroy!</p>
+
+<p>We will be providing a virtual machine (VM) to all DeCal students with a Berkeley CalNet account. Check your @berkeley.edu email!</p>
+
+<p>If you are not a Berkeley student, then you will have to obtain your own machine. Of course, you can also set up your own VM if you are just curious. Generally, there are two ways to obtain a VM: use your own computer (local) or use someone else’s computer (cloud).</p>
+      <h3 id="local-setups">
+        
+        
+          <a href="#local-setups" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Local Setups:
+        
+        
+      </h3>
+    
+<ul>
+  <li><a href="https://www.virtualbox.org/">Virtual Box</a></li>
+  <li><a href="https://getutm.app/">UTM</a> - Only for MacOS</li>
+</ul>
+      <h3 id="cloud-setups">
+        
+        
+          <a href="#cloud-setups" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Cloud Setups:
+        
+        
+      </h3>
+    
+<p>These are usually paid services, but if you have a student email, they provide more than enough free credits for the purposes of this course.</p>
+<ul>
+  <li><a href="https://www.digitalocean.com/github-students">Digital Ocean</a></li>
+  <li><a href="https://cloud.google.com/free/">GCP</a></li>
+  <li><a href="https://azure.microsoft.com/en-us/free/students/">Azure</a></li>
+</ul>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.nvidia.com/en-us/" class="no-underline">
+        <img
+          src="/assets/images/nvidia.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Thanks to
+        <a href="https://www.nvidia.com">Nvidia</a> for sponsoring GPUs to the OCF.
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the DeCal.
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2024
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

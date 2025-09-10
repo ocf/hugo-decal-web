@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Lab 4 - Linux Post-Install | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Lab 4 - Linux Post-Install" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/archives/2021-fall/labs/a4/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/archives/2021-fall/labs/a4/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 4 - Linux Post-Install" />
+<script type="application/ld+json">
+{"@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"url":"https://decal.ocf.berkeley.edu/archives/2021-fall/labs/a4/","headline":"Lab 4 - Linux Post-Install","description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#topics-covered">Topics Covered</a></li><li><a href="#about-this-lab">About this Lab</a><ol><li><a href="#a-note-about-vms">A note about VMs</a></li></ol></li><li><a href="#generating-and-using-ssh-keys">Generating and using SSH keys</a></li><li><a href="#setting-up-a-firewall">Setting up a firewall</a><ol><li><a href="#gradescope-questions">Gradescope Questions</a></li></ol></li><li><a href="#choose-your-own-adventure">Choose your own adventure</a><ol><li><a href="#music-server">Music Server</a></li><li><a href="#git-server">Git server</a></li><li><a href="#file-hosting">File Hosting</a></li><li><a href="#password-manager">Password Manager</a></li><li><a href="#something-else">Something Else?</a></li><li><a href="#gradescope-questions-1">Gradescope Questions</a></li></ol></li><li><a href="#footnotes">Footnotes</a></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab 4 - Linux Post-Install</h1>
+        
+        <p>Facilitator: <a href="/staff#ben-cuan">Ben Cuan</a></p>
+        
+        
+        8 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#topics-covered" id="markdown-toc-topics-covered">Topics Covered</a></li>
+  <li><a href="#about-this-lab" id="markdown-toc-about-this-lab">About this Lab</a>    <ol>
+      <li><a href="#a-note-about-vms" id="markdown-toc-a-note-about-vms">A note about VMs</a></li>
+    </ol>
+  </li>
+  <li><a href="#generating-and-using-ssh-keys" id="markdown-toc-generating-and-using-ssh-keys">Generating and using SSH keys</a></li>
+  <li><a href="#setting-up-a-firewall" id="markdown-toc-setting-up-a-firewall">Setting up a firewall</a>    <ol>
+      <li><a href="#gradescope-questions" id="markdown-toc-gradescope-questions">Gradescope Questions</a></li>
+    </ol>
+  </li>
+  <li><a href="#choose-your-own-adventure" id="markdown-toc-choose-your-own-adventure">Choose your own adventure</a>    <ol>
+      <li><a href="#music-server" id="markdown-toc-music-server">Music Server</a></li>
+      <li><a href="#git-server" id="markdown-toc-git-server">Git server</a></li>
+      <li><a href="#file-hosting" id="markdown-toc-file-hosting">File Hosting</a></li>
+      <li><a href="#password-manager" id="markdown-toc-password-manager">Password Manager</a></li>
+      <li><a href="#something-else" id="markdown-toc-something-else">Something Else?</a></li>
+      <li><a href="#gradescope-questions-1" id="markdown-toc-gradescope-questions-1">Gradescope Questions</a></li>
+    </ol>
+  </li>
+  <li><a href="#submission" id="markdown-toc-submission">Submission</a>    <ol>
+      <li><a href="#footnotes" id="markdown-toc-footnotes">Footnotes</a></li>
+    </ol>
+  </li>
+</ol><hr />
+      <h2 id="topics-covered">
+        
+        
+          <a href="#topics-covered" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Topics Covered
+        
+        
+      </h2>
+    
+
+<p>We covered a lot of material in the 
+<a href="https://docs.google.com/presentation/d/1WXvw3ritRgR5fhKOug-VN_IG-SnXu2zC4vA70lvRmiw/edit">lecture</a>.
+Here’s a short list of things you may be interested in looking into further, 
+besides googling and reading the man pages for the commands we discussed in
+lecture.</p>
+
+<ol>
+  <li>SELinux - Security Enhanced Linux, gives role-based/mandatory access control 
+facilities. Utilizing it is well beyind the scope of this class, but reading
+about how SELinux works should give you an appreciation for the degree to
+which people have thought about file-level security in the kernel.
+    <ul>
+      <li><a href="https://selinuxproject.org/">Official Wiki</a></li>
+      <li>Red Hat <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/security-enhanced_linux/chap-security-enhanced_linux-introduction">documentation</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Security-Enhanced_Linux">Wikipedia (obviously)</a></li>
+    </ul>
+  </li>
+  <li>Managing users and groups
+    <ul>
+      <li><a href="https://www.tldp.org/LDP/GNU-Linux-Tools-Summary/html/c6239.htm">TLDP</a> entry</li>
+      <li>An excellent DigitalOcean <a href="https://www.digitalocean.com/community/tutorials/how-to-view-system-users-in-linux-on-ubuntu">guide</a></li>
+      <li>These great <a href="https://unix.stackexchange.com/questions/74809/is-it-possible-to-hide-an-account-from-etc-passwd/74898#74898">StackExchange</a> answers</li>
+      <li>ArchWiki <a href="https://wiki.archlinux.org/index.php/File_permissions_and_attributes">breakdown</a> of permissions</li>
+      <li>Debian Wiki <a href="https://wiki.debian.org/Permissions">equivalent</a></li>
+      <li>If you <a href="https://www.zdnet.com/article/show-stopping-bug-appears-in-npm-node-js-package-manager/">needed</a> more <a href="https://github.com/npm/npm/issues/19883">reasons</a> to be skeptical of the maturity of the Node ecosystem</li>
+      <li><a href="https://en.wikipedia.org/wiki/Protection_ring">Protection Rings</a> - no DND, unfortunately</li>
+      <li><a href="https://code.woboq.org/userspace/glibc/sysdeps/unix/sysv/linux/faccessat.c.html">glibc</a> and 
+<a href="https://elixir.bootlin.com/linux/latest/source/fs/open.c#L353">kernel</a> source where some of this stuff gets checked</li>
+    </ul>
+  </li>
+  <li>Configuring sshd
+    <ul>
+      <li>Another <a href="https://www.digitalocean.com/community/tutorials/how-to-tune-your-ssh-daemon-configuration-on-a-linux-vps">comprehensive</a>
+DigitalOcean guide to <code class="language-plaintext highlighter-rouge">/etc/ssh/sshd_config</code></li>
+      <li><a href="https://fail2ban.org">Fail2Ban</a> and <a href="https://wiki.archlinux.org/index.php/fail2ban">Archwiki</a> configuration instructions</li>
+    </ul>
+  </li>
+  <li>On-host firewalls (ufw)
+    <ul>
+      <li>Fairly comprehensive <a href="https://ubuntu.com/server/docs/security-firewall">ufw</a> configuration guide</li>
+      <li>The same guide, but for Ubuntu 18.04: <a href="https://help.ubuntu.com/18.04/serverguide/firewall.html">ufw</a></li>
+    </ul>
+  </li>
+  <li>The Filesystem Hierarchy
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">Wikipedia</a> entry</li>
+      <li>Even more comprehensive <a href="https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/index.html">TLDP</a> entry</li>
+    </ul>
+  </li>
+</ol>
+      <h2 id="about-this-lab">
+        
+        
+          <a href="#about-this-lab" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> About this Lab
+        
+        
+      </h2>
+    
+
+<p>In this lab you will implement some of the things we 
+discussed during lecture. In the first part, you’ll be securing your VM with a firewall and enabling
+key-based login. Then, we’ll open it up for you to choose a cool service to host on your very own VM!</p>
+      <h3 id="a-note-about-vms">
+        
+        
+          <a href="#a-note-about-vms" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> A note about VMs
+        
+        
+      </h3>
+    
+<p>In this course, we’ve used several VM’s:</p>
+<ul>
+  <li>The OCF’s public login server, <code class="language-plaintext highlighter-rouge">tsunami</code>,</li>
+  <li>Your student VM, hosted on DigitalOcean, <code class="language-plaintext highlighter-rouge">&lt;yourname&gt;@&lt;yourname&gt;.decal.xcf.sh</code>,</li>
+  <li>and the Arch VM you installed in the previous lab.</li>
+</ul>
+
+<p>To be clear, you should be completing this lab <strong>on your student VM and <em>not</em> your newly installed Arch VM</strong> unless otherwise stated<sup id="fnref:challenge" role="doc-noteref"><a href="#fn:challenge" class="footnote" rel="footnote">1</a></sup>. If you happen to have access to a permanent personal
+VM/server you are also welcome to complete the lab on that (as the student VM’s will be deleted at the end of the semester).</p>
+      <h2 id="generating-and-using-ssh-keys">
+        
+        
+          <a href="#generating-and-using-ssh-keys" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Generating and using SSH keys
+        
+        
+      </h2>
+    
+
+<p>Passwords can be guessed, and this is bad. Good security practice now involves
+taking advantage of public-key crypto to authenticate SSH sessions. In this
+section, we will be setting up SSH keys, if you haven’t already.</p>
+
+<p>If you aren’t currently using a Linux machine, please log into <code class="language-plaintext highlighter-rouge">tsunami.ocf.berkeley.edu</code> first
+(<em>not</em> your student VM- the reason will be clear shortly). 
+These instructions will not work on a Windows machine.</p>
+
+<ol>
+  <li>
+    <p>First, make sure you don’t already have an existing SSH key in use that you 
+might overwrite:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> you@tsunami $ ls -la ~/.ssh
+ -rw------- 1 &lt;you&gt; ocf &lt;stuff&gt; .ssh/id_rsa # if this already exists, continue to step 3
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>If you don’t have an SSH key, make one with the following command</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> you@tsunami $ ssh-keygen -t rsa -b 4096
+</code></pre></div>    </div>
+
+    <p>You can give the key a passphrase if you’d like. This command creates a 
+ 4096-bit RSA private key (<code class="language-plaintext highlighter-rouge">~/.ssh/id_rsa</code>) and corresponding public key
+ (<code class="language-plaintext highlighter-rouge">~/.ssh/id_rsa.pub</code>). There are many types of keys in various sizes, such
+ 2048-bit RSA keys (<code class="language-plaintext highlighter-rouge">ssh-keygen -t rsa -b 2048</code>) or 384-bit ECDSA keys
+ (<code class="language-plaintext highlighter-rouge">ssh-keygen -t ecdsa -t 384</code>) or more. The full list can be found in
+ <code class="language-plaintext highlighter-rouge">man ssh-keygen</code>. Which one to use is up to your preference and/or
+ paranoia<sup id="fnref:paranoia" role="doc-noteref"><a href="#fn:paranoia" class="footnote" rel="footnote">2</a></sup> about quasi-legal government surveillance.</p>
+  </li>
+  <li>
+    <p>Copy the public key over to your student VM</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> you@tsunami $ ssh-copy-id you@you.decal.xcf.sh
+</code></pre></div>    </div>
+
+    <p>This command, as its name suggests, copies your public key (by default, 
+ <code class="language-plaintext highlighter-rouge">~/.ssh/id_rsa.pub</code>) to the specified remote host, and appends the contents
+ of the public key to the <code class="language-plaintext highlighter-rouge">~/.ssh/authorized_keys</code> file, which is used to
+ control which keys are authorized to be used to authenticate a user. To see
+ specifically what happened, do <code class="language-plaintext highlighter-rouge">cat ~/.ssh/id_rsa.pub</code>) on <code class="language-plaintext highlighter-rouge">tsunami</code>
+ and then compare that to <code class="language-plaintext highlighter-rouge">cat ~/.ssh/authorized_keys</code> on your student VM.</p>
+  </li>
+</ol>
+
+<p>At the end <code class="language-plaintext highlighter-rouge">ssh-copy-id</code> will prompt you to attempt to log into the server 
+using your key. This should succeed.</p>
+
+<p><strong>Gradescope Questions</strong></p>
+<ol>
+  <li>Paste the contents of <code class="language-plaintext highlighter-rouge">~/.ssh/authorized_keys</code> from your 
+student VM.</li>
+  <li>What are the permissions on your public key and private key? Why do you think they
+are the way they are?</li>
+</ol>
+
+<p>For an extra challenge (optional), configure <code class="language-plaintext highlighter-rouge">sshd</code> to only allow key-based login.</p>
+      <h2 id="setting-up-a-firewall">
+        
+        
+          <a href="#setting-up-a-firewall" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Setting up a firewall
+        
+        
+      </h2>
+    
+
+<p>In order to secure your VM, you should install a firewall. One option for doing so is <code class="language-plaintext highlighter-rouge">ufw</code>,
+the Uncomplicated Firewall. <code class="language-plaintext highlighter-rouge">ufw</code> is a easy-to-use wrapper around the powerful <code class="language-plaintext highlighter-rouge">iptables</code>
+firewall. You should be able to figure out how to set up <code class="language-plaintext highlighter-rouge">ufw</code> using the guides linked
+earlier and your own Google-foo. There is also additional information about the features of <code class="language-plaintext highlighter-rouge">ufw</code>
+and further resources at the <a href="https://wiki.ubuntu.com/UncomplicatedFirewall">Ubuntu Wiki</a>.</p>
+
+<p>In order to complete this portion of the lab, ensure the following:</p>
+
+<ol>
+  <li>All incoming connections are blocked by default.</li>
+  <li>Allow incoming connections to your VM over port 22 (SSH), otherwise you’ll be
+locked out of your VM!</li>
+  <li>Allow incoming connections for the ports necessary for the operation of the
+software you’ll be installing later on in this lab. For example, if you are configuring a web server, you should enable port 80 and/or 443. (You can always come back to this after figuring out the next part of the lab!)
+for a web server.</li>
+  <li>Extra challenge (optional): Allow the above, but only for IPs originating from UC Berkeley’s
+subnet. UC Berkeley has 3 primary <code class="language-plaintext highlighter-rouge">/16</code>s.</li>
+  <li>Double extra challenge (optional): Configure <code class="language-plaintext highlighter-rouge">fail2ban</code> to block IP addresses that are trying
+to brute-force your SSH password.</li>
+</ol>
+      <h3 id="gradescope-questions">
+        
+        
+          <a href="#gradescope-questions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Gradescope Questions
+        
+        
+      </h3>
+    
+<ol>
+  <li>What command did you use to enable a port?</li>
+  <li>Paste the output of <code class="language-plaintext highlighter-rouge">sudo ufw status verbose</code>. Make sure you can clearly see the changes you made in the steps above!</li>
+  <li>Why is setting up a firewall important? What are some security concerns that might arise from exposing a port?</li>
+</ol>
+      <h2 id="choose-your-own-adventure">
+        
+        
+          <a href="#choose-your-own-adventure" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Choose your own adventure
+        
+        
+      </h2>
+    
+
+<p>At this stage, you should have a fully functioning Linux install! Now, your task is to install a useful service on your VM.</p>
+
+<p>We’ve described a few examples below, but don’t be restricted by them!</p>
+      <h3 id="music-server">
+        
+        
+          <a href="#music-server" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Music Server
+        
+        
+      </h3>
+    
+
+<p>Some music enthusiasts opt to own their own music files instead of using a cloud
+service (Spotify, Google Play Music, etc). But, if the files are only stored on
+your computer’s hard drive, how can you listen to your music when on someone else’s
+computer or on the go? A music server like <code class="language-plaintext highlighter-rouge">CherryMusic</code> can solve this problem
+while still giving you control over your files. Install
+<a href="https://github.com/devsnd/cherrymusic">CherryMusic</a> on your
+DeCal VM, and load up a few tunes.</p>
+
+<p>As an alternative for CherryMusic, you could also try the Python-based music server
+<a href="https://mopidy.com/">Mopidy</a>, which also has the option for fetching music from
+Youtube and Spotify, as well as managing your server using a <a href="https://mopidy.com/ext/iris/">pretty web interface</a>.</p>
+      <h3 id="git-server">
+        
+        
+          <a href="#git-server" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Git server
+        
+        
+      </h3>
+    
+
+<p>GitHub is a good place to host your source code, but self-hosting your own Git
+can be a good option if you need to store something private (and don’t trust GitHub),
+hosting your own can be a good solution. While you can use Git to host a repo on any
+SSH server using a <a href="https://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/">bare repo</a>,
+to get a fancy GUI you need to install special software. Some popular options
+for this include <a href="https://gitea.io/en-us/">Gitea</a> (which mimicks GitHub’s interface)
+and <a href="https://git.zx2c4.com/cgit/about/">cgit</a> (which takes a more minimalist approach).
+Pick one and install it.</p>
+      <h3 id="file-hosting">
+        
+        
+          <a href="#file-hosting" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> File Hosting
+        
+        
+      </h3>
+    
+
+<p>Instead of uploading your files to Google Drive or Dropbox to be shared, you can
+host on your own VM. A good option for this is <a href="https://github.com/chriskuehl/fluffy">fluffy</a>
+(created by an OCF alum!), which also doubles as a pastebin for quickly sharing code snippets.
+For more options, look at the the “simple click/drag-n-drop upload” section of
+<a href="https://github.com/Kickball/awesome-selfhosted#single-clickdrag-n-drop-upload">awesome-selfhosted</a>.</p>
+      <h3 id="password-manager">
+        
+        
+          <a href="#password-manager" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Password Manager
+        
+        
+      </h3>
+    
+
+<p><a href="https://blog.bitwarden.com/host-your-own-open-source-password-manager-ace147649936">BitWarden</a> is
+a popular self-hosted password manager. You can use it to host your passwords if you
+don’t want to rely on a proprietary third-party program (like LastPass). Alternatives include
+<a href="https://passwordstore.org">pass</a> which is a user-friendly wrapper around <code class="language-plaintext highlighter-rouge">gpg</code>. Please note that
+your student VMs will be deleted at the end of the semester, so you should not use your student VM
+for long term password storage.</p>
+      <h3 id="something-else">
+        
+        
+          <a href="#something-else" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Something Else?
+        
+        
+      </h3>
+    
+
+<p>Still not inspired by the examples above? Browse the extensive <a href="https://github.com/awesome-selfhosted/awesome-selfhosted">awesome-selfhosted</a> page for some inspiration! (Host a chat server, email server, notes app, game server, video streaming platform…)</p>
+      <h3 id="gradescope-questions-1">
+        
+        
+          <a href="#gradescope-questions-1" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Gradescope Questions
+        
+        
+      </h3>
+    
+<ol>
+  <li>What did you install on your VM?</li>
+  <li>Attach a screenshot of your service in action. (This could be a web console or a command output in the shell.)</li>
+  <li>Briefly describe the installation process. Were there any unexpected roadblocks you encountered?</li>
+  <li>What are some security implications from hosting this service? How have you handled them (or are you not handling them?)</li>
+</ol>
+      <h1 id="submission">
+        
+        
+          <a href="#submission" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Submission
+        
+        
+      </h1>
+    
+<p>Respond to the checkoff questions on gradescope!</p>
+      <h2 id="footnotes">
+        
+        
+          <a href="#footnotes" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Footnotes
+        
+        
+      </h2>
+    
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:challenge" role="doc-endnote">
+      <p>Unless you’re up for a challenge configuring port forwarding in a nested VM- then by all means go for it! <a href="#fnref:challenge" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:paranoia" role="doc-endnote">
+      <p>https://www.amazon.com/Only-Paranoid-Survive-Exploit-Challenge/dp/0385483821 <a href="#fnref:paranoia" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com" class="no-underline">
+        <img
+          src="/assets/images/digitalocean.png"
+          style="height: 34px; width: 200px"
+      /></a>
+      <span>
+        With great appreciation to
+        <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring
+        the VMs used in both tracks of the DeCal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2021
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

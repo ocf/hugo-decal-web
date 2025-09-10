@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Lab a1 - Shell Scripting | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Lab a1 - Shell Scripting" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/archives/2021-fall/labs/a1/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/archives/2021-fall/labs/a1/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab a1 - Shell Scripting" />
+<script type="application/ld+json">
+{"@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"url":"https://decal.ocf.berkeley.edu/archives/2021-fall/labs/a1/","headline":"Lab a1 - Shell Scripting","description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#a-note-on-labs">A Note on Labs</a><ol><li><a href="#workflow">Workflow</a></li></ol></li><li><a href="#question-1">Question 1</a></li><li><a href="#question-2">Question 2</a></li><li><a href="#question-3">Question 3</a></li><li><a href="#question-4-extra">Question 4 (Extra)</a></li><li><a href="#submission">Submission</a></li><li><a href="#footnotes">Footnotes</a></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab a1 - Shell Scripting</h1>
+        
+        <p>Facilitator: <a href="/staff#ben-cuan">Ben Cuan</a></p>
+        
+        
+        7 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#a-note-on-labs" id="markdown-toc-a-note-on-labs">A Note on Labs</a>    <ol>
+      <li><a href="#workflow" id="markdown-toc-workflow">Workflow</a></li>
+    </ol>
+  </li>
+  <li><a href="#question-1" id="markdown-toc-question-1">Question 1</a></li>
+  <li><a href="#question-2" id="markdown-toc-question-2">Question 2</a></li>
+  <li><a href="#question-3" id="markdown-toc-question-3">Question 3</a></li>
+  <li><a href="#question-4-extra" id="markdown-toc-question-4-extra">Question 4 (Extra)</a></li>
+  <li><a href="#submission" id="markdown-toc-submission">Submission</a></li>
+  <li><a href="#footnotes" id="markdown-toc-footnotes">Footnotes</a></li>
+</ol><hr />
+      <h1 id="a-note-on-labs">
+        
+        
+          <a href="#a-note-on-labs" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> A Note on Labs
+        
+        
+      </h1>
+    
+<p>Labs are graded on completion. As long as you give your best effort and submit an answer to each question, you will receive full credit.
+Treat them as seeds of exploration instead 
+of just a grade.</p>
+
+<p>As this is the first lab, we have done our best to make it relatively straightforward. (If something seems overly difficult, there is probably a simpler way to do it!) Bash scripting
+isn’t the main goal of the DeCal but this lab should introduce you to some fun bash features you may not have encountered before, such as loops and shell expansions, that you’ll probably find useful in the future.</p>
+
+<p>If you ever find yourself confused, stuck, and/or curious to learn more, <strong>talk to us about it!</strong> The best way to connect with us (and your peers) is through Piazza. You can also join our <a href="https://ocf.io/discord">Discord channel</a> or <a href="https://fco.slack.com/archives/CN0FQ9BUN">Slack channel</a>.</p>
+      <h2 id="workflow">
+        
+        
+          <a href="#workflow" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Workflow
+        
+        
+      </h2>
+    
+<p>This lab can be done on your own UNIX-like machine, or you can ssh into
+<code class="language-plaintext highlighter-rouge">tsunami.ocf.berkeley.edu</code> using your OCF account to finish the lab there. As always,
+<code class="language-plaintext highlighter-rouge">man</code> and Google will be your friends.</p>
+
+<p>If you’d like to test your scripts for correctness, feel free to run the provided examples
+or make some of your own! Since labs are graded on completion, there are no autograder tests
+or anything of the sort to worry about (which will also be true for the following labs). 
+We will release sample solutions after the lab is due, but keep in mind
+that there are many ways to solve these problems.</p>
+      <h1 id="question-1">
+        
+        
+          <a href="#question-1" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Question 1
+        
+        
+      </h1>
+    
+
+<p>At some point, everyone has looked at a problem and thought to themselves:
+“Hey, I can do this in one line!”</p>
+
+<p>Lets find out if you can. I need to sort out some of my most listened to albums
+by making directories for each of them, specifically for my favorite artist Future.</p>
+
+<p>I have hosted a list of my favorite albums followed by their respective artist at 
+<code class="language-plaintext highlighter-rouge">https://raw.githubusercontent.com/0xcf/decal-labs/master/a1/albums.txt</code>,
+in a comma delimited format like <code class="language-plaintext highlighter-rouge">Die Lit, Playboi Carti</code>. For the GOAT artist Future,
+I want to create a folder for each of his albums. For example, for an entry like
+<code class="language-plaintext highlighter-rouge">SUPER SLIMEY, Future</code> I would expect a directory called <code class="language-plaintext highlighter-rouge">SUPER SLIMEY</code> to be created.</p>
+
+<p><strong>TLDR</strong>: You need to fetch the list from the web, filter out the albums we want,
+trim out the album name, and then make a directory for each one, all in one line.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>albums.txt
+...
+Drip or Drown 2, Gunna
+Playboi Carti, Playboi Carti
+DS2 <span class="o">(</span>Deluxe<span class="o">)</span>, Future  &lt;<span class="nt">--</span> GOAT album detected!
+Drip Harder, Lil Baby
+The WIZRD, Future  &lt;<span class="nt">--</span> GOAT album detected!
+What a Time To Be Alive, Drake
+...
+
+<span class="c"># After our magic one liner...</span>
+
+<span class="nv">$ </span><span class="nb">ls</span>
+<span class="s1">'DS2 (Deluxe)'</span>   <span class="s1">'The WIZRD'</span>   ...
+<span class="c"># We got our new directories!</span>
+</code></pre></div></div>
+
+<p><strong>Hints:</strong></p>
+<ul>
+  <li>What common text manipulation commands can help you solve this?</li>
+  <li>As always, be aware that there isn’t one unique solution to this problem!</li>
+  <li>Also be aware that <code class="language-plaintext highlighter-rouge">xargs</code> behaves differently on different platforms.</li>
+</ul>
+
+<p>Submit your one line solution on Gradescope!</p>
+      <h1 id="question-2">
+        
+        
+          <a href="#question-2" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Question 2
+        
+        
+      </h1>
+    
+
+<p>I like Lisp and Scheme, and miss <code class="language-plaintext highlighter-rouge">car</code> and <code class="language-plaintext highlighter-rouge">cdr</code> in my usual programming tasks.<sup id="fnref:carcdr" role="doc-noteref"><a href="#fn:carcdr" class="footnote" rel="footnote">1</a></sup></p>
+
+<p>In bash, implement <code class="language-plaintext highlighter-rouge">car</code> and <code class="language-plaintext highlighter-rouge">cdr</code> (aka <code class="language-plaintext highlighter-rouge">head</code> and <code class="language-plaintext highlighter-rouge">tail</code>) such that they
+operate on file paths.</p>
+
+<p>e.g.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./car /home/a/ab/abizer/some/path
+home
+<span class="nv">$ </span>./cdr /home/a/ab/abizer/some/path
+a/ab/abizer/some/path
+</code></pre></div></div>
+
+<p>You may assume that only absolute paths<sup id="fnref:paths" role="doc-noteref"><a href="#fn:paths" class="footnote" rel="footnote">2</a></sup> will be given.</p>
+
+<p><strong>Hint:</strong> There’s no need to use complicated string manipulations such as regex’s for this task. 
+The easiest way to do this is with one very short command.</p><hr />
+
+<p>As an optional bonus challenge: generalize this solution to work for <code class="language-plaintext highlighter-rouge">cadr</code>, <code class="language-plaintext highlighter-rouge">caddr</code>, etc.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./cadr /home/a/ab/abizer/some/path
+a
+<span class="nv">$ </span>./cddr /home/a/ab/abizer/some/path
+ab/abizer/some/path
+</code></pre></div></div>
+      <h1 id="question-3">
+        
+        
+          <a href="#question-3" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Question 3
+        
+        
+      </h1>
+    
+
+<p>With the invention of the <code class="language-plaintext highlighter-rouge">.norm</code> file format, file extension innovation is at its peak!<sup id="fnref:xkcd" role="doc-noteref"><a href="#fn:xkcd" class="footnote" rel="footnote">3</a></sup></p>
+
+<p>However, your computer is old and doesn’t support it, so we’ll need to convert all of the files ending in <code class="language-plaintext highlighter-rouge">.norm</code> into <code class="language-plaintext highlighter-rouge">.docx</code> files.</p>
+
+<p>Using Bash functions and shell wildcard expansion, <strong>write a
+shell script <code class="language-plaintext highlighter-rouge">rename.sh</code> to batch rename file extensions in a particular directory.</strong></p>
+
+<p>Here is some more specific info about this function:</p>
+<ul>
+  <li>It should take in 3 arguments: the directory, the original extension, and the new extension.</li>
+  <li>It should print the line <code class="language-plaintext highlighter-rouge">renaming &lt;old file&gt; to &lt;new file&gt;</code> for each renamed file.</li>
+  <li>It should not modify any files in the directory that do not have the specified extension.</li>
+</ul>
+
+<p>Example:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls </span>Documents/
+cats.norm data.norm dogs.norm ...
+<span class="nv">$ </span>./rename Documents norm docx <span class="c"># Run your script!</span>
+renaming Documents/data.norm to Documents/data.docx
+renaming Documents/cats.norm to Documents/cats.docx
+renaming Documents/dogs.norm to Documents/dogs.docx
+...
+<span class="nv">$ </span><span class="nb">ls </span>Documents/
+cats.docx data.docx dogs.docx ...
+</code></pre></div></div>
+
+<p>Your script should be able to convert between any arbitrary file formats, not just <code class="language-plaintext highlighter-rouge">.norm</code> and <code class="language-plaintext highlighter-rouge">.docx</code>! For example:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span>
+<span class="c"># Creates a new directory tmp and adds 26 new files a.dat, b.dat ... to z.dat into it</span>
+<span class="nv">$ </span><span class="nb">mkdir </span>tmp <span class="o">&amp;&amp;</span> <span class="nb">touch </span>tmp/<span class="o">{</span>a..z<span class="o">}</span>.dat 
+<span class="nv">$ </span>./rename.sh tmp dat txt
+renaming tmp/a.dat to tmp/a.txt
+... <span class="c"># 24 more lines</span>
+renaming tmp/z.dat to tmp/z.txt
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-lAh</span> tmp | <span class="nb">grep</span> .txt | <span class="nb">wc</span> <span class="nt">-l</span> <span class="c"># Gets the number of lines in ls which contain .txt</span>
+26
+</code></pre></div></div>
+
+<p>for bonus points, instead of using something like <code class="language-plaintext highlighter-rouge">sed</code> to affect the rename,
+use <a href="https://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash">shell parameter expansion</a>.</p>
+      <h1 id="question-4-extra">
+        
+        
+          <a href="#question-4-extra" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Question 4 (Extra)
+        
+        
+      </h1>
+    
+
+<p>This question is optional but it’s quite fun and you should do it if you have the time!</p>
+
+<p>Using Bash functions, write a script <code class="language-plaintext highlighter-rouge">mkrandom.sh</code> that generates a user-specified number
+of files of user-specified size filled with random content.</p>
+
+<p>e.g.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./mkrandom.sh 10 100  <span class="c"># create 10 100 byte random files</span>
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-lAh</span>
+total 44K
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 1
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 10
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 2
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 3
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 4
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 5
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 6
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 7
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 8
+<span class="nt">-rw-r--r--</span> 1 abizer ocf  100 Sep 16 21:57 9
+<span class="nt">-rwxr-xr-x</span> 1 abizer ocf  147 Sep 16 21:56 mkrandom
+</code></pre></div></div>
+      <h1 id="submission">
+        
+        
+          <a href="#submission" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Submission
+        
+        
+      </h1>
+    
+<p>Submit your solutions on Gradescope! There’ll be some extra feedback questions as well that we would appreciate you filling out.</p>
+      <h1 id="footnotes">
+        
+        
+          <a href="#footnotes" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Footnotes
+        
+        
+      </h1>
+    
+
+<p>You may want to look into <code class="language-plaintext highlighter-rouge">dd</code><sup id="fnref:dd" role="doc-noteref"><a href="#fn:dd" class="footnote" rel="footnote">4</a></sup> and the <code class="language-plaintext highlighter-rouge">iflag=fullblock</code> argument,
+<code class="language-plaintext highlighter-rouge">seq</code>, and <code class="language-plaintext highlighter-rouge">/dev/random</code><sup id="fnref:rand" role="doc-noteref"><a href="#fn:rand" class="footnote" rel="footnote">5</a></sup>.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:carcdr" role="doc-endnote">
+      <p>Aren’t too familiar with <code class="language-plaintext highlighter-rouge">car</code> and <code class="language-plaintext highlighter-rouge">cdr</code>? <a href="https://medium.com/@aleksandrasays/my-other-car-is-a-cdr-3058e6743c15">Here’s a brief article about it.</a>. If you take CS61A, you’ll see it there as well! <a href="#fnref:carcdr" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:paths" role="doc-endnote">
+      <p>As a quick reminder, absolute paths always start from the root directory (<code class="language-plaintext highlighter-rouge">/</code>), whereas relative paths start from the current directory. <a href="#fnref:paths" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:xkcd" role="doc-endnote">
+      <p>Relevant xkcd: <a href="https://xkcd.com/2116/">https://xkcd.com/2116/</a> <a href="#fnref:xkcd" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:dd" role="doc-endnote">
+      <p><code class="language-plaintext highlighter-rouge">dd</code> is a command used to copy files.<sup id="fnref:dd2" role="doc-noteref"><a href="#fn:dd2" class="footnote" rel="footnote">6</a></sup> It’s most commonly used to clone data from one device to another, such as when you want to <a href="https://wiki.archlinux.org/index.php/USB_flash_installation_medium">generate a bootable Linux USB drive</a>. <a href="#fnref:dd" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:rand" role="doc-endnote">
+      <p>A curious individual might find the device file <code class="language-plaintext highlighter-rouge">/dev/urandom</code> as well. What’s
+the difference? True randomness is a rather difficult problem for computers, as they’re
+expected to do the same thing given the same state, so they pull in random data from
+metrics like internal temperature and mouse movement. Unfortunately, such entropy may
+not exist in certain machines and gathering entropy may be prohibitively long. Thus,
+<code class="language-plaintext highlighter-rouge">/dev/urandom</code>, or “unlimited random”, is a useful source when such randomness is not
+cryptographically critical. <a href="#fnref:rand" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:dd2" role="doc-endnote">
+      <p>“But wait,” a nearby straw-man asks, “isn’t that what <code class="language-plaintext highlighter-rouge">cp</code> does?”<sup id="fnref:dd3" role="doc-noteref"><a href="#fn:dd3" class="footnote" rel="footnote">7</a></sup> <a href="#fnref:dd2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:dd3" role="doc-endnote">
+      <p>They are indeed right, but <code class="language-plaintext highlighter-rouge">dd</code> has some useful features such as partial writing
+and reading that make it handy in weirder scenarios, such as devices.  StackOverflow has
+a <a href="https://superuser.com/questions/609211/why-do-we-use-cp-to-copy-files-and-not-dd-in-unix-derivatives">good explainer</a> and the ArchWiki has some <a href="https://wiki.archlinux.org/index.php/Dd">common examples</a>. <a href="#fnref:dd3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com" class="no-underline">
+        <img
+          src="/assets/images/digitalocean.png"
+          style="height: 34px; width: 200px"
+      /></a>
+      <span>
+        With great appreciation to
+        <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring
+        the VMs used in both tracks of the DeCal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2021
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+
