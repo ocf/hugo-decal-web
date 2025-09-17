@@ -1,0 +1,37 @@
+- image: /staff-pics/carl.jpg
+  name: Carl Luo
+  username: erdaifuu
+  email: erdaifuu@ocf.berkeley.edu
+  bio: (^ω^) （╹◡╹） :3
+  head_facilitator: true
+
+- image: /staff-pics/sawansri.jpg
+  name: Sawan Srivastava
+  username: sawansri
+  email: sawansri@ocf.berkeley.edu
+  bio: hello
+  head_facilitator: true
+
+- image: /staff-pics/chenghao.jpg
+  name: Chenghao Li
+  username: lic
+  email: lic@ocf.berkeley.edu
+  bio: hi
+  head_facilitator: true
+
+- image: /staff-pics/storce.jpg
+  name: Joe Wang
+  username: storce
+  email: storce@ocf.berkeley.edu
+  bio: OCF is hella chill
+  head_facilitator: false
+
+- image: /staff-pics/jaysa.jpg
+  name: Jaysa Garcia
+  username: jaysa
+  email: jaysa@ocf.berkeley.edu
+  bio: |
+    go to [jaysa.net](https://jaysa.net) NOW ! ! !
+
+    kill first die last one shot one kill no luck pure skill
+  head_facilitator: false

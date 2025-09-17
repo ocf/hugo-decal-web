@@ -1,6 +1,7 @@
 ---
 title: Staff
 weight: 40
+type: docs
 ---
 
 # Staff
@@ -17,73 +18,8 @@ See the [about page](/about) for more information.
 
 ## Head Facilitators
 
-{{% columns %}}
-![carl.jpg](/staff-pics/carl.jpg)
-<--->
-### Carl Luo
-`erdaifuu`
-****
-[erdaifuu@ocf.berkeley.edu](mailto:erdaifuu@ocf.berkeley.edu)
-
-(^ω^) （╹◡╹） :3
-<--->
-<--->
-{{% /columns %}}
-
-
-{{% columns %}}
-![sawansri](/staff-pics/sawansri.jpg)
-<--->
-### Sawan Srivastava
-`sawansri`
-****
-[sawansri@ocf.berkeley.edu](mailto:sawansri@ocf.berkeley.edu)
-
-hello
-<--->
-<--->
-{{% /columns %}}
-
-
-{{% columns %}}
-![carl.jpg](/staff-pics/chenghao.jpg)
-<--->
-### Chenghao Li
-`lic`
-****
-[lic@ocf.berkeley.edu](mailto:lic@ocf.berkeley.edu)
-
-hi
-<--->
-<--->
-{{% /columns %}}
+{{< facilitators head="true">}}
 
 ## Facilitators
 
-{{% columns %}}
-![storce](/staff-pics/storce.jpg)
-<--->
-### Joe Wang
-`storce`
-****
-[storce@ocf.berkeley.edu](mailto:storce@ocf.berkeley.edu)
-
-OCF is hella chill
-<--->
-<--->
-{{% /columns %}}
-
-{{% columns %}}
-![jaysa](/staff-pics/jaysa.jpg)
-<--->
-### Jaysa Garcia
-`jaysa`
-****
-[jaysa@ocf.berkeley.edu](mailto:jaysa@ocf.berkeley.edu)
-
-go to [jaysa.net](https://jaysa.net) NOW ! ! !
-
-kill first die last one shot one kill no luck pure skill
-<--->
-<--->
-{{% /columns %}}
+{{< facilitators head="false">}}
