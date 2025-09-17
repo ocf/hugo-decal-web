@@ -22,9 +22,9 @@
   date: 9/16/2025
   name: Core Shell & Shell Scripting
   labdue: Sat. 9/20
-  hidelink: true
-  slides: https://docs.google.com/presentation/d/1Ia5c1xIXsUP-d3BNq8uE6OjgNRjXixsnaZtXbYHkSUs/edit?usp=sharing
-  video: https://drive.google.com/file/d/1MLXH352y_9axpAuGpJbnE373dL4GL6CP/view?usp=sharing
+  hidelink: false
+  slides: https://blog.jaysa.net/2025/09/16/core-shell--bash-scripting/
+  video: https://decal.ocf.io
 
 - id: 3
   date: 9/23/2025
