@@ -9,5 +9,5 @@
 Go edit content/staff.md
 
 ## TODO
-- make a template for staff bios lol: https://gohugo.io/templates/introduction/
+- ~~make a template for staff bios lol: https://gohugo.io/templates/introduction/~~
 - update resources list for 2025

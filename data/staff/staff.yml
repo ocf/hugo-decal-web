@@ -23,7 +23,8 @@
   name: Joe Wang
   username: storce
   email: storce@ocf.berkeley.edu
-  bio: [joewang.me](https://joewang.me) 
+  bio: |
+    [joewang.me](https://joewang.me) 
   head_facilitator: false
 
 - image: /staff-pics/jaysa.jpg
