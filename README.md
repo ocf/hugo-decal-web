@@ -6,7 +6,7 @@
 
 ## Adding New Facilitators
 
-go edit content/staff.md
+Go edit content/staff.md
 
 ## TODO
 - make a template for staff bios lol: https://gohugo.io/templates/introduction/
