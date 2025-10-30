@@ -69,9 +69,9 @@
 - id: 8
   date: 10/28/2025
   name: Version Control (git) and Backups
-  labdue: Sat. 11/1
-  hidelink: true
-  slides: https://docs.google.com/presentation/d/1O1K2cOcceOO5YGFKucTSANdrn_Rec2DCdWdFpNiknRA/edit?usp=sharing
+  labdue: Sun. 11/2
+  hidelink: false
+  slides: https://docs.google.com/presentation/d/1fHATay-BZ0gfZT327g8Elly5ea42To1sPeRP4k24xIo/edit?usp=sharing
   video: https://www.youtube.com/watch?v=2P00pRt_Qjw
 
 - id: 9
