@@ -72,15 +72,15 @@
   labdue: Sun. 11/2
   hidelink: false
   slides: https://docs.google.com/presentation/d/1fHATay-BZ0gfZT327g8Elly5ea42To1sPeRP4k24xIo/edit?usp=sharing
-  video: https://www.youtube.com/watch?v=2P00pRt_Qjw
+  video: https://decal.ocf.io
 
 - id: 9
   date: 11/04/2025
   name: Docker
   labdue: Sat. 11/8
-  hidelink: true
-  slides: https://docs.google.com/presentation/d/1mZGL8WLDL11k4Di4lDEIOBHO_kLMLU827uCwdcXRc9E/edit?usp=sharing
-  video: https://drive.google.com/file/d/1K4UGdqlY2xlQH1UXlsoW6d3cf8WaawuT/view?usp=drive_link
+  hidelink: false
+  slides: https://docs.google.com/presentation/d/1TQ-iSsvqWEjZPso-6GThrS2uWNVgxwsZBgZLOcr91qE/edit?usp=sharing
+  video: https://decal.ocf.io
 
 - id: 10
   date: 11/18/2025
