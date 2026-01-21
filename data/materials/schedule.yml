@@ -2,98 +2,98 @@
 # redirect to the provided link.
 
 - id: 0
-  date: 9/02/2025
-  name: Tues 9/02 & Thurs 9/04, 7-8pm @ OCF Lab 
-  labdue: Sat. 9/6
+  date: 1/27/2026
+  name: Tues 1/27 & Thurs 1/29, 7-8pm @ OCF Lab 
+  labdue: Sat. 1/31
   hidelink: true
   slides: https://docs.google.com/presentation/d/1GXdyQH25sJL1ivZF4uM27I3eiFhklhzAaRYp1TpuW3w/edit?usp=sharing
   video: https://drive.google.com/file/d/1lbHR03faWPv4QxKypl5DnmG1TXklA9_4/view?usp=sharing
   slides: https://ocf.io
 
 - id: 1
-  date: 9/09/2025
+  date: 2/03/2026
   name: History of UNIX, Intro to Linux, FOSS
-  labdue: Sat. 9/13
-  hidelink: false
+  labdue: Sat. 2/7
+  hidelink: true
   slides: https://blog.jaysa.net/2025/09/09/intro-to-linux-and-foss/
   video: https://decal.ocf.io
 
 - id: 2
-  date: 9/16/2025
+  date: 2/10/2026
   name: Core Shell & Shell Scripting
-  labdue: Sat. 9/20
-  hidelink: false
+  labdue: Sat. 2/14
+  hidelink: true
   slides: https://blog.jaysa.net/2025/09/16/core-shell--bash-scripting/
   video: https://decal.ocf.io
 
 - id: 3
-  date: 9/23/2025
+  date: 2/17/2026
   name: Packages
-  labdue: Sat. 9/27
-  hidelink: false
+  labdue: Sat. 2/21
+  hidelink: true
   slides: https://docs.google.com/presentation/d/13b0f_3-GL3Ah0RzfmfPkyyF6dUoCh2KMQPsFQjXhAjk/edit?slide=id.p#slide=id.p
   video: https://decal.ocf.io
 
 - id: 4
-  date: 9/30/2025
+  date: 2/24/2026
   name: Services
-  labdue: Sat. 10/4
-  hidelink: false
+  labdue: Sat. 2/28
+  hidelink: true
   slides: https://sawansri.com/blog/processes-and-services/
   video: https://decal.ocf.io
 
 - id: 5
-  date: 10/07/2025
+  date: 3/03/2026
   name: Networking 101
-  labdue: Sat. 10/11
-  hidelink: false
+  labdue: Sat. 3/7
+  hidelink: true
   slides: https://docs.google.com/presentation/d/14FdvsNdI7zm1Cqr1u5zuOHj3s8cwT9Jb4k6Mjr8O6K0/edit?usp=sharing 
   video: https://decal.ocf.io
 
 - id: 6
-  date: 10/14/2025
+  date: 3/10/2026
   name: Web Servers
-  labdue: Sat. 10/18
-  hidelink: false
+  labdue: Sat. 3/14
+  hidelink: true
   slides: https://docs.google.com/presentation/d/1BcQQacoqSAHKIEpDBIj4GTt0-DcAt1D9Ie6XtF6vMUY/edit?usp=sharing
   video: https://decal.ocf.io
 
 - id: 7
-  date: 10/21/2025
+  date: 3/17/2026
   name: Security Fundamentals
-  labdue: Sat. 10/25
-  hidelink: false
+  labdue: Sat. 3/21
+  hidelink: true
   slides: https://docs.google.com/presentation/d/1CgSyix6L6-x3F_wLR-U1ovvkKNVfPRG66G8KLJZPnEg/view?usp=sharing
   video: https://decal.ocf.io
 
 - id: 8
-  date: 10/28/2025
+  date: 3/31/2026
   name: Version Control (git) and Backups
-  labdue: Sun. 11/2
-  hidelink: false
+  labdue: Sun. 4/4
+  hidelink: true
   slides: https://docs.google.com/presentation/d/1fHATay-BZ0gfZT327g8Elly5ea42To1sPeRP4k24xIo/edit?usp=sharing
   video: https://decal.ocf.io
 
 - id: 9
-  date: 11/04/2025
+  date: 4/07/2026
   name: Docker
-  labdue: Sat. 11/8
-  hidelink: false
+  labdue: Sat. 4/11
+  hidelink: true
   slides: https://docs.google.com/presentation/d/1TQ-iSsvqWEjZPso-6GThrS2uWNVgxwsZBgZLOcr91qE/edit?usp=sharing
   video: https://decal.ocf.io
 
 - id: 10
-  date: 11/18/2025
+  date: 4/14/2026
   name: Nix
-  labdue: Sat. 11/22
+  labdue: Sat. 4/18
   hidelink: true
   slides: https://docs.google.com/presentation/d/1yUk--E11t0rN9x2nFsz8JixkTQxDbmX_VHozDKRRvrg
   video: https://drive.google.com/file/d/1E7FxpHymYYFyEozicyLaXM_33QogD14h/view?usp=sharing
   
 - id: 11
-  date: 11/25/2025
+  date: 4/21/2026
   name: Kubernetes (Optional Extra Lab)
-  labdue: Sat. 11/29
+  labdue: Sat. 4/28
   hidelink: true
   slides: https://docs.google.com/presentation/d/1qAJqm4Ejd6BU-Y3BZ0kjBPIXweg1ArpZB712P4H2hoA
   # video: https://drive.google.com/file/d/1oVnU6N3511RHEL-tY2Qb4srw4gwpf3m4/view?usp=sharing

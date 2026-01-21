@@ -8,28 +8,15 @@
   <br>
 
   <div style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
-  {{ $image := resources.Get "waddles-wires.png" }}
-  {{ with $image }}
-    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
-  {{ end }}
-  {{ $image := resources.Get "waddles-board.png" }}
-  {{ with $image }}
-    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
-  {{ end }}
-  {{ $image := resources.Get "ocf-url.png" }}
-  {{ with $image }}
-    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
-  {{ end }}
-  {{ $image := resources.Get "waddles-bash.png" }}
-  {{ with $image }}
-    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
-  {{ end }}
-  {{ $image := resources.Get "waddles-duck.png" }}
-  {{ with $image }}
-    <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
+  {{ $topImages := slice "waddles-wires" "waddles-board" "ocf-url" "waddles-bash" "waddles-duck" }}
+
+  {{ range $i, $img := $topImages }}
+    {{ $image := resources.Get (print $img ".png") }}
+    {{ with $image }}
+      <img src="{{ .RelPermalink }}" height=100px style="align-self:center;">
+    {{ end }}
   {{ end }}
   </div>
-  
   </br>
   
   <hr>

@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Scripting with the Bourne-Again Shell (Bash)
+  #
+
+While most programmers are likely familiar with bash in its popular capacity
+as a command line interpreter, it is in fact a powerful and full-featured
+programming language. Moreover, bash has a uniquely qualified claim to the
+title of scripting language in that programs written in bash are simply
+series of shell commands which bash reads off and executes line-by-line. Or,
+conversely, one might say that bash command line entries are simply short
+one-line scripts. So really, you&rsquo;ve been bash scripting all along!">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://decal.ocf.berkeley.edu/labs/scripting/">
+  <meta property="og:site_name" content="OCF Sysadmin DeCal">
+  <meta property="og:title" content="Scripting Reference">
+  <meta property="og:description" content="Scripting with the Bourne-Again Shell (Bash) # While most programmers are likely familiar with bash in its popular capacity as a command line interpreter, it is in fact a powerful and full-featured programming language. Moreover, bash has a uniquely qualified claim to the title of scripting language in that programs written in bash are simply series of shell commands which bash reads off and executes line-by-line. Or, conversely, one might say that bash command line entries are simply short one-line scripts. So really, you’ve been bash scripting all along!">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="labs">
+<title>Scripting Reference | OCF Sysadmin DeCal</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/labs/scripting/">
+<link rel="stylesheet" href="/book.min.5d66a598a957a57db9eb1e614a4e20c2bc6f81b607613fa13e31fc22786d762f.css" integrity="sha256-XWalmKlXpX256x5hSk4gwrxvgbYHYT&#43;hPjH8Inhtdi8=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.424adb9c5065dc7a007fa68a2c4317d72748fb16672aa0b20cfc21b60617c0a0.js" integrity="sha256-QkrbnFBl3HoAf6aKLEMX1ydI&#43;xZnKqCyDPwhtgYXwKA=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OCF Sysadmin DeCal</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/syllabus/" class="">Syllabus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1f8ae791fa5639f0d50a80450ecbdbc7" class="toggle"  />
+    <label for="section-1f8ae791fa5639f0d50a80450ecbdbc7" class="flex">
+      <a role="button" class="flex-auto ">Announcements</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-0/" class="">Week 0</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-1/" class="">Week 1 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-10/" class="">Week 10 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-2/" class="">Week 2 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-3/" class="">Week 3 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-4/" class="">Week 4 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-5/" class="">Week 5 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-6/" class="">Week 6 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-7/" class="">Week 7 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-8/" class="">Week 8 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-9/" class="">Week 9 Announcement</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3548b1ee411ba89dea3cefaca8fc144f" class="toggle" checked />
+    <label for="section-3548b1ee411ba89dea3cefaca8fc144f" class="flex">
+      <a role="button" class="flex-auto ">Labs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/1/" class="">Lab 1 - Unix, the Shell, OSS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/2/" class="">Lab 2 - Core Shell &amp; Shell Scripting</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/3/" class="">Lab 3 - Packages and Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/4/" class="">Lab 4 - Processes and Services</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/5/" class="">Lab 5 - Introduction to Networking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/6/" class="">Lab 6 - Web Servers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/7/" class="">Lab 7 - Security Fundamentals</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/8/" class="">Lab 8 - Version Control and Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/9/" class="">Lab 9 - Containers (Docker)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/10/" class="">Lab 10 - Nix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/11/" class="">Lab 11 - Kubernetes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/12/" class="">Lab 12 - CUDA</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/staff/" class="">Staff</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/resources/" class="">Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/archives/" class="">Archives</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://edstem.org"  target="_blank" rel="noopener">
+        Ed
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://ocf.berkeley.edu"  target="_blank" rel="noopener">
+        OCF
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Scripting Reference</h3>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="scripting-with-the-bourne-again-shell-bash">
+  Scripting with the Bourne-Again Shell (Bash)
+  <a class="anchor" href="#scripting-with-the-bourne-again-shell-bash">#</a>
+</h1>
+<p>While most programmers are likely familiar with <code>bash</code> in its popular capacity
+as a command line interpreter, it is in fact a powerful and full-featured
+programming language. Moreover, <code>bash</code> has a uniquely qualified claim to the
+title of <em>scripting</em> language in that programs written in <code>bash</code> are simply
+series of shell commands which <code>bash</code> reads off and executes line-by-line. Or,
+conversely, one might say that <code>bash</code> command line entries are simply short
+one-line scripts. So really, you&rsquo;ve been <code>bash</code> scripting all along!</p>
+<h2 id="shebang">
+  Shebang!
+  <a class="anchor" href="#shebang">#</a>
+</h2>
+<p>Shell scripts typically begin with the <strong>shebang</strong> line:
+<code>#!path/to/interpreter</code>.</p>
+<p><code>#!</code> is a human-readable representation of a 
+  <a href="https://en.wikipedia.org/wiki/Shebang_%28Unix%29#Magic_number">magic number</a> <code>0x23 0x21</code>
+which can tell the shell to pass execution of the rest of the file to a
+specified interpreter. If your script is run as an executable (e.g.
+<code>./awesome_shell_script</code>) with a shebang line, then the shell will invoke the
+executable (usually an interpreter) at <code>path/to/interpreter</code> to run your
+script. If your script is passed as an argument to an interpreter e.g. <code>bash  awesome_shell_script</code>, then the shebang has no effect and <code>bash</code> will handle
+the script&rsquo;s execution.</p>
+<p><strong>Why is this important?</strong> The shebang line can be considered a useful piece of
+metadata which passes the concern of <em>how</em> a script is executed from the user
+to the program&rsquo;s author. <code>awesome_shell_script</code> could be a <code>bash</code> script, a
+<code>python</code> script, a <code>ruby</code> script, etc. The idea is that only the script&rsquo;s
+behavior, not its implementation details, should matter to the user who calls
+the script.</p>
+<p>You may have seen some variant of <code>#!/bin/sh</code>. Although initially referencing
+the Bourne shell, on modern systems <code>sh</code> has come to reference to the 
+  <a href="http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html">Shell
+Command Language</a>, which is a POSIX specification with many implementations.
+<code>sh</code> is usually symlinked to one of these POSIX-compliant shells which
+implement the Shell Command Language. On Debian, for instance, <code>sh</code> is
+symlinked to the shell <code>dash</code>. It is important to note that <code>bash</code> does <strong>not</strong>
+comply with this standard, although running <code>bash</code> as <code>bash --posix</code> makes it
+more compliant.</p>
+<p><strong>Why is this important?</strong> If <code>awesome_shell_script</code> uses <em>bashisms</em> (i.e.
+non-POSIX bash-specific features) but includes a shebang line pointing to <code>sh</code>,
+then trying to run the script as an executable e.g. <code>./awesome_shell_script</code>
+will likely fail. So if you plan to use bashisms in your script, the shebang
+line should point to <code>bash</code>, not <code>sh</code>. Note that this will sacrifice
+portability, as only systems with <code>bash</code> installed will be able to execute your
+script. A list of common bashisms and specification differences between common
+shells can be found 
+  <a href="https://mywiki.wooledge.org/Bashism">here</a>. The commonly installed <code>checkbashisms</code> program
+can help to identify bashisms.</p>
+<p>In contexts other than the <strong>shebang</strong> line, <code>#</code> indicates the beginning of a
+comment. Everything to the right of a <code>#</code> on a line will not be executed.</p>
+<h2 id="shell-variables-and-types">
+  Shell Variables and Types
+  <a class="anchor" href="#shell-variables-and-types">#</a>
+</h2>
+<p>Like most other programming languages, <code>bash</code> facilitates stateful assignment
+of names to values as variables.</p>
+<p>Variables can be assigned in <code>bash</code> with the syntax: <code>NAME=value</code>. Note the
+lack of spaces between the assignment operator <code>=</code> and its operands. Assignment
+is whitespace-sensitive.</p>
+<p>You can retrieve the value of a variable by prepending a <code>$</code> to it&rsquo;s name.
+Getting the value of <code>NAME</code> must be done with <code>$NAME</code>. This is called variable
+interpolation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tux&#34;</span> <span style="color:#75715e"># Incorrect</span>
+</span></span><span style="display:flex;"><span>-bash: NAME: command not found 
+</span></span><span style="display:flex;"><span>$ NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Tux&#34;</span> <span style="color:#75715e"># Correct</span>
+</span></span><span style="display:flex;"><span>$ echo NAME <span style="color:#75715e"># Incorrect. We want the value we assigned to NAME, not the text </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># NAME itself.</span>
+</span></span><span style="display:flex;"><span>NAME
+</span></span><span style="display:flex;"><span>$ echo $NAME <span style="color:#75715e"># Correct</span>
+</span></span><span style="display:flex;"><span>Tux
+</span></span></code></pre></div><p><code>$?</code> holds the exit code of the most recently executed command. In this
+context, exit code <code>0</code> generally means that a program has executed
+successfully. Other 
+  <a href="http://tldp.org/LDP/abs/html/exitcodes.html">exit codes</a> refer to the nature of the error which
+caused the program to fail.</p>
+<p>Special <em>positional parameters</em> allow arguments to be passed into your script.
+<code>$0</code> is the name of the script, <code>$1</code> is the first argument passed to the
+script, <code>$2</code> is the second argument passed to the script, <code>$3</code> is the third
+argument, etc. <code>$#</code> gives the number of arguments passed to the script.</p>
+<p>So <code>./awesome_shell_script foo bar</code> could access <code>foo</code> from <code>$1</code> and <code>bar</code> from
+<code>$2</code>.</p>
+<p>Bash variables are <em>untyped</em>. They are usually treated as text (strings), but a
+variable can be treated as a number if it contains digits and arithmetic
+operations are applied to it. Note that this is different from most programming
+languages. <em>Variables</em> don&rsquo;t have types themselves, but <em>operators</em> will treat
+their values differently in different contexts. In other words, <code>bash</code>
+variables are text and don&rsquo;t have any inherent behaviors or properties beyond
+that of text which can be manipulated, but operators will interpret this text
+according to its content (digits or no digits?) and the context of the
+expression.</p>
+<h2 id="arithmetic">
+  Arithmetic
+  <a class="anchor" href="#arithmetic">#</a>
+</h2>
+<p>Bash supports integer arithmetic with the <code>let</code> builtin.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ x<span style="color:#f92672">=</span>1+1
+</span></span><span style="display:flex;"><span>$ echo $x <span style="color:#75715e"># Incorrect. We wanted 2, not the text 1+1.</span>
+</span></span><span style="display:flex;"><span>1+1
+</span></span><span style="display:flex;"><span>$ let x<span style="color:#f92672">=</span>1+1
+</span></span><span style="display:flex;"><span>$ echo $x <span style="color:#75715e"># Correct</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>Note that <code>let</code> is whitespace sensitive. Operands and operators must not be
+separated by spaces.</p>
+<p><code>bash</code> does not natively support floating point arithmetic, so we must rely on
+external utilities if we want to deal with decimal numbers. A common choice for
+this is <code>bc</code>. Fun fact: <code>bc</code> is actually it&rsquo;s own complete language!</p>
+<p>We commonly access <code>bc</code> via a <em>pipe</em> (represented as <code>|</code>), which allows the
+output of one command to be used as the input for another. We include the <code>-l</code>
+option for <code>bc</code> in order to enable floating point arithmetic.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ echo 1/2 | bc -l
+</span></span><span style="display:flex;"><span>.50000000000000000000
+</span></span></code></pre></div><h2 id="test">
+  <code>test</code>
+  <a class="anchor" href="#test">#</a>
+</h2>
+<p>Bash scripts frequently use the <code>[</code> (a synonym for <code>test</code>) shell builtin for
+the conditional evaluation of expressions. <code>test</code> evaluates an expression and
+exits with either status code <code>0</code> (true) or status code <code>1</code> (false).</p>
+<p><code>test</code> supports the usual string and numeric operators, as well as a number of
+additional binary and unary operators which don&rsquo;t have direct analogs in most
+other programming languages. You can see a list of these operators, along with
+other useful information, by entering <code>help test</code> in your shell. The output of
+this is shown below. Note that <code>help</code> is similar to <code>man</code>, except it is used for
+bash functions instead of other programs.</p>
+<pre tabindex="0"><code>$ help test
+test: test [expr]
+    Exits with a status of 0 (true) or 1 (false) depending on
+    the evaluation of EXPR.  Expressions may be unary or binary.  Unary
+    expressions are often used to examine the status of a file.  There
+    are string operators as well, and numeric comparison operators.
+
+    File operators:
+
+        -a FILE        True if file exists.
+        -b FILE        True if file is block special.
+        -c FILE        True if file is character special.
+        -d FILE        True if file is a directory.
+        -e FILE        True if file exists.
+        -f FILE        True if file exists and is a regular file.
+        -g FILE        True if file is set-group-id.
+        -h FILE        True if file is a symbolic link.
+        -L FILE        True if file is a symbolic link.
+        -k FILE        True if file has its `sticky&#39; bit set.
+        -p FILE        True if file is a named pipe.
+        -r FILE        True if file is readable by you.
+        -s FILE        True if file exists and is not empty.
+        -S FILE        True if file is a socket.
+        -t FD          True if FD is opened on a terminal.
+        -u FILE        True if the file is set-user-id.
+        -w FILE        True if the file is writable by you.
+        -x FILE        True if the file is executable by you.
+        -O FILE        True if the file is effectively owned by you.
+        -G FILE        True if the file is effectively owned by your group.
+        -N FILE        True if the file has been modified since it was last 
+read.
+
+      FILE1 -nt FILE2  True if file1 is newer than file2 (according to
+                       modification date).
+
+      FILE1 -ot FILE2  True if file1 is older than file2.
+
+      FILE1 -ef FILE2  True if file1 is a hard link to file2.
+
+    String operators:
+
+        -z STRING      True if string is empty.
+
+        -n STRING
+        STRING         True if string is not empty.
+
+        STRING1 = STRING2
+                       True if the strings are equal.
+        STRING1 != STRING2
+                       True if the strings are not equal.
+        STRING1 &lt; STRING2
+                       True if STRING1 sorts before STRING2 lexicographically.
+        STRING1 &gt; STRING2
+                       True if STRING1 sorts after STRING2 lexicographically.
+
+    Other operators:
+
+        -o OPTION      True if the shell option OPTION is enabled.
+        ! EXPR         True if expr is false.
+        EXPR1 -a EXPR2 True if both expr1 AND expr2 are true.
+        EXPR1 -o EXPR2 True if either expr1 OR expr2 is true.
+
+        arg1 OP arg2   Arithmetic tests.  OP is one of -eq, -ne,
+                       -lt, -le, -gt, or -ge.
+
+    Arithmetic binary operators return true if ARG1 is equal, not-equal,
+    less-than, less-than-or-equal, greater-than, or greater-than-or-equal
+    than ARG2.
+</code></pre><p>We can test integer equality</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; echo $? <span style="color:#75715e"># exit code 0 means true</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#f92672">[</span> <span style="color:#ae81ff">0</span> -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; echo $? <span style="color:#75715e"># exit code 1 means false</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>string equality</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#f92672">[</span> zero <span style="color:#f92672">=</span> zero <span style="color:#f92672">]</span>; echo $? <span style="color:#75715e"># exit code 0 means true</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#f92672">[</span> zero <span style="color:#f92672">=</span> one <span style="color:#f92672">]</span>; echo $? <span style="color:#75715e"># exit code 1 means false</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>and a number of other string and numeric operations which you are free to
+explore.</p>
+<h2 id="flow-control">
+  Flow Control
+  <a class="anchor" href="#flow-control">#</a>
+</h2>
+<p><code>bash</code> includes control structures typical of most programming languages &ndash;
+<code>if-then-elif-else</code>, <code>while</code> <code>for-in</code>, etc. You can read more about
+
+  <a href="http://tldp.org/LDP/Bash-Beginners-Guide/html/chap_07.html">conditional statements</a> and 
+  <a href="http://tldp.org/LDP/Bash-Beginners-Guide/html/chap_09.html">iteration</a> in the 
+  <a href="http://tldp.org/LDP/Bash-Beginners-Guide/html/index.html">Bash Guide for
+Beginners</a> from the Linux Documentation Project (LDP). You are encouraged to
+read those sections, as this guide provides only a brief summary of some
+important features.</p>
+<h3 id="if-then-elif-else">
+  if-then-elif-else
+  <a class="anchor" href="#if-then-elif-else">#</a>
+</h3>
+<p>The general form of an if-statement in <code>bash</code> is</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> TEST-COMMANDS; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  CONSEQUENT-COMMANDS
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> MORE-TEST-COMMANDS; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  MORE-CONSEQUENT-COMMANDS
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ALTERNATE-CONSEQUENT-COMMANDS;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><p>Indentation is good practice, but not required.</p>
+<p>For example, if we write</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># contents of awesome_shell_script</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $1 -eq $2 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  echo args are equal
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>  echo args are not equal
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><p>we see</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ./awesome_shell_script <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>args are equal
+</span></span><span style="display:flex;"><span>$ ./awesome_shell_script <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>args are not equal
+</span></span></code></pre></div><h3 id="while">
+  while
+  <a class="anchor" href="#while">#</a>
+</h3>
+<p>The general form of a while loop in <code>bash</code> is</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> TEST-COMMANDS; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  CONSEQUENT-COMMANDS
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>If <code>TEST-COMMANDS</code> exits with status code <code>0</code>, <code>CONSEQUENT-COMMANDS</code> will
+execute. These steps will repeat until <code>TEST-COMMANDS</code> exits with some nonzero
+status.</p>
+<p>For example, if we write</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># contents of awesome_shell_script</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n<span style="color:#f92672">=</span>$1
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> $n -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  echo $n
+</span></span><span style="display:flex;"><span>  let n<span style="color:#f92672">=</span>$n-1
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>we see</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ./awesome_shell_script <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h2 id="functions">
+  Functions
+  <a class="anchor" href="#functions">#</a>
+</h2>
+<p><code>bash</code> supports functions, albeit in a crippled form relative to many other
+languages. Some notable differences include:</p>
+<ul>
+<li>Functions dont <em>return</em> anything, they just produce output streams (e.g.
+<code>echo</code> to stdout)</li>
+<li><code>bash</code> is strictly call-by-value. That is, only atomic values (strings) can
+be passed into functions.</li>
+<li>Variables are not lexically scoped. <code>bash</code> uses a very simple system of local
+scope which is close to dynamic scope.</li>
+<li><code>bash</code> does not have first-class functions (i.e. no passing functions to
+other functions), anonymous functions, or closures.</li>
+</ul>
+<p>Functions in <code>bash</code> are defined by</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>name_of_function<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  FUNCTION_BODY
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>and called by</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>name_of_function $arg1 $arg2 ... $argN
+</span></span></code></pre></div><p>Note the lack of parameters in the function signature. Parameters in <code>bash</code>
+functions are treated similarly to global positional parameters, with <code>$1</code>
+containing the <code>$arg1</code>, <code>$2</code> containing <code>$arg2</code>, etc.</p>
+<p>For example, if we write</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># contents of awesome_shell_script</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>foo<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  echo hello $1
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>foo $1
+</span></span></code></pre></div><p>we see</p>
+<pre tabindex="0"><code>$ ./awesome_shell_script world
+hello world
+</code></pre><hr>
+<h1 id="examples">
+  Examples
+  <a class="anchor" href="#examples">#</a>
+</h1>
+<p>Despite <code>bash</code>&rsquo;s clumsiness, recursion and more complex programming logic are
+possible (read: painful).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># contents of fibonacci</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;fibonacci needs an argument&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fib<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    N<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>N##*[!0-9]*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#e6db74">&#34;fibonacci only makes sense for nonnegative integers&#34;</span>
+</span></span><span style="display:flex;"><span>        exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$N<span style="color:#e6db74">&#34;</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$N<span style="color:#e6db74">&#34;</span> -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        echo <span style="color:#66d9ef">$(($(</span>fib <span style="color:#66d9ef">$((</span>N-2<span style="color:#66d9ef">)))</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">$(</span>fib <span style="color:#66d9ef">$((</span>N-1<span style="color:#66d9ef">)))))</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fib <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p><code>bash</code> can give us a recursive solution to finding the <code>n</code>th Fibonacci number.</p>
+<pre tabindex="0"><code>$ ./fibonacci 10
+55
+</code></pre><hr>
+<h1 id="python-for-sysadmins">
+  Python for Sysadmins
+  <a class="anchor" href="#python-for-sysadmins">#</a>
+</h1>
+<p>Although <code>bash</code> scripts can be a simple and straightforward way to automate
+tasks involving the sequential execution of some shell commands, you may have
+already gathered that venturing beyond trivial conditional logic and simple
+functions introduces unnecessary syntactic complexity as compared to many other
+modern interpreted languages. For this reason, more complex scripts are
+popularly written in another, more general, programming language like <code>python</code>.
+Scripting with <code>python</code> is increasingly popular among sysadmins.</p>
+<p>Countless great 
+  <a href="http://www-inst.eecs.berkeley.edu/~selfpace/python/">tutorials</a> for learning <code>python</code> are available online.
+Alternatively, Berkeley offers several courses that teach or use <code>python</code>,
+notably 
+  <a href="https://cs61a.org">CS 61A</a> and 
+  <a href="http://data8.org/">Data 8</a>.</p>
+<p>Adapting <code>python</code> to command-line scripting is only a matter of using relevant
+modules. Here are some tips:</p>
+<ul>
+<li>The 
+  <a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a> module in the <code>python</code> standard library is a popular way
+to implement command-line interfaces for <code>python</code> scripts</li>
+<li>
+  <a href="http://docs.fabfile.org/en/1.14/"><code>fabric</code></a> simplifies some sysadmin tasks, mostly in regard to
+application deployment</li>
+<li>
+  <a href="https://saltstack.com/community/"><code>salt</code></a> is useful for general infrastructure management</li>
+<li>
+  <a href="https://github.com/giampaolo/psutil"><code>psutil</code></a> provides an interface to system information monitoring</li>
+</ul>
+<p>In practice, the decision to write a script in either <code>python</code> or <code>bash</code> is
+largely dependent on the context of the task at hand. Generally, tasks solvable
+with simple shell commands and those requiring simple file reading, writing,
+and appending are often a good fit for a <code>bash</code> script. Those with complex
+control logic, recursion, and other more general programming patterns are a
+better fit for a <code>python</code> script.</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  
+
+
+
+  
+  
+  
+
+
+<div class="col-lg-12 text-center">
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.janestreet.com" class="no-underline">
+      <img
+        src="/jane-street.svg"
+        style="height: 50px"
+      />
+    </a>
+    <span style="padding-left: 10px";>
+      Thanks to
+      <a href="https://www.janestreet.com">Jane Street</a> for supporting the DeCal.
+    </span>
+  </p>
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.ocf.berkeley.edu" class="no-underline">
+      <img
+        src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+        alt="Hosted by the OCF"
+        style="height: 50px"
+        style="border: 0"
+    /></a>
+    <span style="padding-left: 10px";>
+      Copyright &copy; 2017-2025
+      <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+      and
+      <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+    </span>
+  </p>
+  <p>
+    <span>
+      This website and its course materials are licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+      available on GitHub
+    </span>
+  </p>
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

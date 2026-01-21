@@ -8,6 +8,7 @@ Here you can find past DeCal websites and materials.
 
 | Semester     | Link                                                                 |
 |--------------|----------------------------------------------------------------------|
+| 2025 Fall    | [archive](../archives/2025-fall)                          |
 | 2024 Fall    | [archive](../archives/2024-fall)                          |
 | 2024 Spring  | [archive](../archives/2024-spring)                        |
 | 2023 Fall    | [archive](../archives/2023-fall)                          |

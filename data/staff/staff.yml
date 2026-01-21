@@ -12,13 +12,6 @@
   bio: hello
   head_facilitator: true
 
-- image: /staff-pics/chenghao.jpg
-  name: Chenghao Li
-  username: lic
-  email: lic@ocf.berkeley.edu
-  bio: hi
-  head_facilitator: true
-
 - image: /staff-pics/storce.jpg
   name: Joe Wang
   username: storce
