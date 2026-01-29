@@ -20,7 +20,7 @@ Then, update the `/content/archives.md` page with the new archive.
 - update resources list for 2026
 - ~~staff training labs~~
 - weekly schedule as a calendar
-- table of contents
+- ~~table of contents~~
 - update any labs that might be confusing
 - clean up css
 - clarify videos on decal site
