@@ -18,7 +18,7 @@ Then, update the `/content/archives.md` page with the new archive.
 ## TODO
 - ~~make a template for staff bios lol: https://gohugo.io/templates/introduction/~~
 - update resources list for 2026
-- staff training labs
+- ~~staff training labs~~
 - weekly schedule as a calendar
 - table of contents
 - update any labs that might be confusing
