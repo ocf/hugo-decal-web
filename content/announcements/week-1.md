@@ -8,8 +8,9 @@ Hi all, this is our first official week for this semester’s Linux SysAdmin dec
 
 Here are some notes for the week:
 
-Normal schedule begins this week.
-Enrollment codes will be sent out by Monday. First lecture will be the day after that!
-You should soon also have access to Ed and Gradescope. Please use Ed for class discussion!
-Lab 1 is open and is due 02/07 at 11:59PM PST.
+- Normal schedule begins this week.
+- Enrollment codes will be sent out by Monday. First lecture will be the day after that!
+- You should soon also have access to Ed and Gradescope. Please use Ed for class discussion!
+- [Lab 1](https://decal.ocf.io/labs/1/) is open and is due 02/07 at 11:59PM PST.
+
 Any questions? Post on Ed or reach us at decal@ocf.berkeley.edu!
