@@ -5,16 +5,16 @@
   date: 1/27/2026
   name: Tues 1/27 & Thurs 1/29, 7-8pm @ OCF Lab 
   labdue: Sat. 1/31
-  hidelink: true
-  slides: https://docs.google.com/presentation/d/1GXdyQH25sJL1ivZF4uM27I3eiFhklhzAaRYp1TpuW3w/edit?usp=sharing
-  video: https://drive.google.com/file/d/1lbHR03faWPv4QxKypl5DnmG1TXklA9_4/view?usp=sharing
-  slides: https://ocf.io
+  hidelink: false
+  slides: https://docs.google.com/presentation/d/1m8dTRv7c254TP_oqE0OQ5iyvFWw20nBhav5pug-3Aos/edit?usp=sharing
+  video: https://decal.ocf.io
+  slides: https://decal.ocf.io
 
 - id: 1
   date: 2/03/2026
   name: History of UNIX, Intro to Linux, FOSS
   labdue: Sat. 2/7
-  hidelink: true
+  hidelink: false
   slides: https://blog.jaysa.net/2025/09/09/intro-to-linux-and-foss/
   video: https://decal.ocf.io
 
