@@ -21,8 +21,8 @@
   date: 2/10/2026
   name: Core Shell & Shell Scripting
   labdue: Sat. 2/14
-  hidelink: true
-  slides: https://blog.jaysa.net/2025/09/16/core-shell--bash-scripting/
+  hidelink: false
+  slides: https://lukegonsalves.com/blog/shell-scripting/
   video: https://decal.ocf.io
 
 - id: 3
