@@ -9,5 +9,5 @@ Weekly notes:
 - Normal schedule, Lecture + Lab on **Tuesday 03/03 7-9PM PST**.
     - Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.
 - Lab 5 has been released and can be accessed below.
-    - Please use the corresponding [Ed thread for Lab 4](https://edstem.org/us/courses/95630/discussion/7760767) related questions.
+    - Please use the corresponding [Ed thread for Lab 5](https://edstem.org/us/courses/95630/discussion/7760767) related questions.
 - Any questions? Post on Ed or reach us at [decal@ocf.berkeley.edu](mailto:decal@ocf.berkeley.edu)!
