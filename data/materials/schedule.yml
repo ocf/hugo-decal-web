@@ -53,8 +53,8 @@
   date: 3/10/2026
   name: Web Servers
   labdue: Sat. 3/14
-  hidelink: true
-  slides: https://docs.google.com/presentation/d/1BcQQacoqSAHKIEpDBIj4GTt0-DcAt1D9Ie6XtF6vMUY/edit?usp=sharing
+  hidelink: false
+  slides: https://docs.google.com/presentation/d/1pysMZJN1waYlTsFSiWz18YZkZNrpt_kxcURFdSPhxew/edit?usp=sharing
   video: https://decal.ocf.io
 
 - id: 7
