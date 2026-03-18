@@ -61,8 +61,8 @@
   date: 3/17/2026
   name: Security Fundamentals
   labdue: Sat. 3/21
-  hidelink: true
-  slides: https://docs.google.com/presentation/d/1CgSyix6L6-x3F_wLR-U1ovvkKNVfPRG66G8KLJZPnEg/view?usp=sharing
+  hidelink: false
+  slides: https://docs.google.com/presentation/d/1gfWMRiaw_iDwvg0S3Rv2SwSyi6t6BhBp4-Rx02V9ZXo/edit?usp=sharing
   video: https://decal.ocf.io
 
 - id: 8
