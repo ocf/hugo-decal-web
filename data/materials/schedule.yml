@@ -69,8 +69,8 @@
   date: 3/31/2026
   name: Version Control (git) and Backups
   labdue: Sun. 4/4
-  hidelink: true
-  slides: https://docs.google.com/presentation/d/1fHATay-BZ0gfZT327g8Elly5ea42To1sPeRP4k24xIo/edit?usp=sharing
+  hidelink: false
+  slides: https://docs.google.com/presentation/d/1-poysX3cwW5YEcEuamA2l8-UA_lKR8XnM8W2SaJg8Po/edit?usp=sharing
   video: https://decal.ocf.io
 
 - id: 9
