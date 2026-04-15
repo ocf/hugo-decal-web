@@ -5,7 +5,7 @@ weight: 1
 date: 2026-04-14
 ---
 
-Hi everyone, we're entering the ninth week of the DeCal! At this point, you should have turned in your Lab 9 on Gradescope. We’ll be taking a look and grading them soon.
+Hi everyone, we're entering the tenth week of the DeCal! At this point, you should have turned in your Lab 9 on Gradescope. We’ll be taking a look and grading them soon.
 Weekly notes:
 - Normal schedule, Lecture + Lab on **Tuesday 4/14 7-9PM PST**.
     - Slides link are released, but are not official/finalized until after lecture is given on Tuesday 7pm.
