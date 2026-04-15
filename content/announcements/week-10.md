@@ -1,7 +1,8 @@
 ---
 title: Week 10 Announcement
-week: 99
+week: 10
 weight: 1
+date: 2026-04-14
 ---
 
 Hi everyone, we're entering the ninth week of the DeCal! At this point, you should have turned in your Lab 9 on Gradescope. We’ll be taking a look and grading them soon.
