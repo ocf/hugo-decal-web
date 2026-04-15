@@ -85,9 +85,9 @@
   date: 4/14/2026
   name: Nix
   labdue: Sat. 4/18
-  hidelink: true
-  slides: https://docs.google.com/presentation/d/1yUk--E11t0rN9x2nFsz8JixkTQxDbmX_VHozDKRRvrg
-  video: https://drive.google.com/file/d/1E7FxpHymYYFyEozicyLaXM_33QogD14h/view?usp=sharing
+  hidelink: false
+  slides: https://docs.google.com/presentation/d/12MiGidVtrVigHRl0bJHMf2fxhN0N2yOkEJ3ykTnW9Xs/edit?usp=sharing
+  video: https://decal.ocf.io
   
 - id: 11
   date: 4/21/2026
