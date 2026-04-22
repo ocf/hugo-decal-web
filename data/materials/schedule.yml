@@ -93,6 +93,6 @@
   date: 4/21/2026
   name: Kubernetes (Optional Extra Lab)
   labdue: Sat. 4/25
-  hidelink: true
-  slides: https://docs.google.com/presentation/d/1qAJqm4Ejd6BU-Y3BZ0kjBPIXweg1ArpZB712P4H2hoA
-  # video: https://drive.google.com/file/d/1oVnU6N3511RHEL-tY2Qb4srw4gwpf3m4/view?usp=sharing
+  hidelink: false
+  slides: https://docs.google.com/presentation/d/1k5qzrDZDXd49gERBOYg6-oke5zq9oATWEvuNrx1pos4/edit?usp=sharing
+  video: https://decal.ocf.io
