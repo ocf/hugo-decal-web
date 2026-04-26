@@ -18,9 +18,11 @@
       <a href={{ .slides }}>
         <button style="margin-top: 10px;" >Slides</button>
       </a>
+      {{ if .video }}
       <a href={{ .video }}>
         <button style="margin-top: 10px;" >Recording</button>
       </a>
+      {{ end }}
       {{ end }}
 
     </p>
