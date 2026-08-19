@@ -5,27 +5,25 @@
   bio: (^ω^) （╹◡╹） :3
   head_facilitator: true
 
-- image: /staff-pics/sawansri.jpg
-  name: Sawan Srivastava
-  username: sawansri
-  email: sawansri@ocf.berkeley.edu
-  bio: hello
+- image: /staff-pics/lukegon.jpeg
+  name: Luke Gonsalves
+  username: lukegon
+  email: lukegon@ocf.berkeley.edu
+  bio: |
+    [Howdy](https://lukegonsalves.com)
   head_facilitator: true
 
-- image: /staff-pics/storce.jpg
-  name: Joe Wang
-  username: storce
-  email: storce@ocf.berkeley.edu
+- image: /staff-pics/blake.webp
+  name: Blake Nicholas Haug
+  username: blakeh
+  email: blakeh@berkeley.edu
   bio: |
-    [joewang.me](https://joewang.me) 
+    [blakehaug.com](blakehaug.com) 
   head_facilitator: false
 
-- image: /staff-pics/jaysa.jpg
-  name: Jaysa Garcia
-  username: jaysa
-  email: jaysa@ocf.berkeley.edu
-  bio: |
-    go to [jaysa.net](https://jaysa.net) NOW ! ! !
-
-    kill first die last one shot one kill no luck pure skill
+- image: /staff-pics/chenghao.jpg
+  name: Sophia Williams 
+  username: sbwilliams
+  email: sbwilliams@berkeley.edu
+  bio: Hi 
   head_facilitator: false

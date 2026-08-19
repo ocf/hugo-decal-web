@@ -8,7 +8,7 @@
 
 ## Adding New Facilitators
 
-Go edit content/staff.md
+Go edit data/staff.yml
 
 ## Archiving
 To archive the current year's website for a new semester, run `nix build`, and copy the resulting `/result` folder into `/20xx-fall` or `/20xx-spring`, under `/static/archives/`. 

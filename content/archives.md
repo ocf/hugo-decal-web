@@ -8,6 +8,7 @@ Here you can find past DeCal websites and materials.
 
 | Semester     | Link                                                                 |
 |--------------|----------------------------------------------------------------------|
+| 2026 Spring  | [archive](../archives/2026-spring)                        |
 | 2025 Fall    | [archive](../archives/2025-fall)                          |
 | 2024 Fall    | [archive](../archives/2024-fall)                          |
 | 2024 Spring  | [archive](../archives/2024-spring)                        |
@@ -35,5 +36,6 @@ Here you can find past DeCal websites and materials.
 | 2004 Fall    | [archive](../archives/2004-fall)                          |
 | 2002 Fall    | [archive](../archives/2002-fall)                          |
 | 2002 Spring  | [archive](../archives/2002-spring)                        |
-| 2001 Fall | [archive](../archives/2001-fall/decal/2001fall)                      |
-| 2001 Spring  | [archive](../archives/2001-spring/intro-to-sysad-decal) |
+| 2001 Fall    | [archive](../archives/2001-fall/decal/2001fall)           |
+| 2001 Spring  | [archive](../archives/2001-spring/intro-to-sysad-decal)   |
+
