@@ -8,14 +8,14 @@ on:
 jobs:
 
   check-flake:
-    runs-on: ci-ocf-hugo-decal-web
+    runs-on: ci-ocf-decalweb
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/flake-checker-action@v9
 
   build_and_deploy:
 
-    runs-on: ci-ocf-hugo-decal-web
+    runs-on: ci-ocf-decalweb
 
     steps:
       - name: Checkout
