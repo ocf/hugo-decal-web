@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OCF Sysadmin DeCal</title>
+    <link>https://decal.ocf.berkeley.edu/labs/</link>
+    <description>Recent content on OCF Sysadmin DeCal</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://decal.ocf.berkeley.edu/labs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 1 - Unix, the Shell, OSS</title>
+      <link>https://decal.ocf.berkeley.edu/labs/1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/1/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to the first lab!&lt;/p&gt;&#xA;&lt;p&gt;All labs are graded on completeness and effort, so don&amp;rsquo;t worry too much about&#xA;getting an exact right answer. (We&amp;rsquo;ll release staff solutions after the lab is due!)&lt;/p&gt;&#xA;&lt;p&gt;Labs are also usually due a week from when they are assigned. Remember to ask for help if you need it on Edstem or Discord/Matrix/IRC in the &lt;code&gt;#decal&lt;/code&gt; channel!&lt;/p&gt;&#xA;&lt;p&gt;It may be convenient to submit your answers to Gradescope as you go.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 2 - Core Shell &amp; Shell Scripting</title>
+      <link>https://decal.ocf.berkeley.edu/labs/2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/2/</guid>
+      <description>&lt;p&gt;Welcome to Lab 2! In this lab you will be learning how to work productively in a shell and use that to write your first shell script.&lt;/p&gt;&#xA;&lt;p&gt;Remember to submit your answers in the Gradescope assignment!&lt;/p&gt;&#xA;&lt;p&gt;Don&amp;rsquo;t forget to use Google and &lt;code&gt;man&lt;/code&gt; when stuck. The resources linked at the bottom may be helpful as well.&lt;/p&gt;&#xA;&lt;p&gt;&#xA;  &lt;img src=&#34;https://imgs.xkcd.com/comics/automation.png&#34; alt=&#34;XKCD 1319&#34; /&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;setting-up&#34;&gt;&#xA;  Setting up&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#setting-up&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;This lab can be completed either on tsunami by logging in using ssh or on the VM you set up in the previous lab.&#xA;This lab requires a bash shell, &lt;code&gt;vim&lt;/code&gt;, and &lt;code&gt;tmux&lt;/code&gt;.&#xA;If you do not have tmux or vim installed: &lt;code&gt;sudo apt install vim tmux&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 3 - Packages and Packaging</title>
+      <link>https://decal.ocf.berkeley.edu/labs/3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/3/</guid>
+      <description>&lt;h2 id=&#34;about-this-lab&#34;&gt;&#xA;  About This Lab&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#about-this-lab&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;grading-note&#34;&gt;&#xA;  Grading note&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#grading-note&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Labs are graded on completion. Treat this lab as seeds of exploration instead&#xA;of just a grade.&lt;/p&gt;&#xA;&lt;h3 id=&#34;workflow&#34;&gt;&#xA;  Workflow&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#workflow&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;This lab should be completed on your Linux VM, and not on tsunami. You may need root access for part of the lab.&lt;/p&gt;&#xA;&lt;h2 id=&#34;debian-an-introduction-to-apt-and-dpkg&#34;&gt;&#xA;  Debian: An introduction to &lt;code&gt;apt&lt;/code&gt; and &lt;code&gt;dpkg&lt;/code&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#debian-an-introduction-to-apt-and-dpkg&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;In this class, we will be focused on using Debian. As noted within this week&amp;rsquo;s lecture, Debian uses apt/dpkg as its package manager. Other distributions use different package managers.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 4 - Processes and Services</title>
+      <link>https://decal.ocf.berkeley.edu/labs/4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/4/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;&#xA;  Overview&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#overview&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;For this lab, we are going to dive into processes and systemd. We will do this by writing our own systemd service from scratch, while showing the benefits of running a service with systemd. This lab should be completed on your Linux VM.&lt;/p&gt;&#xA;&lt;h2 id=&#34;part-0-set-up-networking&#34;&gt;&#xA;  Part 0: Set up networking&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#part-0-set-up-networking&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Before you start this lab, you&amp;rsquo;ll need to make sure you can access services from your VM in your web browser!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 5 - Introduction to Networking</title>
+      <link>https://decal.ocf.berkeley.edu/labs/5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/5/</guid>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;&#xA;  Overview&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#overview&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;It is undeniable that the internet is an important system that has redefined our world. The ability to develop networks and allow devices to communicate is critical to modern day computer systems.  This lab will take a look into the basics of computer networking and then examine networks through the perspective of a sysadmin.&lt;/p&gt;&#xA;&lt;p&gt;We will be using web browsing as an analogy to understand the basics of networking. What exactly happens when I go web browsing for cat pictures?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 6 - Web Servers</title>
+      <link>https://decal.ocf.berkeley.edu/labs/6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/6/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;&#xA;  Overview&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#overview&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Networking is key to many services because it allows processes and computers to&#xA;communicate with each other. In this lab, we&amp;rsquo;ll explore different networked services with an emphasis on web services.&lt;/p&gt;&#xA;&lt;p&gt;Make sure that you are doing all of these steps on your VM.&lt;/p&gt;&#xA;&lt;h2 id=&#34;which-networked-services-are-already-running&#34;&gt;&#xA;  Which networked services are already running?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#which-networked-services-are-already-running&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;There are multiple networked services running on your VM right now. To output the networked services running on the VM use &lt;code&gt;netstat&lt;/code&gt; (install using apt).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 7 - Security Fundamentals</title>
+      <link>https://decal.ocf.berkeley.edu/labs/7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/7/</guid>
+      <description>&lt;p&gt;For this lab, we will use &#xA;  &lt;a href=&#34;https://gnupg.org&#34;&gt;GnuPG&lt;/a&gt; (also referred to as GPG), a free implementation of the &#xA;  &lt;a href=&#34;https://openpgp.org/&#34;&gt;OpenPGP standard&lt;/a&gt;. As stated by GPG&amp;rsquo;s website:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;GnuPG allows you to encrypt and sign your data and communications; it features a versatile key management system, along with access modules for all kinds of public key directories.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;The &#xA;  &lt;a href=&#34;https://www.gnupg.org/gph/de/manual/r1023.html&#34;&gt;GPG manual page&lt;/a&gt; might be useful.&lt;/p&gt;&#xA;&lt;h2 id=&#34;encryption-and-decryption&#34;&gt;&#xA;  Encryption and Decryption&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#encryption-and-decryption&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Encryption takes in a plaintext and a key, returning ciphertext. Decryption takes in a ciphertext and a key, recovering and returning the original plaintext only if the decryption key is valid. The keys for encryption and decryption are long strings of random bits that make it computationally infeasible for an attacker to guess the key and decrypt a ciphertext.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 8 - Version Control and Backups</title>
+      <link>https://decal.ocf.berkeley.edu/labs/8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/8/</guid>
+      <description>&lt;p&gt;In this lab, we&amp;rsquo;ll be learning how to use Git and typical best practices for&#xA;version control!&lt;/p&gt;&#xA;&lt;h3 id=&#34;pulling-the-code&#34;&gt;&#xA;  Pulling the code&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#pulling-the-code&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;If you haven&amp;rsquo;t already cloned the decal-lab git repository, run:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git clone https://github.com/ocf/decal-labs.git&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Go to your &lt;code&gt;decal-labs&lt;/code&gt; directory and &lt;code&gt;cd&lt;/code&gt; into the folder &lt;code&gt;b9&lt;/code&gt;. Run &lt;code&gt;git pull&lt;/code&gt;&#xA;to pull the latest changes.&lt;/p&gt;&#xA;&lt;h3 id=&#34;part-1-git-basics&#34;&gt;&#xA;  Part 1: Git Basics&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#part-1-git-basics&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;In the &lt;code&gt;b9&lt;/code&gt; directory, we&amp;rsquo;ve provided a basic Python program called &lt;code&gt;rand.py&lt;/code&gt; to&#xA;help demonstrate some core Git concepts. &lt;code&gt;rand.py&lt;/code&gt; takes command line arguments&#xA;and performs a number of coin flips and outputs the result in your terminal. We&#xA;want to add a feature to &lt;code&gt;rand.py&lt;/code&gt; that also lets us perform dice rolls. We will&#xA;simulate the real-world development process by making a branch for our new dice&#xA;rolling feature, making a few commits to that branch, and then merging our&#xA;feature branch into the master branch. &lt;em&gt;You won&amp;rsquo;t need to personally write any&#xA;Python for this lab!&lt;/em&gt; You will only need to copy-and-paste the code we provide,&#xA;since this lab is about learning version control and not Python.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 9 - Containers (Docker)</title>
+      <link>https://decal.ocf.berkeley.edu/labs/9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/9/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;&#xA;  Overview&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#overview&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;This lab is designed to give you some hands-on experience with Docker! By the end of this assignment, you should be able to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Create and use a Docker container interactively and create a Dockerfile, which allows you to declaratively define your containers.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p&gt;&#xA;&lt;h2 id=&#34;getting-started-with-docker&#34;&gt;&#xA;  Getting started with Docker&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#getting-started-with-docker&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;You have a couple of options for &#xA;  &lt;a href=&#34;https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/&#34;&gt;installing Docker&lt;/a&gt;. It is recommended to follow the &amp;ldquo;Install using the apt repository&amp;rdquo; section.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 10 - Nix</title>
+      <link>https://decal.ocf.berkeley.edu/labs/10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/10/</guid>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;&#xA;  Overview&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#overview&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;For this lab, we will be installing and configuring a Minecraft server inside of a NixOS VM. All of&#xA;this configuration can be successfully done without a Minecraft client or knowledge&#xA;on how to play the game itself.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;If you want to actually be able to connect to the server:&lt;/strong&gt; If you&amp;rsquo;re not&#xA;using the provided VM make sure your Linux VM has enough RAM to host the server&#xA;(2-4Gb).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 11 - Kubernetes</title>
+      <link>https://decal.ocf.berkeley.edu/labs/11/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/11/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;&#xA;  Overview&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#overview&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This lab is completely optional. Completing it before the late lab&#xA;deadline will count as an additional completed, on-time lab (so please try it out&#xA;if you weren&amp;rsquo;t able to finish a previous lab)!&lt;/p&gt;&#xA;&lt;p&gt;This lab is designed to give you some hands-on experience with Kubernetes. By the end of this lab, you should be able to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Understand the basic components of a Kubernetes deployment, including pods, services, and ingresses&lt;/li&gt;&#xA;&lt;li&gt;Run your own simple Kubernetes deployment&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Keep track of your answers to the questions, as you&amp;rsquo;ll need to submit them to Gradescope.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lab 12 - CUDA</title>
+      <link>https://decal.ocf.berkeley.edu/labs/12/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/12/</guid>
+      <description>&lt;p&gt;This lab is completely optional and is not worth any credit.&lt;/p&gt;&#xA;&lt;p&gt;Access the lab here: &#xA;  &lt;a href=&#34;https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing&#34;&gt;https://colab.research.google.com/drive/19cOYch-OkLKqMTcrhpxMdiS0Fi4ATHMo?usp=sharing&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Scripting Reference</title>
+      <link>https://decal.ocf.berkeley.edu/labs/scripting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://decal.ocf.berkeley.edu/labs/scripting/</guid>
+      <description>&lt;h1 id=&#34;scripting-with-the-bourne-again-shell-bash&#34;&gt;&#xA;  Scripting with the Bourne-Again Shell (Bash)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scripting-with-the-bourne-again-shell-bash&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;While most programmers are likely familiar with &lt;code&gt;bash&lt;/code&gt; in its popular capacity&#xA;as a command line interpreter, it is in fact a powerful and full-featured&#xA;programming language. Moreover, &lt;code&gt;bash&lt;/code&gt; has a uniquely qualified claim to the&#xA;title of &lt;em&gt;scripting&lt;/em&gt; language in that programs written in &lt;code&gt;bash&lt;/code&gt; are simply&#xA;series of shell commands which &lt;code&gt;bash&lt;/code&gt; reads off and executes line-by-line. Or,&#xA;conversely, one might say that &lt;code&gt;bash&lt;/code&gt; command line entries are simply short&#xA;one-line scripts. So really, you&amp;rsquo;ve been &lt;code&gt;bash&lt;/code&gt; scripting all along!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

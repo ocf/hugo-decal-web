@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 9 - Containers (Docker) | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Lab 9 - Containers (Docker)" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/labs/9/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/labs/9/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 9 - Containers (Docker)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Lab 9 - Containers (Docker)","url":"https://decal.ocf.berkeley.edu/labs/9/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#overview">Overview</a></li><li><a href="#getting-started-with-docker">Getting started with Docker</a><ol><li><a href="#creating-your-first-docker-container">Creating your first Docker container</a></li><li><a href="#running-an-interactive-container">Running an interactive container</a></li><li><a href="#dockerfiles">Dockerfiles</a></li><li><a href="#dockerizing-a-web-server">Dockerizing a Web Server</a></li></ol></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab 9 - Containers (Docker)</h1>
+        
+        <p>Facilitator: <a href="/staff#lemurseven,-kian">lemurseven, kian</a></p>
+        
+        
+        8 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#getting-started-with-docker" id="markdown-toc-getting-started-with-docker">Getting started with Docker</a>    <ol>
+      <li><a href="#creating-your-first-docker-container" id="markdown-toc-creating-your-first-docker-container">Creating your first Docker container</a></li>
+      <li><a href="#running-an-interactive-container" id="markdown-toc-running-an-interactive-container">Running an interactive container</a>        <ol>
+          <li><a href="#questions" id="markdown-toc-questions">Questions</a></li>
+        </ol>
+      </li>
+      <li><a href="#dockerfiles" id="markdown-toc-dockerfiles">Dockerfiles</a>        <ol>
+          <li><a href="#questions-1" id="markdown-toc-questions-1">Questions</a></li>
+        </ol>
+      </li>
+      <li><a href="#dockerizing-a-web-server" id="markdown-toc-dockerizing-a-web-server">Dockerizing a Web Server</a>        <ol>
+          <li><a href="#questions-2" id="markdown-toc-questions-2">Questions</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol><hr />
+      <h2 id="overview">
+        
+        
+          <a href="#overview" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+        
+        
+      </h2>
+    
+<p>This lab is designed to give you some hands-on experience with Docker! By the end of this assignment, you should be able to:</p>
+
+<ul>
+  <li>Create and use a Docker container interactively and create a Dockerfile, which allows you to declaratively define your containers.</li>
+</ul>
+
+<p>Keep track of your answers to the questions, as you’ll need to submit them to Gradescope.</p>
+      <h2 id="getting-started-with-docker">
+        
+        
+          <a href="#getting-started-with-docker" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Getting started with Docker
+        
+        
+      </h2>
+    
+
+<p>You have a couple of options for <a href="https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/">installing Docker</a>. It is recommended to follow the “Install using the apt repository” section.</p>
+
+<p>After installing, run <code class="language-plaintext highlighter-rouge">sudo usermod -aG docker $USER</code>, then logout and login again. This adds your user to the docker group so you can run <code class="language-plaintext highlighter-rouge">docker</code> as a non-root user. This means you won’t have to type <code class="language-plaintext highlighter-rouge">sudo docker</code> all the time. This is optional but for the rest of the lab I’m going to assume that you did this.</p>
+      <h3 id="creating-your-first-docker-container">
+        
+        
+          <a href="#creating-your-first-docker-container" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Creating your first Docker container
+        
+        
+      </h3>
+    
+
+<p>To verify that you installed things correctly, try running:</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run hello-world</code></p>
+
+<p>You should see some friendly output like so:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+1b930d010525: Pull complete
+Digest: sha256:c3b4ada4687bbaa170745b3e4dd8ac3f194ca95b2d0518b417fb47e5879d9b5f
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+...
+</code></pre></div></div>
+
+<p>This message shows that your installation appears to be working correctly. To generate this message, Docker took the following steps:</p>
+
+<ol>
+  <li>The Docker client contacted the Docker daemon.</li>
+  <li>The Docker daemon pulled the “hello-world” image from the Docker Hub.</li>
+  <li>The Docker daemon created a new container from that image which runs the executable that produces the output you are currently reading.</li>
+  <li>The Docker daemon streamed that output to the Docker client, which sent it to your terminal.</li>
+</ol>
+
+<p>Some <a href="https://docs.docker.com/get-started/#a-brief-explanation-of-containers">quick definitions</a> from Docker’s website:</p>
+
+<p>An <strong>image</strong> is a lightweight, stand-alone, executable package that includes everything needed to run a piece of software, including the code, a runtime, libraries, environment variables, and config files. Images are useful primarily for their speed, but images can also be used as a base to be built on top of in future images, as you’ll see later with Dockerfiles. In the last example hello-world was the image used to test our docker installation.</p>
+
+<p>A <strong>container</strong> is a runtime instance of an image—what the image becomes in memory when actually executed. It runs completely isolated from the host environment by default, only accessing host files and ports if configured to do so. A container gets created upon executing <code class="language-plaintext highlighter-rouge">docker run</code> on an image.</p>
+
+<p>Be sure to read through the output from running the hello-world image to get an understanding of what the Docker daemon was doing.</p>
+      <h3 id="running-an-interactive-container">
+        
+        
+          <a href="#running-an-interactive-container" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Running an interactive container
+        
+        
+      </h3>
+    
+
+<p>Now, let’s try to run a container interactively. This is useful if you ever need to play around and install stuff on a bare system without messing up your current system. Try running the following command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run -it ubuntu:latest</code></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">-i</code> flag tells docker to keep <code class="language-plaintext highlighter-rouge">STDIN</code> open to your container, and the <code class="language-plaintext highlighter-rouge">-t</code> flag allocates a <a href="https://en.wikipedia.org/wiki/Pseudoterminal">pseudo TTY</a> for you. Basically you need both for you to have a shell into your newly started container. Try installing some packages from <code class="language-plaintext highlighter-rouge">apt</code> or just play around. It should look like a bare Linux system.</p>
+
+<p>You can exit the container with CTRL+D.</p>
+      <h4 id="questions">
+        
+        
+          <a href="#questions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Questions
+        
+        
+      </h4>
+    
+
+<ol>
+  <li>What user are you logged in as by default in the container?</li>
+  <li>If you start and then exit an interactive container, and then use the <code class="language-plaintext highlighter-rouge">docker run -it ubuntu:latest</code> command again; is it the same container? How can you tell?</li>
+</ol>
+      <h3 id="dockerfiles">
+        
+        
+          <a href="#dockerfiles" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfiles
+        
+        
+      </h3>
+    
+
+<p>The natural question is, how are Docker images built? A <strong>Dockerfile</strong> is like the source code of an image. Rather, a Dockerfile allows you to define an image by specifying all of the commands you would type manually to create an image. Docker can then build images from a specified Dockerfile. These Dockerfiles can be put into version control and the images uploaded to online repositories. Can you see how this can be useful for deploying your application?</p>
+
+<p>Dockerfiles are very powerful and have many different commands and features. We’ll go over a basic example, but you should check out the <a href="https://docs.docker.com/engine/reference/builder/">reference page</a> if you are trying to do anything more complex.</p>
+
+<p>Let’s jump in. We’re going to create an image that deploys your new startup’s app, Missile! Unfortunately, so far you only have the opening animation complete, and the source code is in <code class="language-plaintext highlighter-rouge">b10/missile.py</code> in repo - <a href="https://github.com/0xcf/decal-labs">decal-labs</a>.</p>
+
+<p>Your program has a couple of dependencies. Namely, it requires Python and the python packages <code class="language-plaintext highlighter-rouge">termcolor</code> and <code class="language-plaintext highlighter-rouge">pyfiglet</code> to be installed. Here is a <strong>Dockerfile</strong> that puts those requirements into code, by installing Python 3 and the packages onto a base Fedora Linux image.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Specify Fedora Linux as base image
+FROM fedora:latest
+
+# Install Python with yum (Fedora's Package Manager)
+# Install required Python packages
+RUN yum update -y &amp;&amp; yum install -y python3 python3-pip &amp;&amp; \
+    python3 -m pip install pyfiglet termcolor
+
+# Add the missile.py file to the final image
+ADD missile.py /
+
+# Specify the command to be run on container creation
+CMD ["/usr/bin/python3", "missile.py"]
+</code></pre></div></div>
+
+<p>Note: there are some “best practices” for writing Dockerfiles that the above example doesn’t use, because it’s a basic example. If you’re interested in this stuff, check out <a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">this article</a>.</p>
+
+<p>Take a moment to appreciate how cool this is. We have a completely different Linux distribution with an application running on our system that can all be spun up with a single command. Now, when (if?) your startup finally takes off, scaling up will be a breeze!</p>
+
+<p>Make sure you have both files named <code class="language-plaintext highlighter-rouge">missile.py</code> and <code class="language-plaintext highlighter-rouge">Dockerfile</code> respectively then build the image with the following command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker build -t missile:latest .</code></p>
+
+<p>This tells Docker to look in the current directory for a <code class="language-plaintext highlighter-rouge">Dockerfile</code> to build, and builds it. The <code class="language-plaintext highlighter-rouge">-t</code> flag tells Docker to tag this build with the name <code class="language-plaintext highlighter-rouge">missile:latest</code>. Note that building the missile image will take a couple of minutes to complete.</p>
+
+<p>You can see all of the images you’ve built on your machine with the <code class="language-plaintext highlighter-rouge">docker images</code> command.</p>
+      <h4 id="questions-1">
+        
+        
+          <a href="#questions-1" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Questions
+        
+        
+      </h4>
+    
+
+<ol>
+  <li>Run the image you just built with no flags. What do you observe?</li>
+  <li>Write and build a <code class="language-plaintext highlighter-rouge">Dockerfile</code> based on <code class="language-plaintext highlighter-rouge">ubuntu:bionic</code> that installs the packages <code class="language-plaintext highlighter-rouge">fortune</code> and <code class="language-plaintext highlighter-rouge">fortunes-min</code> and runs the fortune executable (located in <code class="language-plaintext highlighter-rouge">/usr/games/fortune</code> after you install it). Note that you won’t need to use the <code class="language-plaintext highlighter-rouge">-it</code> flags when you run the container as fortune doesn’t need <code class="language-plaintext highlighter-rouge">STDIN</code>. Submit your <code class="language-plaintext highlighter-rouge">Dockerfile</code> with this lab.  Hint: if you’re having trouble writing your Dockerfile, try booting an interactive container and installing both packages. How can you translate what you did interactively to a Dockerfile?</li>
+  <li>Paste the output of running <code class="language-plaintext highlighter-rouge">docker images</code> command after completing questions 1 and 2.</li>
+</ol>
+      <h3 id="dockerizing-a-web-server">
+        
+        
+          <a href="#dockerizing-a-web-server" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerizing a Web Server
+        
+        
+      </h3>
+    
+
+<p>For our last trick, we’re going to use Docker to run multiple Apache web servers inside containers.</p>
+
+<p>For simplicity, you will not have to write this <code class="language-plaintext highlighter-rouge">Dockerfile</code>. Go ahead and pull the <code class="language-plaintext highlighter-rouge">httpd</code> image from Docker Hub. Now, it’s your job to figure out how to run three instances of the Apache containers on your machine.</p>
+
+<p>Docker creates a separate network for containers, so you will need to forward your host port to your container’s port (this is called <a href="https://en.wikipedia.org/wiki/Port_forwarding">port forwarding</a>, or port mapping). The container is listening on port 80 by default. It is your job to run each instance on ports 4000, 4001, and 4002.  I recommend running the containers in detached mode with the <code class="language-plaintext highlighter-rouge">-d</code> flag. Detached mode will run a container in the background and print its new container ID. You can view running containers with <code class="language-plaintext highlighter-rouge">docker ps</code>.</p>
+
+<p>Hints:</p>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">-p</code> flag takes in a colon separated pair of <code class="language-plaintext highlighter-rouge">HOST_PORT:CONTAINER_PORT</code> (it can actually accept a ton of more options, but don’t worry about that for now).</li>
+  <li>You can see if you were successful by executing <code class="language-plaintext highlighter-rouge">curl localhost:4000</code> on your student VM. Check that you;’ve also done it correctly for ports <code class="language-plaintext highlighter-rouge">4001</code> and <code class="language-plaintext highlighter-rouge">4002</code>.</li>
+  <li>Refer to the Docker commands slide if you’re stuck!</li>
+</ul>
+      <h4 id="questions-2">
+        
+        
+          <a href="#questions-2" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Questions
+        
+        
+      </h4>
+    
+
+<ol>
+  <li>While your three containerized Apache web servers are running in detached mode, paste the output of <code class="language-plaintext highlighter-rouge">docker ps</code>.</li>
+  <li>Observe that in the output of <code class="language-plaintext highlighter-rouge">docker ps</code>, each container has an associated container ID. Explain why containers have IDs/Names rather than being named after the image, for example <code class="language-plaintext highlighter-rouge">httpd</code>.</li>
+  <li>Now go ahead and stop your containers. Paste the command you used to stop one of the containers.</li>
+</ol>
+
+<p>Congratulations! You’ve successfully Dockerized and ran a web server without affecting your setup on your machine :) There’s a lot more about Docker and containers to learn about, but I hope this was enough to wrap your head around the basic concepts and get some experience working with it.</p>
+
+<p>For further reading - <a href="https://docs.docker.com/">official documentation</a></p>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.janestreet.com" class="no-underline">
+        <img
+          src="/assets/images/jane-street.svg"
+          style="height: 50px"
+        />
+      </a>
+      <span>
+        Thanks to
+        <a href="https://www.janestreet.com">Jane Street</a> for supporting the DeCal.
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2024
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

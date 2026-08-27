@@ -1,0 +1,2596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hands-On Linux System Administration DeCal</title>
+  <meta name="description" content="The OCF/XCF Linux SysAdmin DeCal at UC Berkeley">
+  <meta property="og:image" content="/images/penguin-opengraph.png"/>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS (needed for navbar on mobile) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    <link href="assets/round-about.css" rel="stylesheet">
+
+  <link rel="canonical" href="https://decal.ocf.berkeley.edu/">
+</head>
+
+
+<body>
+  <!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Linux SysAdmin DeCal</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="https://docs.google.com/document/d/e/2PACX-1vQHjDreiiccsUkoC8orWd4EWds-lZ18zPK8ZYclyGatQMIlIVm2vxQ9VPSn36qXWyVsXcu5XDigfjuH/pub" target="_blank">Syllabus</a>
+        </li>
+        <li>
+          <a href="#calendar">Calendar</a>
+        </li>
+        <li>
+          <a href="#administrivia">Policies</a>
+        </li>
+        <li>
+          <a href="#staff">Staff</a>
+        </li>
+        <li>
+          <a href="archives.html">Archive</a>
+        </li>
+        <li>
+          <a href="mailto:decal@ocf.berkeley.edu">Contact</a>
+        </li>
+        <li>
+          <a href="https://www.ocf.berkeley.edu/">OCF</a>
+        </li>
+        <li>
+          <a href="https://xcf.berkeley.edu">XCF</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+
+<div class="container">
+  <h1 id="welcome-to-the-linux-system-administration-decal">Welcome to the Linux System Administration DeCal!</h1>
+
+<p>This course will cover the basics of setting up and administering a
+production-quality Linux server environment. By the end of this
+course, we expect you to:</p>
+
+<ul>
+  <li>be comfortable using GNU/Linux</li>
+  <li>understand how different parts of the OS work together, e.g. init,
+processes, daemons, filesystems, etc.</li>
+  <li>understand basic networking on Linux</li>
+  <li>have a good sense about maintaining system security</li>
+  <li>understand system administration essentials</li>
+  <li>get a practical taste of what sysadmins do in industry.</li>
+</ul>
+
+<p>The course will be taught in two sections: a “Beginner” section for
+students with minimal background in GNU/Linux or system
+administration, and an “Advanced” section for students with more
+experience.</p>
+
+<p>While we expect many students will have a CS background, <strong>the only
+real prerequisite is a desire to learn</strong> about new and unfamiliar
+technologies, which is a critical skill for sysadmins. The Beginner
+section has been designed to introduce new users to Linux, and the
+Advanced section has been designed to give more experienced users a
+taste of what Linux is capable of.</p>
+
+
+  <div class="segment">
+  <h2 id="calendar">Beginner Track Calendar</h2>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Date</th>
+      <th>Lecture Title</th>
+      <th>Lecturer</th>
+      <th>Lab</th>
+      <th>Lab Due Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+  <tr>
+    <td>0</td>
+    <td>Tue. 09/03</td>
+    
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1KEtI8ts1Y4xi0wjNWDGVedySMmG0bQhMdhx-d-39C8s/edit">
+            
+            Infosession
+            
+              </a>
+            
+          </td>
+          <td>
+        
+          </td>
+          <td>
+            
+              <a href="labs/0">
+                Lab 0
+              </a>
+            
+          </td>
+          <td>Sat. 09/07</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>0</td>
+    <td>Thu. 09/05</td>
+    
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1KEtI8ts1Y4xi0wjNWDGVedySMmG0bQhMdhx-d-39C8s/edit">
+            
+            Infosession
+            
+              </a>
+            
+          </td>
+          <td>
+        
+          </td>
+          <td>
+            
+              <a href="labs/0">
+                Lab 0
+              </a>
+            
+          </td>
+          <td>Sat. 09/07</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>1</td>
+    <td>Tue. 09/10</td>
+    
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://drive.google.com/open?id=1_W4k2PDTjHVvk75GVm9DsmnYnGxIzpnkpo5Y4e5Z070">
+            
+            History of UNIX, intro to shell, FOSS
+            
+              </a>
+            
+          </td>
+          <td>
+        Andy Lo &lt;andylo&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b1">
+                Lab b1
+              </a>
+            
+          </td>
+          <td>Tue. 09/17</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>2</td>
+    <td>Tue. 09/17</td>
+    
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1X0jkf3anhLgzCeL3UtsgPhRBPxUDtMuSKM4OyfgF3JQ/edit">
+            
+            Core Shell
+            
+              </a>
+            
+          </td>
+          <td>
+        Stefan Kuklinsky &lt;skuklinsky&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b2">
+                Lab b2
+              </a>
+            
+          </td>
+          <td>Tue. 09/24</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>3</td>
+    <td>Tue. 09/24</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/14ILw4JcumdrYoX6WiB1P-d9Ic9TY2hIdV2uzylIaYLA/edit?usp=sharing">
+            
+            Shell Scripting
+            
+              </a>
+            
+          </td>
+          <td>
+        Bernard Zhao &lt;bernardzhao&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b3">
+                Lab b3
+              </a>
+            
+          </td>
+          <td>Tue. 10/01</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>4</td>
+    <td>Tue. 10/01</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1Jm24WuIR5PGofaiTsJkeMVi7hbyoA8Crjx6XYO1IOZY/edit?usp=sharing">
+            
+            Compiling, Distros, and Packaging
+            
+              </a>
+            
+          </td>
+          <td>
+        Ethan Smith &lt;ethanhs&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b4">
+                Lab b4
+              </a>
+            
+          </td>
+          <td>Tue. 10/08</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>5</td>
+    <td>Tue. 10/08</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1FD5in89NlTtANV8KKxL8fsfo284ziHkcovwT9zQFM1Y/edit?usp=sharing">
+            
+            Networking 101
+            
+              </a>
+            
+          </td>
+          <td>
+        Tony Lian &lt;longlian&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b5">
+                Lab b5
+              </a>
+            
+          </td>
+          <td>Fri. 10/18</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>6</td>
+    <td>Tue. 10/15</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/10RWmMcyqNkU-nN946kMo4fZdcwQYsgkq3C9eeC4G6dc/edit?usp=sharing">
+            
+            Processes
+            
+              </a>
+            
+          </td>
+          <td>
+        Rachel Gregory &lt;regex&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b6">
+                Lab b6
+              </a>
+            
+          </td>
+          <td>Tue. 10/22</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>7</td>
+    <td>Tue. 10/29</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1Isn9pMZBLnpZ_IFbGpbeai-AZ1l4cAa7Z6eL5wPtCXY/edit">
+            
+            Services
+            
+              </a>
+            
+          </td>
+          <td>
+        Ryan Chan &lt;rrchan&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b7">
+                Lab b7
+              </a>
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>8</td>
+    <td>Tue. 10/29</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://drive.google.com/open?id=1t6fU6qPELZvBo7N_KZLDiLDsS2DJPcgySIXZjIVfKho">
+            
+            Security Fundamentals
+            
+              </a>
+            
+          </td>
+          <td>
+        Ning Zhang &lt;zhangning&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b8">
+                Lab b8
+              </a>
+            
+          </td>
+          <td>Tue. 11/05</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>9</td>
+    <td>Tue. 11/05</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1NxdvuLkWSzRvtnj41AkvGU00ub_XUbk8wlIxWxm0ok4/edit">
+            
+            Version Control and Backups
+            
+              </a>
+            
+          </td>
+          <td>
+        Liam Porr &lt;wporr&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b9">
+                Lab b9
+              </a>
+            
+          </td>
+          <td>Tue. 11/12</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>10</td>
+    <td>Tue. 11/12</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1y2BRjD36e31Cc3y1NmmznK3F5sa0VtkE9qJE1AAAKtk/edit">
+            
+            Cloud, Containers, and Config Management
+            
+              </a>
+            
+          </td>
+          <td>
+        Ja (Thanakul) Wattanawong &lt;jaw&gt;
+          </td>
+          <td>
+            
+              <a href="labs/b10">
+                Lab b10
+              </a>
+            
+          </td>
+          <td>Tue. 11/19</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>12</td>
+    <td>Tue. 12/03</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+            Optional Guest Lecture: Careers in Tech
+            
+          </td>
+          <td>
+        Ethan Jackson
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+    
+  </tr>
+  
+  </tbody>
+</table>
+
+</div>
+
+<div class="segment">
+  <h2>Advanced Track Calendar</h2>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Date</th>
+      <th>Lecture Title</th>
+      <th>Lecturer</th>
+      <th>Lab</th>
+      <th>Lab Due Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+  <tr>
+    <td>0</td>
+    <td>Tue. 09/03</td>
+    
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1KEtI8ts1Y4xi0wjNWDGVedySMmG0bQhMdhx-d-39C8s/edit">
+            
+            Infosession
+            
+              </a>
+            
+          </td>
+          <td>
+        
+          </td>
+          <td>
+            
+              <a href="labs/0">
+                Lab 0
+              </a>
+            
+          </td>
+          <td>Sat. 09/07</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>0</td>
+    <td>Thu. 09/05</td>
+    
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1KEtI8ts1Y4xi0wjNWDGVedySMmG0bQhMdhx-d-39C8s/edit">
+            
+            Infosession
+            
+              </a>
+            
+          </td>
+          <td>
+        
+          </td>
+          <td>
+            
+              <a href="labs/0">
+                Lab 0
+              </a>
+            
+          </td>
+          <td>Sat. 09/07</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>1</td>
+    <td>Thu. 09/12</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1gRpdHjNyYE8SvV-Hs4-L8Pl6JPYkaits0vi47h0WMaA/edit">
+            
+            Advanced Introduction to UNIX
+            
+              </a>
+            
+          </td>
+          <td>
+        Mathew Cha &lt;mdcha&gt;
+          </td>
+          <td>
+            
+              <a href="labs/a1">
+                Lab a1
+              </a>
+            
+          </td>
+          <td>Thu. 09/19</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>2</td>
+    <td>Thu. 09/19</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://drive.google.com/open?id=158rSvIgQo9HxFp10Ms3Nh2c5yPN4Xchcqkofv_yjC8U">
+            
+            Packages
+            
+              </a>
+            
+          </td>
+          <td>
+        Mathew Cha &lt;mdcha&gt;
+          </td>
+          <td>
+            
+              <a href="labs/a2">
+                Lab a2
+              </a>
+            
+          </td>
+          <td>Mon. 09/30</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>3</td>
+    <td>Thu. 09/26</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1WfiYmAOZR4jtakRm2rZZgwhFu1Fy5oBSowLXSbTHkVw/edit">
+            
+            DIY Linux Pre-Install
+            
+              </a>
+            
+          </td>
+          <td>
+        Christopher Cooper &lt;cooperc&gt;
+          </td>
+          <td>
+            
+              <a href="labs/a3">
+                Lab a3
+              </a>
+            
+          </td>
+          <td>Thu. 10/03</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>4</td>
+    <td>Thu. 10/03</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1WXvw3ritRgR5fhKOug-VN_IG-SnXu2zC4vA70lvRmiw/edit">
+            
+            Linux Post-Install
+            
+              </a>
+            
+          </td>
+          <td>
+        Ethan Smith &lt;ethanhs&gt;
+          </td>
+          <td>
+            
+              <a href="labs/a4">
+                Lab a4
+              </a>
+            
+          </td>
+          <td>Thu. 10/17</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>5</td>
+    <td>Thu. 10/10</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+            Lecture Cancelled for Power Outage
+            
+          </td>
+          <td>
+        
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>6</td>
+    <td>Thu. 10/17</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1-GFD25uA6Pkr575UGk55QAkOxmYycfvtkYu4cgthCGg/edit?usp=sharing">
+            
+            Processes and Services
+            
+              </a>
+            
+          </td>
+          <td>
+        keur
+          </td>
+          <td>
+            
+              <a href="labs/a6">
+                Lab a6
+              </a>
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>7</td>
+    <td>Thu. 10/24</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+            Guest Lecture: Developing at Scale
+            
+          </td>
+          <td>
+        ldw
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>8</td>
+    <td>Thu. 10/31</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1e1GrMlF8mUw8mqf8Sfs7Ec6wgnGsNEYvgRxL5KHshVo/edit">
+            
+            Networking 102
+            
+              </a>
+            
+          </td>
+          <td>
+        abizer
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>9</td>
+    <td>Thu. 11/07</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1Yg2rZuZLAwmgR_eq7E3rVumWl-7EhNa9seZ_UbSi4Zw/edit">
+            
+            Networked Services
+            
+              </a>
+            
+          </td>
+          <td>
+        jvperrin
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>10</td>
+    <td>Thu. 11/14</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1OfIJHu6bSfTOLLswpKnVr7oxL8R-H4aPM8LLRHuecCY/edit">
+            
+            Config Management
+            
+              </a>
+            
+          </td>
+          <td>
+        Frank Dai &lt;fydai&gt;
+          </td>
+          <td>
+            
+              <a href="labs/a10">
+                Lab a10
+              </a>
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>11</td>
+    <td>Thu. 11/21</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1ExmZpm-nSkuFM-FTB6ZT3oP8frAh7g4jSIUiTQ1ddSM/edit?usp=sharing">
+            
+            Advanced Security
+            
+              </a>
+            
+          </td>
+          <td>
+        Mathew Cha &lt;mdcha&gt;
+          </td>
+          <td>
+            
+              <a href="labs/a11">
+                Lab a11
+              </a>
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>12</td>
+    <td>Tue. 12/03</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+            Optional Guest Lecture: Careers in Tech
+            
+          </td>
+          <td>
+        Ethan Jackson
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>12</td>
+    <td>Thu. 12/05</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://docs.google.com/presentation/d/1iqdy4u2NKD05o0Jrcioy8ngGaVuke63e8QOReszEGbE/edit#slide=id.p">
+            
+            Virtualization, Containers, Distributed Architecture
+            
+              </a>
+            
+          </td>
+          <td>
+        Brian Sang &lt;baisang&gt;
+          </td>
+          <td>
+            
+              <a href="labs/a12">
+                Lab a12
+              </a>
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+    
+  </tr>
+  
+  </tbody>
+</table>
+
+</div>
+
+
+  <h2 id="administrivia">Administrivia</h2>
+
+<h3 id="enrollment">Enrollment</h3>
+<p>This is a <strong>2 unit DeCal</strong>. Since it is a DeCal, the course is P/NP. You must
+attend an infosession and complete Lab 0 to apply. If you are selected for the
+course, we will send you a course enrollment code by September 9.</p>
+
+<h3 id="lecture">Lecture</h3>
+<p>Lectures are scheduled for <strong>Tuesdays</strong> for the Beginner section and
+<strong>Thursdays</strong> for the Advanced section, from <strong>8 to 9pm</strong> the OCF Lab, located
+at <strong>171 MLK</strong> (MLK basement down the hall from the student store). <strong>Attendance
+is mandatory, with two allowed unexcused absences.</strong> Some other conflicts, such
+as exams, may be excused if you provide prior notice. Please only come to the
+lab on the day corresponding to the section you are in.</p>
+
+<p><strong>Lecture will double as office hours</strong> for students to come in and ask
+questions about the lab work. The one-hour “lecture” slot will include some
+lecturing but will also include time to to work on the lab assignment with the
+help of present facilitators. Note that we only have 30 computers in the lab,
+but 40 people are enrolled in each course, so <strong>please bring a laptop</strong> if you
+can.</p>
+
+<h3 id="labs">Labs</h3>
+<p>The primary assignment in this course will be <strong>weekly lab work</strong>.
+Labs are designed to be be significantly hands-on. You will be working on
+real systems, configuring, and fixing things, setting up services, and so on.</p>
+
+<p>Each lecture corresponds with a lab, labeled by a “b” or “a” (for Beginner or
+Advanced) and the week number. Except for b1 and a1, labs will general be
+released about a week ahead of the corresponding lecture. You are <em>highly
+encouraged</em> to look over the lab, and try to start it, <em>before</em> coming to
+lecture each week. This will allow you to better utilize the help of the
+facilitators, and will help you understand the lecture in a concrete way.</p>
+
+<p>Each lab will be due <strong>before the following lecture</strong>. For example, lab a1 will
+be released about a week before lecture a1. Lecture a1 will be on Sept 13. Then
+lab a1 will be due before lecture a2 (that is, Sept 20 at 8pm). Please stay on
+top of lab work! If extenuating circumstances prevent you from completing your
+lab on time, please let us know as soon as possible and we will try to be
+accommodating. We expect that you turn in all labs on time, but allow <strong>two
+unexcused late labs</strong> to be turned in before the semester ends.</p>
+
+
+  <!-- Team Members Row -->
+<div class="row" id='staff'>
+  <div class="col-lg-12">
+    <h2>Course Staff</h2>
+  </div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/skuklinsky.jpg"
+        alt="Picture of Stefan Kuklinsky"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Stefan Kuklinsky
+	<small>Head Facilitator</small>
+      </h3>
+      <p>sophomore studying computer science</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/cooperc.jpg"
+        alt="Picture of Christopher Cooper"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Christopher Cooper
+	<small>Head Facilitator</small>
+      </h3>
+      <p>sentient table learning to tame computers</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/bernardzhao.jpg"
+        alt="Picture of Bernard Zhao"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Bernard Zhao
+	<small>Head Facilitator</small>
+      </h3>
+      <p>They tryna be cray</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/andy.jpg"
+        alt="Picture of Andy Lo"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Andy Lo
+	<small>Facilitator</small>
+      </h3>
+      <p>reincarnation of wittl here to bring balance to the universe</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/tony.jpg"
+        alt="Picture of Tony Lian"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Tony Lian
+	<small>Facilitator</small>
+      </h3>
+      <p>This person has existed and hopefully is existing in the world.</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/fydai.jpg"
+        alt="Picture of Frank Dai"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Frank Dai
+	<small>Facilitator</small>
+      </h3>
+      <p>I'm the one who wears the 12-year old penguin costume</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/jaw.jpg"
+        alt="Picture of Ja (Thanakul) Wattanawong"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Ja (Thanakul) Wattanawong
+	<small>Facilitator</small>
+      </h3>
+      <p>ah, yes. enslaved silicon</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/aditya.jpg"
+        alt="Picture of Aditya Srivastava"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Aditya Srivastava
+	<small>Facilitator</small>
+      </h3>
+      <p>the sleeper must awaken</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/keur.jpg"
+        alt="Picture of Kevin Kuehler"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Kevin Kuehler
+	<small>Secret Agent</small>
+      </h3>
+      <p>i use arch btw</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/zhangning.jpg"
+        alt="Picture of Ning Zhang"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Ning Zhang
+	<small>Facilitator</small>
+      </h3>
+      <p>A very average person</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/ethanhs.jpg"
+        alt="Picture of Ethan Smith"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Ethan Smith
+	<small>Facilitator</small>
+      </h3>
+      <p>Doer of things</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/regex.jpg"
+        alt="Picture of Rachel Gregory"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Rachel Gregory
+	<small>Facilitator</small>
+      </h3>
+      <p>i dont do much but im here anyways</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/wporr.jpg"
+        alt="Picture of Liam Porr"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Liam Porr
+	<small>Facilitator</small>
+      </h3>
+      <p>None of these things are comprehensible to you</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/gleeb.jpg"
+        alt="Picture of George Lee"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>George Lee
+	<small>Facilitator</small>
+      </h3>
+      <p>The inner machinations of my mind are an enigma</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/mdcha.jpg"
+        alt="Picture of Mathew Cha"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Mathew Cha
+	<small>Guest Lecturer</small>
+      </h3>
+      <p>Resident OCF weirdo.</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    
+  
+</div>
+
+</div>
+
+
+  <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com">
+        <img src="/images/digitalocean.png" style="height: 34px; width: 200px;" /></a>
+      &nbsp;&nbsp;With great appreciation to
+      <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring the
+      VMs used in both tracks of the DeCal
+    </p>
+
+    <p>
+      <a href="https://www.ocf.berkeley.edu">
+        <img src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+             alt="Hosted by the OCF" style="border: 0;" /></a>
+      Copyright &copy; 2017-2019
+      <a href="https://www.ocf.berkeley.edu">
+        Open Computing Facility
+      </a>
+      and
+      <a href="https://xcf.berkeley.edu">
+        eXperimental Computing Facility
+      </a>
+    </p>
+    <p>
+      This website is licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/">
+        Source Code
+      </a>
+      available on GitHub
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+
+</body>
+
+</html>

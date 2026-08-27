@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.8.0/github-markdown.min.css">
+
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+
+<title>Lab 9 - Version Control and Backups - Hands-On Linux System Administration DeCal</title>
+
+<article class="markdown-body">
+  <h1>Lab 9 - Version Control and Backups</h1>
+  <h2 id="git-irl">Git IRL</h2>
+
+<h3 id="fixing-mistakes">Fixing mistakes</h3>
+<p>If you ever feel like you need to start over, you can run these commands:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout master
+git reset --hard b9_start
+</code></pre></div></div>
+<p>And if you created the branch <code class="highlighter-rouge">my_branch</code>, delete it with</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch -D my_branch
+</code></pre></div></div>
+
+<h3 id="pulling-the-code">Pulling the code</h3>
+<p>To clone the decal-lab git repository, run:
+<code class="highlighter-rouge">git clone https://github.com/0xcf/decal-labs.git</code></p>
+
+<p>If you have already cloned the repository, go to your <code class="highlighter-rouge">decal-labs</code> directory
+and run <code class="highlighter-rouge">git pull</code> to pull the latest changes. The materials for this part of
+the lab will be in the <code class="highlighter-rouge">b9</code> directory.</p>
+
+<p>Also if you dont have <code class="highlighter-rouge">make</code> installed, run the following command:
+<code class="highlighter-rouge">sudo apt install make</code></p>
+
+<h3 id="making-changes">Making changes</h3>
+<p>When making modifications to a repository, the best practice is to create a new
+branch for your changes. To do this, run <code class="highlighter-rouge">git checkout -b my_branch</code>. This
+command will create a new branch and switch to it.</p>
+
+<p>Now we will make a modification to some_code.c and commit it. Change line 4 to
+<code class="highlighter-rouge">char *x = "Correct output";</code> and save. Now run</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+./some_code
+</code></pre></div></div>
+<p>This should output <code class="highlighter-rouge">Correct output</code> on the console. Now stage your changes and
+make a new commit with a message saying “Added Correct output”
+(hint: <a href="https://docs.google.com/presentation/d/1NxdvuLkWSzRvtnj41AkvGU00ub_XUbk8wlIxWxm0ok4/edit#slide=id.g707efdc427_0_0">lecture slide 6</a>).</p>
+
+<p>Now we’re going to add another feature to some_code.c. Under the comment on
+line 7, add the following code:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>char* feature = "Here's my new feature!";
+puts(feature);
+</code></pre></div></div>
+<p>Now again run</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+./some_code
+</code></pre></div></div>
+<p>And check that the output is “Correct output” followed by “Heres my new
+feature!”. Now stage and commit these changes with the message “Added my new
+feature”.</p>
+
+<h3 id="simulating-change-over-time">Simulating change over time</h3>
+<p>Typically while you work on a branch, people will add modifications to the main
+codebase, such as bugfixes. Lets simulate what this would look like.</p>
+
+<p>First, checkout the master branch with <code class="highlighter-rouge">git checkout master</code>. Next, in
+some_code.c, change line 4 to <code class="highlighter-rouge">char *x = "Changed output";</code>.
+Save this and run</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+./some_code
+</code></pre></div></div>
+<p>Which should output “Changed output”. Now stage and commit these
+changes with the message “Added changed output”.</p>
+
+<h3 id="including-your-changes">Including your changes</h3>
+<p>Typically we create a new branch so we can add a logically associated set
+of features to the codebase. Now that we’ve completed and tested this set
+of features, we want to include our changes into the main repository.
+Typically there are two methods of doing this, merging and rebasing. Some
+people (including the OCF) prefer rebasing because it results in an easier
+to read commit history, so that’s what we’ll do.</p>
+
+<p>We will be rebasing our changes on top of the master branch. First, switch back
+to your testing branch with <code class="highlighter-rouge">git checkout my_branch</code>. Now run <code class="highlighter-rouge">git rebase
+master</code> to begin the rebase. You’ll notice that there seems to be a merge
+conflict, we’ll have to resolve this before we can complete the rebase.</p>
+
+<p>Whenever we attempt to join the history of different branches either
+through merging or rebasing, we can run into merge conflicts. These need
+to be resolved by manual intervention.</p>
+
+<p>The conflicted zone in a file follows the following format:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Line in the base tree
+=======
+Same line in your file that you're joining with base
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; my_branch
+</code></pre></div></div>
+
+<p>To fix the conflict, you must remove all lines in the conflicting zone except
+the line you would like to keep.</p>
+
+<p>Modify some_code.c to fix the merge conflict. We want to keep the line that
+says “Correct output”. Once this is done, save and run
+<code class="highlighter-rouge">git add some_code.c</code> to resolve the merge conflict. Refer to the reference
+section below for an explanation on resolving merge conflicts.</p>
+
+<p>Now that the merge conflict is fixed, we can continue the rebase by running
+<code class="highlighter-rouge">git rebase --continue</code>. Now the rebase should be complete. Confirm by running
+<code class="highlighter-rouge">git log</code>. This should print out something like</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit 10e9bc0edefbf280f2dbcd100d1479f3d8773d6c (HEAD -&gt; test)
+Author: William Porr &lt;wporr@nvidia.com&gt;
+Date:   Mon Oct 28 18:57:12 2019 -0700
+
+    Added my new feature
+
+commit cbe253d523c12f05595b8d84d7195cb728718967
+Author: William Porr &lt;wporr@nvidia.com&gt;
+Date:   Mon Oct 28 18:55:51 2019 -0700
+
+    Added correct output
+
+commit 6e14391676dc6213cc6f4e186dcb88f3edf84994 (master)
+Author: William Porr &lt;wporr@nvidia.com&gt;
+Date:   Mon Oct 28 18:58:00 2019 -0700
+
+    Added changed output
+
+commit b9a2169e7d53d7a30ae933e09aeb8e8245117c0c
+Author: William Porr &lt;wporr@nvidia.com&gt;
+Date:   Mon Oct 28 18:43:21 2019 -0700
+
+    Added b9 code
+</code></pre></div></div>
+
+<p>Now that our branch has a clean history, we can merge it with the master branch.
+This is where you would normally submit a pull request on github or some other
+shared git interface, but we’re just going to merge the branch ourselves.
+Switch to the master branch with <code class="highlighter-rouge">git checkout master</code> and run <code class="highlighter-rouge">git merge
+my_branch</code> to merge your branch into master.</p>
+
+<h3 id="cleaning-up">Cleaning up</h3>
+<p>Now that your change is rebased, you can delete your branch with <code class="highlighter-rouge">git
+branch -D my_branch</code></p>
+
+<h2 id="questions">Questions</h2>
+
+<ol>
+  <li>
+    <p>What caused the merge conflict in the git exercises you did?</p>
+  </li>
+  <li>
+    <p>Why does git require us to manually intervene in merge conflicts?</p>
+  </li>
+  <li>
+    <p>What command would you use to sync a folder ~/Downloads/Linux_ISOs to the folder /usr/local/share/Calendar, while preserving file metadata? (hint: use rsync)</p>
+  </li>
+  <li>
+    <p>How does rsync determine when to look for changes between files? Select from the following:</p>
+
+    <p>A. By calculating the checksum of each file and comparing them.</p>
+
+    <p>B. By comparing the entire contents of each file for any differences.</p>
+
+    <p>C. By seeing if the ‘last modified’ timestamp of the files are different.</p>
+
+    <p>D. By seeing if the ‘created’ timestamp of the files are different.</p>
+
+    <p>E. By seeing if the permissions of the files are different.</p>
+  </li>
+  <li>
+    <p>Consider a file str1 containing the string ‘abcd’. You rsync it to another file str2, and then replace ‘abcd’ with ‘aaaa’ on str1. If you run ‘rsync –append str1 str2’, what will the contents of str2 be?</p>
+  </li>
+</ol>
+
+
+  <br>
+<footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com">
+        <img src="/images/digitalocean.png" style="height: 34px; width: 200px;" /></a>
+      &nbsp;&nbsp;With great appreciation to
+      <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring the
+      VMs used in both tracks of the DeCal
+    </p>
+
+    <p>
+      <a href="https://www.ocf.berkeley.edu">
+        <img src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+             alt="Hosted by the OCF" style="border: 0;" /></a>
+      Copyright &copy; 2017-2019
+      <a href="https://www.ocf.berkeley.edu">
+        Open Computing Facility
+      </a>
+      and
+      <a href="https://xcf.berkeley.edu">
+        eXperimental Computing Facility
+      </a>
+    </p>
+    <p>
+      This website is licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/">
+        Source Code
+      </a>
+      available on GitHub
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+</article>
+

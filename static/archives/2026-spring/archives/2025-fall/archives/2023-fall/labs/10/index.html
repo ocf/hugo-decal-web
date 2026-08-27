@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 10 - Kubernetes | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Lab 10 - Kubernetes" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/archives/2023-fall/labs/10/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/archives/2023-fall/labs/10/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 10 - Kubernetes" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Lab 10 - Kubernetes","url":"https://decal.ocf.berkeley.edu/archives/2023-fall/labs/10/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#overview">Overview</a></li><li><a href="#basic-concepts">Basic Concepts</a></li><li><a href="#resources">Resources</a></li><li><a href="#getting-started-with-minikube">Getting started with Minikube</a><ol><li><a href="#installation-notes">Installation notes</a></li><li><a href="#confirm-successful-install">Confirm successful install</a></li></ol></li><li><a href="#creating-your-first-deployment">Creating your first deployment</a></li><li><a href="#helm">Helm</a><ol><li><a href="#extending-helm-deployments">Extending Helm deployments</a></li></ol></li><li><a href="#choose-your-own-adventure">Choose your own adventure</a><ol><li><a href="#questions">Questions</a></li></ol></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Lab 10 - Kubernetes</h1>
+        
+        <p>Facilitator: <a href="/staff#njha,-bencuan">njha, bencuan</a></p>
+        
+        
+        7 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#basic-concepts" id="markdown-toc-basic-concepts">Basic Concepts</a></li>
+  <li><a href="#resources" id="markdown-toc-resources">Resources</a></li>
+  <li><a href="#getting-started-with-minikube" id="markdown-toc-getting-started-with-minikube">Getting started with Minikube</a>    <ol>
+      <li><a href="#installation-notes" id="markdown-toc-installation-notes">Installation notes</a></li>
+      <li><a href="#confirm-successful-install" id="markdown-toc-confirm-successful-install">Confirm successful install</a></li>
+    </ol>
+  </li>
+  <li><a href="#creating-your-first-deployment" id="markdown-toc-creating-your-first-deployment">Creating your first deployment</a></li>
+  <li><a href="#helm" id="markdown-toc-helm">Helm</a>    <ol>
+      <li><a href="#extending-helm-deployments" id="markdown-toc-extending-helm-deployments">Extending Helm deployments</a></li>
+    </ol>
+  </li>
+  <li><a href="#choose-your-own-adventure" id="markdown-toc-choose-your-own-adventure">Choose your own adventure</a>    <ol>
+      <li><a href="#questions" id="markdown-toc-questions">Questions</a></li>
+    </ol>
+  </li>
+</ol><hr />
+      <h2 id="overview">
+        
+        
+          <a href="#overview" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+        
+        
+      </h2>
+    
+<p>This lab is designed to give you some hands-on experience with Kubernetes. By the end of this lab, you should be able to:</p>
+
+<ul>
+  <li>Understand the basic components of a Kubernetes deployment, including pods, services, and ingresses</li>
+  <li>Run your own simple Kubernetes deployment</li>
+</ul>
+
+<p>Keep track of your answers to the questions, as you’ll need to submit them to Gradescope.</p>
+      <h2 id="basic-concepts">
+        
+        
+          <a href="#basic-concepts" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic Concepts
+        
+        
+      </h2>
+    
+<p>For your own future reference, answer the following conceptual questions on Gradescope:</p>
+
+<p><strong>Question 1a.</strong> In your own words, describe what Kubernetes is, and why it is useful (i.e. what problems it solves).</p>
+
+<p><strong>Question 1b.</strong> What are some similarities and differences between Kubernetes and Docker?</p>
+      <h2 id="resources">
+        
+        
+          <a href="#resources" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Resources
+        
+        
+      </h2>
+    
+
+<p>In addition to the standard “just Google it” procedure, you can find answers to your many Kubernetes-related questions in the following resources:</p>
+
+<ul>
+  <li><a href="https://kubernetes.io/docs/home/">Kubernetes documentation</a></li>
+  <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Kubernetes deployments</a></li>
+  <li><a href="https://nikhiljha.com/posts/kubernetes-intro/">njha’s kubernetes intro</a></li>
+  <li><a href="https://github.com/ocf/kubernetes">Actual OCF kubernetes deployment</a></li>
+  <li><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/">kubectl cheatsheet</a></li>
+</ul>
+      <h2 id="getting-started-with-minikube">
+        
+        
+          <a href="#getting-started-with-minikube" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Getting started with Minikube
+        
+        
+      </h2>
+    
+
+<p>Minikube is a user-friendly way to run a single-node Kubernetes cluster locally on your computer. Other popular Kubernetes distributions include <a href="https://k3s.io">k3s</a> and <a href="https://microk8s.io/">microk8s</a>, which are more feature-rich but more involved to set up compared to Minikube.</p>
+
+<p>To begin, you can follow <a href="https://minikube.sigs.k8s.io/docs/start/">the official getting started guide</a> for installation instructions. <strong>You should install this on your local computer, rather than your Linux VM!</strong></p>
+      <h3 id="installation-notes">
+        
+        
+          <a href="#installation-notes" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Installation notes
+        
+        
+      </h3>
+    
+
+<ul>
+  <li>Installing Kubernetes can take a decent chunk of disk space. Make sure you have at least 20GB to spare!</li>
+  <li>If you get errors starting your cluster, you might need to <a href="https://minikube.sigs.k8s.io/docs/drivers/">install a custom driver</a>. The Docker driver seems to work well for most use cases where the default driver is broken. (Remember to run <code class="language-plaintext highlighter-rouge">sudo usermod -aG docker $USER &amp;&amp; newgrp docker</code> if you use the Docker driver on Linux.)</li>
+  <li>If the <code class="language-plaintext highlighter-rouge">kubectl</code> command is not found, you can use <code class="language-plaintext highlighter-rouge">minikube kubectl --</code> instead. For example, to view the config, you could run <code class="language-plaintext highlighter-rouge">minikube kubectl -- config view</code>. You can run <code class="language-plaintext highlighter-rouge">alias kubectl='minikube kubectl --'</code> if you get tired of typing this out every time.</li>
+</ul>
+      <h3 id="confirm-successful-install">
+        
+        
+          <a href="#confirm-successful-install" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Confirm successful install
+        
+        
+      </h3>
+    
+
+<p><strong>Question 2a.</strong> What command can you run to get all pods in all namespaces?</p>
+
+<p><strong>Question 2b.</strong> What is the output of that command? (<em>hint:</em> “No resources found in default namespace.” is an <em>incorrect</em> answer- there should be something running if your install was successful)</p>
+      <h2 id="creating-your-first-deployment">
+        
+        
+          <a href="#creating-your-first-deployment" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Creating your first deployment
+        
+        
+      </h2>
+    
+
+<p>For this first part, we’ll walk through how to set up a simple deployment of <a href="https://github.com/storax/kubedoom">kubedoom</a> using your new cluster.</p>
+
+<p>First, you’ll want to fetch the source code: <code class="language-plaintext highlighter-rouge">git clone https://github.com/storax/kubedoom</code>.</p>
+
+<p>Next, run <code class="language-plaintext highlighter-rouge">kubectl apply -k manifest/</code>.</p>
+
+<p>Once this completes, you should have one new deployment (<code class="language-plaintext highlighter-rouge">kubectl get deployments -A</code>) and one new pod (<code class="language-plaintext highlighter-rouge">kubectl get pods -A</code>). It may take a couple minutes for the pod to show as “ready”.</p>
+
+<p>However, you still won’t be able to access this pod from the outside world! In order to do so, we’ll need to create a service and expose it:</p>
+<ol>
+  <li>Run <code class="language-plaintext highlighter-rouge">kubectl expose deployment kubedoom -n kubedoom --type=NodePort --port=5900</code>. This will take the deployment we just made in the namespace <code class="language-plaintext highlighter-rouge">kubedoom</code>, and map it to a new service.</li>
+  <li>If you now run <code class="language-plaintext highlighter-rouge">kubectl get svc -A</code>, you should see a new service of type NodePort listed.</li>
+  <li>Create a service tunnel using <code class="language-plaintext highlighter-rouge">minikube service kubedoom -n kubedoom --url</code>. This should print out an IP address into the console. Note that this address is only resolvable from your local computer.</li>
+  <li>Try pinging this IP address to make sure you can access it!</li>
+</ol>
+
+<p>Further documentation on the process above can be found <a href="https://minikube.sigs.k8s.io/docs/handbook/accessing/">here</a>.</p>
+
+<p>Finally, let’s access our kubedoom instance. The pod is actually running a GUI application, which can be accessed using <a href="https://en.wikipedia.org/wiki/Virtual_Network_Computing">VNC</a>. You can download your VNC viewer of choice (some popular choices include TigerVNC, TightVNC, and RealVNC), and paste in the IP address from above into your viewer. If all goes well, you should see a window that looks like this!</p>
+
+<p><img src="https://github.com/storax/kubedoom/raw/master/assets/doom.jpg" alt="kubedoom" /></p>
+
+<p><strong>Question 3a.</strong> Upload a screenshot of your working Kubedoom instance. If you were unable to get it to work, describe your debugging journey instead, and where you got stuck.</p>
+      <h2 id="helm">
+        
+        
+          <a href="#helm" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Helm
+        
+        
+      </h2>
+    
+
+<p>Since many people have probably needed to deploy the same services that you’re hoping to deploy, chances are you’ll be able to find all the configurations you need online already! <a href="https://helm.sh/">Helm</a> is a package manager for Kubernetes, which makes it easy to find and manage these configs. Similarly to a package manager like <code class="language-plaintext highlighter-rouge">apt</code> for Linux, Helm will automatically download and install whatever you want it to with a few commands.</p>
+
+<p>You can install Helm using <a href="https://helm.sh/docs/intro/install/">this guide</a>.</p>
+
+<p>Once you’ve got it installed, let’s create a basic <a href="https://github.com/Huseyinnurbaki/mocktail">mocktail</a> deployment by following the instructions in the README. Specifically, <code class="language-plaintext highlighter-rouge">helm repo add</code> and <code class="language-plaintext highlighter-rouge">helm install</code> will be useful.</p>
+      <h3 id="extending-helm-deployments">
+        
+        
+          <a href="#extending-helm-deployments" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Extending Helm deployments
+        
+        
+      </h3>
+    
+
+<p>Although taking the default deployment from Helm will be enough in some cases, we might also want to change up the configuration. Fortunately, Helm lets us do this!</p>
+
+<p><strong>Your task:</strong> Figure out a way to modify Mocktail such that:</p>
+<ul>
+  <li>It runs on its own namespace <code class="language-plaintext highlighter-rouge">mocktail-space</code>,</li>
+  <li>Its name is changed to <code class="language-plaintext highlighter-rouge">ocf-mocktail</code>,</li>
+  <li>There are a minimum of 3 Mocktail pods running at any time.</li>
+</ul>
+
+<p><strong>Hints:</strong></p>
+<ol>
+  <li>Use the <a href="https://github.com/Huseyinnurbaki/charts/blob/release/hhaluk/mocktail/values.yaml">default</a> <code class="language-plaintext highlighter-rouge">values.yaml</code> file provided by the Mocktail chart maintainers for reference.</li>
+  <li>Here’s <a href="https://helm.sh/docs/chart_template_guide/values_files/">some documentation</a> on values files:</li>
+  <li>Best practices dictate that you should not specify a custom namespace in the values file. Can you modify the commands you run to get around this?</li>
+  <li>You can specify the <code class="language-plaintext highlighter-rouge">--dry-run</code> flag to debug without actually committing any changes.</li>
+  <li>You may have to create a <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/">horizontal pod autoscaler</a>.</li>
+</ol>
+
+<p><strong>Question 4a.</strong> If applicable, paste the <code class="language-plaintext highlighter-rouge">values.yaml</code> file you created.</p>
+
+<p><strong>Question 4b.</strong> Paste the command(s) you ran to create your Helm deployment.</p>
+
+<p><strong>Question 4c.</strong> Paste the output of <code class="language-plaintext highlighter-rouge">kubectl get deployments -A</code> showing that your custom namespace appears.</p>
+
+<p><strong>Question 4d.</strong> Paste the output of <code class="language-plaintext highlighter-rouge">kubectl get pods -A</code> showing that you have 3 <code class="language-plaintext highlighter-rouge">ocf-mocktail</code> pods running.</p>
+      <h2 id="choose-your-own-adventure">
+        
+        
+          <a href="#choose-your-own-adventure" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Choose your own adventure
+        
+        
+      </h2>
+    
+
+<p>At this point, you should hopefully have an idea of how to create deployments and modify them to suit your needs!</p>
+
+<p>Now, we will provide the opportunity for you to find your own deployment(s) to create- you’re welcome to try whatever you find interesting.</p>
+
+<p><strong>Requirements:</strong> You should host a service on your Minikube cluster that is externally accessible on your computer through some means (whether that be a GUI like kubedoom, web client like mocktail, or CLI). Document the process you took to install and expose this service.</p>
+
+<p>Some suggestions include but are not limited to:</p>
+<ul>
+  <li>Run your own blog using <a href="https://artifacthub.io/packages/helm/bitnami/ghost">Ghost</a></li>
+  <li>Run your own wiki using <a href="https://artifacthub.io/packages/helm/outline/outline">Outline</a></li>
+  <li>Run a <a href="https://github.com/solarhess/kubernetes-minecraft-server">Minecraft server</a></li>
+  <li>Run <a href="https://github.com/lucky-sideburn/kubeinvaders">kubeinvaders</a> to stress-test your cluster</li>
+</ul>
+      <h3 id="questions">
+        
+        
+          <a href="#questions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Questions
+        
+        
+      </h3>
+    
+
+<p><strong>Question 5a.</strong> What did you choose to install?</p>
+
+<p><strong>Question 5b.</strong> Upload a screenshot of your working installation, or describe how/why you got stuck while trying to install it.</p>
+
+<p><strong>Question 5c.</strong> Document any steps you took and commands you ran to create this deployment.</p>
+
+<p><strong>Question 5d.</strong> What is one new thing you learned about Kubernetes, Linux, or system administration while creating this deployment?</p>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.nvidia.com/en-us/" class="no-underline">
+        <img
+          src="/assets/images/nvidia.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Thanks to
+        <a href="https://www.nvidia.com">Nvidia</a> for sponsoring GPUs to the OCF.
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2022
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

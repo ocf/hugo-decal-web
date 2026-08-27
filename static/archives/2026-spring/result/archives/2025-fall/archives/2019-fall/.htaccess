@@ -1,0 +1,162 @@
+RewriteEngine On
+
+RedirectMatch 404 /\.git
+
+# Redirect signups to the google form
+RewriteRule ^gdrive$ https://drive.google.com/drive/folders/1RJk3uFtdeT3ZF2ZfwyeFPIbeZBMp3oPg [R=302,L]
+RewriteRule ^piazza$ https://piazza.com/berkeley/fall2019/cs198008 [R=302,L]
+RewriteRule ^syllabus(\.pdf)?$ https://docs.google.com/document/d/e/2PACX-1vQHjDreiiccsUkoC8orWd4EWds-lZ18zPK8ZYclyGatQMIlIVm2vxQ9VPSn36qXWyVsXcu5XDigfjuH/pub [R=302,L,NC]
+
+
+
+RewriteRule ^slides/0$ https://docs.google.com/presentation/d/1KEtI8ts1Y4xi0wjNWDGVedySMmG0bQhMdhx-d-39C8s/edit [R=302,L]
+
+
+RewriteRule ^labs/0$ https://docs.google.com/forms/d/e/1FAIpQLSd8cMIh5OT6nMDI0uiBbvRD-aQNHU1xXl3S1U8P8Wt6YwPP6A/viewform [R=302,L]
+
+
+
+RewriteRule ^slides/b1$ https://drive.google.com/open?id=1_W4k2PDTjHVvk75GVm9DsmnYnGxIzpnkpo5Y4e5Z070 [R=302,L]
+
+
+RewriteRule ^labs/b1$ b1 [R=302,L]
+
+
+
+RewriteRule ^slides/b2$ https://docs.google.com/presentation/d/1X0jkf3anhLgzCeL3UtsgPhRBPxUDtMuSKM4OyfgF3JQ/edit [R=302,L]
+
+
+RewriteRule ^labs/b2$ b2 [R=302,L]
+
+
+
+RewriteRule ^slides/b3$ https://docs.google.com/presentation/d/14ILw4JcumdrYoX6WiB1P-d9Ic9TY2hIdV2uzylIaYLA/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^labs/b3$ b3 [R=302,L]
+
+
+
+RewriteRule ^slides/b4$ https://docs.google.com/presentation/d/1Jm24WuIR5PGofaiTsJkeMVi7hbyoA8Crjx6XYO1IOZY/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^labs/b4$ b4 [R=302,L]
+
+
+
+RewriteRule ^slides/b5$ https://docs.google.com/presentation/d/1FD5in89NlTtANV8KKxL8fsfo284ziHkcovwT9zQFM1Y/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^labs/b5$ b5 [R=302,L]
+
+
+
+RewriteRule ^slides/b6$ https://docs.google.com/presentation/d/10RWmMcyqNkU-nN946kMo4fZdcwQYsgkq3C9eeC4G6dc/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^labs/b6$ b6 [R=302,L]
+
+
+
+RewriteRule ^slides/b7$ https://docs.google.com/presentation/d/1Isn9pMZBLnpZ_IFbGpbeai-AZ1l4cAa7Z6eL5wPtCXY/edit [R=302,L]
+
+
+RewriteRule ^labs/b7$ b7 [R=302,L]
+
+
+
+RewriteRule ^slides/b8$ https://drive.google.com/open?id=1t6fU6qPELZvBo7N_KZLDiLDsS2DJPcgySIXZjIVfKho [R=302,L]
+
+
+RewriteRule ^labs/b8$ b8 [R=302,L]
+
+
+
+RewriteRule ^slides/b9$ https://docs.google.com/presentation/d/1NxdvuLkWSzRvtnj41AkvGU00ub_XUbk8wlIxWxm0ok4/edit [R=302,L]
+
+
+RewriteRule ^labs/b9$ b9 [R=302,L]
+
+
+
+RewriteRule ^slides/b10$ https://docs.google.com/presentation/d/1y2BRjD36e31Cc3y1NmmznK3F5sa0VtkE9qJE1AAAKtk/edit [R=302,L]
+
+
+RewriteRule ^labs/b10$ b10 [R=302,L]
+
+
+
+RewriteRule ^slides/a1$ https://docs.google.com/presentation/d/1gRpdHjNyYE8SvV-Hs4-L8Pl6JPYkaits0vi47h0WMaA/edit [R=302,L]
+
+
+RewriteRule ^labs/a1$ a1 [R=302,L]
+
+
+
+RewriteRule ^slides/a2$ https://drive.google.com/open?id=158rSvIgQo9HxFp10Ms3Nh2c5yPN4Xchcqkofv_yjC8U [R=302,L]
+
+
+RewriteRule ^labs/a2$ a2 [R=302,L]
+
+
+
+RewriteRule ^slides/a3$ https://docs.google.com/presentation/d/1WfiYmAOZR4jtakRm2rZZgwhFu1Fy5oBSowLXSbTHkVw/edit [R=302,L]
+
+
+RewriteRule ^labs/a3$ a3 [R=302,L]
+
+
+
+RewriteRule ^slides/a4$ https://docs.google.com/presentation/d/1WXvw3ritRgR5fhKOug-VN_IG-SnXu2zC4vA70lvRmiw/edit [R=302,L]
+
+
+RewriteRule ^labs/a4$ a4 [R=302,L]
+
+
+
+
+
+
+RewriteRule ^slides/a6$ https://docs.google.com/presentation/d/1-GFD25uA6Pkr575UGk55QAkOxmYycfvtkYu4cgthCGg/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^labs/a6$ a6 [R=302,L]
+
+
+
+
+
+
+RewriteRule ^slides/a8$ https://docs.google.com/presentation/d/1e1GrMlF8mUw8mqf8Sfs7Ec6wgnGsNEYvgRxL5KHshVo/edit [R=302,L]
+
+
+
+
+RewriteRule ^slides/a9$ https://docs.google.com/presentation/d/1Yg2rZuZLAwmgR_eq7E3rVumWl-7EhNa9seZ_UbSi4Zw/edit [R=302,L]
+
+
+
+
+RewriteRule ^slides/a10$ https://docs.google.com/presentation/d/1OfIJHu6bSfTOLLswpKnVr7oxL8R-H4aPM8LLRHuecCY/edit [R=302,L]
+
+
+RewriteRule ^labs/a10$ a10 [R=302,L]
+
+
+
+RewriteRule ^slides/a11$ https://docs.google.com/presentation/d/1ExmZpm-nSkuFM-FTB6ZT3oP8frAh7g4jSIUiTQ1ddSM/edit?usp=sharing [R=302,L]
+
+
+RewriteRule ^labs/a11$ a11 [R=302,L]
+
+
+
+RewriteRule ^slides/a12$ https://docs.google.com/presentation/d/1iqdy4u2NKD05o0Jrcioy8ngGaVuke63e8QOReszEGbE/edit#slide=id.p [R=302,L]
+
+
+RewriteRule ^labs/a12$ a12 [R=302,L]
+
+
+
+
+

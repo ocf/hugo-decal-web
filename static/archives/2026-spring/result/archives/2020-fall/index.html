@@ -1,0 +1,2916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hands-On Linux System Administration DeCal</title>
+  <meta name="description" content="The OCF/XCF Linux SysAdmin DeCal at UC Berkeley">
+  <meta property="og:image" content="/images/penguin-opengraph.png"/>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS (needed for navbar on mobile) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    <link href="assets/round-about.css" rel="stylesheet">
+
+  <link rel="canonical" href="https://decal.ocf.berkeley.edu/">
+</head>
+
+
+<body>
+  <!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Linux SysAdmin DeCal</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/syllabus" target="_blank">Syllabus</a>
+        </li>
+        <li>
+          <a href="#calendar">Calendar</a>
+        </li>
+        <li>
+          <a href="#administrivia">Policies</a>
+        </li>
+        <li>
+          <a href="#faq">FAQ</a>
+        </li>
+        <li>
+          <a href="#staff">Staff</a>
+        </li>
+        <li>
+          <a href="archives.html">Archive</a>
+        </li>
+        <li>
+          <a href="mailto:decal@ocf.berkeley.edu">Contact</a>
+        </li>
+        <li>
+          <a href="https://www.ocf.berkeley.edu/">OCF</a>
+        </li>
+        <li>
+          <a href="https://xcf.berkeley.edu">XCF</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+
+<div class="container">
+  <h1 id="welcome-to-the-linux-system-administration-decal">Welcome to the Linux System Administration DeCal!</h1>
+
+<h4 id="fall-2020">Fall 2020</h4>
+
+<p>This course will cover the basics of setting up and administering a
+production-quality Linux server environment. By the end of this
+course, we expect you to:</p>
+
+<ul>
+  <li>be comfortable using GNU/Linux</li>
+  <li>understand how different parts of the OS work together, e.g. init,
+processes, daemons, filesystems, etc.</li>
+  <li>understand basic networking on Linux</li>
+  <li>have a good sense about maintaining system security</li>
+  <li>understand system administration essentials</li>
+  <li>get a practical taste of what sysadmins do in industry.</li>
+</ul>
+
+<p>The course will be taught in two sections: a “Beginner” section for
+students with minimal background in GNU/Linux or system
+administration, and an “Advanced” section for students with more
+experience.</p>
+
+<p>While we expect many students will have a CS background, <strong>the only
+real prerequisite is a desire to learn</strong> about new and unfamiliar
+technologies, which is a critical skill for sysadmins. The Beginner
+section has been designed to introduce new users to Linux, and the
+Advanced section has been designed to give more experienced users a
+taste of what Linux is capable of.</p>
+
+
+  <div class="announcements-wrapper">
+
+        <h2 id="announcements">Announcements</h2>
+
+<ul>
+  <li>The link to all live meetings is <a href="https://ocf.io/decalzoom">ocf.io/decalzoom</a>.</li>
+  <li><strong>All labs are due by Dec. 15!</strong> You will need a total of <strong>10</strong> completed labs by this date to receive a P in the course.</li>
+  <li><strong>View a lecture</strong> by clicking on the lecture title!</li>
+  <li><strong>Lab 10 has been released!</strong> This is the last lab of the semester, and is due by Dec. 15.</li>
+  <li>Remember that <strong>only two late labs are allowed.</strong> If you are falling behind, please contact us to discuss accommodations!</li>
+</ul>
+
+<!-- - The link to all live meetings is [ocf.io/decalzoom](https://ocf.io/decalzoom).
+ - **There is another live lecture this week!** Join in using the link above!
+ - **View a lecture** by clicking on the lecture title!
+ - **Lab 8 is due this week!** (Tuesday for Beginner track, Thursday for Advanced track)
+ - **Lab b9 has been released!** It is due at the normal times next week. Lab a9 will be released soon!
+ - Remember that **only two late labs are allowed.** If you are falling behind, please contact us to discuss accommodations! -->
+
+<!-- - The link to all live meetings is [ocf.io/decalzoom](https://ocf.io/decalzoom).
+ - **View a lecture** by clicking on the lecture title!
+ - **Lab 7 Deadline Announcement: Lab b7 due date has been pushed due to the election.** It is now due on **Thursday, 11/5/20**. 
+ - **Lab 7 is due Thursday this week!**
+ - **Lab 8 has been released!** It is due at the normal times next week.
+ - Remember that **only two late labs are allowed.** If you are falling behind, please contact us to discuss accommodations! -->
+
+<!-- - The link to all live meetings is [ocf.io/decalzoom](https://ocf.io/decalzoom).
+ - **View a lecture** by clicking on the lecture title!
+ - **Lab 7 Deadline Announcement: Lab b7 due date has been pushed due to the election.** It is now due on **Thursday, 11/5/20**. 
+ - **Lab 6 is due this week!** (Tuesday for Beginner track, Thursday for Advanced track)
+ - **Important lab a6 Updates:** We had to fix some issues in the "this is fine" problem. Since we didn't push the changes until now, we're making 3 out of the 6 scripts optional for that problem.
+ - Remember that **only two late labs are allowed.** If you are falling behind, please contact us to discuss accommodations!  -->
+
+<!-- 2020-10-05, 13, 20 - The link to all live meetings is [ocf.io/decalzoom](https://ocf.io/decalzoom).
+ - **View a lecture** by clicking on the lecture title!
+ - **Lab 3 is due this week!** (Tuesday for Beginner track, Thursday for Advanced track)
+ - Remember that **only two late labs are allowed.** If you are falling behind, please contact us to discuss accommodations!
+ - **Lab 4 is released!** Lab 4 will be due next week. -->
+
+<!-- 2020-09-29 - **The link to all live meetings is [ocf.io/decalzoom](https://ocf.io/decalzoom).**
+ - **View a lecture** by clicking on the lecture title!
+ - If you missed the Advanced Track guest lecture, the recording is now available!
+ - **Lab 2 is due this week!** (Tuesday for Beginner track, Thursday for Advanced track)
+ - Remember that **only two late labs are allowed.** If you are falling behind, please contact us to discuss accommodations!
+ - **Lab 3 is released!** Lab 3 will be due next week.
+ - **Student VM's have been provisioned.** Email us if you are enrolled and didn't get one yet! -->
+
+<!-- 2020-09-22
+ - **Lecture a2 will be delivered live.** Please join the live session Thursday 8pm; there will be no prerecorded video this week for the Advanced track.
+ - **Lab 1 is due this week!** (Tuesday for Beginner track, Thursday for Advanced track)
+ - **Lab 2 is released!** Lab 2 will be due next week. -->
+
+<!-- 2020-09-15
+ - **The link to all live meetings is [ocf.io/decalzoom](https://ocf.io/decalzoom).**
+ - **Classes begin this week!** 8-9pm on Tuesdays for the Beginner track, 8-9pm on Thursdays for the Advanced track.
+ - **Lab 1 is released!** Lab 1 will be due next week.
+ - **View a lecture** by clicking on the lecture title! -->
+
+<!-- 2020-09-08
+ - **The link to all live meetings (including the infosession) is [ocf.io/decalzoom](https://ocf.io/decalzoom).**
+ - **Join us for an infosession!** We're holding two identical sessions at 8pm on Tuesday and Thursday, 9/8 and 9/10.
+ - **[Lab 0](https://docs.google.com/forms/d/1lFVW7TQ0414qH15bRbeuwxYWXIw8lOxLL9n_hnwIBgA/) is due on Saturday, 9/12 at 11:59pm.** -->
+
+</div>
+
+<style>
+    .announcements-wrapper {
+        background-color: #dedede;
+        border-left: 5px solid grey;
+        padding: 10px;
+        font-size: 20px;
+    }
+</style>
+
+  
+  <div class="segment">
+  <h2 id="calendar">Beginner Track Calendar</h2>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Date</th>
+      <th>Lecture Title</th>
+      <th>Lecturer</th>
+      <th>Lab</th>
+      <th>Lab Due Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+  <tr>
+    <td>0</td>
+    <td>Tue. 09/08</td>
+    
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=QCUXD8fwVS4">
+            
+            Infosession
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1lTx2vAodmr0i5evZ5VFUOEZDVm0v6PGL7IGJM1M7Jro/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        -
+          </td>
+          <td>
+            
+              
+                 <a href="https://docs.google.com/forms/d/1lFVW7TQ0414qH15bRbeuwxYWXIw8lOxLL9n_hnwIBgA/">
+                  Lab 0
+                </a>
+              
+            
+          </td>
+          <td>Sat. 09/12</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>0</td>
+    <td>Thu. 09/10</td>
+    
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=QCUXD8fwVS4">
+            
+            Infosession
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1lTx2vAodmr0i5evZ5VFUOEZDVm0v6PGL7IGJM1M7Jro/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        -
+          </td>
+          <td>
+            
+              
+                 <a href="https://docs.google.com/forms/d/1lFVW7TQ0414qH15bRbeuwxYWXIw8lOxLL9n_hnwIBgA/">
+                  Lab 0
+                </a>
+              
+            
+          </td>
+          <td>Sat. 09/12</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>1</td>
+    <td>Tue. 09/15</td>
+    
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/pkSYJpxb9hk">
+            
+            History of UNIX, intro to shell, FOSS
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1AtnXiOZniLuP9QcnG8_OT1lwmhISRk2_zeANpXgycaY/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Ben Cuan &lt;bencuan&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b1">
+                  Lab b1
+                </a>
+              
+            
+          </td>
+          <td>Tue. 09/22</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>2</td>
+    <td>Tue. 09/22</td>
+    
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=TXNpIIlcHm4&feature=youtu.be">
+            
+            Core Shell
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1o7CWAAa21JYll_isRd-oR3dhurBAPzQA5desEhxvwH0/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Nikhil Jha &lt;njha&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b2">
+                  Lab b2
+                </a>
+              
+            
+          </td>
+          <td>Tue. 09/29</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>3</td>
+    <td>Tue. 09/29</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=7xAGcmhkflM">
+            
+            Shell Scripting
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1LG8G_fbduqo9K2NOtQDjHkmNCMim0kQOmo-0q3fvmRc/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Richard Huang &lt;rihu&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b3">
+                  Lab b3
+                </a>
+              
+            
+          </td>
+          <td>Tue. 10/06</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>4</td>
+    <td>Tue. 10/06</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/Uh7N86zjYm4">
+            
+            Compiling, Distros, and Packaging
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1UJHO7fXok-6RN7DAJ5SPTqcCXiRSR8hpGZx9OQMnMOU/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Ethan Smith &lt;ethanhs&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b4">
+                  Lab b4
+                </a>
+              
+            
+          </td>
+          <td>Tue. 10/13</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>5</td>
+    <td>Tue. 10/13</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/cPkLsSFKwPM">
+            
+            Networking 101
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1DCN2fViHjAS7PoS98dsVC-LNwPN_jvaAKIuVFaRJrM0/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Tony Lian &lt;longlian&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b5">
+                  Lab b5
+                </a>
+              
+            
+          </td>
+          <td>Tue. 10/20</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>6</td>
+    <td>Tue. 10/20</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/Z_q1zkeWEFs">
+            
+            Processes
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1AS1BYX8jdBQGBviBGgcZPREIePrsgkT7pc-9Wk_RkS0/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Ryan Chan &lt;rrchan&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b6">
+                  Lab b6
+                </a>
+              
+            
+          </td>
+          <td>Tue. 10/27</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>7</td>
+    <td>Tue. 10/27</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/y3mIzYtCPeY">
+            
+            Services
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1N67saQd3NWrBLrk1oEOE2UdLa4Ny_qjDBUAZQolXsUE/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Kevin Mo &lt;kmo&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b7">
+                  Lab b7
+                </a>
+              
+            
+          </td>
+          <td>Thu. 11/05</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>8</td>
+    <td>Tue. 11/03</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=hqrWBYm5-Zg&feature=youtu.be">
+            
+            Security Fundamentals
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1tKAhg5-0jeh7ZBynQFukkK10saKHeouJpyQcerboPYg/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Stefan Kuklinsky &lt;skuklinsky&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b8">
+                  Lab b8
+                </a>
+              
+            
+          </td>
+          <td>Tue. 11/10</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>9</td>
+    <td>Tue. 11/10</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/X4yGMr9c64U">
+            
+            Version Control and Backups
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1NxdvuLkWSzRvtnj41AkvGU00ub_XUbk8wlIxWxm0ok4/edit" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Edric Xiang &lt;exiang&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b9">
+                  Lab b9
+                </a>
+              
+            
+          </td>
+          <td>Tue. 11/17</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>10</td>
+    <td>Tue. 11/17</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=JhgEg1YTO7c&feature=youtu.be">
+            
+            Cloud, Containers, and Config Management
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1aiSnR1zT2qM-RcLnrCC1FhTqjnzKOQvMyR5r_hJr9V0/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Richard Huang &lt;rihu&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/b10">
+                  Lab b10
+                </a>
+              
+            
+          </td>
+          <td>Tue. 12/15</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>11</td>
+    <td>Thu. 11/26</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+            No Lecture - Thanksgiving Week
+            
+
+            
+
+          </td>
+          <td>
+        -
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>12</td>
+    <td>Thu. 12/03</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+            TBD
+            
+
+            
+
+          </td>
+          <td>
+        TBA
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+    
+  </tr>
+  
+  </tbody>
+</table>
+
+</div>
+
+<div class="segment">
+  <h2>Advanced Track Calendar</h2>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Date</th>
+      <th>Lecture Title</th>
+      <th>Lecturer</th>
+      <th>Lab</th>
+      <th>Lab Due Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+  <tr>
+    <td>0</td>
+    <td>Tue. 09/08</td>
+    
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=QCUXD8fwVS4">
+            
+            Infosession
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1lTx2vAodmr0i5evZ5VFUOEZDVm0v6PGL7IGJM1M7Jro/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        -
+          </td>
+          <td>
+            
+              
+                 <a href="https://docs.google.com/forms/d/1lFVW7TQ0414qH15bRbeuwxYWXIw8lOxLL9n_hnwIBgA/">
+                  Lab 0
+                </a>
+              
+            
+          </td>
+          <td>Sat. 09/12</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>0</td>
+    <td>Thu. 09/10</td>
+    
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=QCUXD8fwVS4">
+            
+            Infosession
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1lTx2vAodmr0i5evZ5VFUOEZDVm0v6PGL7IGJM1M7Jro/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        -
+          </td>
+          <td>
+            
+              
+                 <a href="https://docs.google.com/forms/d/1lFVW7TQ0414qH15bRbeuwxYWXIw8lOxLL9n_hnwIBgA/">
+                  Lab 0
+                </a>
+              
+            
+          </td>
+          <td>Sat. 09/12</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>1</td>
+    <td>Thu. 09/17</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=TBsxgbGwtnA">
+            
+            Advanced Introduction to UNIX
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1P4HcAr1NcxFEL1m9bIokiBP1zOODHj8YQMPFSafeWko/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Bernard Zhao &lt;bernardzhao&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a1">
+                  Lab a1
+                </a>
+              
+            
+          </td>
+          <td>Thu. 09/24</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>2</td>
+    <td>Thu. 09/24</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/M0vPXQycer0">
+            
+            Packages
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1RMNPRHNoh4a5KWwXY8fBWJ49nBafxbo4g-OvSZZ85V8/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Daniel Kessler &lt;dkessler&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a2">
+                  Lab a2
+                </a>
+              
+            
+          </td>
+          <td>Thu. 10/01</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>3</td>
+    <td>Thu. 10/01</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=MnsUBRIw-74&feature=youtu.be">
+            
+            DIY Linux Pre-Install
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1oLtsjsEIsvChOI31_5YYFhILfzGlyx7Hk9DsL1Nv-mc/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Edric Xiang &lt;exiang&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a3">
+                  Lab a3
+                </a>
+              
+            
+          </td>
+          <td>Thu. 10/08</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>4</td>
+    <td>Thu. 10/08</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/BVbHnEv8L9s">
+            
+            Linux Post-Install
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1b5nggnCS-qzkpp62xvnq5eGrJcgsYAvqlwIsx-Z6ETI/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Ben Cuan &lt;bencuan&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a4">
+                  Lab a4
+                </a>
+              
+            
+          </td>
+          <td>Thu. 10/15</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>5</td>
+    <td>Thu. 10/15</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/AS293JoAr8s">
+            
+            Processes and Services
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1sv5Bxw9Fet9utjFU8xGDntawLVmBOT9YpCt9mJ2V6Dg/edit" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Christopher Cooper &lt;cooperc&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a5">
+                  Lab a5
+                </a>
+              
+            
+          </td>
+          <td>Thu. 10/22</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>6</td>
+    <td>Thu. 10/22</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/DPKRivN9ga4">
+            
+            Networking 102
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/14XXyjUxUohINsg93qD-8SHP1mPpTTnBoZ3NHmMVTJqY/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Abizer Lokhandwala &lt;abizer&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a6">
+                  Lab a6
+                </a>
+              
+            
+          </td>
+          <td>Thu. 10/29</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>7</td>
+    <td>Thu. 10/29</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/5clc5xi5FDo">
+            
+            Networked Services
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/11nMxy5iJTS3YDBLqT3O5i8cbbRdtS2Hxf4QRbHJiGBo/edit" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Loren McIntyre &lt;mcint&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a7">
+                  Lab a7
+                </a>
+              
+            
+          </td>
+          <td>Thu. 11/05</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>8</td>
+    <td>Thu. 11/05</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/T9hakIIYUkk">
+            
+            Config Management
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1ZAXSwjM9_SncvD8GGQgbPI2g3KlSsIZi2-xxeHwfSWA/edit" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Ja (Thanakul) Wattanawong &lt;jaw&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a8">
+                  Lab a8
+                </a>
+              
+            
+          </td>
+          <td>Thu. 11/12</td>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>9</td>
+    <td>Thu. 11/12</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://youtu.be/j4ryvaVJURs">
+            
+            Advanced Security
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/12ypck2LSIaNGq5RpLmIb4gbAX-GP2pCSgf4l9VMuq1k/edit" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Mathew Cha &lt;mdcha&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a9">
+                  Lab a9
+                </a>
+              
+            
+          </td>
+          <td>Thu. 11/19</td>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>10</td>
+    <td>Thu. 11/19</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+              <a href="https://www.youtube.com/watch?v=tCg77GmZUqo">
+            
+            Virtualization, Containers, Distributed Architecture
+            
+              </a>
+            
+
+            
+              <a href="https://docs.google.com/presentation/d/1EEUT0Z-odYYEmdC9Z1AAh7gVFLH3L2om9CHpqpklhOk/edit?usp=sharing" style="font-size: 15px">(slides)</a>
+            
+
+          </td>
+          <td>
+        Benjamin Zhang &lt;bzh&gt;
+          </td>
+          <td>
+            
+              
+                 <a href="labs/a10">
+                  Lab a10
+                </a>
+              
+            
+          </td>
+          <td>Tue. 12/15</td>
+        
+      
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>11</td>
+    <td>Tue. 11/24</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+            No Lecture - Thanksgiving Week
+            
+
+            
+
+          </td>
+          <td>
+        -
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+        
+      
+    
+  </tr>
+  
+  <tr>
+    <td>12</td>
+    <td>Thu. 12/03</td>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <td>
+            
+            TBD
+            
+
+            
+
+          </td>
+          <td>
+        TBA
+          </td>
+          <td>
+            
+              -
+            
+          </td>
+          <td></td>
+        
+      
+    
+  </tr>
+  
+  </tbody>
+</table>
+
+</div>
+
+
+  <h2 id="administrivia">Administrivia</h2>
+
+<h3 id="enrollment">Enrollment</h3>
+<p>This is a <strong>2 unit DeCal</strong>. Since it is a DeCal, the course is P/NP. <strong>You must
+attend an infosession and complete Lab 0 to apply.</strong> If you are selected for the
+course, we will send you a course enrollment code by September 14.</p>
+
+<h3 id="lecture">Lecture</h3>
+<p>Lectures are scheduled for <strong>Tuesdays</strong> for the Beginner section and
+<strong>Thursdays</strong> for the Advanced section, from <strong>8 to 9pm.</strong> Due to the online
+nature of this semester, we will hold lectures over Zoom or a comparable
+streaming platform (to be announced). Additionally, lecture recordings will
+be made available on this website.</p>
+
+<!-- Not applicable for fa20
+OCF Lab, located at 171 MLK (MLK basement down the hall from the student store).
+**Attendance is mandatory, with two allowed unexcused absences.** Some other
+conflicts, such as exams, may be excused if you provide prior notice. Please only
+come to the lab on the day corresponding to the section you are in.
+ -->
+
+<p>While we normally mandate attendance, this will no longer be a requirement for
+Fall 2020 given the remote nature of the course. Nonetheless, students will be
+expected to view all lectures, as knowledge of their content will be assumed in
+lab assignments.</p>
+
+<p><strong>Lecture will double as office hours</strong> for students to come in and ask
+questions about lab work or covered material. The one-hour lecture slot will 
+include some lecturing but will also include time to to work on the lab assignment
+with the help of present facilitators.</p>
+
+<!-- Not applicable for fa20
+Note that we only have 30 computers in the lab,
+but 40 people are enrolled in each course, so **please bring a laptop** if you
+can. -->
+
+<h3 id="labs">Labs</h3>
+<p>The primary assignment in this course will be <strong>weekly lab work</strong>.
+Labs are designed to be be significantly hands-on. You will be working on
+real systems, configuring, and fixing things, setting up services, and so on.</p>
+
+<p>Each lecture corresponds with a lab, labeled by a “b” or “a” (for Beginner or
+Advanced) and the week number. Except for b1 and a1, labs will general be
+released about a week ahead of the corresponding lecture. You are <em>highly
+encouraged</em> to look over the lab, and try to start it, <em>before</em> coming to
+lecture each week. This will allow you to better utilize the help of the
+facilitators, and will help you understand the lecture in a concrete way.</p>
+
+<p>Each lab will be due <strong>before the following lecture</strong>. For example, lab a1 will
+be due by <strong>8pm on Thursday, 9/24</strong> which is when Lecture a2 will be held. Please stay on
+top of lab work! If extenuating circumstances prevent you from completing your
+lab on time, please let us know as soon as possible and we will try to be
+accommodating.</p>
+
+<p><strong>You must complete all labs to receive credit for taking the course.</strong> However,
+we will allow <strong>two unexcused late labs</strong> to be turned in before the semester ends.</p>
+
+<h2 id="faq">FAQ</h2>
+
+<h3 id="will-the-decal-be-offered-in-the-spring-2021-semester">Will the DeCal be offered in the Spring 2021 semester?</h3>
+<p>It is very likely that the DeCal will be back next semester! Fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSdE6qRi1S3WyrzdhoEqHrn0qqgCft6cqZUrLjP9ak2R7Vv91g/viewform">interest form</a> to get updates!</p>
+
+<h3 id="how-does-enrollment-work">How does enrollment work?</h3>
+<p>When we are open for enrollment, Lab 0 will be published on this site. We will send enrollment codes to those who complete Lab 0 by the deadline. Do note that we often have more applicants than space in the course, so getting an enrollment code is unfortunately not guaranteed.</p>
+
+<h3 id="how-do-i-know-which-track-is-best-for-me">How do I know which track is best for me?</h3>
+<p><strong>Beginner Track</strong> is intended for those who have little to no prior experience of
+using Linux-based systems. We will be providing an overview to several important
+concepts in systems administration, such as networking, shell scripting, version
+control, and security. It’s perfectly OK if you’ve never worked with or heard of
+these concepts before- but if you’re familiar with them, we recommend you opt
+for the advanced track. Overall, we welcome everyone to this track!</p>
+
+<p><strong>Advanced Track</strong> is intended for those who have used Linux-based systems before
+and are at least somewhat familiar with some of the concepts mentioned in the
+beginner track description above. While there are no hard/enforced prerequisites,
+we do recommend that you have experience with one or more of the following:</p>
+<ul>
+  <li>Using Linux as a primary/secondary OS</li>
+  <li>Using a package manager such as <code class="highlighter-rouge">apt</code> or <code class="highlighter-rouge">pacman</code></li>
+  <li>Writing scripts to automate basic tasks</li>
+  <li>Basic networking (such as working with IP addresses)</li>
+</ul>
+
+<p>If you are still unsure about which track to choose,
+you can email us at <a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu</a>.</p>
+
+<h3 id="i-dont-want-units--wasnt-accepted--am-not-a-student-can-i-audit-this-course">I don’t want units / wasn’t accepted / am not a student. Can I audit this course?</h3>
+<p>We are working hard to get all of our materials online this semester for everyone to
+access! Since we are no longer bound by physical constraints, feel free to attend
+any of our scheduled lectures or complete any of the labs on your own. (You will
+need your own Linux VM though- you can 
+<a href="https://blog.storagecraft.com/the-dead-simple-guide-to-installing-a-linux-virtual-machine-on-windows/">install one locally</a>
+or get one from a provider such as <a href="https://www.digitalocean.com/">DigitalOcean</a>.)</p>
+
+<h3 id="im-stuck-on-a-labconcept-where-can-i-find-help">I’m stuck on a lab/concept! Where can I find help?</h3>
+<p>The best way to get support with course content is to either join our Slack channel at <a href="https://fco.slack.com/archives/CN0FQ9BUN">#decal-general</a>, our Discord channel at <a href="https://ocf.io/discord">#decal-general</a>, or
+ask us during scheduled lecture times.</p>
+
+<h3 id="i-have-another-question">I have another question!</h3>
+<p>Email us at <a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu</a>.</p>
+
+
+
+  <!-- Team Members Row -->
+<div class="row" id='staff'>
+  <div class="col-lg-12">
+    <h2>Course Staff</h2>
+  </div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/skuklinsky.jpg"
+        alt="Picture of Stefan Kuklinsky"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Stefan Kuklinsky
+	<small>Facilitator</small>
+      </h3>
+      <p>Junior CS major. Looking forward to teaching this semester!</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/cooperc.jpg"
+        alt="Picture of Christopher Cooper"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Christopher Cooper
+	<small>Head Facilitator</small>
+      </h3>
+      <p>sentient table learning to tame computers</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/bernardzhao.jpg"
+        alt="Picture of Bernard Zhao"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Bernard Zhao
+	<small>Head Facilitator</small>
+      </h3>
+      <p>They tryna be cray</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/bencuan.jpg"
+        alt="Picture of Ben Cuan"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Ben Cuan
+	<small>Head Facilitator</small>
+      </h3>
+      <p>your friendly neighborhood panda</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/andy.jpg"
+        alt="Picture of Andy Lo"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Andy Lo
+	<small>Facilitator</small>
+      </h3>
+      <p>reincarnation of wittl here to bring balance to the universe</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/tony.jpg"
+        alt="Picture of Tony Lian"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Tony Lian
+	<small>Facilitator</small>
+      </h3>
+      <p>This person has existed and hopefully is existing in the world.</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/fydai.jpg"
+        alt="Picture of Frank Dai"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Frank Dai
+	<small>Facilitator</small>
+      </h3>
+      <p>I'm the one who wears the 12-year old penguin costume</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/jaw.jpg"
+        alt="Picture of Ja (Thanakul) Wattanawong"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Ja (Thanakul) Wattanawong
+	<small>Facilitator</small>
+      </h3>
+      <p>master of copying commands from the internet</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/aditya.jpg"
+        alt="Picture of Aditya Srivastava"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Aditya Srivastava
+	<small>Facilitator</small>
+      </h3>
+      <p>the sleeper must awaken</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/keur.jpg"
+        alt="Picture of Kevin Kuehler"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Kevin Kuehler
+	<small>Secret Agent</small>
+      </h3>
+      <p>i use arch btw</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/zhangning.jpg"
+        alt="Picture of Ning Zhang"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Ning Zhang
+	<small>Facilitator</small>
+      </h3>
+      <p>A very average person</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/ethanhs.jpg"
+        alt="Picture of Ethan Smith"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Ethan Smith
+	<small>Facilitator</small>
+      </h3>
+      <p>Doer of things</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/regex.jpg"
+        alt="Picture of Rachel Gregory"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Rachel Gregory
+	<small>Facilitator</small>
+      </h3>
+      <p>i dont do much but im here anyways</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/wporr.jpg"
+        alt="Picture of Liam Porr"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Liam Porr
+	<small>Facilitator</small>
+      </h3>
+      <p>None of these things are comprehensible to you</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/gleeb.jpg"
+        alt="Picture of George Lee"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>George Lee
+	<small>Facilitator</small>
+      </h3>
+      <p>The inner machinations of my mind are an enigma</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/mdcha.jpg"
+        alt="Picture of Mathew Cha"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Mathew Cha
+	<small>Guest Lecturer</small>
+      </h3>
+      <p>Resident OCF weirdo.</p>
+    </div>
+    
+    <div class="clearfix visible-sm-block"></div>
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/rihu.jpg"
+        alt="Picture of Richard Huang"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Richard Huang
+	<small>Facilitator</small>
+      </h3>
+      <p>Apparently penguins do have knees.</p>
+    </div>
+    
+    
+  
+    <div class="col-lg-4 col-sm-6 text-center">
+      <img
+        class="img-circle img-responsive img-center"
+        src="images/bzh.jpg"
+        alt="Picture of Benjamin Zhang"
+        style="width: 200px; height: 200px;"
+      >
+      <h3>Benjamin Zhang
+	<small>Facilitator</small>
+      </h3>
+      <p>hi</p>
+    </div>
+    <div class="clearfix visible-lg-block"></div>
+    <div class="clearfix visible-sm-block"></div>
+  
+</div>
+
+</div>
+
+
+  <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com">
+        <img src="/images/digitalocean.png" style="height: 34px; width: 200px;" /></a>
+      &nbsp;&nbsp;With great appreciation to
+      <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring the
+      VMs used in both tracks of the DeCal
+    </p>
+    <p>
+      <a href="https://www.linode.com">
+        <img src="/images/linode.png" style="height: 50px; width: 125px;" /></a>
+      &nbsp;&nbsp;Huge thanks to
+      <a href="https://www.linode.com">Linode</a> for sponsoring the equipment 
+      used to record digital lectures for the Decal
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu">
+        <img src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+             alt="Hosted by the OCF" style="border: 0;" /></a>
+      Copyright &copy; 2017-2020
+      <a href="https://www.ocf.berkeley.edu">
+        Open Computing Facility
+      </a>
+      and
+      <a href="https://xcf.berkeley.edu">
+        eXperimental Computing Facility
+      </a>
+    </p>
+    <p>
+      This website is licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/">
+        Source Code
+      </a>
+      available on GitHub
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+
+</body>
+
+</html>

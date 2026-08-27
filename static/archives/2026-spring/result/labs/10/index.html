@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Lab 10 - Nix
+  #
+
+Table of Contents
+
+  
+    Getting help
+    Resources
+      
+        Nix Expression Syntax
+        Program Configuration
+      
+    
+  
+
+  
+    1.1: Installing Nix
+  
+
+  
+    2.1: Basic minecraft configuration
+    2.2: Error: Minecraft is NOT GNU&#43;OK!!!
+    Bonus error: OOM, also known as&hellip; out of memory!
+    2.3 Set the Whitelist
+    One Extra feature!
+    Bonus: Backups
+  
+
+
+
+
+  Overview
+  #
+
+For this lab, we will be installing and configuring a Minecraft server inside of a NixOS VM. All of
+this configuration can be successfully done without a Minecraft client or knowledge
+on how to play the game itself.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://decal.ocf.berkeley.edu/labs/10/">
+  <meta property="og:site_name" content="OCF Sysadmin DeCal">
+  <meta property="og:title" content="Lab 10 - Nix">
+  <meta property="og:description" content="Lab 10 - Nix # Table of Contents Getting help Resources Nix Expression Syntax Program Configuration 1.1: Installing Nix 2.1: Basic minecraft configuration 2.2: Error: Minecraft is NOT GNU&#43;OK!!! Bonus error: OOM, also known as… out of memory! 2.3 Set the Whitelist One Extra feature! Bonus: Backups Overview # For this lab, we will be installing and configuring a Minecraft server inside of a NixOS VM. All of this configuration can be successfully done without a Minecraft client or knowledge on how to play the game itself.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="labs">
+<title>Lab 10 - Nix | OCF Sysadmin DeCal</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/labs/10/">
+<link rel="stylesheet" href="/book.min.5d66a598a957a57db9eb1e614a4e20c2bc6f81b607613fa13e31fc22786d762f.css" integrity="sha256-XWalmKlXpX256x5hSk4gwrxvgbYHYT&#43;hPjH8Inhtdi8=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7339e7983a30b17b9b1d1d38456a848777df3f5094bc048474457aa1d9ef66f0.js" integrity="sha256-cznnmDowsXubHR04RWqEh3ffP1CUvASEdEV6odnvZvA=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OCF Sysadmin DeCal</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/syllabus/" class="">Syllabus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-36110f92af42629b8b43495643483d73" class="toggle"  />
+    <label for="section-36110f92af42629b8b43495643483d73" class="flex">
+      <a role="button" class="flex-auto ">Announcements</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-11/" class="">Week 11 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-10/" class="">Week 10 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-9/" class="">Week 9 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-0/" class="">Week 0</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-1/" class="">Week 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-2/" class="">Week 2 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-3/" class="">Week 3 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-4/" class="">Week 4 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-5/" class="">Week 5 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-6/" class="">Week 6 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-7/" class="">Week 7 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-8/" class="">Week 8 Announcement</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cf29f3eebe08ad44997f2a664cccfd3c" class="toggle" checked />
+    <label for="section-cf29f3eebe08ad44997f2a664cccfd3c" class="flex">
+      <a role="button" class="flex-auto ">Labs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/1/" class="">Lab 1 - Unix, the Shell, OSS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/2/" class="">Lab 2 - Core Shell &amp; Shell Scripting</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/3/" class="">Lab 3 - Packages and Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/4/" class="">Lab 4 - Processes and Services</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/5/" class="">Lab 5 - Introduction to Networking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/6/" class="">Lab 6 - Web Servers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/7/" class="">Lab 7 - Security Fundamentals</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/8/" class="">Lab 8 - Version Control and Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/9/" class="">Lab 9 - Containers (Docker)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/10/" class="active">Lab 10 - Nix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/11/" class="">Lab 11 - Kubernetes</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/staff/" class="">Staff</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/resources/" class="">Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/archives/" class="">Archives</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://edstem.org"  target="_blank" rel="noopener">
+        Ed
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://ocf.berkeley.edu"  target="_blank" rel="noopener">
+        OCF
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Lab 10 - Nix</h3>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="lab-10---nix">
+  Lab 10 - Nix
+  <a class="anchor" href="#lab-10---nix">#</a>
+</h1>
+<p><strong>Table of Contents</strong>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#getting-help">Getting help</a></li>
+    <li><a href="#resources">Resources</a>
+      <ul>
+        <li><a href="#nix-expression-syntax">Nix Expression Syntax</a></li>
+        <li><a href="#program-configuration">Program Configuration</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#11-installing-nix">1.1: Installing Nix</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#21-basic-minecraft-configuration">2.1: Basic minecraft configuration</a></li>
+    <li><a href="#22-error-minecraft-is-not-gnuok">2.2: Error: Minecraft is NOT GNU+OK!!!</a></li>
+    <li><a href="#bonus-error-oom-also-known-as-out-of-memory">Bonus error: OOM, also known as&hellip; out of memory!</a></li>
+    <li><a href="#23-set-the-whitelist">2.3 Set the Whitelist</a></li>
+    <li><a href="#one-extra-feature">One Extra feature!</a></li>
+    <li><a href="#bonus-backups">Bonus: Backups</a></li>
+  </ul>
+</nav>
+</p>
+<hr>
+<h1 id="overview">
+  Overview
+  <a class="anchor" href="#overview">#</a>
+</h1>
+<p>For this lab, we will be installing and configuring a Minecraft server inside of a NixOS VM. All of
+this configuration can be successfully done without a Minecraft client or knowledge
+on how to play the game itself.</p>
+<p><strong>If you want to actually be able to connect to the server:</strong> If you&rsquo;re not
+using the provided VM make sure your Linux VM has enough RAM to host the server
+(2-4Gb).</p>
+<h2 id="getting-help">
+  Getting help
+  <a class="anchor" href="#getting-help">#</a>
+</h2>
+<p>If you want any help with any part of this lab, join the OCF
+Discord (
+  <a href="https://ocf.io/discord">https://ocf.io/discord</a>), matrix (
+  <a href="https://ocf.io/matrix">https://ocf.io/matrix</a>), or IRC (
+  <a href="https://irc.ocf.io">https://irc.ocf.io</a>) and ask in the #decal-general channel!</p>
+<p>The original creator of this lab is <code>jaysa</code>, and you can contact me through any platform on the card at 
+  <a href="https://jaysa.net">jaysa.net</a> if you need help :)</p>
+<h2 id="resources">
+  Resources
+  <a class="anchor" href="#resources">#</a>
+</h2>
+<img src="/assets/images/labs/nix-lab/snowflake-book-stack.jpg" alt="stack of books" style="height:10em">
+<h3 id="nix-expression-syntax">
+  Nix Expression Syntax
+  <a class="anchor" href="#nix-expression-syntax">#</a>
+</h3>
+<p>Two similar tutorials on the Nix language, which are helpful in understanding the syntax of nix expression, such as the <code>configuration.nix</code> file we&rsquo;ll be writing for this lab.</p>
+<ul>
+<li>
+  <a href="https://nixos.org/guides/nix-pills/04-basics-of-language.html">Nix Pills: The Basics of the Language</a></li>
+<li>
+  <a href="https://nix.dev/tutorials/nix-language.html">nix.dev: Nix Language Basics</a></li>
+</ul>
+<h3 id="program-configuration">
+  Program Configuration
+  <a class="anchor" href="#program-configuration">#</a>
+</h3>
+<ul>
+<li>
+  <a href="https://search.nixos.org/options">NixOS Options Search</a></li>
+<li>
+  <a href="https://wiki.nixos.org/wiki/Minecraft_Server">NixOS Wiki: Minecraft Server</a></li>
+<li>
+  <a href="https://minecraft.wiki/w/Server.properties#Keys">Minecraft Wiki: server.properties</a></li>
+</ul>
+<h1 id="part-1-virtual-machine-inside-a-virtual-machine">
+  Part 1: Virtual Machine Inside a Virtual Machine
+  <a class="anchor" href="#part-1-virtual-machine-inside-a-virtual-machine">#</a>
+</h1>
+<img src="/assets/images/labs/nix-lab/inception_top.jpg" alt="spinning inception top" style="height:20em">
+<h2 id="11-installing-nix">
+  1.1: Installing Nix
+  <a class="anchor" href="#11-installing-nix">#</a>
+</h2>
+<p>Log into your DeCal VM and install the Nix package manager with the following command:</p>
+<pre tabindex="0"><code>sudo apt install nix
+</code></pre><h1 id="12-creating-a-nixos-virtual-machine">
+  1.2: Creating a NixOS virtual machine
+  <a class="anchor" href="#12-creating-a-nixos-virtual-machine">#</a>
+</h1>
+<p>Now, we’re going to set up the NixOS VM inside of our Debian VM.</p>
+<blockquote>
+<p><em>Why is it necessary to create a NixOS VM inside of our existing Debian VM? Didn&rsquo;t we just install Nix?</em></p>
+<p>With apt, we installed only the Nix package manager. However, we get many more options for system customization when we are running the Nix package manager on NixOS. It allows more core features of our system, such as user management and file systems, to be managed declaratively.</p></blockquote>
+<p>The following section is mostly taken from this guide: 
+  <a href="https://nix.dev/tutorials/nixos/nixos-configuration-on-vm.html">nix.dev: Nixos Virtual Machines</a>.</p>
+<hr>
+<ol>
+<li>Let&rsquo;s create a default NixOS configuration file for our NixOS virtual machine to use. Here is a minimal</li>
+</ol>
+<pre tabindex="0"><code>{ config, pkgs, ... }:
+
+{
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  users.users.jaysa = {
+    isNormalUser = true;
+    extraGroups = [ &#34;wheel&#34; ]; # Enable &#39;sudo&#39; for the user.
+    initialPassword = &#34;test&#34;;
+  };
+
+  environment.systemPackages = with pkgs; [
+    cowsay
+    lolcat
+  ];
+
+  system.stateVersion = &#34;24.05&#34;;
+}
+</code></pre><pre tabindex="0"><code>sudo nix-build &#39;&lt;nixpkgs/nixos&gt;&#39; -A vm -I nixpkgs=channel:nixos-24.05 -I nixos-config=./configuration.nix
+</code></pre><p>This command may take awhile to run. Go grab a soda or something.</p>
+<pre tabindex="0"><code>ls -R ./result
+QEMU_KERNEL_PARAMS=console=ttyS0 ./result/bin/run-nixos-vm -nographic; reset
+</code></pre><p>Now, you should have a working nixos VM that you can log into with the username and password specified in <code>configuration.nix</code>!</p>
+<pre tabindex="0"><code>rm -r result nixos.qcow2
+sudo nix-build &#39;&lt;nixpkgs/nixos&gt;&#39; -A vm -I nixpkgs=channel:nixos-24.05 -I nixos-config=./configuration.nix
+sudo QEMU_KERNEL_PARAMS=console=ttyS0 ./result/bin/run-nixos-vm -nographic; reset
+</code></pre><hr>
+<h1 id="part-2-installing-the-minecraft-server">
+  Part 2: Installing the Minecraft Server
+  <a class="anchor" href="#part-2-installing-the-minecraft-server">#</a>
+</h1>
+<p>Now that we have a NixOS machine to play with, let&rsquo;s actually install minecraft declaratively within <code>configuration.nix</code> (look at the section where we installed lolcat and cowsay!)</p>
+<h2 id="21-basic-minecraft-configuration">
+  2.1: Basic minecraft configuration
+  <a class="anchor" href="#21-basic-minecraft-configuration">#</a>
+</h2>
+<h2 id="22-error-minecraft-is-not-gnuok">
+  2.2: Error: Minecraft is NOT GNU+OK!!!
+  <a class="anchor" href="#22-error-minecraft-is-not-gnuok">#</a>
+</h2>
+<p>Unfortunately, Minecraft is not free and open source software, and nix will not evaluate our derivation until we allow unfree software in our system. Figure out how to work around this.</p>
+<p>Hint: 
+  <a href="https://wiki.nixos.org/wiki/Unfree_software">https://wiki.nixos.org/wiki/Unfree_software</a></p>
+<h2 id="bonus-error-oom-also-known-as-out-of-memory">
+  Bonus error: OOM, also known as&hellip; out of memory!
+  <a class="anchor" href="#bonus-error-oom-also-known-as-out-of-memory">#</a>
+</h2>
+<p>Figure out how to check the logs and see what went wrong. NixOS runs minecraft as a systemd service, so you can check the journal logs just like those of any other process on the machine (see old lab for a refresher).</p>
+<p>Hint: think about how much memory we specified in our <code>jvmOpts</code> option. Do we know if our NixOS VM even has the amount of memory we told our minecraft server use? How do we check how much memory the NixOS VM has?</p>
+<p>Hint 2: We can see how much memory our VM has by running <code>free -h</code> inside of it. Perhaps we could allocate more memory (say, 8GB) using an additional argument to the QEMU command that starts the VM.</p>
+<p>
+  <a href="https://wiki.nixos.org/wiki/Swap">https://wiki.nixos.org/wiki/Swap</a></p>
+<p>Even if you can&rsquo;t resolve the out of memory error, don&rsquo;t worry. Just describe some of the steps you took to debug it and methods you tried before moving onto the next section. Don&rsquo;t feel bad; it&rsquo;s more likely to be an issue with our hardware than anything you did wrong!</p>
+<h2 id="23-set-the-whitelist">
+  2.3 Set the Whitelist
+  <a class="anchor" href="#23-set-the-whitelist">#</a>
+</h2>
+<p>Find the NixOS option used to change the server gamemode to creative.</p>
+<p>Now, in your server logs, default game type should appear as SURVIVAL instead of CREATIVE
+Default game type: SURVIVAL
+[Server thread/INFO]: Default game type: SURVIVAL</p>
+<h2 id="one-extra-feature">
+  One Extra feature!
+  <a class="anchor" href="#one-extra-feature">#</a>
+</h2>
+<p>Pick an additional feature to add to your server. If you don&rsquo;t know what to do, here are some ideas (you can confirm each of these by checking the systemd log for minecraft, each should modify the output:</p>
+<ol>
+<li>Change the port which the server listens on.</li>
+<li>Change the version of minecraft that the server runs.</li>
+<li>Set the gamemode to creative.</li>
+</ol>
+<h2 id="bonus-backups">
+  Bonus: Backups
+  <a class="anchor" href="#bonus-backups">#</a>
+</h2>
+<h1 id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h1>
+<p>Unfortunately, our network this semester isn&rsquo;t set up so that you can join your server from your outside Minecraft client and play on it. Also, your virtual machine would require more RAM for the game not to be unbearably laggy (but the machine running all the VMs only has 500GB of RAM&hellip; split among all of our students, it isn&rsquo;t much). However, you can always take the configuration.nix file you wrote for this lab to a different computer with Nix installed (no matter the operating system) to build the QEMU VM, start it up, and get the same result!</p>
+<p>That&rsquo;s the beauty of the declarative nature of the Nix programming language, and the operating system and package manager which accompanies it. Nix is now one more tool you can turn to for avoiding repetitive tasks such as taking backups, replacing files, and other tedious systems administration work on the servers you work with.</p>
+<p>I hope you enjoyed this lab!! Happy crafting! 💎⛏️</p>
+<hr>
+<p>FAQ:
+semicolon error&hellip;</p>
+<h1 id="gradescope-questions">
+  Gradescope Questions:
+  <a class="anchor" href="#gradescope-questions">#</a>
+</h1>
+<ol>
+<li>How did you manage to solve the minecraft server running out of memory?
+answer: QEMU_KERNEL_PARAMS=console=ttyS0 ./result/bin/run-nixos-vm -nographic -m 8192; reset</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/labs/9/" class="flex align-center book-icon">
+        <img src="/svg/backward.svg" class="book-icon" alt="Previous" title="Lab 9 - Containers (Docker)" />
+        <span>Lab 9 - Containers (Docker)</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/labs/11/" class="flex align-center book-icon">
+        <span>Lab 11 - Kubernetes</span>
+        <img src="/svg/forward.svg" class="book-icon" alt="Next" title="Lab 11 - Kubernetes" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+<div class="col-lg-12 text-center">
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.janestreet.com" class="no-underline">
+      <img
+        src="/jane-street.svg"
+        style="height: 50px"
+      />
+    </a>
+    <span style="padding-left: 10px";>
+      Thanks to
+      <a href="https://www.janestreet.com">Jane Street</a> for supporting the DeCal.
+    </span>
+  </p>
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.ocf.berkeley.edu" class="no-underline">
+      <img
+        src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+        alt="Hosted by the OCF"
+        style="height: 50px"
+        style="border: 0"
+    /></a>
+    <span style="padding-left: 10px";>
+      Copyright &copy; 2017-2025
+      <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+      and
+      <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+    </span>
+  </p>
+  <p>
+    <span>
+      This website and its course materials are licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+      available on GitHub
+    </span>
+  </p>
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
