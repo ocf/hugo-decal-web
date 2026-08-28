@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/archives/2022-spring/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/archives/2022-spring/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/archives/2022-spring/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/archives/2022-spring/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Staff Training Lab 1 - Welcome to the OCF! | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Staff Training Lab 1 - Welcome to the OCF!" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/archives/2022-spring/labs/s1/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/archives/2022-spring/labs/s1/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Staff Training Lab 1 - Welcome to the OCF!" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Staff Training Lab 1 - Welcome to the OCF!","url":"https://decal.ocf.berkeley.edu/archives/2022-spring/labs/s1/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#introduction">Introduction</a><ol><li><a href="#what-will-we-do-in-these-staff-trainings">What will we do in these staff trainings?</a></li><li><a href="#getting-help">Getting Help</a></li><li><a href="#who-to-talk-to">Who to Talk To</a></li></ol></li><li><a href="#task-1-getting-started">Task 1: Getting Started</a></li><li><a href="#task-2-slide-into-our-dms">Task 2: Slide into our DM’s</a><ol><li><a href="#discord-instructions">Discord Instructions</a></li><li><a href="#slack-instructions">Slack Instructions</a></li><li><a href="#ircmatrix-instructions">IRC/Matrix Instructions</a></li></ol></li><li><a href="#conclusion">Conclusion</a></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1 style="margin-bottom:0">Staff Training Lab 1 - Welcome to the OCF!</h1>
+        
+        <p>Facilitator: <a href="/staff#ben-cuan">Ben Cuan</a></p>
+        
+        
+        6 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a>    <ol>
+      <li><a href="#what-will-we-do-in-these-staff-trainings" id="markdown-toc-what-will-we-do-in-these-staff-trainings">What will we do in these staff trainings?</a></li>
+      <li><a href="#getting-help" id="markdown-toc-getting-help">Getting Help</a></li>
+      <li><a href="#who-to-talk-to" id="markdown-toc-who-to-talk-to">Who to Talk To</a></li>
+    </ol>
+  </li>
+  <li><a href="#task-1-getting-started" id="markdown-toc-task-1-getting-started">Task 1: Getting Started</a></li>
+  <li><a href="#task-2-slide-into-our-dms" id="markdown-toc-task-2-slide-into-our-dms">Task 2: Slide into our DM’s</a>    <ol>
+      <li><a href="#discord-instructions" id="markdown-toc-discord-instructions">Discord Instructions</a></li>
+      <li><a href="#slack-instructions" id="markdown-toc-slack-instructions">Slack Instructions</a></li>
+      <li><a href="#ircmatrix-instructions" id="markdown-toc-ircmatrix-instructions">IRC/Matrix Instructions</a></li>
+    </ol>
+  </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ol><hr />
+      <h2 id="introduction">
+        
+        
+          <a href="#introduction" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Introduction
+        
+        
+      </h2>
+    
+
+<p><img src="../../assets/images/labs/s1/ocf-waddles.png" alt="ocf waddles" width="50%" /></p>
+
+<p>Welcome to OCF staff!</p>
+
+<p>These staff training activities are meant to help you get familiarized with the inner workings of the OCF, and feel comfortable contributing to the OCF yourself (whether that be technically, administratively, or both)! All new, veteran, and aspiring staffers are welcome to participate in as much or as little as desired throughout the semester, but we encourage you to come every week even if it’s just to hang out with us!</p>
+      <h3 id="what-will-we-do-in-these-staff-trainings">
+        
+        
+          <a href="#what-will-we-do-in-these-staff-trainings" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> What will we do in these staff trainings?
+        
+        
+      </h3>
+    
+<p>The purpose of these training labs are to cover the most useful aspects of OCF infrastructure and organization that staffers actively contribute to or interact with on a day-to-day basis. This includes:</p>
+<ul>
+  <li>how to access and interact with important OCF services/servers like tsunami, supernova, puppet, webhosting, docs, ocf-web, HPC, etc.</li>
+  <li>an overview of OCF hardware, and how to request shiny new stuff on the buysheet</li>
+  <li>what committees are and how to get involved with them</li>
+  <li>the RT system, and how to run staff hours</li>
+  <li>common tools used in the OCF like Git, vim, and useful terminal commands</li>
+  <li>kubernetes, if interest and time allows</li>
+  <li>lots of excuses to meet other staffers and make new friends!</li>
+</ul>
+
+<p>You <strong>do not</strong> need any prior experience in anything at all to participate. Concurrent enrollment in the <a href="https://decal.ocf.berkeley.edu/archives/2022-spring/">OCF DeCal</a> (either beginner or advanced track is ok) is encouraged for new staff.</p>
+      <h3 id="getting-help">
+        
+        
+          <a href="#getting-help" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Getting Help
+        
+        
+      </h3>
+    
+<p>Even if you’re feeling the slightest bit unsure about something, or if you’re curious and want to learn more, don’t hesitate to talk to other staff members! We’re usually in the lab after-hours (around 8-10pm most days), or during scheduled <a href="https://www.ocf.berkeley.edu/staff-hours">staff hours</a>. If you can’t make it to the lab during these times, feel free to post to the following Discord/Slack channels:</p>
+<ul>
+  <li>#rebuild: technical and infrastructure-related discussion</li>
+  <li>#administrivia: administrative discussion</li>
+  <li>#decal-comm: discussion specific to decal and staff training content</li>
+</ul>
+      <h3 id="who-to-talk-to">
+        
+        
+          <a href="#who-to-talk-to" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Who to Talk To
+        
+        
+      </h3>
+    
+<p>If you want to ask someone about something, or just want to say hi, here’s a list of some veteran staff members and what they do. <strong>If you’d like to add yourself to this list, make a PR to decal-web and/or ping @bencuan!</strong></p>
+
+<p>General Managers (GMs): oversee the administrative side of the OCF, including BoD meetings. Ask them about hosting staff hours, contributing non-technically, and joining the Board of Directors!</p>
+<ul>
+  <li>Ben Cuan (bencuan)</li>
+  <li>Justin Zhang (jyxzhang)</li>
+</ul>
+
+<p>Site Managers (SMs): oversee the technical side of the OCF, including the lab space. Ask them about OCF infrastructure, technical projects, and upcoming lab upgrades!</p>
+<ul>
+  <li>Jonathan Zhang (rjz)</li>
+  <li>Ethan Wu (etw)</li>
+</ul>
+
+<p>Operations Managers (OMs): oversee the OCF’s operations staff (opstaff), who run the front desk and many other lab operations, including technical and design projects.</p>
+<ul>
+  <li>Amy Oh (amyoh)</li>
+</ul>
+
+<p>Internal Committee (#internal-comm): manages staff events, socials, and meetings.</p>
+<ul>
+  <li>Kian Sutarwala (kian)</li>
+  <li>Bryan Li (bryli)</li>
+</ul>
+
+<p>External Committee (#external-comm): manages industry, alumni, and club relations.</p>
+<ul>
+  <li>Nikhil Ograin (ncograin)</li>
+  <li>Andrei Dones (anddone)</li>
+</ul>
+
+<p>Finance Committee (#finance-comm): manages the OCF budget, purchases, and funding from ABSA, STF, and other sources.</p>
+<ul>
+  <li>Saurabh Narain (snarain)</li>
+  <li>Raymond Huang (rayh)</li>
+  <li>Nicholas Berberi (ncberberi)</li>
+</ul>
+
+<p>DeCal Committee (#decal-comm): runs the Decal and staff workshops.</p>
+<ul>
+  <li>Lance Mathias (lmathias)</li>
+  <li>Laksith (laksith)</li>
+  <li>Ben Cuan (bencuan)</li>
+</ul>
+      <h2 id="task-1-getting-started">
+        
+        
+          <a href="#task-1-getting-started" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Task 1: Getting Started
+        
+        
+      </h2>
+    
+
+<p>If this is your first time at a staff meeting, we’ll need to add you to staff so that you can access resources for contributing!</p>
+
+<p>Before proceeding, <strong>make sure you have an OCF account</strong> (<a href="https://ocf.io/join">ocf.io/join</a>). This is different from your CalNet account.</p>
+
+<p>Once you have an OCF account, talk to someone with root access (such as the SM’s or GM’s) who will be able to add you to the staff role.</p>
+
+<p>To verify that you have been added successfully, log in to any OCF desktop using your OCF account credentials. Then, open up a terminal (using ctrl+alt+T or by clicking the icon on the taskbar) and type in <code class="language-plaintext highlighter-rouge">ssh supernova</code>. It should look something like this:</p>
+
+<p><img src="../../assets/images/labs/s1/ocf-supernova.png" alt="ocf supernova" width="100%" /></p>
+
+<p>You can access supernova at any time on other machines (including your own) by typing in <code class="language-plaintext highlighter-rouge">ssh &lt;YOUR_USERNAME&gt;@supernova.ocf.io</code> on your terminal. If prompted for a password, it’s ok if nothing shows up when you type- just hit enter after typing in your password and it will go through.</p>
+
+<p>We’ll explore what ssh actually does, as well as some cool things you can do on supernova, in next week’s staff training!</p>
+      <h2 id="task-2-slide-into-our-dms">
+        
+        
+          <a href="#task-2-slide-into-our-dms" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Task 2: Slide into our DM’s
+        
+        
+      </h2>
+    
+
+<p>Outside of the lab, most of our communication happens over the OCF chat network, which consists of <a href="https://ocf.io/discord">Discord</a>, <a href="https://ocf.io/slack">Slack</a>, <a href="https://ocf.io/irc">IRC</a>, and <a href="https://ocf.io/matrix">Matrix</a>. All of these are bridged, meaning that sending a message in one platform sends it to all of the other platforms too, so pick your favorite one and click on its link to join!</p>
+
+<p>Most staff are currently active on Discord, so if you don’t have any prior preferences then we recommend you join it so you can reach other staff more easily through DM’s.</p>
+      <h3 id="discord-instructions">
+        
+        
+          <a href="#discord-instructions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Discord Instructions
+        
+        
+      </h3>
+    
+
+<p>If you’re joining on Discord, you must first verify your account (instructions on the #verify channel).</p>
+
+<p>Once you’re verified, send a message to the #introduce-yourself channel so we can get to know you a little better! Once you do so, you’ll receive the newstaff and ocf roles.</p>
+
+<p>You should then be able to add yourself to whatever topic-specific roles you desire (such as for committees or groups), so you can get pinged for any action happening in those areas. It’s also recommended to turn notifications on for any channels of interest, as committees/groups usually have their own meeting times outside of general meetings that you won’t want to miss.</p>
+      <h3 id="slack-instructions">
+        
+        
+          <a href="#slack-instructions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Slack Instructions
+        
+        
+      </h3>
+    
+
+<p>If you’re joining Slack, you will need to create an account using your OCF account email (username@ocf.berkeley.edu). The confirmation email should then be forwarded to your berkeley.edu email address.</p>
+
+<p>Once you join, you’ll need to manually add the channels you’re interested in. A good way to do so is click the “+” button when hovering over Channels, then sort by most members and go down the list from there.</p>
+      <h3 id="ircmatrix-instructions">
+        
+        
+          <a href="#ircmatrix-instructions" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> IRC/Matrix Instructions
+        
+        
+      </h3>
+    
+
+<p>Post on #rebuild if you run into any issues or have any questions about getting set up.</p>
+      <h2 id="conclusion">
+        
+        
+          <a href="#conclusion" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Conclusion
+        
+        
+      </h2>
+    
+
+<p>That’s about it for this week! This is the first time we’re trying these staff training activities, so if you ever have any feedback or ideas on how to improve them, please <a href="https://github.com/0xcf/decal-web/issues">create an issue</a> or <a href="https://github.com/0xcf/decal-web/pulls">make a PR</a> to decal-web! The source files can be found in the <a href="https://github.com/0xcf/decal-web/tree/master/labs">labs folder</a> and start with the ‘s’ prefix.</p>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com" class="no-underline">
+        <img
+          src="/archives/2022-spring/assets/images/digitalocean.png"
+          style="height: 34px; width: 200px"
+      /></a>
+      <span>
+        With great appreciation to
+        <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring
+        the VMs used in both tracks of the DeCal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/archives/2022-spring/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2021
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

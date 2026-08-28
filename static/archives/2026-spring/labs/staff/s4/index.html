@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Staff Training Lab 4 - Git Good
+  #
+
+Table of Contents
+
+  
+    Introduction
+      
+        About Git and GitHub
+      
+    
+    Exploring the OCF GitHub
+      
+        Task 1
+      
+    
+    Making Pull Requests (Task 2)
+      
+        Setup
+        Editing
+        Git add, git commit, git push
+        Making the PR
+      
+    
+    Staff Hours (Task 3)
+    What next?
+  
+
+
+
+
+  Introduction
+  #
+
+Welcome to week 4 of staff training!
+At this point, if you&rsquo;ve completed the previous few staff training labs you should have a pretty decent idea about how to navigate and use existing tools around the OCF.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://decal.ocf.berkeley.edu/labs/staff/s4/">
+  <meta property="og:site_name" content="OCF Sysadmin DeCal">
+  <meta property="og:title" content="Staff Training Lab 4 - Git Good">
+  <meta property="og:description" content="Staff Training Lab 4 - Git Good # Table of Contents Introduction About Git and GitHub Exploring the OCF GitHub Task 1 Making Pull Requests (Task 2) Setup Editing Git add, git commit, git push Making the PR Staff Hours (Task 3) What next? Introduction # Welcome to week 4 of staff training!
+At this point, if you’ve completed the previous few staff training labs you should have a pretty decent idea about how to navigate and use existing tools around the OCF.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="labs">
+<title>Staff Training Lab 4 - Git Good | OCF Sysadmin DeCal</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/labs/staff/s4/">
+<link rel="stylesheet" href="/book.min.5d66a598a957a57db9eb1e614a4e20c2bc6f81b607613fa13e31fc22786d762f.css" integrity="sha256-XWalmKlXpX256x5hSk4gwrxvgbYHYT&#43;hPjH8Inhtdi8=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7339e7983a30b17b9b1d1d38456a848777df3f5094bc048474457aa1d9ef66f0.js" integrity="sha256-cznnmDowsXubHR04RWqEh3ffP1CUvASEdEV6odnvZvA=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OCF Sysadmin DeCal</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/syllabus/" class="">Syllabus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-36110f92af42629b8b43495643483d73" class="toggle"  />
+    <label for="section-36110f92af42629b8b43495643483d73" class="flex">
+      <a role="button" class="flex-auto ">Announcements</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-11/" class="">Week 11 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-10/" class="">Week 10 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-9/" class="">Week 9 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-0/" class="">Week 0</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-1/" class="">Week 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-2/" class="">Week 2 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-3/" class="">Week 3 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-4/" class="">Week 4 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-5/" class="">Week 5 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-6/" class="">Week 6 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-7/" class="">Week 7 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-8/" class="">Week 8 Announcement</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cf29f3eebe08ad44997f2a664cccfd3c" class="toggle" checked />
+    <label for="section-cf29f3eebe08ad44997f2a664cccfd3c" class="flex">
+      <a role="button" class="flex-auto ">Labs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/1/" class="">Lab 1 - Unix, the Shell, OSS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/2/" class="">Lab 2 - Core Shell &amp; Shell Scripting</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/3/" class="">Lab 3 - Packages and Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/4/" class="">Lab 4 - Processes and Services</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/5/" class="">Lab 5 - Introduction to Networking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/6/" class="">Lab 6 - Web Servers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/7/" class="">Lab 7 - Security Fundamentals</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/8/" class="">Lab 8 - Version Control and Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/9/" class="">Lab 9 - Containers (Docker)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/10/" class="">Lab 10 - Nix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/11/" class="">Lab 11 - Kubernetes</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/staff/" class="">Staff</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/resources/" class="">Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/archives/" class="">Archives</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://edstem.org"  target="_blank" rel="noopener">
+        Ed
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://ocf.berkeley.edu"  target="_blank" rel="noopener">
+        OCF
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Staff Training Lab 4 - Git Good</h3>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="staff-training-lab-4---git-good">
+  Staff Training Lab 4 - Git Good
+  <a class="anchor" href="#staff-training-lab-4---git-good">#</a>
+</h1>
+<p><strong>Table of Contents</strong>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#about-git-and-github">About Git and GitHub</a></li>
+      </ul>
+    </li>
+    <li><a href="#exploring-the-ocf-github">Exploring the OCF GitHub</a>
+      <ul>
+        <li><a href="#task-1">Task 1</a></li>
+      </ul>
+    </li>
+    <li><a href="#making-pull-requests-task-2">Making Pull Requests (Task 2)</a>
+      <ul>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#editing">Editing</a></li>
+        <li><a href="#git-add-git-commit-git-push">Git add, git commit, git push</a></li>
+        <li><a href="#making-the-pr">Making the PR</a></li>
+      </ul>
+    </li>
+    <li><a href="#staff-hours-task-3">Staff Hours (Task 3)</a></li>
+    <li><a href="#what-next">What next?</a></li>
+  </ul>
+</nav>
+</p>
+<hr>
+<h2 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h2>
+<p>Welcome to week 4 of staff training!</p>
+<p>At this point, if you&rsquo;ve completed the previous few staff training labs you should have a pretty decent idea about how to navigate and use existing tools around the OCF.</p>
+<p>Over the next couple weeks, we&rsquo;ll extend upon that and get you ready to make your own!</p>
+<h3 id="about-git-and-github">
+  About Git and GitHub
+  <a class="anchor" href="#about-git-and-github">#</a>
+</h3>
+<p>In a highly collaborative environment like the OCF, where many staff members may be editing the same codebase at the same time, we need a way to make sure everyone&rsquo;s changes gets integrated successfully, and that if something ever breaks, we can easily roll back to a previous version.</p>
+<p>
+  <a href="https://git-scm.com/">Git</a> is an industry-standard version control manager that allows us to do this, as well as many other things. If you stick around the OCF (or the software engineering industry in general), you will eventually get quite proficient at it just through normal usage, so don&rsquo;t feel like you need to learn everything about Git all at once! For this lab, we&rsquo;ll only go through the basics that you need to know to contribute; if you&rsquo;d like to keep going at it see the [What next?][#what-next] section for more resources.</p>
+<p>
+  <a href="https://github.com">GitHub</a> is an online platform where Git repositories can be uploaded and shared. Nearly all of the OCF&rsquo;s code can be found on our GitHub organization, 
+  <a href="https://github.com/ocf">github.com/ocf</a>.</p>
+<h2 id="exploring-the-ocf-github">
+  Exploring the OCF GitHub
+  <a class="anchor" href="#exploring-the-ocf-github">#</a>
+</h2>
+<p>If you go to 
+  <a href="https://github.com/ocf">the OCF GitHub</a>, you may see that we have nearly 100 public repositories (or maybe more, if you&rsquo;re reading this in the future). That&rsquo;s a lot of code!</p>
+<p>Luckily, you won&rsquo;t need to work with most of it. Here are the most important repositories that you should take a look at:</p>
+<ul>
+<li>
+  <a href="https://github.com/ocf/puppet">puppet</a>: Configurations for our servers and desktops. If you make a change to this repository, it gets automatically installed on all affected machines.</li>
+<li>
+  <a href="https://github.com/ocf/ocfweb">ocfweb</a>: The OCF website and web services. Also currently contains the OCF documentation (we are working on moving this to a separate repository).</li>
+<li>
+  <a href="https://github.com/ocf/ocfstatic">ocfstatic</a>: The redesigned new OCF site. If you are interested in web development, you should contribute to this repository!</li>
+<li>
+  <a href="https://github.com/ocf/etc">etc</a>: OCF configuration files used by multiple repositories; includes staff hours, virtual host lists, and more.</li>
+<li></li>
+<li>
+  <a href="https://github.com/ocf/ocflib">ocflib</a>: A Python library that allows for easy access to OCF utilities, some of which you used in previous labs.</li>
+</ul>
+<h3 id="task-1">
+  Task 1
+  <a class="anchor" href="#task-1">#</a>
+</h3>
+<p>For this task, you&rsquo;ll dig around the existing codebase to become more familiar with what might go where.</p>
+<p><strong>HINTS:</strong></p>
+<ul>
+<li>The GitHub search bar is extremely helpful. Search a term within the organization, then click on the &ldquo;Code&rdquo; tab to view all instances of that keyword in the codebase. Use 
+  <a href="https://github.com/search?q=org%3Aocf&#43;your&#43;query&#43;here&amp;type=code">this</a> as a starting point.</li>
+<li>The requested code snippets below are all found in one of the repositories mentioned above.</li>
+</ul>
+<p><strong>a.</strong> The OCF uses a shorturl system to make accessing common links more convenient (e.g. ocf.io/join, ocf.io/discord, etc). If you wanted to add a new shorturl, which file would you edit? (There should be a file with a list of them)</p>
+<p><strong>b.</strong> Which file contains the source code for the documentation page at 
+  <a href="https://new.ocf.berkeley.edu/docs/staff/getinvolved/">https://new.ocf.berkeley.edu/docs/staff/getinvolved/</a>? (Notice that it&rsquo;s on new.ocf.berkeley.edu, NOT ocf.berkeley.edu).</p>
+<p><strong>c.</strong> If someone comes into the lab asking to add the virtual host name <code>ofc.berkeley.edu</code>, which file can you look in to see if it&rsquo;s already taken? (There is a list of vhosts somewhere)</p>
+<h2 id="making-pull-requests-task-2">
+  Making Pull Requests (Task 2)
+  <a class="anchor" href="#making-pull-requests-task-2">#</a>
+</h2>
+<p>Now that you&rsquo;ve peeked around the current code, let&rsquo;s get some practice changing it!</p>
+<p>For the next exercise, you&rsquo;ll add yourself to the 
+  <a href="https://new.ocf.berkeley.edu/about/staff">staff page</a> on the new website.</p>
+<h3 id="setup">
+  Setup
+  <a class="anchor" href="#setup">#</a>
+</h3>
+<p>To get set up, follow these steps:</p>
+<ol>
+<li>Make sure you have a GitHub account and are logged in.</li>
+<li>Navigate to 
+  <a href="https://github.com/ocf/ocfstatic">the ocfstatic repo</a> and click the &ldquo;Fork&rdquo; button (see the image below). 
+  <img src="../assets/images/labs/s4/ocf-fork.png" alt="fork" /></li>
+<li>Select your account, and when the fork is done, you should be on <code>https://github.com/YOURUSERNAME/ocfstatic</code>. This is a copy of the ocfstatic code that you can edit however you wish without pushing it to the actual site.</li>
+<li>SSH into supernova (as you have done in previous labs). Run the following command, making sure to change <code>YOURUSERNAMEHERE</code> to your actual GitHub username. (<code>git clone https://github.com/YOURUSERNAME/ocfstatic</code>)</li>
+<li>In the terminal, type <code>cd ocfstatic</code>. If you now run <code>git status</code> it should say something like &ldquo;nothing to commit, working tree clean&rdquo;.</li>
+</ol>
+<p>At this point, you have a local copy of the new website&rsquo;s code loaded onto supernova! The next step is to make a new branch, which allows you to make changes while still having a copy of the original code (on the master branch). You can do this with the command <code>git checkout -b BRANCHNAME</code>. A good branch name might be something like <code>add-YOURUSERNAMEHERE</code> (replacing with your actual username, of course).</p>
+<h3 id="editing">
+  Editing
+  <a class="anchor" href="#editing">#</a>
+</h3>
+<p>At last, you&rsquo;re ready to make a change! You will need to edit 
+  <a href="https://github.com/ocf/ocfstatic/blob/master/src/pages/About/Staff.vue">this file</a>. Try to use <code>vim</code> so you can get some practice with it (see 
+  <a href="https://decal.ocf.berkeley.edu/labs/b2/#a-quick-intro-to-vim">b2</a> if you need a refresher), but it&rsquo;s totally fine to use vscode, <code>nano</code>, or another editor if you are more comfortable using it. You can see the existing file contents to get a hint on how to add yourself (just make sure your ID is unique).</p>
+<h3 id="git-add-git-commit-git-push">
+  Git add, git commit, git push
+  <a class="anchor" href="#git-add-git-commit-git-push">#</a>
+</h3>
+<p>When you have made the change and saved the file, go back to the <code>ocfstatic</code> directory and type <code>git add .</code>. Now, when you type <code>git status</code>, it should tell you about the file you modified.</p>
+<p>Next, type <code>git commit -m&quot;YOUR COMMIT MESSAGE HERE&quot;</code>. Try to make a descriptive message so others know what you did.</p>
+<p>Finally, type <code>git push</code>. If it prompts you to do something with the <code>--set-upstream</code> option, just follow whatever it tells you to do instead.</p>
+<p>Now, when you go back to your fork page on GitHub, you should be able to see a new branch in the branches list!</p>
+<h3 id="making-the-pr">
+  Making the PR
+  <a class="anchor" href="#making-the-pr">#</a>
+</h3>
+<p>Go to 
+  <a href="https://github.com/ocf/ocfstatic/compare">github.com/ocf/ocfstatic/compare</a>, and change your head repository and head compare to point to your fork and the branch you just made. The page should then display instructions on how you can create a pull request. Follow the instructions, and optionally write a nice message describing what you just did!</p>
+<p>This PR should now appear in the 
+  <a href="https://github.com/ocf/ocfstatic/pulls">pull requests list</a>. A staff member with write access will review it to ensure the change was made correctly, and if it is, it will be merged into the original code and displayed on the website. Congrats on making a pull request!</p>
+<h2 id="staff-hours-task-3">
+  Staff Hours (Task 3)
+  <a class="anchor" href="#staff-hours-task-3">#</a>
+</h2>
+<p>Now for a less guided exercise.</p>
+<p>Try using the same process above to add yourself to the staff hours list 
+  <a href="https://github.com/ocf/etc/blob/master/configs/staff_hours.yaml">here</a>. You may want to pick a time where a veteran staffer is also holding staff hours, so you can hang out with them and learn more about how to run one yourself!</p>
+<p>As a summary of the process:</p>
+<ol>
+<li>Fork the repository to your account</li>
+<li>Clone the fork to supernova</li>
+<li>Create a new branch</li>
+<li>Make the change</li>
+<li><code>git add .</code>, <code>git commit -m&quot;message&quot;</code>, <code>git push</code></li>
+<li>Make the PR on GitHub</li>
+</ol>
+<h2 id="what-next">
+  What next?
+  <a class="anchor" href="#what-next">#</a>
+</h2>
+<p>Although you may now be comfortable using many core features of Git, you may also be wondering what exactly each of these steps do! Here are some more resources to learn more about git:</p>
+<ul>
+<li>
+  <a href="https://decal.ocf.berkeley.edu/labs/b9/">Decal Lab b9</a> and its corresponding 
+  <a href="https://www.youtube.com/watch?v=X4yGMr9c64U&amp;feature=youtu.be">lecture</a></li>
+<li>
+  <a href="https://git-scm.com/docs/user-manual">Git User Manual</a></li>
+<li>
+  <a href="https://www.atlassian.com/git">Atlassian Git Tutorial</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  
+
+
+
+  
+  
+  
+
+
+<div class="col-lg-12 text-center">
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.janestreet.com" class="no-underline">
+      <img
+        src="/jane-street.svg"
+        style="height: 50px"
+      />
+    </a>
+    <span style="padding-left: 10px";>
+      Thanks to
+      <a href="https://www.janestreet.com">Jane Street</a> for supporting the DeCal.
+    </span>
+  </p>
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.ocf.berkeley.edu" class="no-underline">
+      <img
+        src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+        alt="Hosted by the OCF"
+        style="height: 50px"
+        style="border: 0"
+    /></a>
+    <span style="padding-left: 10px";>
+      Copyright &copy; 2017-2025
+      <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+      and
+      <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+    </span>
+  </p>
+  <p>
+    <span>
+      This website and its course materials are licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+      available on GitHub
+    </span>
+  </p>
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Home | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Home" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/archives/2023-fall/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/archives/2023-fall/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Home" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","headline":"Home","name":"Linux Sysadmin Decal","url":"https://decal.ocf.berkeley.edu/archives/2023-fall/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<body>
+  <!-- This makes the page opaque until the screen is loaded. Matches the preferred dark-mode color of the user. -->
+  <div id="loading" style="height:140%;width:140%;background-color:#ffffff;position:absolute;z-index:1000;left:-20%;top:-20%"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+    <symbol id="svg-search" viewBox="0 0 24 24">
+      <title>Search</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </symbol>
+    <symbol id="svg-menu" viewBox="0 0 24 24">
+      <title>Menu</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+        <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </symbol>
+    <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+      <title>Expand</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </symbol>
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+      <title>Document</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+      </svg>
+    </symbol>
+  </svg>
+
+  <div class="side-bar">
+    <div class="site-header">
+      <a href="https://decal.ocf.berkeley.edu/archives/2023-fall/" class="site-title lh-tight">
+  Sysadmin DeCal
+
+</a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
+      
+        <ul class="nav-list"><li class="nav-list-item active"><a href="https://decal.ocf.berkeley.edu/archives/2023-fall/" class="nav-list-link active">Home</a></li><li class="nav-list-item"><a href="https://decal.ocf.berkeley.edu/archives/2023-fall/about/" class="nav-list-link">About</a></li><li class="nav-list-item"><a href="https://decal.ocf.berkeley.edu/archives/2023-fall/staff/" class="nav-list-link">Staff</a></li><li class="nav-list-item"><a href="https://decal.ocf.berkeley.edu/archives/2023-fall/resources/" class="nav-list-link">Resources</a></li><li class="nav-list-item"><a href="https://decal.ocf.berkeley.edu/archives/2023-fall/archive/" class="nav-list-link">Archive</a></li></ul>
+
+      
+    </nav>
+    <footer class="site-footer">
+      <button type="button" name="theme-toggle" class="btn mb-md-3" onclick="toggleDark()">Toggle Dark Theme</button>
+      <br />
+      This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    </footer>
+  </div>
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+      
+        <div class="search">
+          <div class="search-input-wrap">
+            <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Sysadmin DeCal" aria-label="Search Sysadmin DeCal" autocomplete="off">
+            <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+          </div>
+          <div id="search-results" class="search-results"></div>
+        </div>
+      
+      
+      
+        <nav aria-label="Auxiliary" class="aux-nav">
+          <ul class="aux-nav-list">
+            
+              <li class="aux-nav-list-item">
+                <a href="https://edstem.org/us/courses/42500/discussion/" class="site-button"
+                  
+                  target="_blank" rel="noopener noreferrer"
+                  
+                >
+                  Ed
+                </a>
+              </li>
+            
+              <li class="aux-nav-list-item">
+                <a href="https://ocf.berkeley.edu/" class="site-button"
+                  
+                  target="_blank" rel="noopener noreferrer"
+                  
+                >
+                  OCF
+                </a>
+              </li>
+            
+              <li class="aux-nav-list-item">
+                <a href="https://xcf.berkeley.edu/" class="site-button"
+                  
+                  target="_blank" rel="noopener noreferrer"
+                  
+                >
+                  XCF
+                </a>
+              </li>
+            
+          </ul>
+        </nav>
+      
+    </div>
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+      <div id="main-content" class="main-content" role="main">
+        
+          <h1 class="mb-2" id="linux-system-administration-decal">
+        
+        
+          <a href="#linux-system-administration-decal" class="anchor-heading" aria-labelledby="linux-system-administration-decal"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Linux System Administration Decal
+        
+        
+      </h1>
+    
+<p class="fs-6 fw-300">A course covering the basics of setting up and administering a production-quality Linux server environment.</p>
+
+<div class="announcement">
+      <h2>
+        
+        
+          Week 13 Announcement
+        
+        
+      </h2>
+    
+  <span class="announcement-meta">
+    
+    Nov 28
+    &middot;
+    
+    
+    0 min read
+  </span>
+  <div>
+    <p>We are nearing the end of the semester! I hope everyone learned a lot from the Linux Sysadmin DeCal :’)</p>
+
+<ul>
+  <li>CUDA (NVIDIA) lecture (optional), will be hosted next week, 12/5 (date changed!!)</li>
+  <li>Feel free to reach out to us if you are unable to keep up with the material for whatever reason– we are friendly!</li>
+  <li>Any questions? Post on Ed or reach us at <a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu</a>!
+    <ul>
+      <li>It’s been a busy time, so apologies for any delays in getting back to questions (especially regarding grades)!</li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+</div>
+      <h2 id="weekly-schedule">
+        
+        
+          <a href="#weekly-schedule" class="anchor-heading" aria-labelledby="weekly-schedule"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Weekly Schedule
+        
+        
+      </h2>
+    
+
+<div class="schedule">
+  <ul class="schedule-timeline" style="min-width: 650px">
+    
+    <li class="schedule-time">6:30 PM </li>
+    
+    <li class="schedule-time">7:00 PM </li>
+    
+    <li class="schedule-time">7:30 PM </li>
+    
+    <li class="schedule-time">8:00 PM </li>
+    
+    <li class="schedule-time">8:30 PM </li>
+    
+    <li class="schedule-time">9:00 PM </li>
+    
+  </ul>
+  <ul class="schedule-group">
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Monday
+        
+        
+      </h2>
+    
+      
+    </li>
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Tuesday
+        
+        
+      </h2>
+    
+      
+      <ul class="schedule-events" style="height: 240px">
+      
+        
+        
+        
+        
+        <li class="schedule-event lecture" style="top: 40px; height: 80px;">
+          <div class="name">Lecture</div>
+          <div class="time">7:00 PM–8:00 PM</div>
+          
+          <div class="location">OCF Lab / ocf.io/decalzoom</div>
+          
+        </li>
+      
+        
+        
+        
+        
+        <li class="schedule-event lab" style="top: 120px; height: 80px;">
+          <div class="name">Lab</div>
+          <div class="time">8:00 PM–9:00 PM</div>
+          
+          <div class="location">OCF Lab</div>
+          
+        </li>
+      
+      </ul>
+      
+    </li>
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Wednesday
+        
+        
+      </h2>
+    
+      
+    </li>
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Thursday
+        
+        
+      </h2>
+    
+      
+    </li>
+    
+    <li class="schedule-day">
+      <h2 class="schedule-header">
+        
+        
+          Friday
+        
+        
+      </h2>
+    
+      
+    </li>
+    
+  </ul>
+</div>
+      <h1 id="calendar">
+        
+        
+          <a href="#calendar" class="anchor-heading" aria-labelledby="calendar"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Calendar
+        
+        
+      </h1>
+    
+
+<div class="module">
+      <h2 class="text-gamma" id="week-0-8292023">
+        
+        
+          <a href="#week-0-8292023" class="anchor-heading" aria-labelledby="week-0-8292023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 0: 8/29/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-yellow">Infosession</strong> Tues 8/29 &amp; Thurs 8/31, 7-9pm @ OCF Lab / <a href="https://ocf.io/decalzoom">ocf.io/decalzoom</a>
+<br />
+<strong class="label label-blue">Lab</strong><a href="lab0">Lab 0</a> due <strong>Sat 9/2</strong></p>
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-1-9052023">
+        
+        
+          <a href="#week-1-9052023" class="anchor-heading" aria-labelledby="week-1-9052023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 1: 9/05/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>History of UNIX, Intro to Linux, FOSS : <a href="https://docs.google.com/presentation/d/1U5YeoCjcr-M2QxqRUv5juRmWM7gShoGL2dFGa9GvUq0/edit?usp=sharing" target="_blank">Slides</a>,  <a href="https://youtu.be/lOV1b4CFlKs">Recording</a> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/1">Lab 1</a> due <strong>Sat. 9/09</strong></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-2-9122023">
+        
+        
+          <a href="#week-2-9122023" class="anchor-heading" aria-labelledby="week-2-9122023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 2: 9/12/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Core Shell &amp; Shell Scripting : <a href="https://docs.google.com/presentation/d/1SYoC8j1qiM4CuhSArouJbhLpUfDAfyuFMF8r7R4Y0_Y/edit?usp=sharing" target="_blank">Slides</a>,  <a href="https://youtu.be/DDgO2UuxG5U">Recording</a> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/2">Lab 2</a> due <strong>Sat. 9/16</strong></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-3-9192023">
+        
+        
+          <a href="#week-3-9192023" class="anchor-heading" aria-labelledby="week-3-9192023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 3: 9/19/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Packages : <a href="https://docs.google.com/presentation/d/1SPb5rikbwzZVESFsTwfwnvl20TJGqlfyvmwHBmIOUr8/edit?usp=sharing" target="_blank">Slides</a>,  <a href="https://youtu.be/5FGYJzmRQ38">Recording</a> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/3">Lab 3</a> due <strong>Sat. 9/23</strong></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-4-9262023">
+        
+        
+          <a href="#week-4-9262023" class="anchor-heading" aria-labelledby="week-4-9262023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 4: 9/26/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Services : <a href="https://docs.google.com/presentation/d/1LToxKsvyCo7oBOI3vgcJTts8a8Ipdje06-sekJ7Zll0/edit" target="_blank">Slides</a>,  <a href="https://youtu.be/9XY5qolQMMo">Recording</a> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/4">Lab 4</a> due <strong>Sat. 9/30</strong></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-5-10032023">
+        
+        
+          <a href="#week-5-10032023" class="anchor-heading" aria-labelledby="week-5-10032023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 5: 10/03/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Networking 101 : <a href="https://docs.google.com/presentation/d/1dcsymJQBGUImbuY3nIi7B5Ypq5AFk-QrfOq2-vD2BE8/edit" target="_blank">Slides</a>,  <a href="https://youtu.be/6Ox88gJYRuw">Recording</a> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/5">Lab 5</a> due <strong>Sat. 10/7</strong></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-6-10102023">
+        
+        
+          <a href="#week-6-10102023" class="anchor-heading" aria-labelledby="week-6-10102023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 6: 10/10/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Web Servers : <a href="https://docs.google.com/presentation/d/112fYOYbyEb970KaglAC60rEOOiwRf12gxwngZqrxFLM/edit" target="_blank">Slides</a>,  <a href="https://youtu.be/ZPiXUJEcgGY">Recording</a> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/6">Lab 6</a> due <strong>Sat. 10/14</strong></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-7-10172023">
+        
+        
+          <a href="#week-7-10172023" class="anchor-heading" aria-labelledby="week-7-10172023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 7: 10/17/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Security Fundamentals : <a href="https://docs.google.com/presentation/d/1gWe6ZwUsw_dbjlkMypV-p3TF4DdCjZ_Bgbs9a4MjYJg/edit" target="_blank">Slides</a>,  <a href="https://youtu.be/PgAn1KSD8Y8">Recording</a> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/7">Lab 7</a> due <strong>Sat. 10/21</strong></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-8-10242023">
+        
+        
+          <a href="#week-8-10242023" class="anchor-heading" aria-labelledby="week-8-10242023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 8: 10/24/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Version Control (git) and Backups : <a href="https://docs.google.com/presentation/d/1HJCgPlDlFCusGYAQePZMJD8EpDZOICqG59y6HWpeyX0/edit" target="_blank">Slides</a>,  <a href="https://youtu.be/2P00pRt_Qjw">Recording</a> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/8">Lab 8</a> due <strong>Sat. 10/28</strong></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-9-10312023">
+        
+        
+          <a href="#week-9-10312023" class="anchor-heading" aria-labelledby="week-9-10312023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 9: 10/31/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Docker : <a href="https://docs.google.com/presentation/d/1zwtj3KFmBjIGyTXdaUnxxzn4CL1I7Ded1hnm9eCYajc/edit?usp=sharing" target="_blank">Slides</a>,  <a href="https://berkeley.zoom.us/rec/share/qli5nS1SkOPDFAaD5UkgZGrzzcV3Q7o60Rnt9LloyyJv9zVarH44wwUr7EHfmAic.UJGPdlzOyPFW5OI8">Recording</a>  with password <code class="language-plaintext highlighter-rouge">96ujqce?</code> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/9">Lab 9</a> due <strong>Sat. 11/4</strong></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-10-11072023">
+        
+        
+          <a href="#week-10-11072023" class="anchor-heading" aria-labelledby="week-10-11072023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 10: 11/07/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Kubernetes : <a href="https://docs.google.com/presentation/d/1AdjcJ_cNZM233KCMxbypWmhDETzWsTgD016A1McoRII/edit?usp=sharing" target="_blank">Slides</a>,   <br />
+<strong class="label label-blue">Lab</strong><a href="labs/10">Lab 10</a></p>
+
+</div>
+
+<div class="module">
+      <h2 class="text-gamma" id="week-11-11142023">
+        
+        
+          <a href="#week-11-11142023" class="anchor-heading" aria-labelledby="week-11-11142023"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Week 11: 11/14/2023
+        
+        
+      </h2>
+    
+
+  <p><strong class="label label-green">Lecture</strong>Puppet (Optional Extra Lab) : <a href="https://docs.google.com/presentation/d/13XWdd45NGob8rrO0p5EgK2qyAFSfGzN_-WFPCVoO87w/edit?usp=sharing" target="_blank">Slides</a>,  <a href="https://youtu.be/i40GgIIrb_o">Recording</a> <br />
+<strong class="label label-blue">Lab</strong><a href="labs/11">Lab 11</a></p>
+
+</div>
+
+        
+
+        
+
+        
+        
+          <hr>
+          <footer>
+            
+
+            <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.nvidia.com/en-us/" class="no-underline">
+        <img
+          src="/assets/images/nvidia.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Thanks to
+        <a href="https://www.nvidia.com">Nvidia</a> for sponsoring GPUs to the OCF.
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2022
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+
+            
+          </footer>
+        
+
+      </div>
+    </div>
+
+    
+      
+
+      <div class="search-overlay"></div>
+    
+  </div>
+  
+  <script>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    document.getElementById("loading").style["backgroundColor"] = getCookie("dark-mode") == 1 ? "#27262b" : "#ffffff" // Set the opaque layer to the prefered color
+
+    window.addEventListener('load', (event) => {
+      document.getElementById("loading").style = ""; // Remove the opaque layer when the page loads
+    });
+
+
+    let dark = !(window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches); // Flip dark so we can run one toggle on load
+    
+    let preference = getCookie("dark-mode");
+
+    if(preference == "1") {
+      dark = false;
+    } else if(preference == "0") {
+      dark = true;
+    }
+
+    let toggleDark = () => { 
+      jtd.setTheme(dark ? 'light' : 'dark'); 
+
+      // Change input text placeholder text color
+
+      const PLACEHOLDER_TEXT_COLOR = "#959396";
+
+      if(!dark) {
+        let placeholderStyleElem = document.head.appendChild(document.createElement("style"));
+        placeholderStyleElem.id = "placeholderTextStyle"
+        placeholderStyleElem.innerHTML = "::placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; opacity: 1 }\n"; // Firefox requires opacity
+        placeholderStyleElem.innerHTML += ":-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // IE 10+
+        placeholderStyleElem.innerHTML += "::-ms-input-placeholder { color: " + PLACEHOLDER_TEXT_COLOR + "; }\n"; // Edge
+      } else {
+        let placeholderStyleElem = document.getElementById("placeholderTextStyle");
+        if(placeholderStyleElem) placeholderStyleElem.remove();
+      }
+
+      setCookie("dark-mode", dark ? "0" : "1", 3652); 
+      dark = !dark;
+    }
+    toggleDark();
+  </script>
+</body>
+</html>
+

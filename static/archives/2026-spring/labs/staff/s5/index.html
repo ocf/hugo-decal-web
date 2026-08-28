@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Staff Training Lab 5 - Networking
+  #
+
+Table of Contents
+
+  
+    Introduction
+    About IP/DNS
+      
+        IP
+        DNS
+      
+    
+    The OCF&rsquo;s IP block
+  
+
+
+
+
+  Introduction
+  #
+
+Welcome to week 5 of staff training!
+This week, we&rsquo;ll dive into the wonderful world of networking- specifically, how we make it possible for you to access OCF services, and how we make things available to users on human-friendly domain names.
+
+  About IP/DNS
+  #
+
+The following sections are copied from the Networking lab from the decal. Feel free to skip if you have taken the decal, or have taken CS161/168 and are familiar with the concepts below.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://decal.ocf.berkeley.edu/labs/staff/s5/">
+  <meta property="og:site_name" content="OCF Sysadmin DeCal">
+  <meta property="og:title" content="Staff Training Lab 5 - Networking">
+  <meta property="og:description" content="Staff Training Lab 5 - Networking # Table of Contents Introduction About IP/DNS IP DNS The OCF’s IP block Introduction # Welcome to week 5 of staff training!
+This week, we’ll dive into the wonderful world of networking- specifically, how we make it possible for you to access OCF services, and how we make things available to users on human-friendly domain names.
+About IP/DNS # The following sections are copied from the Networking lab from the decal. Feel free to skip if you have taken the decal, or have taken CS161/168 and are familiar with the concepts below.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="labs">
+<title>Staff Training Lab 5 - Networking | OCF Sysadmin DeCal</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/labs/staff/s5/">
+<link rel="stylesheet" href="/book.min.5d66a598a957a57db9eb1e614a4e20c2bc6f81b607613fa13e31fc22786d762f.css" integrity="sha256-XWalmKlXpX256x5hSk4gwrxvgbYHYT&#43;hPjH8Inhtdi8=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.7339e7983a30b17b9b1d1d38456a848777df3f5094bc048474457aa1d9ef66f0.js" integrity="sha256-cznnmDowsXubHR04RWqEh3ffP1CUvASEdEV6odnvZvA=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OCF Sysadmin DeCal</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/syllabus/" class="">Syllabus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-36110f92af42629b8b43495643483d73" class="toggle"  />
+    <label for="section-36110f92af42629b8b43495643483d73" class="flex">
+      <a role="button" class="flex-auto ">Announcements</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-11/" class="">Week 11 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-10/" class="">Week 10 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-9/" class="">Week 9 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-0/" class="">Week 0</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-1/" class="">Week 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-2/" class="">Week 2 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-3/" class="">Week 3 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-4/" class="">Week 4 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-5/" class="">Week 5 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-6/" class="">Week 6 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-7/" class="">Week 7 Announcement</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/announcements/week-8/" class="">Week 8 Announcement</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cf29f3eebe08ad44997f2a664cccfd3c" class="toggle" checked />
+    <label for="section-cf29f3eebe08ad44997f2a664cccfd3c" class="flex">
+      <a role="button" class="flex-auto ">Labs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/1/" class="">Lab 1 - Unix, the Shell, OSS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/2/" class="">Lab 2 - Core Shell &amp; Shell Scripting</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/3/" class="">Lab 3 - Packages and Packaging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/4/" class="">Lab 4 - Processes and Services</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/5/" class="">Lab 5 - Introduction to Networking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/6/" class="">Lab 6 - Web Servers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/7/" class="">Lab 7 - Security Fundamentals</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/8/" class="">Lab 8 - Version Control and Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/9/" class="">Lab 9 - Containers (Docker)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/10/" class="">Lab 10 - Nix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/labs/11/" class="">Lab 11 - Kubernetes</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/staff/" class="">Staff</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/resources/" class="">Resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/archives/" class="">Archives</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://edstem.org"  target="_blank" rel="noopener">
+        Ed
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://ocf.berkeley.edu"  target="_blank" rel="noopener">
+        OCF
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Staff Training Lab 5 - Networking</h3>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="staff-training-lab-5---networking">
+  Staff Training Lab 5 - Networking
+  <a class="anchor" href="#staff-training-lab-5---networking">#</a>
+</h1>
+<p><strong>Table of Contents</strong>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#about-ipdns">About IP/DNS</a>
+      <ul>
+        <li><a href="#ip">IP</a></li>
+        <li><a href="#dns">DNS</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-ocfs-ip-block">The OCF&rsquo;s IP block</a></li>
+  </ul>
+</nav>
+</p>
+<hr>
+<h2 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h2>
+<p>Welcome to week 5 of staff training!</p>
+<p>This week, we&rsquo;ll dive into the wonderful world of networking- specifically, how we make it possible for you to access OCF services, and how we make things available to users on human-friendly domain names.</p>
+<h2 id="about-ipdns">
+  About IP/DNS
+  <a class="anchor" href="#about-ipdns">#</a>
+</h2>
+<p><strong>The following sections are copied from the Networking lab from the decal. Feel free to skip if you have taken the decal, or have taken CS161/168 and are familiar with the concepts below.</strong></p>
+<h3 id="ip">
+  IP
+  <a class="anchor" href="#ip">#</a>
+</h3>
+<p>IP addresses are means of identifying devices connected to a network under Internet Protocol. There are two versions of the internet protocol, IPv4 and IPv6, that which differ on the size of their addresses. An example IPv6 address is <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code> which is considerably longer than an IPv4 address like <code>127.0.0.1</code>.  For the sake of time we will only go over IPv4, but IPv6 is certainly gaining ground and worth checking out!</p>
+<p>IPv4 addresses are 32 bits, i.e. 4 bytes, long and are delimited by a dot (.) every byte. An example IPv4 address is <code>127.0.0.1</code>. Coincidentally this address is known as the loopback address which maps to the loopback interface on your own machine. This allows network applications to communicate with one another if they are running on the same machine, in this case your machine. But why <code>127.0.0.1</code> and not <code>127.0.0.0</code> or <code>127.0.0.2</code>?</p>
+<p>The answer is that <code>127.0.0.1</code> is simply convention, but technically any address in the network block <code>127.0.0.0/8</code> is a valid loopback address. But what exactly is a network block?</p>
+<p>In IPv4 we can partition a block of addresses into a subnet. This is written in a format known as CIDR. Let&rsquo;s take the subnet above as an example <code>127.0.0.0/8</code>. The number that comes after the slash (<code>/</code>), in this case 8, is the subnet mask. This represents how many bits are in the network address, the remaining bits identify a host within the network. In this case the network address is <code>127.0.0.0</code> and the Mask is <code>255.0.0.0</code>. So <code>127.0.0.1</code> would be the first host in the <code>127.0.0.0/8</code> network and so on and so forth.</p>
+<p>This diagram provides a visual breakdown of CIDR addressing
+
+  <img src="https://i.imgur.com/dEgcX0R.png" alt="alt text" title="CIDR addressing example courtesy of CS168"/></p>
+<h3 id="dns">
+  DNS
+  <a class="anchor" href="#dns">#</a>
+</h3>
+<p>We&rsquo;ve gone over IP addresses and how they are means of communicating with a host over IP, but  while IP addresses are machine friendly (computers love numbers) they aren&rsquo;t exactly human friendly. It&rsquo;s hard enough trying to remember phone numbers, memorizing 32 bit IP addresses isn&rsquo;t going to be any easier.</p>
+<p>But it&rsquo;s much easier for us to remember names like 
+  <a href="https://www.google.com">www.google.com</a>, 
+  <a href="https://www.facebook.com">www.facebook.com</a>, or coolmath-games.com. So out of this conflict the Domain Name System (DNS) was born as a compromise between machine friendly IP addresses and human friendly domain names.</p>
+<p>DNS is a system that maps a domain name like google.com to <code>172.217.6.78</code>. When you query for google.com your computer sends out a DNS query for google.com to a DNS server. Assuming things are properly configured and google.com has a valid corresponding address you will receive a response from an authoritative server that essentially says &ldquo;google.com has IP address <code>x.x.x.x</code>&rdquo;.</p>
+<p>DNS servers store data in the form of Resource Records (RR). Resource records are essentially a tuple of (name, value, type, TTL). While there are a wide variety of types of DNS Records the ones we are most concerned with are</p>
+<ol>
+<li>
+<p><strong>A records</strong>
+name = hostname
+value = IP address</p>
+<p>This record is very simply the record that has the IP address for a given hostname, essentially the information we want to end up with.</p>
+</li>
+<li>
+<p><strong>NS records</strong>
+name = domain
+value = name of dns server for domain</p>
+<p>This record points to another dns server that can provide an authoritative  answer for the domain. Think of this as redirecting you to another nameserver.</p>
+</li>
+<li>
+<p><strong>CNAME records</strong>
+name = alias
+value = canonical name</p>
+<p>These records point to the canonical name for a given alias for example docs.google.com would be an alias which simply points to documents.google.com
+try 
+  <a href="https://www.facebook.com">www.facebook.com</a></p>
+</li>
+<li>
+<p><strong>MX records</strong>
+The record used by mail service.</p>
+</li>
+</ol>
+<h2 id="the-ocfs-ip-block">
+  The OCF&rsquo;s IP block
+  <a class="anchor" href="#the-ocfs-ip-block">#</a>
+</h2>
+<p>The OCF has a /24 IPv4 subnet, which is part of the university&rsquo;s IPv4 allocation. Specifically, all of OCF&rsquo;s public IPv4 addresses follow the format <code>169.229.226.XXX</code>.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  
+
+
+
+  
+  
+  
+
+
+<div class="col-lg-12 text-center">
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.janestreet.com" class="no-underline">
+      <img
+        src="/jane-street.svg"
+        style="height: 50px"
+      />
+    </a>
+    <span style="padding-left: 10px";>
+      Thanks to
+      <a href="https://www.janestreet.com">Jane Street</a> for supporting the DeCal.
+    </span>
+  </p>
+  <p style="display:flex;justify-content:center;align-items:center;">
+    <a href="https://www.ocf.berkeley.edu" class="no-underline">
+      <img
+        src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+        alt="Hosted by the OCF"
+        style="height: 50px"
+        style="border: 0"
+    /></a>
+    <span style="padding-left: 10px";>
+      Copyright &copy; 2017-2025
+      <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+      and
+      <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+    </span>
+  </p>
+  <p>
+    <span>
+      This website and its course materials are licensed under the terms of the
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        CC BY-NC-SA 4.0
+      </a>
+      License.
+      <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+      available on GitHub
+    </span>
+  </p>
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

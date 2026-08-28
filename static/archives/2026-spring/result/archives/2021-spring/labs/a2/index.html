@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  
+
+  
+    <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Advanced Lab 2 - Packages and Packaging and Troubleshooting | Sysadmin DeCal</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Advanced Lab 2 - Packages and Packaging and Troubleshooting" />
+<meta name="author" content="Nikhil Jha, Ben Cuan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<meta property="og:description" content="A course covering the basics of setting up and administering a production-quality Linux server environment." />
+<link rel="canonical" href="https://decal.ocf.berkeley.edu/archives/2021-spring/labs/a2/" />
+<meta property="og:url" content="https://decal.ocf.berkeley.edu/archives/2021-spring/labs/a2/" />
+<meta property="og:site_name" content="Sysadmin DeCal" />
+<script type="application/ld+json">
+{"headline":"Advanced Lab 2 - Packages and Packaging and Troubleshooting","author":{"@type":"Person","name":"Nikhil Jha, Ben Cuan"},"url":"https://decal.ocf.berkeley.edu/archives/2021-spring/labs/a2/","@type":"WebPage","description":"A course covering the basics of setting up and administering a production-quality Linux server environment.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<span style="display: none">
+  
+@import "./support/support";
+@import "./color_schemes/";
+@import "./modules";
+@import "./custom/custom";
+
+
+</span>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-link" viewBox="0 0 24 24">
+      <title>Link</title>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </symbol>
+  </svg>
+  <div class="side-bar lab-side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">
+        Sysadmin DeCal
+      </a>
+      <a href="#" id="menu-button" class="site-button">
+        <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">      
+      <button type="button" name="theme-toggle" class="btn theme-btn" onclick="toggleDark()">Toggle Dark Theme</button>
+      <ol><li><a href="#about-this-lab">About This Lab</a><ol><li><a href="#grading-note">Grading note</a></li><li><a href="#workflow">Workflow</a></li></ol></li><li><a href="#debian-an-introduction-to-apt-and-dpkg">Debian: An introduction to <code class="language-plaintext highlighter-rouge">apt</code> and <code class="language-plaintext highlighter-rouge">dpkg</code></a><ol><li><a href="#apt"><code class="language-plaintext highlighter-rouge">apt</code></a></li><li><a href="#dpkg"><code class="language-plaintext highlighter-rouge">dpkg</code></a></li></ol></li><li><a href="#getting-started">Getting Started</a></li><li><a href="#exercise-1-compiling-and-packaging">Exercise 1: Compiling and Packaging</a><ol><li><a href="#writing-and-compiling-the-program">Writing and Compiling the Program</a></li><li><a href="#packaging-the-executable">Packaging the executable</a></li></ol></li><li><a href="#exercise-2-troubleshooting">Exercise 2: Troubleshooting</a></li><li><a href="#exercise-3-spelunking">Exercise 3: Spelunking</a></li><li><a href="#for-hotshots">For Hotshots</a></li><li><a href="#resources">Resources</a></li></ol>
+
+    </nav>
+    </div>
+  </div>
+  <div id="main" class="main">
+    <div id="main-content-wrap" class="main-content-wrap">
+      
+        
+      
+      <div id="main-content" class="main-content" role="main">
+        <h1>Advanced Lab 2 - Packages and Packaging and Troubleshooting</h1>
+        
+        9 min read
+        
+          <h2 class="no_toc text-delta" id="table-of-contents">
+        
+        
+          <a href="#table-of-contents" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+        
+        
+      </h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#about-this-lab" id="markdown-toc-about-this-lab">About This Lab</a>    <ol>
+      <li><a href="#grading-note" id="markdown-toc-grading-note">Grading note</a></li>
+      <li><a href="#workflow" id="markdown-toc-workflow">Workflow</a></li>
+    </ol>
+  </li>
+  <li><a href="#debian-an-introduction-to-apt-and-dpkg" id="markdown-toc-debian-an-introduction-to-apt-and-dpkg">Debian: An introduction to <code class="language-plaintext highlighter-rouge">apt</code> and <code class="language-plaintext highlighter-rouge">dpkg</code></a>    <ol>
+      <li><a href="#apt" id="markdown-toc-apt"><code class="language-plaintext highlighter-rouge">apt</code></a></li>
+      <li><a href="#dpkg" id="markdown-toc-dpkg"><code class="language-plaintext highlighter-rouge">dpkg</code></a></li>
+    </ol>
+  </li>
+  <li><a href="#getting-started" id="markdown-toc-getting-started">Getting Started</a></li>
+  <li><a href="#exercise-1-compiling-and-packaging" id="markdown-toc-exercise-1-compiling-and-packaging">Exercise 1: Compiling and Packaging</a>    <ol>
+      <li><a href="#writing-and-compiling-the-program" id="markdown-toc-writing-and-compiling-the-program">Writing and Compiling the Program</a></li>
+      <li><a href="#packaging-the-executable" id="markdown-toc-packaging-the-executable">Packaging the executable</a></li>
+    </ol>
+  </li>
+  <li><a href="#exercise-2-troubleshooting" id="markdown-toc-exercise-2-troubleshooting">Exercise 2: Troubleshooting</a></li>
+  <li><a href="#exercise-3-spelunking" id="markdown-toc-exercise-3-spelunking">Exercise 3: Spelunking</a></li>
+  <li><a href="#for-hotshots" id="markdown-toc-for-hotshots">For Hotshots</a></li>
+  <li><a href="#resources" id="markdown-toc-resources">Resources</a></li>
+</ol><hr />
+      <h2 id="about-this-lab">
+        
+        
+          <a href="#about-this-lab" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> About This Lab
+        
+        
+      </h2>
+    
+      <h3 id="grading-note">
+        
+        
+          <a href="#grading-note" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Grading note
+        
+        
+      </h3>
+    
+<p>Labs are graded on completion. Treat this lab as seeds of exploration instead
+of just a grade.</p>
+      <h3 id="workflow">
+        
+        
+          <a href="#workflow" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Workflow
+        
+        
+      </h3>
+    
+<p>This lab should be completed on your student VM. You should have received an email with instructions and credentials for connecting your VM. Before starting the lab, <code class="language-plaintext highlighter-rouge">ssh</code> into your student VM. Please email us at <a href="mailto:decal@ocf.berkeley.edu">decal@ocf.berkeley.edu</a> if you are having issues logging in.</p>
+      <h2 id="debian-an-introduction-to-apt-and-dpkg">
+        
+        
+          <a href="#debian-an-introduction-to-apt-and-dpkg" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Debian: An introduction to <code class="language-plaintext highlighter-rouge">apt</code> and <code class="language-plaintext highlighter-rouge">dpkg</code>
+        
+        
+      </h2>
+    
+<p>In this class, we will be focused on using Debian. As noted within this week’s lecture, Debian uses apt/dpkg as its package manager. Other distributions use different package managers.</p>
+      <h3 id="apt">
+        
+        
+          <a href="#apt" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">apt</code>
+        
+        
+      </h3>
+    
+
+<p>The frontend package manager for Debian is <code class="language-plaintext highlighter-rouge">apt</code>. For the majority of times when you need to deal with a package manager, <code class="language-plaintext highlighter-rouge">apt</code> is usually the way to go. Before doing anything with <code class="language-plaintext highlighter-rouge">apt</code>, it is typically a good habit to update the package list so that the package manager can find and fetch the most updated versions of various packages. To do that, you can run:</p>
+
+<p><code class="language-plaintext highlighter-rouge">apt update</code></p>
+
+<p>To find a package to install:</p>
+
+<p><code class="language-plaintext highlighter-rouge">apt search [package|description]</code></p>
+
+<p>To install a package:</p>
+
+<p><code class="language-plaintext highlighter-rouge">apt install [package]</code></p>
+
+<p>To remove a package:</p>
+
+<p><code class="language-plaintext highlighter-rouge">apt remove [package]</code></p>
+
+<p>Once you have been using the packages that you installed for a while, you may notice that they don’t automatically update themselves, a feature that may be present on programs written for other operating systems. To update the packages that you have installed, run:</p>
+
+<p><code class="language-plaintext highlighter-rouge">apt upgrade</code> or sometimes <code class="language-plaintext highlighter-rouge">apt dist-upgrade</code></p>
+
+<p>It is more commonplace to use <code class="language-plaintext highlighter-rouge">apt upgrade</code> to update your packages, but there are times when you need to use <code class="language-plaintext highlighter-rouge">apt dist-upgrade</code>. You can read up more about the differences between the two <a href="https://askubuntu.com/questions/194651/why-use-apt-get-upgrade-instead-of-apt-get-dist-upgrade">here</a>.</p>
+
+<p>In some circumstances, you want to be absolutely sure of the version of the package that you want to install. To list the potential versions that you can install, you can run:</p>
+
+<p><code class="language-plaintext highlighter-rouge">apt policy [package]</code></p>
+
+<p>This lists the candidate version to install, according to its pin priority, along with other versions that are compatible with the system. To install a a version for a specific target release, you can run:</p>
+
+<p><code class="language-plaintext highlighter-rouge">apt -t [targetrelease] install [package]</code></p>
+
+<p>There are also other commands that can remove unneeded dependencies and purge packages, but that is what the <code class="language-plaintext highlighter-rouge">man</code> pages are for. Please note that you are going to have to use <code class="language-plaintext highlighter-rouge">sudo</code> for the above commands since you are actually modifying the system itself.</p>
+      <h3 id="dpkg">
+        
+        
+          <a href="#dpkg" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">dpkg</code>
+        
+        
+      </h3>
+    
+<p>The backend package manager is <code class="language-plaintext highlighter-rouge">dpkg</code>. Traditionally, <code class="language-plaintext highlighter-rouge">dpkg</code> is used to install local packages. Using <code class="language-plaintext highlighter-rouge">dpkg</code>, you also can inspect packages and fix broken installs. To install local packages, run:</p>
+
+<p><code class="language-plaintext highlighter-rouge">dpkg -i [packagefilename]</code></p>
+
+<p>To remove a system package:</p>
+
+<p><code class="language-plaintext highlighter-rouge">dpkg --remove [package]</code></p>
+
+<p>To inspect a package for more information about the package:</p>
+
+<p><code class="language-plaintext highlighter-rouge">dpkg -I [packagefilename]</code></p>
+
+<p>To fix/configure all unpacked but unfinished installs:</p>
+
+<p><code class="language-plaintext highlighter-rouge">dpkg --configure -a</code></p>
+      <h2 id="getting-started">
+        
+        
+          <a href="#getting-started" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Getting Started
+        
+        
+      </h2>
+    
+<p>We are going to use <code class="language-plaintext highlighter-rouge">gcc</code> to compile source code and a simple utility called <code class="language-plaintext highlighter-rouge">fpm</code> to create packages in this lab.</p>
+
+<p>Using the commands above, install <code class="language-plaintext highlighter-rouge">gcc</code>, <code class="language-plaintext highlighter-rouge">make</code>, <code class="language-plaintext highlighter-rouge">ruby-dev</code>, and <code class="language-plaintext highlighter-rouge">ruby-ffi</code>.</p>
+
+<p>Now check if GCC is installed by typing the followng:</p>
+
+<p><code class="language-plaintext highlighter-rouge">gcc --version</code></p>
+
+<p>Now install <code class="language-plaintext highlighter-rouge">fpm</code> using <code class="language-plaintext highlighter-rouge">gem</code>, Ruby’s own package manager:</p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo gem install fpm</code></p>
+
+<p>Now check if <code class="language-plaintext highlighter-rouge">fpm</code> is installed:</p>
+
+<p><code class="language-plaintext highlighter-rouge">fpm</code></p>
+
+<p>Now clone the <code class="language-plaintext highlighter-rouge">decal-web</code> repository:</p>
+
+<p><code class="language-plaintext highlighter-rouge">git clone https://github.com/0xcf/decal-labs.git</code></p>
+      <h2 id="exercise-1-compiling-and-packaging">
+        
+        
+          <a href="#exercise-1-compiling-and-packaging" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Exercise 1: Compiling and Packaging
+        
+        
+      </h2>
+    
+<p>Packaging manually for Debian can be very hard and frustrating, especially for first timers. That’s why for this class, we’ll be using a really cool Ruby package called fpm which simplifies the task of packaging a lot.</p>
+
+<p><strong>Note:</strong> This method is a great way to backport or package your own applications extremely quickly, but is not up to the more formal standards set by the <a href="https://www.debian.org/doc/manuals/maint-guide/">Debian New Maintainers’ Guide</a>. If you’re up for a challenge, feel free to try following the lab instructions, but using the guidelines <a href="https://www.debian.org/doc/manuals/maint-guide/build.en.html">here</a> for <code class="language-plaintext highlighter-rouge">dpkg-buildpackage</code> instead of using <code class="language-plaintext highlighter-rouge">fpm</code>.</p>
+
+<p>Now we will create a simplistic package using the hellopenguin executable that you will make in the coming steps. First, move into the a2 folder in the repository that you cloned in the Getting Started section:</p>
+
+<p><code class="language-plaintext highlighter-rouge">cd decal-labs/a2</code></p>
+
+<p>Now we are going to create a folder to work in for this exercise:</p>
+
+<p><code class="language-plaintext highlighter-rouge">mkdir ex1</code></p>
+
+<p>And now move into the folder:</p>
+
+<p><code class="language-plaintext highlighter-rouge">cd ex1</code></p>
+      <h3 id="writing-and-compiling-the-program">
+        
+        
+          <a href="#writing-and-compiling-the-program" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Writing and Compiling the Program
+        
+        
+      </h3>
+    
+
+<p>Now, we will make a very simple application in C that prints “Hello Penguin!” named hellopenguin. Invoke:</p>
+
+<p><code class="language-plaintext highlighter-rouge">touch hellopenguin.c</code></p>
+
+<p>This will create an empty file named <code class="language-plaintext highlighter-rouge">hellopenguin.c</code>. Now, using the a preferred text editor of your choice, such as <code class="language-plaintext highlighter-rouge">vim</code>, <code class="language-plaintext highlighter-rouge">emacs</code>, or <code class="language-plaintext highlighter-rouge">nano</code>, insert the following code into <code class="language-plaintext highlighter-rouge">hellopenguin.c</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;stdio.h&gt;
+
+int main()
+
+{
+
+   printf("Hello Penguin!\n");
+
+   return 0;
+
+}
+</code></pre></div></div>
+
+<p>We will now compile the source file that you have just written:</p>
+
+<p><code class="language-plaintext highlighter-rouge">gcc hellopenguin.c -o hellopenguin</code></p>
+
+<p>What this does is to take in a source file <code class="language-plaintext highlighter-rouge">hellopenguin.c</code> and compile it to an executable named <code class="language-plaintext highlighter-rouge">hellopenguin</code> with the <code class="language-plaintext highlighter-rouge">-o</code> output flag.</p>
+      <h3 id="packaging-the-executable">
+        
+        
+          <a href="#packaging-the-executable" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Packaging the executable
+        
+        
+      </h3>
+    
+
+<p>Now, we will create the folder structure of where the executable shall reside in. In Debian, user-level packages usually reside in the folder <code class="language-plaintext highlighter-rouge">/usr/bin/</code>:</p>
+
+<p><code class="language-plaintext highlighter-rouge">mkdir -p packpenguin/usr/bin</code></p>
+
+<p>Now move your compiled <code class="language-plaintext highlighter-rouge">hellopenguin</code> exectuable into the <code class="language-plaintext highlighter-rouge">packpenguin/usr/bin/</code> folder.</p>
+
+<p><code class="language-plaintext highlighter-rouge">mv hellopenguin packpenguin/usr/bin/</code></p>
+
+<p>Now we will create a package called <code class="language-plaintext highlighter-rouge">hellopenguin</code>. Move into the parent directory of the <code class="language-plaintext highlighter-rouge">hellopenguin</code> folder and invoke the following:</p>
+
+<p><code class="language-plaintext highlighter-rouge">fpm -s dir -t deb -n hellopenguin -v 1.0~ocf1 -C packpenguin</code></p>
+
+<p>This specifies that you want to take in a directory, using the <code class="language-plaintext highlighter-rouge">-s</code> flag, and to output a <code class="language-plaintext highlighter-rouge">.deb</code> package using the <code class="language-plaintext highlighter-rouge">-t</code> flag. It takes in a directory called <code class="language-plaintext highlighter-rouge">packpenguin</code>, using the <code class="language-plaintext highlighter-rouge">-C</code> flag, and output a <code class="language-plaintext highlighter-rouge">.deb</code> file named <code class="language-plaintext highlighter-rouge">hellopenguin</code>, using the <code class="language-plaintext highlighter-rouge">-n</code>, with a version number of <code class="language-plaintext highlighter-rouge">1.0~ocf1</code>, using the <code class="language-plaintext highlighter-rouge">-v</code> flag.</p>
+
+<p>Now test it by invoking apt and installing it:</p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo dpkg -i ./hellopenguin_1.0~ocf1_amd64.deb</code></p>
+
+<p>Now you should be able to run <code class="language-plaintext highlighter-rouge">hellopenguin</code> by doing the following:</p>
+
+<p><code class="language-plaintext highlighter-rouge">hellopenguin</code></p>
+      <h2 id="exercise-2-troubleshooting">
+        
+        
+          <a href="#exercise-2-troubleshooting" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Exercise 2: Troubleshooting
+        
+        
+      </h2>
+    
+<p>Now we are going to try and troubleshoot a package. Move to the other folder, <code class="language-plaintext highlighter-rouge">ex2</code>.</p>
+
+<p>Try installing the <code class="language-plaintext highlighter-rouge">ocfspy</code> package using <code class="language-plaintext highlighter-rouge">dpkg</code>. It should error. Take note what it is erroring on! Now try and fix it.</p>
+
+<p><strong>Hint:</strong> Inspect the package for more details. The file to create that application is in the folder. Try compiling and packaging it. Exercise 1 may be a useful reference if you are stuck.</p>
+
+<p>After you’re done, complete the following questions and made a submission to Gradescope.</p>
+
+<p><strong>Compiling and packaging</strong></p>
+
+<ol>
+  <li>Will we still be able to run “hellopenguin” from any directory if we packaged it into “/usr/share” instead of “/usr/bin”?</li>
+  <li>What is your rationale for the previous answer?</li>
+</ol>
+
+<p><strong>Debugging</strong></p>
+
+<ol>
+  <li>What package was missing after trying to install ocfspy?</li>
+  <li>What is the password that ocfspy outputs after fixing the dependency problem?</li>
+</ol>
+
+<p>Note that you may want to clean up your VM by removing <code class="language-plaintext highlighter-rouge">hellopenguin</code>, <code class="language-plaintext highlighter-rouge">ocfdocs</code>, and <code class="language-plaintext highlighter-rouge">ocfspy</code> from your system.</p>
+      <h2 id="exercise-3-spelunking">
+        
+        
+          <a href="#exercise-3-spelunking" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Exercise 3: Spelunking
+        
+        
+      </h2>
+    
+<p>Let’s shift gears a bit and take a look at a popular package to learn more about how it’s structured! If you recall from <a href="https://www.youtube.com/watch?v=M0vPXQycer0&amp;feature=youtu.be">lecture</a>, we took at look at the contents of <code class="language-plaintext highlighter-rouge">htop</code>. For this next section, choose another package from the Debian repository to download and extract. <a href="https://packages.debian.org/stable/">Here’s a list</a>: try to pick one you have used/installed before!</p>
+
+<p>Note that this exercise is mainly for exploration and learning purposes- you wouldn’t actually install a package using this method.</p>
+
+<p><strong>Once you’ve extracted the files, answer the following questions on Gradescope:</strong></p>
+<ol>
+  <li>What package did you choose?</li>
+  <li>What are the package’s dependencies? What file can you find them in?</li>
+  <li>Extract <code class="language-plaintext highlighter-rouge">data.tar.gz</code> and view its contents. If there exists a folder(s) other than <code class="language-plaintext highlighter-rouge">usr/bin/</code> and <code class="language-plaintext highlighter-rouge">usr/share/</code>, pick one and briefly describe its purpose (both generally and in the context of this package). If not, explain why additional folders are not needed for this package.</li>
+  <li>What’s one other interesting thing you learned about this package? (Binaries you never knew existed, easter eggs in documentation, a cool pre-install script…)</li>
+</ol>
+
+<p><strong>Hints:</strong></p>
+<ul>
+  <li>The command to download a package is <code class="language-plaintext highlighter-rouge">apt download &lt;packagename&gt;</code>.</li>
+  <li>To use <code class="language-plaintext highlighter-rouge">aunpack</code>, you might need to <code class="language-plaintext highlighter-rouge">sudo apt install atool</code>.</li>
+  <li>Try to choose a package with a smaller filesize, so you won’t have to wait long for it to download and extract.</li>
+  <li>The lecture demo will be quite helpful! You may want to watch it again for reference.</li>
+</ul>
+      <h2 id="for-hotshots">
+        
+        
+          <a href="#for-hotshots" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> For Hotshots
+        
+        
+      </h2>
+    
+<p>In the past examples, we have always precompiled a given program before packaging it. One upside to this, is that the package will always work for systems similar to the one that you run. However, once we start introducing other machines with potentially different architectures, we suddenly need to create duplicate packages compiled specifically for those systems. Create a new package that unpacks the source code for a file, compiles it, moves all of the relevant files to their respective locations, before deleting the irrelevant files.</p>
+      <h2 id="resources">
+        
+        
+          <a href="#resources" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Resources
+        
+        
+      </h2>
+    
+<p>Below are some resources that I found helpful in the creation of this lab. If you are feeling adventurous, you may want to poke around these documents as well.</p>
+
+<p><a href="https://github.com/jordansissel/fpm/wiki">fpm</a></p>
+
+<p><a href="https://tldr.sh/">TLDR pages, a more readable man page</a></p>
+
+<p><a href="https://linux.die.net/man/1/dpkg">dpkg</a>, alternatively <code class="language-plaintext highlighter-rouge">man dpkg</code></p>
+
+<p><a href="https://linux.die.net/man/8/apt">apt</a>, alternatively <code class="language-plaintext highlighter-rouge">man apt</code></p>
+
+<p><a href="https://www.debian.org/doc/manuals/maint-guide/">Debian New Maintainers’ Guide</a></p>
+
+        
+        <hr>
+        <footer>
+  <div class="col-lg-12 text-center">
+    <p>
+      <a href="https://www.digitalocean.com" class="no-underline">
+        <img
+          src="/assets/images/digitalocean.png"
+          style="height: 34px; width: 200px"
+      /></a>
+      <span>
+        With great appreciation to
+        <a href="https://www.digitalocean.com">DigitalOcean</a> for sponsoring
+        the VMs used in both tracks of the DeCal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.linode.com" class="no-underline">
+        <img
+          src="/assets/images/linode.png"
+          style="height: 50px; width: 125px"
+        />
+      </a>
+      <span>
+        Huge thanks to
+        <a href="https://www.linode.com">Linode</a> for sponsoring the equipment
+        used to record digital lectures for the Decal
+      </span>
+    </p>
+    <p>
+      <a href="https://www.ocf.berkeley.edu" class="no-underline">
+        <img
+          src="https://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+          alt="Hosted by the OCF"
+          style="border: 0"
+      /></a>
+      <span>
+        Copyright &copy; 2017-2021
+        <a href="https://www.ocf.berkeley.edu"> Open Computing Facility </a>
+        and
+        <a href="https://xcf.berkeley.edu"> eXperimental Computing Facility </a>
+      </span>
+    </p>
+    <p>
+      <span>
+        This website and its course materials are licensed under the terms of the
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+          CC BY-NC-SA 4.0
+        </a>
+        License.
+        <a href="https://github.com/0xcf/decal-web/"> Source Code </a>
+        available on GitHub
+      </span>
+    </p>
+  </div>
+  <!-- /.col-lg-12 -->
+</footer>
+
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+<script>
+  let dark = false;
+  let toggleDark = () => { jtd.setTheme(dark ? 'light' : 'dark'); dark = !dark; }
+</script>
+</html>
+
