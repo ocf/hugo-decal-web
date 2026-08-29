@@ -23,7 +23,7 @@ menu:
   # before: []
   after:
     - name: "Ed"
-      url: "https://edstem.org"
+      url: "https://edstem.org/us/courses/104136"
       weight: 10
     - name: "OCF"
       url: "https://ocf.berkeley.edu"

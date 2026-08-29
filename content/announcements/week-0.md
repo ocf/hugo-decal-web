@@ -5,9 +5,9 @@ week: 0
 ---
 
 1. The Linux SysAdmin Decal is back for Fall 2026!
-1. Join us at Decal infosessions on 9/1 and 9/3, 7pm @ OCF Lab or at [ocf.io/meet](ocf.io/meet)! 
+1. Join us at Decal infosessions on 9/1 and 9/3, 7pm @ OCF Lab or at [ocf.io/meet](https://ocf.io/meet)! 
 1. **To enroll, [fill out lab 0 here](https://forms.gle/KxqzM2TMHUSyCUKNA)!** Lab 0 opens after the first infosession and is due **Saturday, Sep. 5th at 11:59pm**. 
-1. Learn more about the course at the [about page](../about).
+1. Learn more about the course at the [syllabus page](../syllabus).
 1. Any questions? Contact us at [decal@ocf.berkeley.edu](mailto:decal@ocf.berkeley.edu)!
 1. Looking for a previous semester's materials? You can view it in the [archive](/archive).
 
